@@ -16,6 +16,7 @@ import { ButtonModule } from 'primeng/button';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SignupComponent } from './user/signup/signup.component';
+import { SocialLoginComponent } from './user/social-login/social-login.component';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { CompanysignupComponent } from './vendor/company/companysignup/companysignup.component';
 import { CompanyloginComponent } from './vendor/company/companylogin/companylogin.component';
@@ -24,7 +25,7 @@ import { IndividualloginComponent } from './vendor/individual/individuallogin/in
 import { TabViewModule } from 'primeng/tabview';
 import { SplitterModule } from 'primeng/splitter';
 import { LogintabsComponent } from './vendor/logintabs/logintabs.component';
-import { SignuptabsComponent } from './vendor/signuptabs/signuptabs.component';
+import { SignupTabsComponent } from './vendor/signuptabs/signuptabs.component';
 import { ImageModule } from 'primeng/image';
 import { DividerModule } from 'primeng/divider';
 
@@ -40,7 +41,8 @@ import { DividerModule } from 'primeng/divider';
     IndividualsignupComponent,
     IndividualloginComponent,
     LogintabsComponent,
-    SignuptabsComponent,
+    SignupTabsComponent,
+    SocialLoginComponent
   ],
   imports: [
     BrowserModule,

@@ -8,8 +8,9 @@ import { CompanysignupComponent } from './vendor/company/companysignup/companysi
 import { IndividualloginComponent } from './vendor/individual/individuallogin/individuallogin.component';
 import { CompanyloginComponent } from './vendor/company/companylogin/companylogin.component';
 import { IndividualsignupComponent } from './vendor/individual/individualsignup/individualsignup.component';
-import { SignuptabsComponent } from './vendor/signuptabs/signuptabs.component';
+import { SignupTabsComponent } from './vendor/signuptabs/signuptabs.component';
 import { LogintabsComponent } from './vendor/logintabs/logintabs.component';
+import { SocialLoginComponent } from './user/social-login/social-login.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,9 @@ const routes: Routes = [
     children: [
       {path: '', component:VehiclesComponent}
   ]
+  },
+  {
+    path: 'sociallogin', component:SocialLoginComponent
   },
   {
     path: 'login', component:LoginComponent
@@ -32,7 +36,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'vendorsignup', component:SignuptabsComponent,
+    path: 'vendorsignup', component:SignupTabsComponent,
     children: [
       {path: 'companysignup', component:CompanysignupComponent,},
       {path: 'individualsignup', component:IndividualsignupComponent,}

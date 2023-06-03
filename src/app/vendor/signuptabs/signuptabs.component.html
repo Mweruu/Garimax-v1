@@ -1,18 +1,15 @@
-<p>signuptabs works!</p>
-<div class="card align-items-center">
-  <div class="surface-ground flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden">
-    <div class="flex flex-column align-items-center justify-content-center ">
+<div class="surface-ground flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden">
+  <div class="card" style="padding: auto;">
+    <div class="flex flex-column align-items-center justify-content-center mb-3">
       <p-tabView>
-        <p-tabPanel header="As Company">
-          <app-companysignup></app-companysignup>
-
-        </p-tabPanel>
-        <p-tabPanel header="As Individual">
+        <p-tabPanel header="Sign Up as An Individual" leftIcon="pi pi-user m-3 mr-2">
           <app-individualsignup></app-individualsignup>
-
         </p-tabPanel>
-    </p-tabView>
-
+        <p-tabPanel header="Sign Up as A Company" leftIcon="pi pi-users m-3">
+          <app-companysignup></app-companysignup>
+        </p-tabPanel>
+      </p-tabView>
     </div>
   </div>
 </div>
+
