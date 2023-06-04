@@ -9,6 +9,7 @@ import { LayoutService } from "./service/app.layout.service";
 export class AppTopBarComponent {
 
     items!: MenuItem[];
+    overlayVisible: boolean = false;
 
     @ViewChild('menubutton') menuButton!: ElementRef;
 
@@ -17,4 +18,10 @@ export class AppTopBarComponent {
     @ViewChild('topbarmenu') menu!: ElementRef;
 
     constructor(public layoutService: LayoutService) { }
+
+
+    toggle() {
+        this.overlayVisible = !this.overlayVisible;
+    }
+    
 }

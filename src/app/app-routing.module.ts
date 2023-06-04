@@ -11,12 +11,14 @@ import { IndividualsignupComponent } from './vendor/individual/individualsignup/
 import { SignupTabsComponent } from './vendor/signuptabs/signuptabs.component';
 import { LogintabsComponent } from './vendor/logintabs/logintabs.component';
 import { SocialLoginComponent } from './user/social-login/social-login.component';
+import { FiltersComponent } from './filters/filters.component';
 
 const routes: Routes = [
   {
     path: '', component:AppLayoutComponent,
     children: [
-      {path: '', component:VehiclesComponent}
+      // {path: '', component:FiltersComponent},
+      // {path: '', component:VehiclesComponent}
   ]
   },
   {
@@ -31,15 +33,15 @@ const routes: Routes = [
   {
     path: 'vendorlogin', component:LogintabsComponent,
     children: [
-      {path: 'companylogin', component:CompanyloginComponent,},
-      {path: 'individuallogin', component:IndividualloginComponent,}
+      {path: '', component:CompanyloginComponent,},
+      {path: '', component:IndividualloginComponent,}
     ]
   },
   {
     path: 'vendorsignup', component:SignupTabsComponent,
     children: [
-      {path: 'companysignup', component:CompanysignupComponent,},
-      {path: 'individualsignup', component:IndividualsignupComponent,}
+      {path: '', component:CompanysignupComponent,},
+      {path: '', component:IndividualsignupComponent,}
     ]
   },
 ];

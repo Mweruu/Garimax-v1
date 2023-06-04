@@ -5,7 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppLayoutModule } from './layout/app.layout.module';
-import { VehiclesComponent } from './vehicles/vehicles.component';
+// import { VehiclesComponent } from './vehicles/vehicles.component';
 import { CardModule } from 'primeng/card';
 import { DropdownModule } from 'primeng/dropdown';
 import { LoginComponent } from './user/login/login.component';
@@ -28,12 +28,16 @@ import { LogintabsComponent } from './vendor/logintabs/logintabs.component';
 import { SignupTabsComponent } from './vendor/signuptabs/signuptabs.component';
 import { ImageModule } from 'primeng/image';
 import { DividerModule } from 'primeng/divider';
+import { DataViewModule, DataViewLayoutOptions } from 'primeng/dataview';
+import { RatingModule } from 'primeng/rating';
+import { OverlayModule } from 'primeng/overlay';
+// import { FiltersComponent } from './filters/filters.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    VehiclesComponent,
+    // VehiclesComponent,
     LoginComponent,
     SignupComponent,
     CompanysignupComponent,
@@ -42,7 +46,9 @@ import { DividerModule } from 'primeng/divider';
     IndividualloginComponent,
     LogintabsComponent,
     SignupTabsComponent,
-    SocialLoginComponent
+    SocialLoginComponent,
+    // FiltersComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -61,7 +67,10 @@ import { DividerModule } from 'primeng/divider';
     TabViewModule,
     SplitterModule,
     ImageModule,
-    DividerModule
+    DividerModule,
+    DataViewModule,
+    RatingModule,
+    OverlayModule
   ],
   providers: [],
   bootstrap: [AppComponent]

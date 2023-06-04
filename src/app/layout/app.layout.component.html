@@ -1,14 +1,21 @@
 <div class="layout-wrapper" >
     <app-topbar></app-topbar>
-    <!-- <div class="layout-sidebar">
-        <app-sidebar></app-sidebar>
-    </div> -->
     <div class="layout-main-container">
         <div class="layout-main">
             <router-outlet></router-outlet>
-        </div>
+            <div _ngcontent-wvy-c28="" class="grid layout-dashboard">
+                <div _ngcontent-wvy-c28="" class="col-12 md:col-3 lg:col-3">
+                <div _ngcontent-wvy-c28="" class="card card-w-title">
+                    <!-- <h5 _ngcontent-wvy-c28="">Statistics</h5><p-chart _ngcontent-wvy-c28="" type="line" class="p-element"><div style="position: relative;"><canvas width="1280" height="640" style="display: block; box-sizing: border-box; height: 320px; width: 640px;"></canvas></div></p-chart></div></div> -->
+                <app-filters> </app-filters>         
+     </div></div>
+            <div _ngcontent-wvy-c28="" class="col-12 md:col-9 lg:col-9">
+                <div _ngcontent-wvy-c28="" class="card card-w-title">
+                    <!-- <h5 _ngcontent-wvy-c28="">Statistics</h5><p-chart _ngcontent-wvy-c28="" type="line" class="p-element"><div style="position: relative;"><canvas width="1280" height="640" style="display: block; box-sizing: border-box; height: 320px; width: 640px;"></canvas></div></p-chart> -->
+                        <app-vehicles></app-vehicles>
+                </div></div>
+        </div></div>
         <app-footer></app-footer>
     </div>
-    <!-- <app-config></app-config> -->
     <div class="layout-mask"></div>
 </div>

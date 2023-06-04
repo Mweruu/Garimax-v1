@@ -14,6 +14,14 @@ import { AppTopBarComponent } from './app.topbar.component';
 import { AppFooterComponent } from './app.footer.component';
 import { AppSidebarComponent } from "./app.sidebar.component";
 import { AppLayoutComponent } from "./app.layout.component";
+import { OverlayModule } from 'primeng/overlay';
+import { FiltersComponent} from '../filters/filters.component'
+import { VehiclesComponent } from '../vehicles/vehicles.component';
+import { RatingModule } from 'primeng/rating';
+import { SplitterModule } from 'primeng/splitter';
+import { CardModule } from 'primeng/card';
+import { DividerModule } from 'primeng/divider';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
     declarations: [
@@ -21,6 +29,8 @@ import { AppLayoutComponent } from "./app.layout.component";
         AppFooterComponent,
         AppSidebarComponent,
         AppLayoutComponent,
+        FiltersComponent,
+        VehiclesComponent
     ],
     imports: [
         BrowserModule,
@@ -34,6 +44,12 @@ import { AppLayoutComponent } from "./app.layout.component";
         InputSwitchModule,
         RippleModule,
         RouterModule,
+        OverlayModule,
+        RatingModule,
+        SplitterModule,
+        CardModule,
+        DividerModule,
+        ButtonModule,
     ],
     exports: [AppLayoutComponent]
 })

@@ -1,15 +1,19 @@
-<div class="card">
-  <div class="surface-ground flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden">
-    <div class="flex flex-column align-items-center justify-content-center">
-        <p-tabView>
-          <p-tabPanel header="As Company">
-            <app-companylogin></app-companylogin>
+  <!-- <div class="surface-ground flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden"> -->
+    <div class="surface-ground flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden">
 
-          </p-tabPanel>
-          <p-tabPanel header="As Individual">
+    <div class="card" style="padding: auto;">
+      <div class="flex flex-column align-items-center justify-content-center mb-3">
+        <p-tabView>
+          
+          <p-tabPanel header="As Individual" leftIcon="pi pi-user m-3 mr-2">
             <app-individuallogin></app-individuallogin>
 
           </p-tabPanel>
+          <p-tabPanel header="As Company" leftIcon="pi pi-users m-3">
+            <app-companylogin></app-companylogin>
+
+          </p-tabPanel>
+          
         </p-tabView>
 
     </div>
