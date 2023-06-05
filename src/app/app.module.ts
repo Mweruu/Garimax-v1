@@ -32,6 +32,9 @@ import { DataViewModule, DataViewLayoutOptions } from 'primeng/dataview';
 import { RatingModule } from 'primeng/rating';
 import { OverlayModule } from 'primeng/overlay';
 // import { FiltersComponent } from './filters/filters.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MessagesModule } from 'primeng/messages';
+import { ToastModule } from 'primeng/toast';
 
 
 @NgModule({
@@ -70,7 +73,10 @@ import { OverlayModule } from 'primeng/overlay';
     DividerModule,
     DataViewModule,
     RatingModule,
-    OverlayModule
+    OverlayModule,
+    ReactiveFormsModule,
+    MessagesModule,
+    ToastModule
   ],
   providers: [],
   bootstrap: [AppComponent]

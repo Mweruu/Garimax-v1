@@ -1,4 +1,93 @@
-<p>filters works!</p>
-<div class="card flex justify-content-center">
-    <p-dropdown [options]="cities" [(ngModel)]="selectedCity" optionLabel="name"></p-dropdown>
+<!-- <div class="card"> -->
+<div class=" mt-2 flex ful">
+  <p-dropdown [style]="{ width: '270px' }" [options]="cities" [(ngModel)]="selectedCity" optionLabel="name" placeholder="Location"></p-dropdown>
 </div>
+<div class=" mt-2 flex  gap-3 m-3">
+    <p-dropdown [style]="{ width: '130px' }" [options]="cities" [(ngModel)]="selectedCity" optionLabel="name" placeholder="Make"></p-dropdown>
+<!-- </div>
+<div class=" mt-2 flex"> -->
+  <p-dropdown [style]="{ width: '130px' }" [options]="cities" [(ngModel)]="selectedCity" optionLabel="name" placeholder="Model"></p-dropdown>
+</div>
+<p-fieldset legend="Year of Manufacture" >
+  <div class=" m-2 flex gap-3">
+    <p-dropdown  [style]="{ width: '120px' }" [options]="cities" [(ngModel)]="selectedCity" optionLabel="name" placeholder="Min"></p-dropdown>
+  <!-- </div>
+  <div class=" m-2 flex"> -->
+    <p-dropdown  [style]="{ width: '120px' }" [options]="cities" [(ngModel)]="selectedCity" optionLabel="name" placeholder="Max"></p-dropdown>
+  </div>
+</p-fieldset>
+<p-fieldset legend="Price"  class="m-2">
+  <div class=" mt-2 flex gap-3">
+    <p-dropdown [style]="{ width: '130px' }" [options]="cities" [(ngModel)]="selectedCity" optionLabel="name" placeholder="Min"></p-dropdown>
+  <!-- </div>
+  <div class=" m-2 flex"> -->
+    <p-dropdown [style]="{ width: '130px' }" [options]="cities" [(ngModel)]="selectedCity" optionLabel="name" placeholder="Max"></p-dropdown>
+  </div>
+</p-fieldset>
+<div class=" mt-2 flex gap-3">
+  <p-dropdown  [style]="{ width: '130px' }" [options]="cities" [(ngModel)]="selectedCity" optionLabel="name" placeholder="Vehicle Type"></p-dropdown>
+<!-- </div>
+<div class=" mt-2 flex"  style="width: 100%;"> -->
+  <p-dropdown [style]="{ width: '130px' }" [options]="cities" [(ngModel)]="selectedCity" optionLabel="name" placeholder="Verified"></p-dropdown>
+</div>
+<div class=" mt-2 flex gap-3">
+  <p-dropdown  [style]="{ width: '130px' }" [options]="cities" [(ngModel)]="selectedCity" optionLabel="name" placeholder="Usage"></p-dropdown>
+<!-- </div>
+<div class=" mt-2 flex"> -->
+  <p-dropdown [style]="{ width: '130px' }" [options]="cities" [(ngModel)]="selectedCity" optionLabel="name" placeholder="Condition"></p-dropdown>
+</div>
+<div class=" mt-2 flex gap-3">
+  <p-dropdown  [style]="{ width: '130px' }"[options]="cities" [(ngModel)]="selectedCity" optionLabel="name" placeholder="Transmission"></p-dropdown>
+<!-- </div>
+<div class=" m-2 flex"> -->
+  <p-dropdown  [style]="{ width: '130px' }"[options]="cities" [(ngModel)]="selectedCity" optionLabel="name" placeholder="Mileage"></p-dropdown>
+</div>
+<p-fieldset legend="Perfomance" class="m-2">
+  <span>Engine Size</span><br />
+    <div class="mt-2 mb-2 flex gap-2">
+    <p-dropdown [style]="{ width: '130px' }" [options]="cities" [(ngModel)]="selectedCity" optionLabel="name" placeholder="Min"></p-dropdown>
+
+    <p-dropdown [style]="{ width: '130px' }" [options]="cities" [(ngModel)]="selectedCity" optionLabel="name" placeholder="Max"></p-dropdown>
+  </div>
+  <label >Engine Power</label>
+  <div class=" mt-2 mb-2 flex gap-2">
+    <p-dropdown [style]="{ width: '130px' }" [options]="cities" [(ngModel)]="selectedCity" optionLabel="name" placeholder="Maximum"></p-dropdown>
+
+    <p-dropdown [style]="{ width: '130px' }" [options]="cities" [(ngModel)]="selectedCity" optionLabel="name" placeholder="Minimum"></p-dropdown>
+  </div>
+  <div class=" mt-2 flex gap-2">
+    <p-dropdown [style]="{ width: '130px' }" [options]="cities" [(ngModel)]="selectedCity" optionLabel="name" placeholder="Acceleration"></p-dropdown>
+
+    <p-dropdown [style]="{ width: '130px' }"  [options]="cities" [(ngModel)]="selectedCity" optionLabel="name" placeholder="Drive Train"></p-dropdown>
+  </div>
+</p-fieldset>
+<p-fieldset legend="Specification" class="mt-2">
+  <div class=" mt-2 flex gap-3">
+    <p-dropdown [style]="{ width: '130px' }" [options]="cities" [(ngModel)]="selectedCity" optionLabel="name" placeholder="Color"></p-dropdown>
+  <!-- </div>
+  <div class=" m-2 flex"> -->
+    <p-dropdown [style]="{ width: '130px' }" [options]="cities" [(ngModel)]="selectedCity" optionLabel="name" placeholder="Doors"></p-dropdown>
+  </div>
+  <div class=" mt-2 flex gap-3">
+    <p-dropdown [style]="{ width: '130px' }" [options]="cities" [(ngModel)]="selectedCity" optionLabel="name" placeholder="Seats"></p-dropdown>
+  <!-- </div>
+  <div class=" m-2 flex"> -->
+    <p-dropdown [style]="{ width: '130px' }" [options]="cities" [(ngModel)]="selectedCity" optionLabel="name" placeholder="BootSpace"></p-dropdown>
+  </div>
+</p-fieldset>
+<div class=" mt-2 flex gap-3">
+  <p-dropdown  [style]="{ width: '130px' }" [options]="cities" [(ngModel)]="selectedCity" optionLabel="name" placeholder="Fuel Consumption"></p-dropdown>
+<!-- </div>
+<div class=" mt-2 flex"> -->
+  <p-dropdown  [style]="{ width: '130px' }" [options]="cities" [(ngModel)]="selectedCity" optionLabel="name" placeholder="Accessibility"></p-dropdown>
+</div>
+<!-- <div class="field col-12 md:col-4">
+  <span class="p-float-label">
+      <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="name"></p-dropdown>
+      <label for="dropdown">Make</label>
+  </span>
+</div> -->
+<!-- <div class=" m-2 flex">
+  <p-dropdown [options]="cities" [(ngModel)]="selectedCity" placeholder="Select Item" [virtualScroll]="true" [virtualScrollItemSize]="38"></p-dropdown>
+</div> -->
+<!-- </div> -->
