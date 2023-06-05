@@ -24,6 +24,7 @@ import { DividerModule } from 'primeng/divider';
 import { ButtonModule } from 'primeng/button';
 import { ImageModule } from 'primeng/image';
 import { DropdownModule } from 'primeng/dropdown';
+import { FieldsetModule } from 'primeng/fieldset';
 
 @NgModule({
     declarations: [
@@ -53,7 +54,8 @@ import { DropdownModule } from 'primeng/dropdown';
         DividerModule,
         DropdownModule,
         ButtonModule,
-        ImageModule
+        ImageModule,
+        FieldsetModule
     ],
     exports: [AppLayoutComponent]
 })

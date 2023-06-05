@@ -3,6 +3,10 @@
         <img src="assets/layout/images/{{layoutService.config.colorScheme === 'light' ? 'logo-dark' : 'logo-white'}}.svg" alt="logo">
         <span routerLink="/">GARIMAX</span>
     </a>
+    <!-- <div class="layout-topbar-search">
+      <input type="text" placeholder="Search">
+      <i class="pi-fw pi pi-search"></i>
+    </div> -->
     <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
         <div class="flex justify-content-center mt-3">
             <span routerLink="/vendorsignup">Sell Car</span>
@@ -10,11 +14,11 @@
         <!-- <div class="flex justify-content-center m-2">
             <p-overlayPanel #op>
                 <p routerLink="/sociallogin">Log In</p>
-                <p routerLink="/signup">Sign Up</p>   
+                <p routerLink="/signup">Sign Up</p>
             </p-overlayPanel>
             <p-button (click)="op.toggle($event)" icon="pi pi-user" iconStyle="font-size:2rem"></p-button>
         </div> -->
-    
+
         <button class="p-link layout-topbar-button" routerLink="/sociallogin">
             <i class="pi pi-user"></i>
             <span>Sign in</span>

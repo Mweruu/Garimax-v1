@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { DatastorageserviceService } from 'src/app/datastorage.service';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
 
 @Component({
@@ -8,12 +11,56 @@ import { LayoutService } from 'src/app/layout/service/app.layout.service';
 })
 export class IndividualsignupComponent implements OnInit {
   valCheck: string[] = ['remember'];
-
+  signin = false;
+  isSubmitted = false;
+  individual = { firstName:'',lastName:'',email:'',mobile:'',gender:'',passportNo:'',password:'',confirmPassword:''}
   password!: string;
-  constructor(public layoutService: LayoutService) { }
+  mobileControl = new FormControl('', [Validators.required, Validators.minLength(9)]);
+  passwordControl = new FormControl('', [Validators.required, Validators.minLength(6)]);
+  emailControl = new FormControl('', [Validators.required, Validators.email]);
+  signupForm!: FormGroup;
+
+
+  constructor(public layoutService: LayoutService,
+              private fb:FormBuilder,
+              private ds: DatastorageserviceService,
+              private router :Router){}
 
 
   ngOnInit(): void {
+    this.signupForm = this.fb.group({
+      firstName:['', Validators.required],
+      lastName:['', Validators.required],
+      email:this.emailControl,
+      mobile:this.mobileControl,
+      gender: ['', Validators.required],
+      passportNo:['', Validators.required],
+      password:this.passwordControl,
+      confirmPassword:['', Validators.required]
+    });
   }
+  signUp(){
+    this.isSubmitted = true;
+    this.ds.createIndividualVendor(this.individual).subscribe(
+        response => {
+          console.log('Vendor created successfully!', response);
+          this.router.navigate(['/']);
+
+          // Handle success response here
+        },
+        error => {
+          console.error('Failed to create vendor:', error);
+          // Handle error response here
+        }
+      );
+
+    this.signin = true;
+    if(this.signupForm.invalid){
+      return;
+    }
+    // alert("Success")
+
+  }
+
 
 }
