@@ -1,12 +1,12 @@
 .layout-topbar {
     position: fixed;
-    height: 5rem;
+    height: 5.5rem;
     z-index: 997;
     left: 0;
     top: 0;
     width: 100%;
     padding: 0 2rem;
-    background-color: var(--surface-card);
+    background-color: var(--primary-color);
     transition: left $transitionDuration;
     display: flex;
     align-items: center;
@@ -36,7 +36,7 @@
         justify-content: center;
         align-items: center;
         position: relative;
-        color: var(--text-color-secondary);
+        color: var(--gray-900);
         border-radius: 50%;
         width: 3rem;
         height: 3rem;
@@ -64,6 +64,16 @@
 
     .layout-menu-button {
         margin-left: 2rem;
+    }
+    .span-toolbar {
+      color: var(--gray-900);
+      padding-left: 0.85rem;
+      font-size: 14px;
+      font-weight: 600;
+
+      &:hover {
+        color: var(--text-color);
+      }
     }
 
     .layout-topbar-menu-button {
