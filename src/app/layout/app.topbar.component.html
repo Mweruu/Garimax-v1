@@ -1,31 +1,31 @@
 <div class="layout-topbar">
     <a class="layout-topbar-logo ml-5" routerLink="/">
-        <img src="assets/layout/images/{{layoutService.config.colorScheme === 'light' ? 'logo-dark' : 'logo-white'}}.svg" alt="logo">
+        <img src="assets/layout/images/garimax-logo2.png" alt="logo">
         <span routerLink="/">GARIMAX</span>
     </a>
-    <!-- <div class="layout-topbar-search">
-      <input type="text" placeholder="Search">
-      <i class="pi-fw pi pi-search"></i>
-    </div> -->
+    <div class="flex justify-content-center m-2 p-7">
+      <span class="p-input-icon-left">
+        <i class="pi pi-search"></i>
+        <input pInputText type="text" class="p-inputtext-sm" style="width: 400px;" placeholder="Search" />
+      </span>
+    </div>
+    <button class="p-link m">
+      <span class="span-toolbar" routerLink="#">Used cars</span>
+    </button>
+    <button class="p-link m">
+      <span class="span-toolbar" routerLink="#">New cars</span>
+    </button>
+    <button class="p-link m">
+      <span class="span-toolbar" routerLink="/vendorsignup">Sell car</span>
+    </button>
     <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
-        <div class="flex justify-content-center mt-3">
-            <span routerLink="/vendorsignup">Sell Car</span>
-        </div>
-        <!-- <div class="flex justify-content-center m-2">
-            <p-overlayPanel #op>
-                <p routerLink="/sociallogin">Log In</p>
-                <p routerLink="/signup">Sign Up</p>
-            </p-overlayPanel>
-            <p-button (click)="op.toggle($event)" icon="pi pi-user" iconStyle="font-size:2rem"></p-button>
-        </div> -->
-
-        <button class="p-link layout-topbar-button" routerLink="/sociallogin">
-            <i class="pi pi-user"></i>
-            <span>Sign in</span>
-        </button>
-        <button class="p-link layout-topbar-button">
-            <i class="pi pi-cog"></i>
-            <span>Settings</span>
-        </button>
+      <button class="p-link layout-topbar-button" routerLink="/sociallogin">
+          <i class="pi pi-user"></i>
+          <span>Sign In</span>
+      </button>
+      <button class="p-link layout-topbar-button">
+          <i class="pi pi-cog"></i>
+          <span>Settings</span>
+      </button>
     </div>
 </div>
