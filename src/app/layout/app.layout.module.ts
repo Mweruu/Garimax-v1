@@ -22,6 +22,8 @@ import { SplitterModule } from 'primeng/splitter';
 import { CardModule } from 'primeng/card';
 import { DividerModule } from 'primeng/divider';
 import { ButtonModule } from 'primeng/button';
+import { ImageModule } from 'primeng/image';
+import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
     declarations: [
@@ -49,7 +51,9 @@ import { ButtonModule } from 'primeng/button';
         SplitterModule,
         CardModule,
         DividerModule,
+        DropdownModule,
         ButtonModule,
+        ImageModule
     ],
     exports: [AppLayoutComponent]
 })

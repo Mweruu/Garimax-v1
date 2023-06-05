@@ -1,16 +1,4 @@
 <p>filters works!</p>
 <div class="card flex justify-content-center">
-    <p-dropdown [(ngModel)]="selectedCity" optionLabel="name"></p-dropdown>
-</div>
-<div class="card flex justify-content-center">
-    <p-dropdown [(ngModel)]="selectedCity" optionLabel="name"></p-dropdown>
-</div>
-<div class="card flex justify-content-center">
-    <p-dropdown [(ngModel)]="selectedCity" optionLabel="name"></p-dropdown>
-</div>
-<div class="card flex justify-content-center">
-    <p-dropdown [(ngModel)]="selectedCity" optionLabel="name"></p-dropdown>
-</div>
-<div class="card flex justify-content-center">
-    <p-dropdown [(ngModel)]="selectedCity" optionLabel="name"></p-dropdown>
+    <p-dropdown [options]="cities" [(ngModel)]="selectedCity" optionLabel="name"></p-dropdown>
 </div>

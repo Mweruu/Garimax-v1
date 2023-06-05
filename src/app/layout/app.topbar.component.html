@@ -1,5 +1,5 @@
 <div class="layout-topbar">
-    <a class="layout-topbar-logo ml-6" routerLink="/">
+    <a class="layout-topbar-logo ml-5" routerLink="/">
         <img src="assets/layout/images/{{layoutService.config.colorScheme === 'light' ? 'logo-dark' : 'logo-white'}}.svg" alt="logo">
         <span>GARIMAX</span>
     </a>
@@ -27,24 +27,5 @@
             </p-overlay>
             </div>
         </button>
-    </div> <div>
-        <button class="p-link layout-topbar-button" (click)="toggle()" label="Show Overlay">
-            <i class="pi pi-users"></i>
-            <span>Profile</span>
-            <div >
-            <p-overlay [(visible)]="overlayVisible" [responsive]="{ breakpoint: '640px', direction: 'bottom', contentStyleClass: 'h-20rem' }" contentStyleClass="p-4 surface-overlay shadow-2 border-round" >
-                <ul>
-                    <li [routerLink]="['/sociallogin']">Sign In</li>
-                    <li [routerLink]="['/vendorsignup']">Sign Up</li>
-                </ul>
-            </p-overlay>
-          
-            </div>
-        </button>
-    </div>
-        <!-- <button class="p-link layout-topbar-button">
-            <i class="pi pi-cog"></i>
-            <span>Settings</span>
-        </button> -->
     </div>
 </div>

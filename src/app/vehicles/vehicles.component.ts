@@ -8,15 +8,18 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class VehiclesComponent implements OnInit {
   formGroup!: FormGroup;
-  value: number =4 ;
+  value: number | undefined;
+  panelSizes = [30,70]
 
   constructor() { }
 
   ngOnInit() {
-      this.formGroup = new FormGroup({
-          value: new FormControl(4)
-      });
+    this.value = 4;
+    this._setValues();
   }
 
+  _setValues(){
+    this.panelSizes = [33, 67]
+  }
 
 }
