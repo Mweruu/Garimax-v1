@@ -1,31 +1,27 @@
 <div class="layout-topbar">
     <a class="layout-topbar-logo ml-5" routerLink="/">
         <img src="assets/layout/images/{{layoutService.config.colorScheme === 'light' ? 'logo-dark' : 'logo-white'}}.svg" alt="logo">
-        <span>GARIMAX</span>
+        <span routerLink="/">GARIMAX</span>
     </a>
-
-    <!-- <button #menubutton class="p-link layout-menu-button layout-topbar-button" (click)="layoutService.onMenuToggle()">
-        <i class="pi pi-bars"></i>
-    </button> -->
-
-    <!-- <button #topbarmenubutton class="p-link layout-topbar-menu-button layout-topbar-button" (click)="layoutService.showProfileSidebar()">
-        <i class="pi pi-ellipsis-v"></i>
-    </button> -->
-
     <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
-       <div>
-        <button class="p-link layout-topbar-button" (click)="toggle()" label="Show Overlay">
+        <div class="flex justify-content-center mt-3">
+            <span routerLink="/vendorsignup">Sell Car</span>
+        </div>
+        <!-- <div class="flex justify-content-center m-2">
+            <p-overlayPanel #op>
+                <p routerLink="/sociallogin">Log In</p>
+                <p routerLink="/signup">Sign Up</p>   
+            </p-overlayPanel>
+            <p-button (click)="op.toggle($event)" icon="pi pi-user" iconStyle="font-size:2rem"></p-button>
+        </div> -->
+    
+        <button class="p-link layout-topbar-button" routerLink="/sociallogin">
             <i class="pi pi-user"></i>
-            <span>Profile</span>
-            <div>
-            <p-overlay [(visible)]="overlayVisible" [responsive]="{ breakpoint: '640px', direction: 'bottom', contentStyleClass: 'h-20rem' }" contentStyleClass="p-4 surface-overlay shadow-2 border-round"  [routerLink]="['/sociallogin']">
-                Sign in
-                <ul>
-                    <li [routerLink]="['/sociallogin']">Sign In</li>
-                    <li [routerLink]="['/signup']">Sign Up</li>
-                </ul>
-            </p-overlay>
-            </div>
+            <span>Sign in</span>
+        </button>
+        <button class="p-link layout-topbar-button">
+            <i class="pi pi-cog"></i>
+            <span>Settings</span>
         </button>
     </div>
 </div>
