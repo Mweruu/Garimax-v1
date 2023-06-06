@@ -11,7 +11,10 @@ export class DatastorageserviceService {
   private  createUserUrl = 'http://localhost:8080/api/users/register';
   private createindividualVendorUrl = 'http://localhost:8080/api/singleVendor/register';
   private createcompanyVendorUrl = 'http://localhost:8080/api/coVendor/register';
+  private createVehicleUrl = 'http://localhost:8080/api/addVehicle';
+  private getVehicleUrl = 'http://localhost:8080/api/getVehicles'
 
+  user:any;
 
   constructor(private http: HttpClient) { }
 
@@ -30,6 +33,10 @@ export class DatastorageserviceService {
   createCompanyVendor(vendor:any): Observable<any> {
     return this.http.post<any>(`${this.createcompanyVendorUrl}`, vendor);
   }
-  createVehicle(){}
-  getVehicles(){}
+  createVehicle(vendor:any): Observable<any> {
+    return this.http.post<any>(`${this.createVehicleUrl}`, vendor);
+  }
+  getVehicles(): Observable<any> {
+    return this.http.get<any>(`${this.getVehicleUrl}`);
+  }
 }

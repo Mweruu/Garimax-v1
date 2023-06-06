@@ -1,17 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppLayoutComponent } from './layout/app.layout.component';
-import { VehiclesComponent } from './vehicles/vehicles.component';
+import { VehiclesComponent } from './homepage/vehicles/vehicles.component';
 import { LoginComponent } from './user/login/login.component';
 import { SignupComponent } from './user/signup/signup.component';
 import { CompanysignupComponent } from './vendor/company/companysignup/companysignup.component';
-import { IndividualloginComponent } from './vendor/individual/individuallogin/individuallogin.component';
-import { CompanyloginComponent } from './vendor/company/companylogin/companylogin.component';
 import { IndividualsignupComponent } from './vendor/individual/individualsignup/individualsignup.component';
 import { SignupTabsComponent } from './vendor/signuptabs/signuptabs.component';
-import { LogintabsComponent } from './vendor/logintabs/logintabs.component';
 import { SocialLoginComponent } from './user/social-login/social-login.component';
-import { FiltersComponent } from './filters/filters.component';
+import { FiltersComponent } from './homepage/filters/filters.component';
+import { UploadcarComponent } from './homepage/vehicles/uploadcar/uploadcar.component';
+import { BasicinfoComponent } from './homepage/vehicles/uploadcar/basicinfo/basicinfo.component';
+import { UploadpictureComponent } from './homepage/vehicles/uploadcar/uploadpicture/uploadpicture.component';
+import { CardetailsComponent } from './homepage/vehicles/uploadcar/cardetails/cardetails.component';
 
 const routes: Routes = [
   {
@@ -31,19 +32,22 @@ const routes: Routes = [
     path: 'signup', component:SignupComponent
   },
   {
-    path: 'vendorlogin', component:LogintabsComponent,
-    children: [
-      {path: '', component:CompanyloginComponent,},
-      {path: '', component:IndividualloginComponent,}
-    ]
-  },
-  {
     path: 'vendorsignup', component:SignupTabsComponent,
     children: [
       {path: '', component:CompanysignupComponent,},
       {path: '', component:IndividualsignupComponent,}
     ]
   },
+  {
+    path: 'uploadcar', component:UploadcarComponent,
+    children :[
+      {path: 'basicinfo', component:BasicinfoComponent},
+      {path: 'uploadpicture', component:UploadpictureComponent},
+      {path: 'cardetails', component:CardetailsComponent}
+    ]
+  },
+
+
 ];
 
 @NgModule({

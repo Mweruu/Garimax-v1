@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
+import { timer } from 'rxjs';
 import { DatastorageserviceService } from 'src/app/datastorage.service';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
 
@@ -24,7 +26,9 @@ export class IndividualsignupComponent implements OnInit {
   constructor(public layoutService: LayoutService,
               private fb:FormBuilder,
               private ds: DatastorageserviceService,
-              private router :Router){}
+              private router :Router,
+              private messageService: MessageService
+              ){}
 
 
   ngOnInit(): void {
@@ -33,34 +37,63 @@ export class IndividualsignupComponent implements OnInit {
       lastName:['', Validators.required],
       email:this.emailControl,
       mobile:this.mobileControl,
-      gender: ['', Validators.required],
+      gender: ['',Validators.required],
       passportNo:['', Validators.required],
       password:this.passwordControl,
-      confirmPassword:['', Validators.required]
+      confirmPassword:[this.password, Validators.required]
     });
   }
-  signUp(){
+
+  onSubmit(){
     this.isSubmitted = true;
-    this.ds.createIndividualVendor(this.individual).subscribe(
+    if(this.signupForm.invalid){
+      return;
+    }
+    const individual:any = {
+      firstName: this.individualForm['firstName'].value,
+      lastName:this.individualForm['lastName'].value,
+      email:this.individualForm['email'].value,
+      mobile:this.individualForm['mobile'].value,
+      gender:this.individualForm['gender'].value,
+      passportNo:this.individualForm['passportNo'].value,
+      password:this.individualForm['password'].value,
+      confirmPassword:this.individualForm['confirmPassword'].value,
+    }
+
+    this.signUp(individual)
+  }
+
+
+  signUp(individual:any){
+    this.ds.createIndividualVendor(individual).subscribe(
         response => {
           console.log('Vendor created successfully!', response);
-          this.router.navigate(['/']);
+          this.messageService.add({
+            severity:'success',
+            summary:'Success',
+            detail:'Vendor created successfully'
+          })
+          timer(2500).toPromise().then(()=>{
+            this.router.navigate(['/'])
+          })
 
-          // Handle success response here
+
         },
         error => {
           console.error('Failed to create vendor:', error);
           // Handle error response here
+          this.messageService.add({
+            severity:'error',
+            summary:'Error',
+            detail:'Failed to create vendor'
+          })
+
         }
       );
 
-    this.signin = true;
-    if(this.signupForm.invalid){
-      return;
-    }
-    // alert("Success")
-
   }
 
-
+  get individualForm(){
+    return this.signupForm.controls;
+  }
 }

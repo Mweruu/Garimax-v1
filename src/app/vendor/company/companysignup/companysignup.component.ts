@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
+import { timer } from 'rxjs';
 import { DatastorageserviceService } from 'src/app/datastorage.service';
-import { LayoutService } from 'src/app/layout/service/app.layout.service';
 
 @Component({
   selector: 'app-companysignup',
@@ -12,7 +13,7 @@ import { LayoutService } from 'src/app/layout/service/app.layout.service';
 export class CompanysignupComponent implements OnInit {
   valCheck: string[] = ['remember'];
   signupForm!: FormGroup;
-  company = {email:'',companyName:'', kraPin:'', mobile: 0 ,address:'', location:'',password:'',confirmPassword:''}
+  company = {email:'',companyName:'', kraPin:'', mobile: '' ,address:'', location:'',password:'',confirmPassword:''}
   signin = false;
   isSubmitted = false;
   password!: string;
@@ -21,48 +22,78 @@ export class CompanysignupComponent implements OnInit {
   emailControl = new FormControl('', [Validators.required, Validators.email]);
 
 
-  constructor(public layoutService: LayoutService,
+  constructor(
+    // public layoutService: LayoutService,
               private fb:FormBuilder,
               private ds: DatastorageserviceService,
-              private router :Router) { }
+              private router :Router,
+              private messageService: MessageService
+              ) { }
 
   ngOnInit(){
     this.signupForm = this.fb.group({
       email:this.emailControl,
       companyName:['' ,Validators.required],
       kraPin:['', Validators.required],
+      address:[''],
+      location:[''],
       mobile:this.mobileControl,
-      address:['', Validators.required],
-      location:['', Validators.required],
       password:this.passwordControl,
       confirmPassword:['', Validators.required],
       dealerLicense:false,
 
     });
-
   }
-  signUp(){
+
+  onSubmit(){
     this.isSubmitted = true;
-
-    this.ds.createCompanyVendor(this.company).subscribe(
-        response => {
-          console.log('Vendor created successfully!', response);
-          // Handle success response here
-          this.router.navigate(['/']);
-
-        },
-        error => {
-          console.error('Failed to create vendor:', error);
-          // Handle error response here
-        }
-      );
-
-    this.signin = true;
     if(this.signupForm.invalid){
       return;
     }
-    alert("Success")
+    const company ={
+      email:this.companyForm['email'].value,
+      companyName:this.companyForm['companyName'].value,
+      kraPin:this.companyForm['kraPin'].value,
+      mobile:this.companyForm['mobile'].value,
+      address:this.companyForm['address'].value,
+      location:this.companyForm['location'].value,
+      password:this.companyForm['password'].value,
+      confirmPassword:this.companyForm['confirmPassword'].value,
+      // dealerLicense:this.companyForm['dealerLicense'].value,
+    }
+    this.signUp(company)
+  }
 
+  signUp(company:any){
+    this.ds.createCompanyVendor(company).subscribe(
+        response => {
+          console.log('Vendor created successfully!', response);
+          // Handle success response here
+          this.messageService.add({
+            severity:'success',
+            summary:'Success',
+            detail:'Vendor created successfully'
+          })
+          timer(2500).toPromise().then(()=>{
+            this.router.navigate(['/'])
+          })
+        },
+
+        error => {
+          console.error('Failed to create vendor:', error);
+          // Handle error response here
+          this.messageService.add({
+            severity:'error',
+            summary:'Error',
+            detail:'Failed to create vendor'
+          })
+        }
+      );
+
+  }
+
+  get companyForm(){
+    return this.signupForm.controls;
   }
 
 }

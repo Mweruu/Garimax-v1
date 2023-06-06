@@ -19,12 +19,9 @@ import { SignupComponent } from './user/signup/signup.component';
 import { SocialLoginComponent } from './user/social-login/social-login.component';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { CompanysignupComponent } from './vendor/company/companysignup/companysignup.component';
-import { CompanyloginComponent } from './vendor/company/companylogin/companylogin.component';
 import { IndividualsignupComponent } from './vendor/individual/individualsignup/individualsignup.component';
-import { IndividualloginComponent } from './vendor/individual/individuallogin/individuallogin.component';
 import { TabViewModule } from 'primeng/tabview';
 import { SplitterModule } from 'primeng/splitter';
-import { LogintabsComponent } from './vendor/logintabs/logintabs.component';
 import { SignupTabsComponent } from './vendor/signuptabs/signuptabs.component';
 import { ImageModule } from 'primeng/image';
 import { DividerModule } from 'primeng/divider';
@@ -33,8 +30,15 @@ import { RatingModule } from 'primeng/rating';
 import { OverlayModule } from 'primeng/overlay';
 // import { FiltersComponent } from './filters/filters.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MessagesModule } from 'primeng/messages';
 import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { UploadcarComponent } from './homepage/vehicles/uploadcar/uploadcar.component';
+import { StepsModule } from 'primeng/steps';
+import { BasicinfoComponent } from './homepage/vehicles/uploadcar/basicinfo/basicinfo.component';
+import { UploadpictureComponent } from './homepage/vehicles/uploadcar/uploadpicture/uploadpicture.component';
+import { CardetailsComponent } from './homepage/vehicles/uploadcar/cardetails/cardetails.component';
+import { FieldsetModule } from 'primeng/fieldset';
+import { FileUploadModule } from 'primeng/fileupload';
 
 
 @NgModule({
@@ -44,12 +48,13 @@ import { ToastModule } from 'primeng/toast';
     LoginComponent,
     SignupComponent,
     CompanysignupComponent,
-    CompanyloginComponent,
     IndividualsignupComponent,
-    IndividualloginComponent,
-    LogintabsComponent,
     SignupTabsComponent,
     SocialLoginComponent,
+    UploadcarComponent,
+    BasicinfoComponent,
+    UploadpictureComponent,
+    CardetailsComponent,
     // FiltersComponent,
 
   ],
@@ -75,10 +80,12 @@ import { ToastModule } from 'primeng/toast';
     RatingModule,
     OverlayModule,
     ReactiveFormsModule,
-    MessagesModule,
-    ToastModule
+    ToastModule,
+    FieldsetModule,
+    StepsModule,
+    FileUploadModule
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
