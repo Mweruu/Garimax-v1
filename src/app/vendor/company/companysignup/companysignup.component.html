@@ -1,4 +1,4 @@
-<div style="border-radius:56px; padding:0.1rem; background: linear-gradient(180deg, var(--primary-color) 10%, rgba(33, 150, 243, 0) 45%);">
+<div style="border-radius:56px; padding:0.15rem; background: linear-gradient(180deg, var(--primary-color) 30%, rgba(33, 150, 243, 0) 45%);">
     <div class="w-full surface-card py-8 px-5 sm:px-8" style="border-radius:53px">
         <form [formGroup]="signupForm" (ngSubmit)="signUp()">
           <label for="email" class="block text-900 text-xl font-medium mb-2">Email</label>
@@ -19,13 +19,10 @@
           <label for="location" class="block text-900 text-xl font-medium mb-2">Location</label>
           <input id="location" formControlName="location" [(ngModel)]="company.location"  type="text" placeholder="Location" pInputText class="w-full md:w-30rem mb-5" style="padding:1rem">
 
-          <div class="card">
-            <!-- <form class="flex align-items-center gap-1"> -->
-                <p-checkbox class="ml-2" formControlName="dealerLicense" value="dealerLicense" inputId="dealerLicense"></p-checkbox>
+          <div class="card deal-license-card">
+                <p-checkbox class="mr-2" formControlName="dealerLicense" value="dealerLicense" inputId="dealerLicense"></p-checkbox>
                 <label for="dealerLicense">Dealership license provided by NTSA</label>
-                  <input *ngIf="signupForm.get('dealerLicense')?.value === true" class="m-2" type="file" class="file-upload" onchange="console.log(event.target.files)">
-
-            <!-- </form> -->
+                <input *ngIf="signupForm.get('dealerLicense')?.value === true" class="m-2" type="file" class="file-upload" onchange="console.log(event.target.files)">
           </div>
 
           <label for="password" class="block text-900 font-medium text-xl mb-2">Password</label>
