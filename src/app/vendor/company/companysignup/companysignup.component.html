@@ -1,23 +1,36 @@
 <div style="border-radius:56px; padding:0.15rem; background: linear-gradient(180deg, var(--primary-color) 30%, rgba(33, 150, 243, 0) 45%);">
     <div class="w-full surface-card py-8 px-5 sm:px-8" style="border-radius:53px">
-        <form [formGroup]="signupForm" (ngSubmit)="signUp()">
-          <label for="email" class="block text-900 text-xl font-medium mb-2">Email</label>
-          <input id="companyemail" formControlName="email" [(ngModel)]="company.email"  type="text" placeholder="Email address" pInputText class="w-full md:w-30rem mb-5" style="padding:1rem">
 
-          <label for="companyName" class="block text-900 text-xl font-medium mb-2">Company Name</label>
-          <input id="companyName" formControlName="companyName" [(ngModel)]="company.companyName"  type="text" placeholder="Company Name" pInputText class="w-full md:w-30rem mb-5" style="padding:1rem">
+        <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+          <div class="mb-5">
+            <label for="email" class="block text-900 text-xl font-medium mb-2">Email</label>
+            <input id="companyemail" formControlName="email"  type="text" placeholder="Email address" pInputText class="w-full md:w-30rem mb-2" style="padding:1rem"><br>
+            <small *ngIf="companyForm['email'].invalid && isSubmitted" class="p-error">Email is required</small>
+          </div>
 
-          <label for="kraPin" class="block text-900 text-xl font-medium mb-2">KRA pin</label>
-          <input id="kraPin" formControlName="kraPin" [(ngModel)]="company.kraPin"  type="password" placeholder="KRA pin" pInputText  class="w-full md:w-30rem mb-5" style="padding:1rem">
+          <div class="mb-5">
+            <label for="companyName" class="block text-900 text-xl font-medium mb-2">Company Name</label>
+            <input id="companyName" formControlName="companyName" type="text" placeholder="Company Name" pInputText class="w-full md:w-30rem mb-2" style="padding:1rem"><br>
+            <small *ngIf="companyForm['companyName'].invalid && isSubmitted" class="p-error">Company/Business name is required</small>
+          </div>
 
-          <label for="mobile" class="block text-900 text-xl font-medium mb-2">Phone number</label>
-          <input id="companymobile" formControlName="mobile" [(ngModel)]="company.mobile"  type="number" placeholder="phone number" pInputText class="w-full md:w-30rem mb-5" style="padding:1rem">
+          <div class="mb-5">
+            <label for="kraPin" class="block text-900 text-xl font-medium mb-2">KRA pin</label>
+            <input id="kraPin" formControlName="kraPin"   type="password" placeholder="KRA pin" pInputText  class="w-full md:w-30rem mb-2" style="padding:1rem"><br>
+            <small *ngIf="companyForm['kraPin'].invalid && isSubmitted" class="p-error">KRA Pin is required</small>
+          </div>
+
+          <div class="mb-5">
+            <label for="mobile" class="block text-900 text-xl font-medium mb-2">Phone number</label>
+            <input id="companymobile" formControlName="mobile" type="number" placeholder="phone number" pInputText class="w-full md:w-30rem mb-2" style="padding:1rem"><br>
+            <small *ngIf="companyForm['mobile'].invalid && isSubmitted" class="p-error">Phone number is required</small>
+          </div>
 
           <label for="address" class="block text-900 text-xl font-medium mb-2">Address</label>
-          <input id="address" formControlName="address" [(ngModel)]="company.address"  type="text" placeholder="Address" pInputText class="w-full md:w-30rem mb-5" style="padding:1rem">
+          <input id="address" formControlName="address" type="text" placeholder="Address" pInputText class="w-full md:w-30rem mb-5" style="padding:1rem"><br>
 
           <label for="location" class="block text-900 text-xl font-medium mb-2">Location</label>
-          <input id="location" formControlName="location" [(ngModel)]="company.location"  type="text" placeholder="Location" pInputText class="w-full md:w-30rem mb-5" style="padding:1rem">
+          <input id="location" formControlName="location"  type="text" placeholder="Location" pInputText class="w-full md:w-30rem mb-5" style="padding:1rem"><br>
 
           <div class="card deal-license-card">
                 <p-checkbox class="mr-2" formControlName="dealerLicense" value="dealerLicense" inputId="dealerLicense"></p-checkbox>
@@ -25,12 +38,17 @@
                 <input *ngIf="signupForm.get('dealerLicense')?.value === true" class="m-2" type="file" class="file-upload" onchange="console.log(event.target.files)">
           </div>
 
-          <label for="password" class="block text-900 font-medium text-xl mb-2">Password</label>
-          <p-password id="password" [(ngModel)]="password" placeholder="Password" [toggleMask]="true" styleClass="mb-5" inputStyleClass="w-full p-3 md:w-30rem"></p-password>
+          <div class="mb-5">
+            <label for="password" class="block text-900 font-medium text-xl mb-2">Password</label>
+            <p-password id="password"  formControlName="password" placeholder="Password" [toggleMask]="true" styleClass="mb-2" inputStyleClass="w-full p-3 md:w-30rem"></p-password><br>
+            <small *ngIf="companyForm['password'].invalid && isSubmitted" class="p-error">Password is required</small>
+          </div>
 
-          <label for="password" class="block text-900 font-medium text-xl mb-2">Confirm Password</label>
-          <p-password id="password" formControlName="confirmPassword" [(ngModel)]="company.confirmPassword" placeholder="Password" [toggleMask]="true" styleClass="mb-5" inputStyleClass="w-full p-3 md:w-30rem"></p-password>
-
+          <div class="mb-5">
+            <label for="password" class="block text-900 font-medium text-xl mb-2">Confirm Password</label>
+            <p-password id="password" formControlName="confirmPassword" placeholder="Password" [toggleMask]="true" styleClass="mb-2" inputStyleClass="w-full p-3 md:w-30rem"></p-password><br>
+            <small *ngIf="companyForm['confirmPassword'].invalid && isSubmitted" class="p-error">Password is required</small>
+          </div>
           <div class="flex align-items-center justify-content-between mb-5 gap-5">
               <div class="flex align-items-center">
                   <p-checkbox id="rememberme1" [binary]="true" styleClass="mr-2"></p-checkbox>
@@ -38,7 +56,8 @@
               </div>
               <a class="font-medium no-underline ml-2 text-right cursor-pointer" style="color: var(--primary-color)"></a>
           </div>
-          <button pButton pRipple label="Create account" class="w-full p-3 text-xl"></button>
+            <p-toast></p-toast>
+            <button pButton pRipple label="Create account" class="w-full p-3 text-xl"></button>
           <div class="flex align-items-center justify-content-between mt-5 gap-5">
             <p>Already have an account? <a class="font-medium no-underline ml-2 text-right cursor-pointer" style="color: var(--primary-color)" [routerLink]="['/login']">Login</a></p>
           </div>

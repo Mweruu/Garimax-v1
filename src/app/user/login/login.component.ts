@@ -3,6 +3,8 @@ import { LayoutService } from '../../layout/service/app.layout.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DatastorageserviceService } from 'src/app/datastorage.service';
+import { MessageService } from 'primeng/api';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -24,10 +26,10 @@ export class LoginComponent implements OnInit {
   constructor(public layoutService: LayoutService,
               private fb:FormBuilder,
                private ds: DatastorageserviceService,
-               private router: Router,) { }
+               private router: Router,
+               private messageService: MessageService) { }
 
-  ngOnInit()
-  {
+  ngOnInit(){
     this.loginForm = this.fb.group(
       {
       email:this.emailControl,
@@ -35,13 +37,34 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  login(email: string, password: string){
-    this.signin = true;
+  onSubmit(){
     this.isSubmitted = true;
-    this.ds.userLogin({ email, password }).subscribe(
+    if(this.loginForm.invalid){
+      return;
+    }
+    const user:any = {
+        email:this.userForm['email'].value,
+        password:this.userForm['password'].value,
+    }
+    this.login(user);
+  }
+
+  login(user:any){
+    this.signin = true;
+    this.ds.userLogin(user).subscribe(
       response => {
         console.log('User authenticated', response);
-        console.log(response.message)
+        console.log(response.token)
+        this.messageService.add({
+          severity:'success',
+          summary:'Success',
+          detail:'User authenticated'
+        })
+        timer(2500).toPromise().then(()=>{
+          this.router.navigate(['/'])
+
+        })
+
         // Handle success response here
         if(response.message == "Wrong credentials, confirm password/email" ){
           console.log("Wrong credentials")
@@ -50,22 +73,24 @@ export class LoginComponent implements OnInit {
         }
         else{
           // this.showAlert(" User Authenticated ")
-          this.router.navigate(['/']);}
+          // this.router.navigate(['/']);
+        }
       },
       error => {
         console.error('user not found:', error);
         console.log(error.error.error)
+        this.messageService.add({
+          severity:'error',
+          summary:'Error',
+          detail:'User with provided details does not exist'
+        })
         // this.showAlert(error.error.error)
       }
     );
-    if(this.loginForm.invalid){
-      return;
-    }else{
-    const user={
-      email:this.loginForm.get('email')!.value,
-      password:this.loginForm.get('password')!.value,
-    }
   }
+
+  get userForm(){
+    return this.loginForm.controls;
   }
 
 }

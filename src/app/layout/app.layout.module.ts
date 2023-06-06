@@ -15,8 +15,8 @@ import { AppFooterComponent } from './app.footer.component';
 import { AppSidebarComponent } from "./app.sidebar.component";
 import { AppLayoutComponent } from "./app.layout.component";
 import { OverlayModule } from 'primeng/overlay';
-import { FiltersComponent} from '../filters/filters.component'
-import { VehiclesComponent } from '../vehicles/vehicles.component';
+import { FiltersComponent} from '../homepage/filters/filters.component'
+import { VehiclesComponent } from '../homepage/vehicles/vehicles.component';
 import { RatingModule } from 'primeng/rating';
 import { SplitterModule } from 'primeng/splitter';
 import { CardModule } from 'primeng/card';
@@ -25,6 +25,7 @@ import { ButtonModule } from 'primeng/button';
 import { ImageModule } from 'primeng/image';
 import { DropdownModule } from 'primeng/dropdown';
 import { FieldsetModule } from 'primeng/fieldset';
+import { StepsModule } from 'primeng/steps';
 
 @NgModule({
     declarations: [
@@ -55,7 +56,8 @@ import { FieldsetModule } from 'primeng/fieldset';
         DropdownModule,
         ButtonModule,
         ImageModule,
-        FieldsetModule
+        FieldsetModule,
+        StepsModule
     ],
     exports: [AppLayoutComponent]
 })

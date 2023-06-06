@@ -1,0 +1,29 @@
+<div class="formgroup-inline justify-content-center">
+  <div class="card col-6 md:col-6 lg:col-6 m-5 mt-0">
+    <div class="card flex justify-content-center">
+      <p-toast></p-toast>
+      <p-fileUpload name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" (onUpload)="onUpload($event)" [multiple]="true" accept="image/*" maxFileSize:string = "1000000">
+          <ng-template pTemplate="content">
+              <ul *ngIf="uploadedFiles.length">
+                  <li *ngFor="let file of uploadedFiles">{{ file.name }} - {{ file.size }} bytes</li>
+              </ul>
+          </ng-template>
+      </p-fileUpload>
+    </div>
+  </div>
+  <div class="card col-5 md:col-5 lg:col-5">
+    <h5>
+      How to upload car images to sell faster
+    </h5>
+    <ul>
+      <li class="mb-5">
+        The first image is your representative picture. For better illustration, you should choose the landscape image with clear front-rear exterior view.
+      </li>
+      <li class="mb-3" > Exterior: Car Front, Body, Rear, Back, Engine...</li>
+      <li class="mb-3" >Interior: Dashboard, Seat, ...</li>
+      <li class="mb-3" >SHOULD NOT:</li>
+      <li class="mb-3" >Use images from the internet</li>
+      <li class="mb-3" >Insert phone number, website, logo </li>
+    </ul>
+  </div>
+</div>
