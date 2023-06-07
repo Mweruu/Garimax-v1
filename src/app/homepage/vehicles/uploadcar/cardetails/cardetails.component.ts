@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { DatastorageserviceService } from 'src/app/datastorage.service';
+import { CAR_OPTIONS } from '../../../const-data/constants'
 // import jsonData from 'src/assets/data/carproperties.json';
 
 
@@ -16,7 +17,7 @@ interface City {
 })
 export class CardetailsComponent implements OnInit {
     selectedOptions: any[] = [];
-    options: any[] = [];
+    options: any[] = CAR_OPTIONS;
 
     cities!: City[];
     formGroup!: FormGroup;
@@ -34,33 +35,6 @@ export class CardetailsComponent implements OnInit {
         { name: 'Istanbul', code: 'IST' },
         { name: 'Paris', code: 'PRS' }
         ];
-
-        this.options =
-          [
-            {"name": "3-Row Seat", "key": "RS" },
-            {"name": " A/C ", "key": "AC" },
-            {"name": "ABS", "key": "ABS" },
-            {"name": "Aero Parts", "key": "AP" },
-            {"name": "Aftermarket Alloy Wheels", "key": "AAW" },
-            {"name": "Aftermarket Meffler", "key": "AM" },
-            {"name": "Aftermarket Speaker", "key": "AS" },
-            {"name": "Airbag", "key": "A" },
-            {"name": "Alloy Wheels", "key": "AW" },
-            {"name": "Always Garaged", "key": "AG" },
-            {"name": "AM/FM", "key": "AF" },
-            {"name": "Anti-theft System", "key": "ATS" },
-            {"name": "Around View Camera ", "key": "AVC" },
-            {"name": "Audio System", "key": "AUS" },
-            {"name": "Back Camera ", "key": "BC" },
-            {"name": "Back Sensor ", "key": "BS" },
-            {"name": "Back Tire", "key": "BT" },
-            {"name": "Basic Equipment", "key": "BE" },
-            {"name": "Bench Seat", "key": "BS" },
-            {"name": "Body Kit", "key": "BK" },
-            {"name": "Box Truck ", "key": "BTR" },
-            {"name": "Bucket Seat", "key": "BKS" }
-
-          ]
 
 
     this.formGroup = new FormGroup({
