@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { VEHICLE_DATA } from 'src/app/homepage/const-data/constants';
 
-interface City {
-  name: string;
-  code: string;
-}
 
 @Component({
   selector: 'app-basicinfo',
@@ -11,19 +8,11 @@ interface City {
   styleUrls: ['./basicinfo.component.scss']
 })
 export class BasicinfoComponent implements OnInit {
-  cities!: City[];
+  make: any = VEHICLE_DATA;
 
-  selectedCity!: City;
+  selectedCity!: any;
   constructor() { }
 
-  ngOnInit(): void {
-    this.cities = [
-      { name: 'New York', code: 'NY' },
-      { name: 'Rome', code: 'RM' },
-      { name: 'London', code: 'LDN' },
-      { name: 'Istanbul', code: 'IST' },
-      { name: 'Paris', code: 'PRS' }
-  ];
-  }
+  ngOnInit(): void {}
 
 }
