@@ -1,0 +1,27 @@
+{
+  "data": [
+    {"name": "3-Row Seat", "key": "RS" },
+    {"name": " A/C ", "key": "AC" },
+    {"name": "ABS", "key": "ABS" },
+    {"name": "Aero Parts", "key": "AP" },
+    {"name": "Aftermarket Alloy Wheels", "key": "AAW" },
+    {"name": "Aftermarket Meffler", "key": "AM" },
+    {"name": "Aftermarket Speaker", "key": "AS" },
+    {"name": "Airbag", "key": "A" },
+    {"name": "Alloy Wheels", "key": "AW" },
+    {"name": "Always Garaged", "key": "AG" },
+    {"name": "AM/FM", "key": "AF" },
+    {"name": "Anti-theft System", "key": "ATS" },
+    {"name": "Around View Camera ", "key": "AVC" },
+    {"name": "Audio System", "key": "AUS" },
+    {"name": "Back Camera ", "key": "BC" },
+    {"name": "Back Sensor ", "key": "BS" },
+    {"name": "Back Tire", "key": "BT" },
+    {"name": "Basic Equipment", "key": "BE" },
+    {"name": "Bench Seat", "key": "BS" },
+    {"name": "Body Kit", "key": "BK" },
+    {"name": "Box Truck ", "key": "BTR" },
+    {"name": "Bucket Seat", "key": "BKS" }
+
+  ]
+}

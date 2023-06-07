@@ -34,6 +34,8 @@ import { UploadcarComponent } from '../homepage/vehicles/uploadcar/uploadcar.com
 import { UploadpictureComponent } from '../homepage/vehicles/uploadcar/uploadpicture/uploadpicture.component';
 import { FileUploadModule } from 'primeng/fileupload';
 import { ToastModule } from 'primeng/toast';
+import { CheckboxModule } from 'primeng/checkbox';
+import { TagModule } from 'primeng/tag';
 
 @NgModule({
     declarations: [
@@ -71,7 +73,9 @@ import { ToastModule } from 'primeng/toast';
         FieldsetModule,
         StepsModule,
         ToastModule,
-        FileUploadModule
+        FileUploadModule,
+        CheckboxModule,
+        TagModule
     ],
     exports: [AppLayoutComponent]
 })

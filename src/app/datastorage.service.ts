@@ -6,9 +6,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DatastorageserviceService {
-  private getUsers= 'http://localhost:8080/api/users';
+  private getUsersUrl= 'http://localhost:8080/api/users';
   private userLoginUrl = 'http://localhost:8080/api/users/login';
-  private  createUserUrl = 'http://localhost:8080/api/users/register';
+  private createUserUrl = 'http://localhost:8080/api/users/register';
   private createindividualVendorUrl = 'http://localhost:8080/api/singleVendor/register';
   private createcompanyVendorUrl = 'http://localhost:8080/api/coVendor/register';
   private createVehicleUrl = 'http://localhost:8080/api/addVehicle';
@@ -24,8 +24,8 @@ export class DatastorageserviceService {
   userLogin(user: any): Observable<any> {
     return this.http.post<any>(`${this.userLoginUrl}`, user);
   }
-  getUser(): Observable<any> {
-    return this.http.get<any>(`${this.getUsers}`);
+  getUsers(): Observable<any> {
+    return this.http.get<any>(`${this.getUsersUrl}`);
   }
   createIndividualVendor(vendor:any): Observable<any> {
     return this.http.post<any>(`${this.createindividualVendorUrl}`,vendor);
@@ -39,4 +39,10 @@ export class DatastorageserviceService {
   getVehicles(): Observable<any> {
     return this.http.get<any>(`${this.getVehicleUrl}`);
   }
+  getOptions(): Observable<any> {
+    return this.http.get<any>('/assets/data/carproperties.json')
+        // .toPromise()
+        // .then(res => res.data as any[])
+        // .then(data => data);
+}
 }

@@ -8,7 +8,11 @@
       </div>
       <div class="col-12 md:col-12 lg:col-7 flex align-items-center justify-content-center">
         <div class="card col-12 md:col-12 lg:col-12 ">
-          <h3 class="m-2">
+          <div class="mt-2">
+            <p-tag severity="info" value= "Foreign Used" [icon]="vehicle.foreignUsed? 'pi pi-check': 'pi pi-times'" [rounded]="true" class="ml-1"></p-tag>
+            <p-tag severity="warning" value= "Locally Used" [icon]="vehicle.locallyUsed? 'pi pi-check': 'pi pi-times'" [rounded]="true" class="ml-2"></p-tag>
+          </div>
+        <h3 class="m-2">
             {{vehicle.price}}Ksh
           </h3>
           <p class="m-2">

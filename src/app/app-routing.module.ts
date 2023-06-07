@@ -39,7 +39,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'uploadcar', component:UploadcarComponent,
+    path: '', component:UploadcarComponent,
     children :[
       {path: 'basicinfo', component:BasicinfoComponent},
       {path: 'uploadpicture', component:UploadpictureComponent},

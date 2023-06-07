@@ -29,7 +29,7 @@ export class AppTopBarComponent {
     }
 
     getUsers(){
-      this.ds.getUser().subscribe(
+      this.ds.getUsers().subscribe(
       response => {
         console.log(response);
       },

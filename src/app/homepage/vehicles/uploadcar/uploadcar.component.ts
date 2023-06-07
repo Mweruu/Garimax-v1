@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MenuItem, MessageService } from 'primeng/api';
 
 @Component({
@@ -9,8 +10,12 @@ import { MenuItem, MessageService } from 'primeng/api';
 export class UploadcarComponent implements OnInit {
 
   items!: MenuItem[];
+  carUploadForm!: FormGroup;
+  _activeIndex: number = 1;
 
-  constructor(public messageService: MessageService) {}
+  constructor(public messageService: MessageService,
+              private fb: FormBuilder
+              ) {}
 
   ngOnInit() {
     this.items = [
@@ -27,7 +32,24 @@ export class UploadcarComponent implements OnInit {
           routerLink: 'cardetails'
       }
   ];
+    this.carUploadForm = this.fb.group(
+      {
+      make:['',Validators.required],
+      model:['',Validators.required],
+    });
 
   }
+  onSubmit(){
+    console.log('gothere!')
+  }
+//   get activeIndex(): number {
+//     return this._activeIndex;
+//   }
+//   next() {
+//     this.activeIndex++;
+// }
 
+//   prev() {
+//     this.activeIndex--;
+// }
 }
