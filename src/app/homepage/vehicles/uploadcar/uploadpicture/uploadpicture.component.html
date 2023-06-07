@@ -2,7 +2,7 @@
   <div class="card grid p-fluid mt-0 p-5 col-4 md:col-4 lg:col-4">
     <div class="flex mt-5 mb-5 justify-content-center col-12 md:col-12 lg:col-12">
       <p-toast></p-toast>
-      <p-fileUpload name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" (onUpload)="onUpload($event)" [multiple]="true" accept="image/*" maxFileSize:string = "1000000">
+      <p-fileUpload name="demo[]" class="col-12 md:col-12 lg:col-12" url="https://www.primefaces.org/cdn/api/upload.php" (onUpload)="onUpload($event)" [multiple]="true" accept="image/*" maxFileSize:string = "1000000">
           <ng-template pTemplate="content">
               <ul *ngIf="uploadedFiles.length">
                   <li *ngFor="let file of uploadedFiles">{{ file.name }} - {{ file.size }} bytes</li>
@@ -26,4 +26,8 @@
       <li class="mb-3" >Insert phone number, website, logo </li>
     </ul>
   </div>
+  <div class="field grid col-12 md:col-12 lg:col-12 ml-4 justify-content-center">
+    <p-button styleClass="p-button-text" class="mr-8">Back</p-button>
+    <p-button styleClass="p-button-text">Next</p-button>
+</div>
 </div>
