@@ -6,6 +6,8 @@
             <label for="email" class="block text-900 text-xl font-medium mb-2">Email</label>
             <input id="companyemail" formControlName="email"  type="text" placeholder="Email address" pInputText class="w-full md:w-30rem mb-2" style="padding:1rem"><br>
             <small *ngIf="companyForm['email'].invalid && isSubmitted" class="p-error">Email is required</small>
+            <!-- <small *ngIf="companyForm['email']" class="p-error">Email is required</small> -->
+
           </div>
 
           <div class="mb-5">
@@ -16,7 +18,7 @@
 
           <div class="mb-5">
             <label for="kraPin" class="block text-900 text-xl font-medium mb-2">KRA pin</label>
-            <input id="kraPin" formControlName="kraPin"   type="password" placeholder="KRA pin" pInputText  class="w-full md:w-30rem mb-2" style="padding:1rem"><br>
+            <input id="kraPin" formControlName="kraPin"   type="number" placeholder="KRA pin" pInputText  class="w-full md:w-30rem mb-2" style="padding:1rem"><br>
             <small *ngIf="companyForm['kraPin'].invalid && isSubmitted" class="p-error">KRA Pin is required</small>
           </div>
 

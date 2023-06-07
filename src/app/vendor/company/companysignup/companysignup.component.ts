@@ -34,7 +34,7 @@ export class CompanysignupComponent implements OnInit {
     this.signupForm = this.fb.group({
       email:this.emailControl,
       companyName:['' ,Validators.required],
-      kraPin:['', Validators.required],
+      kraPin:['', Validators.required, Validators.minLength(11), Validators.maxLength(11)],
       address:[''],
       location:[''],
       mobile:this.mobileControl,

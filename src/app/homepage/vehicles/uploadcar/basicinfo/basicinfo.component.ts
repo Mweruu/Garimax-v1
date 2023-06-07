@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { VEHICLE_DATA } from 'src/app/homepage/const-data/constants';
+import { KENYA_LOCATION, VEHICLE_DATA } from 'src/app/homepage/const-data/constants';
 
 
 @Component({
@@ -9,7 +9,7 @@ import { VEHICLE_DATA } from 'src/app/homepage/const-data/constants';
 })
 export class BasicinfoComponent implements OnInit {
   make: any = VEHICLE_DATA;
-
+  location:any = KENYA_LOCATION;
   selectedCity!: any;
   constructor() { }
 
