@@ -13,11 +13,10 @@
       <span class="span-toolbar" routerLink="#">Used cars</span>
     </button>
     <button class="p-link m">
-      <span class="span-toolbar" routerLink="#">New cars</span>
+      <span class="span-toolbar" routerLink="/basicinfo">New cars</span>
     </button>
-    <!-- <div *ngIf="!loggedin"> -->
       <button class="p-link m">
-        <span class="span-toolbar" [routerLink]="loggedin? '/uploadcar' : '/vendorsignup'">Sell car</span>
+        <span class="span-toolbar" [routerLink]="loggedin? '/basicinfo' : '/vendorsignup'">Sell car</span>
       </button>
       <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
         <button class="p-link layout-topbar-button" routerLink="/sociallogin">
@@ -28,7 +27,6 @@
             <i class="pi pi-cog"></i>
             <span>Settings</span>
         </button>
-      <!-- </div> -->
     </div>
     <!-- <div *ngIf="loggedin">
       <button class="p-link m">

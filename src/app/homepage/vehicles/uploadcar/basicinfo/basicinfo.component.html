@@ -1,48 +1,42 @@
 <div class="formgroup-inline justify-content-center">
-  <div class="card grid p-fluid m-5 mt-0 col-4 md:col-4 lg:col-4 ">
+  <div class="card grid p-fluid mt-0 p-5 col-4 md:col-4 lg:col-4">
     <div class="col-12 md:col-12 mb-3">
       <div class="p-inputgroup">
-        <button class="flex" type="button"  [style]="{width:'200px'}" pButton pRipple label="Make"></button>
+        <button class="flex" type="button"  [style]="{width:'170px'}" pButton pRipple label="Make"></button>
         <p-dropdown class="flex" inputId="dropdown" [options]="cities"  [(ngModel)]="selectedCity" optionLabel="c"></p-dropdown>
       </div>
     </div>
     <div class="col-12 md:col-12 mb-3">
       <div class="p-inputgroup">
-        <button class="flex" type="button" [style]="{width:'200px'}" pButton pRipple label="Model"></button>
+        <button class="flex" type="button" [style]="{width:'170px'}" pButton pRipple label="Model"></button>
         <p-dropdown class="flex" inputId="dropdown" [options]="cities"  [(ngModel)]="selectedCity" optionLabel="c"></p-dropdown>
       </div>
     </div>
     <div class="col-12 md:col-12 mb-3">
       <div class="p-inputgroup">
-        <button class="flex" type="button"  [style]="{width:'200px'}" pButton pRipple label="Year of Manufacture"></button>
+        <button class="flex" type="button"  [style]="{width:'170px'}" pButton pRipple label="Year of Manufacture"></button>
         <p-dropdown class="flex" inputId="dropdown" [options]="cities"  [(ngModel)]="selectedCity" optionLabel="c"></p-dropdown>
       </div>
     </div>
     <div class="col-12 md:col-12 mb-3">
       <div class="p-inputgroup">
-        <button class="flex" type="button"  [style]="{width:'200px'}" pButton pRipple label="Price"></button>
+        <button class="flex" type="button"  [style]="{width:'170px'}" pButton pRipple label="Price"></button>
         <p-dropdown class="flex" inputId="dropdown" [options]="cities"  [(ngModel)]="selectedCity" optionLabel="c"></p-dropdown>
       </div>
     </div>
     <div class="col-12 md:col-12 mb-3">
       <div class="p-inputgroup">
-        <button class="flex" type="button"  [style]="{width:'200px'}" pButton pRipple label="Location"></button>
+        <button class="flex" type="button"  [style]="{width:'170px'}" pButton pRipple label="Location"></button>
         <p-dropdown class="flex" inputId="dropdown" [options]="cities"  [(ngModel)]="selectedCity" optionLabel="c"></p-dropdown>
       </div>
     </div> <div class="col-12 md:col-12 mb-3">
       <div class="p-inputgroup">
-        <button class="flex" type="button"  [style]="{width:'200px'}" pButton pRipple label="Mileage"></button>
+        <button class="flex" type="button"  [style]="{width:'170px'}" pButton pRipple label="Mileage"></button>
         <p-dropdown class="flex" inputId="dropdown" [options]="cities" [(ngModel)]="selectedCity" optionLabel="c"></p-dropdown>
       </div>
     </div>
-    <div class="field col-12 md:col-12 lg:col-12  mt-3">
-        <span class="p-float-label">
-            <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="a"></p-dropdown>
-            <label for="dropdown">Model</label>
-        </span>
-    </div>
   </div>
-  <div class="card grid p-fluid mr-5 col-5 md:col-5 lg:col-5 ">
+  <div class="card grid p-fluid m-5 mt-0 col-5 md:col-5 lg:col-5 ">
     <h5 class="m-5">
       Guide on how to upload info
     </h5>
