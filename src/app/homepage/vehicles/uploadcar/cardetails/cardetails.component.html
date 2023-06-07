@@ -1,82 +1,83 @@
 <div class="formgroup-inline  justify-content-center gap-1">
   <div class="card grid p-fluid m-2 mt-0 col-4 md:col-4 lg:col-4 ">
-    <div class="field col-12 md:col-12 lg:col-12  mb-0">
+    <div class="field col-10s md:col-10 lg:col-10  m-2">
       <input pInputText id="name" rows="4" />
     </div>
-    <div class="formgroup-inline m-2">
-      <div class="field col-12 md:col-12 lg:col-12  mt-2">
+
+    <div class="formgroup-inline col-12 md:col-12 lg:col-12 mt-2">
+      <div class="field col-12 md:col-12 lg:col-5">
         <span class="p-float-label">
             <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="h"></p-dropdown>
             <label for="dropdown">Fuel Type</label>
         </span>
       </div>
-      <div class="field col-12 md:col-12 lg:col-12  mt-2">
+      <div class="field col-12 md:col-12 lg:col-5">
         <span class="p-float-label">
             <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="i"></p-dropdown>
             <label for="dropdown">Body Type</label>
         </span>
       </div>
     </div>
-    <div class="formgroup-inline m-2">
-      <div class="field col-12 md:col-12 lg:col-12  mt-2">
+
+    <div class="formgroup-inline col-12 md:col-12 lg:col-12 mt-2">
+      <div class="field col-12 md:col-12 lg:col-5">
         <span class="p-float-label">
             <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="j"></p-dropdown>
             <label for="dropdown">Automatic</label>
         </span>
       </div>
-      <div class="field col-12 md:col-12 lg:col-12  mt-2">
+      <div class="field col-12 md:col-12 lg:col-5">
         <span class="p-float-label">
             <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="k"></p-dropdown>
             <label for="dropdown">Color</label>
         </span>
       </div>
     </div>
-    <div class="formgroup-inline m-2">
-      <div class="field col-12 md:col-12 lg:col-12">
+
+    <div class="formgroup-inline col-12 md:col-12 lg:col-12 mt-2">
+      <div class="field col-12 md:col-12 lg:col-5">
           <span class="p-float-label">
               <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="m"></p-dropdown>
               <label for="dropdown">Steering(LHD/RHD)</label>
           </span>
       </div>
-      <div class="field col-12 md:col-12 lg:col-12">
+      <div class="field col-12 md:col-12 lg:col-5">
           <span class="p-float-label">
               <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="n"></p-dropdown>
               <label for="dropdown">Engine Power(CC)</label>
           </span>
       </div>
-      </div>
-      <div class="formgroup-inline m-2">
-          <div class="field col-12 md:col-12 lg:col-12">
-              <span class="p-float-label">
-                  <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="o"></p-dropdown>
-                  <label for="dropdown">Drive Type</label>
-              </span>
-          </div>
-          <div class="field col-12 md:col-12 lg:col-12">
-              <span class="p-float-label">
-                  <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="p"></p-dropdown>
-                  <label for="dropdown">Duty Paid</label>
-              </span>
-          </div>
-      </div>
-      <div class="field col-12 md:col-12 lg:col-12  mb-0">
-        <input pInputTextarea id="name" rows="4" />
-      </div>
+    </div>
+
+    <div class="formgroup-inline col-12 md:col-12 lg:col-12 mt-2">
+        <div class="field col-12 md:col-12 lg:col-5">
+            <span class="p-float-label">
+                <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="o"></p-dropdown>
+                <label for="dropdown">Drive Type</label>
+            </span>
+        </div>
+        <div class="field col-12 md:col-12 lg:col-5">
+            <span class="p-float-label">
+                <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="p"></p-dropdown>
+                <label for="dropdown">Duty Paid</label>
+            </span>
+        </div>
+    </div>
+
+    <div class="field col-12 md:col-12 lg:col-12  mb-0">
+      <input pInputTextarea id="name" rows="4" formControlName="name" />
+    </div>
 
   </div>
   <div class="card grid p-fluid m-5 mt-0 col-6 md:col-6 lg:col-6 ">
     <h4>
       Car Options and Accesories
     </h4>
-    <ol>
-      <div class="flex">
-        <div class="flex flex-column gap-2 col-6 md:col-6 lg:col-6">
-            <div *ngFor="let category of categories" class="field-checkbox">
-                <p-checkbox name="group" [value]="category" [(ngModel)]="selectedCategories" [inputId]="category.key"></p-checkbox>
-                <label [for]="category.key">{{ category.name }}</label>
-            </div>
-        </div>
+    <div class="col-12 md:col-12 lg:col-12">
+      <div *ngFor="let category of categories" class="field-checkbox">
+        <p-checkbox name="group" [value]="category" [(ngModel)]="selectedCategories" [inputId]="category.key"></p-checkbox>
+        <label [for]="category.key">{{ category.name }}</label>
       </div>
-    </ol>
+    </div>
   </div>
 </div>
