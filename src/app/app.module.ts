@@ -51,12 +51,11 @@ import { FileUploadModule } from 'primeng/fileupload';
     IndividualsignupComponent,
     SignupTabsComponent,
     SocialLoginComponent,
-    UploadcarComponent,
-    BasicinfoComponent,
-    UploadpictureComponent,
-    CardetailsComponent,
+    // UploadcarComponent,
+    // BasicinfoComponent,
+    // UploadpictureComponent,
+    // CardetailsComponent,
     // FiltersComponent,
-
   ],
   imports: [
     BrowserModule,

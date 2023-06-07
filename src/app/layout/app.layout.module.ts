@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 import { InputTextModule } from 'primeng/inputtext';
 import { SidebarModule } from 'primeng/sidebar';
 import { BadgeModule } from 'primeng/badge';
@@ -26,6 +28,12 @@ import { ImageModule } from 'primeng/image';
 import { DropdownModule } from 'primeng/dropdown';
 import { FieldsetModule } from 'primeng/fieldset';
 import { StepsModule } from 'primeng/steps';
+import { BasicinfoComponent } from '../homepage/vehicles/uploadcar/basicinfo/basicinfo.component';
+import { CardetailsComponent } from '../homepage/vehicles/uploadcar/cardetails/cardetails.component';
+import { UploadcarComponent } from '../homepage/vehicles/uploadcar/uploadcar.component';
+import { UploadpictureComponent } from '../homepage/vehicles/uploadcar/uploadpicture/uploadpicture.component';
+import { FileUploadModule } from 'primeng/fileupload';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
     declarations: [
@@ -34,7 +42,11 @@ import { StepsModule } from 'primeng/steps';
         AppSidebarComponent,
         AppLayoutComponent,
         FiltersComponent,
-        VehiclesComponent
+        VehiclesComponent,
+        UploadcarComponent,
+        BasicinfoComponent,
+        UploadpictureComponent,
+        CardetailsComponent,
     ],
     imports: [
         BrowserModule,
@@ -57,7 +69,9 @@ import { StepsModule } from 'primeng/steps';
         ButtonModule,
         ImageModule,
         FieldsetModule,
-        StepsModule
+        StepsModule,
+        ToastModule,
+        FileUploadModule
     ],
     exports: [AppLayoutComponent]
 })

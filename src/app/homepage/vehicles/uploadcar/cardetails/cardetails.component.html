@@ -63,11 +63,12 @@
             </span>
         </div>
     </div>
-
-    <div class="field col-12 md:col-12 lg:col-12  mb-0">
-      <input pInputTextarea id="name" rows="4" formControlName="name" />
+    <div class="flex justify-content-center ml-2">
+      <span class="p-float-label">
+          <textarea id="float-input" rows="10" cols="30" pInputTextarea></textarea>
+          <label for="float-input">Description</label>
+      </span>
     </div>
-
   </div>
   <div class="card grid p-fluid m-5 mt-0 col-6 md:col-6 lg:col-6 ">
     <h4>
@@ -75,7 +76,7 @@
     </h4>
     <div class="col-12 md:col-12 lg:col-12">
       <div *ngFor="let category of categories" class="field-checkbox">
-        <p-checkbox name="group" [value]="category" [(ngModel)]="selectedCategories" [inputId]="category.key"></p-checkbox>
+        <!-- <p-checkbox name="group" [value]="category" [(ngModel)]="selectedCategories" [inputId]="category.key"></p-checkbox> -->
         <label [for]="category.key">{{ category.name }}</label>
       </div>
     </div>

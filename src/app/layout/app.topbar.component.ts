@@ -11,6 +11,7 @@ export class AppTopBarComponent {
     username:any;
     items!: MenuItem[];
     overlayVisible: boolean = false;
+    loggedin = false;
 
     @ViewChild('menubutton') menuButton!: ElementRef;
 
@@ -40,7 +41,10 @@ export class AppTopBarComponent {
       );
 
     }
-    // auth(){
-    //   if (this.getUsers().response.token) ===
-    // this.username = 
+
+    authenticated(){
+      this.loggedin=true
+      this.username = 'Jeff'
+    }
+
 }

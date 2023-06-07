@@ -15,22 +15,38 @@
     <button class="p-link m">
       <span class="span-toolbar" routerLink="#">New cars</span>
     </button>
-    <button class="p-link m">
-      <span class="span-toolbar" routerLink="/vendorsignup">Sell car</span>
-    </button>
-    <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
+    <!-- <div *ngIf="!loggedin"> -->
       <button class="p-link m">
-        <!-- <span class="span-toolbar">{{ds.user.firstName}}</span> -->
-        <span class="span-toolbar">Christine</span>
-
+        <span class="span-toolbar" [routerLink]="loggedin? '/uploadcar' : '/vendorsignup'">Sell car</span>
       </button>
-      <button class="p-link layout-topbar-button" routerLink="/sociallogin">
-          <i class="pi pi-user"></i>
-          <span>Sign In</span>
-      </button>
-      <button class="p-link layout-topbar-button">
-          <i class="pi pi-cog"></i>
-          <span>Settings</span>
-      </button>
+      <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
+        <button class="p-link layout-topbar-button" routerLink="/sociallogin">
+            <i class="pi pi-user"></i>
+            <span>Sign In</span>
+        </button>
+        <button class="p-link layout-topbar-button">
+            <i class="pi pi-cog"></i>
+            <span>Settings</span>
+        </button>
+      <!-- </div> -->
     </div>
+    <!-- <div *ngIf="loggedin">
+      <button class="p-link m">
+        <span class="span-toolbar" routerLink="/uploadcar">Sell car</span>
+      </button>
+      <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
+        <button class="p-link m">
+          <span class="span-toolbar">{{ds.user.firstName}}</span>
+          <span class="span-toolbar">{{username}}</span>
+        </button>
+        <button class="p-link layout-topbar-button" routerLink="/sociallogin">
+            <i class="pi pi-user"></i>
+            <span>Sign In</span>
+        </button>
+        <button class="p-link layout-topbar-button">
+            <i class="pi pi-cog"></i>
+            <span>Settings</span>
+        </button>
+      </div>
+    </div> -->
 </div>
