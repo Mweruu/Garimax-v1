@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -37,6 +37,7 @@ import { ToastModule } from 'primeng/toast';
 import { CheckboxModule } from 'primeng/checkbox';
 import { TagModule } from 'primeng/tag';
 import { CalendarModule } from 'primeng/calendar';
+import { PreviewComponent } from '../homepage/vehicles/uploadcar/preview/preview.component';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { CalendarModule } from 'primeng/calendar';
         BasicinfoComponent,
         UploadpictureComponent,
         CardetailsComponent,
+        PreviewComponent
     ],
     imports: [
         BrowserModule,
@@ -78,8 +80,11 @@ import { CalendarModule } from 'primeng/calendar';
         FileUploadModule,
         CheckboxModule,
         TagModule,
-        CalendarModule
+        CalendarModule,
+        ReactiveFormsModule,
+
     ],
+    providers:[BasicinfoComponent,],
     exports: [AppLayoutComponent]
 })
 export class AppLayoutModule { }
