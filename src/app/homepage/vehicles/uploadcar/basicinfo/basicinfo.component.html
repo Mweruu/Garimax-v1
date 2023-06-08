@@ -1,44 +1,52 @@
-<div class="formgroup-inline justify-content-center">
-  <div class="card grid p-fluid mt-0 p-5 col-4 md:col-4 lg:col-4">
-    <div class="col-12 md:col-12 mb-3">
-      <div class="p-inputgroup">
-        <button class="flex" type="button"  [style]="{width:'170px'}" pButton pRipple label="Make"></button>
-        <p-dropdown class="flex" inputId="dropdown" [options]="make" optionValue="make" optionLabel="make"></p-dropdown>
-      </div>
-    </div>
-    <div class="col-12 md:col-12 mb-3">
-      <div class="p-inputgroup">
-        <button class="flex" type="button" [style]="{width:'170px'}" pButton pRipple label="Model"></button>
-        <p-dropdown class="flex" inputId="dropdown" [options]="make"  optionValue="model" optionLabel="model"></p-dropdown>
-      </div>
-    </div>
-    <div class="col-12 md:col-12 mb-3">
-      <div class="p-inputgroup">
-        <button class="flex" type="button"  [style]="{width:'170px'}" pButton pRipple label="Year of Manufacture"></button>
-        <!-- <p-dropdown class="flex" inputId="dropdown" [options]="make"  [(ngModel)]="selectedCity" optionLabel="c"></p-dropdown> -->
-        <!-- <p-calendar  dateFormat="yy"></p-calendar> -->
-        
-        <p-calendar view="year" dateFormat="yy" inputId="yearpicker"></p-calendar>
-      </div>
-    </div>
-    <div class="col-12 md:col-12 mb-3">
-      <div class="p-inputgroup">
-        <button class="flex" type="button"  [style]="{width:'170px'}" pButton pRipple label="Price"></button>
-        <input type="number" pInputText placeholder="Kshs">
-      </div>
-    </div>
-    <div class="col-12 md:col-12 mb-3">
-      <div class="p-inputgroup">
-        <button class="flex" type="button"  [style]="{width:'170px'}" pButton pRipple label="Location"></button>
-        <p-dropdown class="flex" inputId="dropdown" [options]="location"  optionValue="location"  optionLabel="location"></p-dropdown>
-      </div>
-    </div> 
-    <div class="col-12 md:col-12 mb-3">
-      <div class="p-inputgroup">
-        <button class="flex" type="button"  [style]="{width:'170px'}" pButton pRipple label="Mileage"></button>
-        <input type="number" pInputText placeholder="Mileage">
-      </div>
-    </div>
+<form [formGroup]="basicInfoForm" (ngSubmit)="onSubmit()">
+  <div class="formgroup-inline justify-content-center">
+    <div class="card grid p-fluid mt-0 p-5 col-4 md:col-4 lg:col-4">
+        <!-- <div class="card grid p-fluid mt-0 p-5 col-4 md:col-4 lg:col-4"> -->
+          <div class="col-12 md:col-12 mb-3">
+          <div class="p-inputgroup">
+            <button class="flex" type="button"  [style]="{width:'170px'}" pButton pRipple label="Make"></button>
+            <p-dropdown class="flex" formControlName="make" inputId="dropdown" [options]="make" optionValue="make" optionLabel="make"></p-dropdown><br>
+          </div>
+          <small *ngIf="informationForm['make'].invalid && isSubmitted" class="p-error">Make is required</small>
+        </div>
+        <div class="col-12 md:col-12 mb-3">
+          <div class="p-inputgroup">
+            <button class="flex" type="button" [style]="{width:'170px'}" pButton pRipple label="Model"></button>
+            <p-dropdown class="flex" formControlName="model" inputId="dropdown" [options]="make"  optionValue="model" optionLabel="model"></p-dropdown>
+            <!-- <button pButton pRipple label="Finish" class="w-20rem p-3 text-xl ml-5" type="submit"></button> -->
+          </div>
+          <small *ngIf="informationForm['model'].invalid && isSubmitted" class="p-error">Model is required</small>
+        </div>
+        <div class="col-12 md:col-12 mb-3">
+          <div class="p-inputgroup">
+            <button class="flex" type="button"  [style]="{width:'170px'}" pButton pRipple label="Year of Manufacture"></button>
+            <!-- <p-calendar  dateFormat="yy"></p-calendar> -->
+            <p-calendar view="year" formControlName="yearOfManufacture" dateFormat="yy" inputId="yearpicker"></p-calendar><br>
+          </div>
+          <small *ngIf="informationForm['yearOfManufacture'].invalid && isSubmitted" class="p-error">Year of Manufacture is required</small>
+        </div>
+        <div class="col-12 md:col-12 mb-3">
+          <div class="p-inputgroup">
+            <button class="flex" type="button"  [style]="{width:'170px'}" pButton pRipple label="Price"></button>
+            <input type="number" formControlName="price" pInputText placeholder="Kshs"><br>
+          </div>
+          <small *ngIf="informationForm['price'].invalid && isSubmitted" class="p-error">Price is required</small>
+        </div>
+        <div class="col-12 md:col-12 mb-3">
+          <div class="p-inputgroup">
+            <button class="flex" type="button"  [style]="{width:'170px'}" pButton pRipple label="Location"></button>
+            <p-dropdown class="flex" inputId="dropdown" formControlName="location" [options]="location"  optionValue="location"  optionLabel="location"></p-dropdown><br>
+          </div>
+          <small *ngIf="informationForm['location'].invalid && isSubmitted" class="p-error">Location is required</small>
+        </div>
+        <div class="col-12 md:col-12 mb-3">
+          <div class="p-inputgroup">
+            <button class="flex" type="button"  [style]="{width:'170px'}" pButton pRipple label="Mileage"></button>
+            <input type="number" formControlName="mileage" pInputText placeholder="Mileage"><br>
+          </div>
+          <small *ngIf="informationForm['mileage'].invalid && isSubmitted" class="p-error">Mileage is required</small>
+        </div>
+      <!-- </form> -->
     </div>
     <div class="card grid p-fluid m-5 mt-0 col-5 md:col-5 lg:col-5 ">
       <h5 class="m-5">
@@ -48,6 +56,9 @@
       </p>
     </div>
     <div class="field grid col-12 md:col-12 lg:col-12 ml-4 justify-content-center">
-        <p-button style Class="p-button-text">Next</p-button>
+        <!-- <p-button style Class="p-button-text" >Next</p-button> -->
+        <p-toast></p-toast>
+        <button pButton pRipple label="Next" class="w-30rem p-3 text-xl" type="submit"></button>
     </div>
-</div>
+  </div>
+</form>

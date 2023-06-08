@@ -43,7 +43,6 @@ import { FileUploadModule } from 'primeng/fileupload';
     IndividualsignupComponent,
     SignupTabsComponent,
     SocialLoginComponent,
-
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MenuItem, MessageService } from 'primeng/api';
+import { timer } from 'rxjs';
+import { DatastorageserviceService } from 'src/app/datastorage.service';
+import { BasicinfoComponent } from './basicinfo/basicinfo.component';
+import { UploadpictureComponent } from './uploadpicture/uploadpicture.component';
+import { CardetailsComponent } from './cardetails/cardetails.component';
 
 @Component({
   selector: 'app-uploadcar',
@@ -14,7 +20,9 @@ export class UploadcarComponent implements OnInit {
   _activeIndex: number = 1;
 
   constructor(public messageService: MessageService,
-              private fb: FormBuilder
+              private fb: FormBuilder,
+              private ds: DatastorageserviceService,
+              private router:Router,
               ) {}
 
   ngOnInit() {
@@ -37,19 +45,36 @@ export class UploadcarComponent implements OnInit {
       make:['',Validators.required],
       model:['',Validators.required],
     });
-
   }
+  
   onSubmit(){
     console.log('gothere!')
   }
-//   get activeIndex(): number {
-//     return this._activeIndex;
-//   }
-//   next() {
-//     this.activeIndex++;
-// }
 
-//   prev() {
-//     this.activeIndex--;
-// }
+
+  uploadcar(vendor:any){
+    this.ds.createVehicle(vendor).subscribe(response => {
+        console.log('Vehicle Uploaded successfully!', response);
+        // Handle success response here
+        console.log(1123,response.token)
+        this.messageService.add({
+          severity:'success',
+          summary:'Success',
+          detail:'Please wait for our team to verify your vehicle'
+        })
+        timer(2500).toPromise().then(()=>{
+          this.router.navigate(['/'])
+        })
+      },
+      error => {
+        console.error('Failed to upload vehicle:', error);
+        // Handle error response here
+        this.messageService.add({
+          severity:'error',
+          summary:'Error',
+          detail:'Failed to upload vehicle'
+        })
+      }
+    );
+  }
 }
