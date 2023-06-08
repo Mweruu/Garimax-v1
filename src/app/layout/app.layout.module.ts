@@ -38,6 +38,7 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { TagModule } from 'primeng/tag';
 import { CalendarModule } from 'primeng/calendar';
 import { PreviewComponent } from '../homepage/vehicles/uploadcar/preview/preview.component';
+import { VehicleSearchComponent } from '../homepage/vehicle-search/vehicle-search.component';
 
 
 @NgModule({
@@ -52,7 +53,9 @@ import { PreviewComponent } from '../homepage/vehicles/uploadcar/preview/preview
         BasicinfoComponent,
         UploadpictureComponent,
         CardetailsComponent,
-        PreviewComponent
+        PreviewComponent,
+        VehicleSearchComponent,
+
     ],
     imports: [
         BrowserModule,
@@ -84,7 +87,7 @@ import { PreviewComponent } from '../homepage/vehicles/uploadcar/preview/preview
         ReactiveFormsModule,
 
     ],
-    providers:[BasicinfoComponent,],
+    providers:[BasicinfoComponent,VehiclesComponent],
     exports: [AppLayoutComponent]
 })
 export class AppLayoutModule { }

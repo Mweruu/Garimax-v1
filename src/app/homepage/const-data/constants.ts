@@ -231,4 +231,20 @@ export const DRIVETRAIN = [
 ]
 
 
+const carModels = {
+  Acura:[],
+  Audi:["A3","A4","A5","A6","A7","A8","Q3","Q5","Q7","Q8","R8","S3","S4","S5","S6","S7","S8","SQ5","SQ7","TT"],
+  BMW: ["M2", "M3", "M4","i4","i7","iX","M2","M3","M4","M5","M8","X1","X2","X3","X4","X5","X6","X7","Z4"],
+  Mercedes: ["C-Class", "E-Class", "S-Class"],
+  Hyundai:["Kona","NEXO","IONIQ 5"],
+  Ford:["Mustang","Maverick","Escape","Edge","EcoSport"],
+  Honda:["CR-V","HR-V","Civic"],
+  Lexus:["ES","GX","IS","LC","LS","LX","NX","RC","RX",'RZ',"TX","UX"],
+  Mazda:["CX-5","CX-9","MX-30","MAZDA3","CX-90","CX-70","CX-50","CX-30"],
+  Nissan:["Z","Versa","LEAF","Kicks"],
+  Subaru:["BRZ","Impreza","Forester","Impreza","Legacy","Outback","Solterra","Ascent","Crosstrek"],
+  Toyota:["Crown","Camry","C-HR","bZ4X","Avalon","Model Y", "Model X","Prius","RAv4","Sienna","Venza",],
+  Volvo:["S90","V90","V60","S60","EX90","EX30","XC40","XC60","XC90"],
+};
+
 
