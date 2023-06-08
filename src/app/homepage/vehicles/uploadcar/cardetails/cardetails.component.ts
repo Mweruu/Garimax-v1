@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { DatastorageserviceService } from 'src/app/datastorage.service';
-import { CAR_OPTIONS } from '../../../const-data/constants'
+import { BODY_TYPE, CAR_OPTIONS, COLOR, ENGINE_POWER, FUEL_TYPE, STEERING, TRANSMISSION } from '../../../const-data/constants'
 // import jsonData from 'src/assets/data/carproperties.json';
 
 
@@ -18,6 +18,12 @@ interface City {
 export class CardetailsComponent implements OnInit {
     selectedOptions: any[] = [];
     options: any[] = CAR_OPTIONS;
+    color: any = COLOR;
+    fueltype:any = FUEL_TYPE;
+    bodytype:any = BODY_TYPE;
+    enginepower:any = ENGINE_POWER;
+    steering:any = STEERING;
+    gear:any = TRANSMISSION;
 
     cities!: City[];
     formGroup!: FormGroup;
@@ -41,6 +47,7 @@ export class CardetailsComponent implements OnInit {
       text: new FormControl<string | null>(null)
     });
     }
+
 
     // carOptions(){
     //   // this.ds.getOptions().then(options=>{

@@ -36,6 +36,8 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { ToastModule } from 'primeng/toast';
 import { CheckboxModule } from 'primeng/checkbox';
 import { TagModule } from 'primeng/tag';
+import { CalendarModule } from 'primeng/calendar';
+
 
 @NgModule({
     declarations: [
@@ -75,7 +77,8 @@ import { TagModule } from 'primeng/tag';
         ToastModule,
         FileUploadModule,
         CheckboxModule,
-        TagModule
+        TagModule,
+        CalendarModule
     ],
     exports: [AppLayoutComponent]
 })
