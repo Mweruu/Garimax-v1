@@ -44,6 +44,7 @@ import { TabMenuModule } from 'primeng/tabmenu';
 import { VehiclesPipe } from '../homepage/vehicles/vehicles.pipe';
 
 
+
 @NgModule({
     declarations: [
         AppTopBarComponent,
@@ -59,6 +60,7 @@ import { VehiclesPipe } from '../homepage/vehicles/vehicles.pipe';
         PreviewComponent,
         ViewComponent,
         VehiclesPipe
+
 
     ],
     imports: [
