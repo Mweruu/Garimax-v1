@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class DatastorageserviceService {
+export class DataStorageService {
   private getUsersUrl= 'http://localhost:8080/api/users';
   private userLoginUrl = 'http://localhost:8080/api/users/login';
   private createUserUrl = 'http://localhost:8080/api/users/register';

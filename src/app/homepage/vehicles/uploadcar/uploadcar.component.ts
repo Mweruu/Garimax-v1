@@ -3,10 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MenuItem, MessageService } from 'primeng/api';
 import { timer } from 'rxjs';
-import { DatastorageserviceService } from 'src/app/datastorage.service';
-import { BasicinfoComponent } from './basicinfo/basicinfo.component';
-import { UploadpictureComponent } from './uploadpicture/uploadpicture.component';
-import { CardetailsComponent } from './cardetails/cardetails.component';
+import { DataStorageService } from 'src/app/datastorage.service';
+
 
 @Component({
   selector: 'app-uploadcar',
@@ -21,7 +19,7 @@ export class UploadcarComponent implements OnInit {
 
   constructor(public messageService: MessageService,
               private fb: FormBuilder,
-              private ds: DatastorageserviceService,
+              private ds: DataStorageService,
               private router:Router,
               ) {}
 
@@ -46,7 +44,7 @@ export class UploadcarComponent implements OnInit {
       model:['',Validators.required],
     });
   }
-  
+
   onSubmit(){
     console.log('gothere!')
   }

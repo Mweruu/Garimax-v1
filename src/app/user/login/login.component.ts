@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LayoutService } from '../../layout/service/app.layout.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { DatastorageserviceService } from 'src/app/datastorage.service';
+import { DataStorageService } from 'src/app/datastorage.service';
 import { MessageService } from 'primeng/api';
 import { timer } from 'rxjs';
 
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
 
   constructor(public layoutService: LayoutService,
               private fb:FormBuilder,
-               private ds: DatastorageserviceService,
+               private ds: DataStorageService,
                private router: Router,
                private messageService: MessageService) { }
 

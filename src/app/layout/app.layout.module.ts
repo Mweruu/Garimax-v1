@@ -38,11 +38,12 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { TagModule } from 'primeng/tag';
 import { CalendarModule } from 'primeng/calendar';
 import { PreviewComponent } from '../homepage/vehicles/uploadcar/preview/preview.component';
+import { DataService } from './data.service';
+import { MessageService } from 'primeng/api';
 import { DialogModule } from 'primeng/dialog';
 import { ViewComponent } from '../homepage/vehicles/view/view.component';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { VehiclesPipe } from '../homepage/vehicles/vehicles.pipe';
-
 
 
 @NgModule({
@@ -94,7 +95,7 @@ import { VehiclesPipe } from '../homepage/vehicles/vehicles.pipe';
         DialogModule,
         TabMenuModule,
     ],
-    providers:[BasicinfoComponent,VehiclesComponent],
+    providers:[DataService, MessageService],
     exports: [AppLayoutComponent]
 })
 export class AppLayoutModule { }

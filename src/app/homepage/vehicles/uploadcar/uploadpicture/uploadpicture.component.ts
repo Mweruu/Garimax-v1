@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
-import { UploadcarComponent } from '../uploadcar.component';
+import { DataService } from 'src/app/layout/data.service';
 
 @Component({
   selector: 'app-uploadpicture',
@@ -12,13 +12,14 @@ import { UploadcarComponent } from '../uploadcar.component';
 export class UploadpictureComponent implements OnInit {
   uploadedFiles: any[] = [];
   imageForm!:FormGroup;
+  imageUploaded = false;
   isSubmitted = false;
   vendor:any;
 
   constructor(private messageService: MessageService,
               private fb:FormBuilder,
               private router:Router,
-              // private carupload: UploadcarComponent
+              private dataService: DataService
               ) { }
 
   ngOnInit(){
@@ -27,31 +28,35 @@ export class UploadpictureComponent implements OnInit {
     })
   }
 
-  onUpload(event: { files: any; }) {
-    for(let file of event.files) {
-        this.uploadedFiles.push(file);
-    }
 
-    this.messageService.add({severity: 'info', summary: 'File Uploaded', detail: ''});
-}
+  onUpload(event: { files: any; }) {
+    try{
+      let count = 0;
+      for(let file of event.files) {
+        count = count + 1
+        console.log(file)
+        this.uploadedFiles.push(file);
+      }
+      this.imageUploaded = true;
+      this.messageService.add({severity: 'info', summary: 'Image(s) Uploaded', detail: `${count} Image(s) uploaded`});
+    } catch(err){
+      this.messageService.add({severity: 'dagger', summary: 'Image(s) Upload Failed', detail: `Failed to upload Images`});
+    }
+  }
 
   onSubmit(){
-    console.log('gothere!')
-    // this.router.navigate(['/cardetails'])
-    this.isSubmitted = true;
-    // if(this.imageForm.invalid){
-    //   // this.router.navigate(['/cardetails'])
-    //   return;
-    // }else{
-    //   this.router.navigate(['/cardetails'])
-    // }
-
-    const image = {
-      image:this.imageUpload['image'].value
+    const formData = new FormData();
+    for(let file of this.uploadedFiles){
+      formData.append('images', file.data, file.data.name);
     }
-    // this.carupload.uploadcar(this.vendor)
-    console.log('andgothere!')
-
+    this.dataService.setuploadPictureData(formData);
+    console.log(this.dataService.getuploadPictureData())
+    this.isSubmitted = true
+    if(!this.imageUploaded){
+      return;
+    }else{
+      this.router.navigate(['/cardetails'])
+    }
   }
 
   get imageUpload(){

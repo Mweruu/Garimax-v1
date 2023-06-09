@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LayoutService } from '../../layout/service/app.layout.service';
-import { DatastorageserviceService } from 'src/app/datastorage.service';
+import { DataStorageService } from 'src/app/datastorage.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
@@ -24,7 +24,7 @@ export class SignupComponent implements OnInit {
   password!: string;
 
   constructor(public layoutService: LayoutService,
-    private ds: DatastorageserviceService,
+    private ds: DataStorageService,
     private fb: FormBuilder,
     private router: Router,
     private messageService:MessageService

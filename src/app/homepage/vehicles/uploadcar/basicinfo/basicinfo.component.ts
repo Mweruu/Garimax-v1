@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { KENYA_LOCATION, VEHICLE_DATA } from 'src/app/homepage/const-data/constants';
-import { UploadcarComponent } from '../uploadcar.component';
+import { DataService } from 'src/app/layout/data.service';
 
 
 @Component({
@@ -19,9 +19,8 @@ export class BasicinfoComponent implements OnInit {
   vendor:any;
 
   constructor( private fb:FormBuilder,
-                private router: Router,
-                // private carupload: UploadcarComponent
-      ) { }
+               private router: Router,
+               private dataServive: DataService) { }
 
   ngOnInit(){
     this.basicInfoForm= this.fb.group({
@@ -42,17 +41,16 @@ export class BasicinfoComponent implements OnInit {
     }else{
       this.router.navigate(['/uploadpicture'])
     }
-    const basicInformation ={
-    make:this.informationForm['make'].value,
-    model:this.informationForm['model'].value,
-    yearOfManufacture:this.informationForm['yearOfManufacture'].value,
-    price:this.informationForm['price'].value,
-    location:this.informationForm['location'].value,
-    mileage: this.informationForm['mileage'].value
+    const basicInformation = {
+      make:this.informationForm['make'].value,
+      model:this.informationForm['model'].value,
+      yearOfManufacture:this.informationForm['yearOfManufacture'].value,
+      price:this.informationForm['price'].value,
+      location:this.informationForm['location'].value,
+      mileage: this.informationForm['mileage'].value
     }
-    // this.carupload.uploadcar(this.vendor)
-    console.log('andgothere!',basicInformation)
-
+    this.dataServive.setbasicInfoData(basicInformation);
+    console.log('Basic data' ,basicInformation)
   }
 
   get informationForm(){
