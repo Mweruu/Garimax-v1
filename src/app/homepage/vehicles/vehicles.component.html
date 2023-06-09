@@ -6,7 +6,7 @@
             <p-image src="{{vehicle.image}}" alt="Image" width="100%" [preview]="true"></p-image>
           </div>
       </div>
-      <div class="col-12 md:col-12 lg:col-7 flex align-items-center justify-content-center">
+      <div class="col-12 md:col-12 lg:col-7 flex align-items-center justify-content-center" routerLink="/view">
         <div class="card col-12 md:col-12 lg:col-12 ">
           <div class="mt-2">
             <p-tag [severity]="vehicle.foreignUsed? 'info':'warning'" value= "Foreign Used" [icon]="vehicle.foreignUsed? 'pi pi-check': 'pi pi-times'" [rounded]="true" class="ml-1"></p-tag>

@@ -14,6 +14,7 @@ import { BasicinfoComponent } from './homepage/vehicles/uploadcar/basicinfo/basi
 import { UploadpictureComponent } from './homepage/vehicles/uploadcar/uploadpicture/uploadpicture.component';
 import { CardetailsComponent } from './homepage/vehicles/uploadcar/cardetails/cardetails.component';
 import { PreviewComponent } from './homepage/vehicles/uploadcar/preview/preview.component';
+import { ViewComponent } from './homepage/vehicles/view/view.component';
 
 const routes: Routes = [
   {
@@ -45,9 +46,13 @@ const routes: Routes = [
       {path: 'basicinfo', component:BasicinfoComponent},
       {path: 'uploadpicture', component:UploadpictureComponent},
       {path: 'cardetails', component:CardetailsComponent},
-      {path: 'preview', component:PreviewComponent}
+      // {path: 'preview', component:PreviewComponent}
 
     ]
+  },
+  {
+    path: 'view', component:ViewComponent,
+    // children:[{},{},{}, {},{},{},{},{},]
   },
 
 
