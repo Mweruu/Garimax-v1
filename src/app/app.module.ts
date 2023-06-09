@@ -33,6 +33,7 @@ import { MessageService } from 'primeng/api';
 import { StepsModule } from 'primeng/steps';
 import { FieldsetModule } from 'primeng/fieldset';
 import { FileUploadModule } from 'primeng/fileupload';
+import { ChipModule } from 'primeng/chip';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { FileUploadModule } from 'primeng/fileupload';
     FieldsetModule,
     StepsModule,
     FileUploadModule,
+    ChipModule,
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

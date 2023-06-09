@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { DataStorageService } from 'src/app/datastorage.service';
 
 @Component({
   selector: 'app-view',
@@ -8,9 +9,10 @@ import { MenuItem } from 'primeng/api';
 })
 export class ViewComponent implements OnInit {
 
-  constructor() { }
+  constructor(private ds:DataStorageService) { }
   items!: MenuItem[];
-
+  vehicleId!:string;
+  vehicle:any;
   activeItem!: MenuItem;
 
   ngOnInit() {
@@ -31,7 +33,41 @@ export class ViewComponent implements OnInit {
 
         ];
       this.activeItem = this.items[0];
+      this.getSingleVehicle()
   }
 
+  getAllVehicles(){
+    this.ds.getVehicles().subscribe(
+      (vehicles) => {
+        console.log(vehicles);
+        console.log(vehicles.vehicles);
+        console.log(vehicles.vehicles.color);
 
+        // this.vehicle = vehicles.vehicles;
+
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+  getSingleVehicle(){
+    this.ds.getVehicle(this.vehicleId).subscribe(
+      (vehicle) => {
+        console.log(vehicle);
+        // console.log(vehicle.vehicle);
+        // console.log(vehicle.vehicle.color);
+
+        // this.vehicles = vehicle.vehicle;
+
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+
+  // filterByUserId(vehicleId:string) {
+  //   return this.vehicles?.filter?.((vehicle: { vehicleId: string; }) => vehicle.vehicleId === vehicleId);
+  // }
 }

@@ -47,9 +47,9 @@ export class UploadpictureComponent implements OnInit {
   onSubmit(){
     const formData = new FormData();
     for(let file of this.uploadedFiles){
-      formData.append('images', file.data, file.data.name);
+      formData.append('images', file.data);
     }
-    this.dataService.setuploadPictureData(formData);
+    this.dataService.setuploadPictureData(this.uploadedFiles);
     console.log(this.dataService.getuploadPictureData())
     this.isSubmitted = true
     if(!this.imageUploaded){
