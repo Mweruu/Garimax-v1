@@ -24,6 +24,7 @@ export class CardetailsComponent implements OnInit {
     carDetsForm!: FormGroup;
     isSubmitted = false;
     vendor:any;
+    visible!: boolean;
 
     constructor( private ds:DataStorageService,
                 private fb:FormBuilder,
@@ -67,6 +68,9 @@ export class CardetailsComponent implements OnInit {
 
     }
 
+    showDialog() {
+        this.visible = true;
+    }
     onReset(){
 
     }
