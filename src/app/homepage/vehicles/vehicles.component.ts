@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { DatastorageserviceService } from '../../datastorage.service';
+import { DataStorageService } from '../../datastorage.service';
 
 @Component({
   selector: 'app-vehicles',
@@ -16,7 +16,7 @@ export class VehiclesComponent implements OnInit {
   vehicles:any;
 
   constructor(
-    private ds:DatastorageserviceService
+    private ds:DataStorageService
   ) { }
 
   ngOnInit() {

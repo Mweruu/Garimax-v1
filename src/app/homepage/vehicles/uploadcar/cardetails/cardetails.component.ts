@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { DatastorageserviceService } from 'src/app/datastorage.service';
+import { DataStorageService } from 'src/app/datastorage.service';
 import { BODY_TYPE, CAR_OPTIONS, COLOR, DRIVETRAIN, ENGINE_POWER, FUEL_TYPE, STEERING, TRANSMISSION } from '../../../const-data/constants'
-import { BasicinfoComponent } from '../basicinfo/basicinfo.component';
 import { Router } from '@angular/router';
-import { UploadcarComponent } from '../uploadcar.component';
-// import jsonData from 'src/assets/data/carproperties.json';
+import { DataService } from 'src/app/layout/data.service';
 
 
 @Component({
@@ -27,11 +25,10 @@ export class CardetailsComponent implements OnInit {
     isSubmitted = false;
     vendor:any;
 
-    constructor( private ds:DatastorageserviceService,
-                public basicinfor:BasicinfoComponent,
+    constructor( private ds:DataStorageService,
                 private fb:FormBuilder,
                 private router:Router,
-                // private carupload: UploadcarComponent
+                private dataService: DataService
       ) { }
 
     ngOnInit(){
@@ -65,8 +62,8 @@ export class CardetailsComponent implements OnInit {
         drivetype:this.carDetails['drivetype'].value,
         description:this.carDetails['description'].value
       }
-      // this.carupload.uploadcar(this.vendor)
-      console.log('andgothere!',details)
+      this.dataService.setcardetailsData(details)
+      console.log('Details Data!',details)
 
     }
 

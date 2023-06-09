@@ -1,25 +1,18 @@
+<p-toast></p-toast>
 <form [formGroup]="imageForm" (ngSubmit)="onSubmit()">
   <div class="formgroup-inline justify-content-center">
     <div class="card grid p-fluid mt-0 p-5 col-4 md:col-4 lg:col-4">
-      <div class="flex mt-5 mb-5 justify-content-center col-12 md:col-12 lg:col-12">
-        <p-toast></p-toast>
-        <!-- <p-fileUpload></p-fileUpload> -->
-          <p-fileUpload name="demo[]" class="col-12 md:col-12 lg:col-12" url="https://www.primefaces.org/cdn/api/upload.php" (onUpload)="onUpload($event)" [multiple]="true" accept="image/*" maxFileSize:string = "1000000">
+      <div class="flex mt-2 mb-3 justify-content-center col-12 md:col-12 lg:col-12">
+          <p-toast></p-toast>
+          <p-fileUpload name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" (onUpload)="onUpload($event)" [multiple]="true" accept="image/*">
               <ng-template pTemplate="content">
                   <ul *ngIf="uploadedFiles.length">
                       <li *ngFor="let file of uploadedFiles">{{ file.name }} - {{ file.size }} bytes</li>
                   </ul>
               </ng-template>
-
           </p-fileUpload>
-          <!-- <input type="file" pFileUpload formControlName="image" name="demo[]" class="col-12 md:col-12 lg:col-12" url="https://www.primefaces.org/cdn/api/upload.php" [multiple]="true" accept="image/*" maxFileSize="1000000">
-            <ng-template pTemplate="content">
-              <ul *ngIf="uploadedFiles.length">
-                <li *ngFor="let file of uploadedFiles">{{ file.name }} - {{ file.size }} bytes</li>
-              </ul>
-            </ng-template> -->
-          <small *ngIf="imageUpload['image'].invalid && isSubmitted" class="p-error">Image is required</small>
-      </div>
+      </div><br />
+      <small *ngIf="!imageUploaded && isSubmitted" class="ml-8 p-error">Select Image and Click upload to submit selected images</small>
     </div>
     <div class="card grid p-fluid mt-0 m-5 col-5 md:col-5 lg:col-5">
       <h5 class="m-5">

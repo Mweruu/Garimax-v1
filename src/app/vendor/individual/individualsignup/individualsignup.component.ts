@@ -3,7 +3,7 @@ import { FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms'
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { timer } from 'rxjs';
-import { DatastorageserviceService } from 'src/app/datastorage.service';
+import { DataStorageService } from 'src/app/datastorage.service';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
 
 @Component({
@@ -25,7 +25,7 @@ export class IndividualsignupComponent implements OnInit {
 
   constructor(public layoutService: LayoutService,
               private fb:FormBuilder,
-              private ds: DatastorageserviceService,
+              private ds: DataStorageService,
               private router :Router,
               private messageService: MessageService
               ){}

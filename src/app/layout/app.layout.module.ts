@@ -38,6 +38,8 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { TagModule } from 'primeng/tag';
 import { CalendarModule } from 'primeng/calendar';
 import { PreviewComponent } from '../homepage/vehicles/uploadcar/preview/preview.component';
+import { DataService } from './data.service';
+import { MessageService } from 'primeng/api';
 
 
 @NgModule({
@@ -84,7 +86,7 @@ import { PreviewComponent } from '../homepage/vehicles/uploadcar/preview/preview
         ReactiveFormsModule,
 
     ],
-    providers:[BasicinfoComponent,],
+    providers:[DataService, MessageService],
     exports: [AppLayoutComponent]
 })
 export class AppLayoutModule { }
