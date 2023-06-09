@@ -39,6 +39,11 @@ export class DataStorageService {
   getVehicles(): Observable<any> {
     return this.http.get<any>(`${this.getVehicleUrl}`);
   }
+  getVehicle(id:string): Observable<any> {
+    const singleVehicleUrl = `${this.getVehicleUrl}/${id}`; // Append the vehicleId to the URL
+    return this.http.get<any>(singleVehicleUrl);
+    // return this.http.get<any>(`${this.getVehicleUrl}`);
+  }
   getOptions(): Observable<any> {
     return this.http.get<any>('/assets/data/carproperties.json')
         // .toPromise()

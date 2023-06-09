@@ -50,29 +50,29 @@ export class UploadcarComponent implements OnInit {
   }
 
 
-  uploadcar(vendor:any){
-    this.ds.createVehicle(vendor).subscribe(response => {
-        console.log('Vehicle Uploaded successfully!', response);
-        // Handle success response here
-        console.log(1123,response.token)
-        this.messageService.add({
-          severity:'success',
-          summary:'Success',
-          detail:'Please wait for our team to verify your vehicle'
-        })
-        timer(2500).toPromise().then(()=>{
-          this.router.navigate(['/'])
-        })
-      },
-      error => {
-        console.error('Failed to upload vehicle:', error);
-        // Handle error response here
-        this.messageService.add({
-          severity:'error',
-          summary:'Error',
-          detail:'Failed to upload vehicle'
-        })
-      }
-    );
-  }
+  // uploadcar(vendor:any){
+  //   this.ds.createVehicle(vendor).subscribe(response => {
+  //       console.log('Vehicle Uploaded successfully!', response);
+  //       // Handle success response here
+  //       console.log(1123,response.token)
+  //       this.messageService.add({
+  //         severity:'success',
+  //         summary:'Success',
+  //         detail:'Please wait for our team to verify your vehicle'
+  //       })
+  //       timer(2500).toPromise().then(()=>{
+  //         this.router.navigate(['/'])
+  //       })
+  //     },
+  //     error => {
+  //       console.error('Failed to upload vehicle:', error);
+  //       // Handle error response here
+  //       this.messageService.add({
+  //         severity:'error',
+  //         summary:'Error',
+  //         detail:'Failed to upload vehicle'
+  //       })
+  //     }
+  //   );
+  // }
 }

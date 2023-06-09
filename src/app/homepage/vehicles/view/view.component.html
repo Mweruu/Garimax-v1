@@ -1,7 +1,106 @@
 <app-topbar></app-topbar>
 <div class="card"> </div>
 <div class="view">
-<app-preview></app-preview>
+<!-- <app-preview></app-preview> -->
+<!-- <p>preview works!</p> -->
+<!-- <div class="card flex justify-content-center">
+  <p-sidebar [(visible)]="sidebarVisible3" [fullScreen]="true">
+    <h3>Full Screen Sidebar</h3>
+  </p-sidebar>
+  <p-button (click)="sidebarVisible3 = true" icon="pi pi-th-large"></p-button>
+</div> -->
+
+<div class="card grid p-fluid">
+  <div class="col-5 md:col-5 lg:col-5">
+    <div class="card">
+      <h5>Image</h5>
+			<div class="grid formgrid">
+				<div class="col-12 mb-2 lg:col-12 lg:mb-0">
+          <p-image src="../../../../../assets/layout/images/vehicles/2023-bmw-x7.jpg" alt="Image" width="100%" [preview]="true"></p-image>
+				</div>
+			</div>
+      <div class="grid formgrid">
+        <p-divider align="left">
+          <div class="inline-flex align-items-center">
+              <b>Car features and options</b>
+          </div>
+      </p-divider>
+      </div>
+    </div>
+  </div>
+  <div class="col-7 md:col-7 lg:col-7">
+    <div class="card">
+      <div class="grid formgrid">
+        <div class="card mb-5">{{vehicle}}</div>
+        </div>
+      <div class="grid formgrid">
+        <div class="text-500 w-6 md:w-2 font-medium">Genre</div>
+                <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">
+                    <p-chip label="Automatic" class="mr-2"></p-chip>
+                    <p-chip label="54637km" class="mr-2"></p-chip>
+                    <p-chip label="1080CC"></p-chip>
+                    <p-chip label="Automatic" class="mr-2"></p-chip>
+                    <p-chip label="54637km" class="mr-2"></p-chip>
+                    <p-chip label="1080CC"></p-chip>
+                </div>
+          <p-tag severity="success" value="Automatic" class="m-2"></p-tag>
+          <p-tag severity="secondary" value="54637km" class="m-2"></p-tag>
+          <p-tag severity="success" value="1080CC" class="m-2"></p-tag>
+          <p-tag severity="success" value="Mombasa" class="m-2"></p-tag>
+          <p-tag severity="success" value="Automatic" class="m-2"></p-tag>
+          <p-tag severity="success" value="54637km" class="m-2"></p-tag>
+          <p-tag severity="success" value="1080CC" class="m-2"></p-tag>
+          <p-tag severity="success" value="Mombasa" class="m-2"></p-tag>
+      </div>
+      <div class="grid formgrid">
+        <div class="p-fluid col-12 md:col-12 lg:col-12">
+          <p-divider align="left">
+            <div class="inline-flex align-items-center">
+                <b>Car Specifications</b>
+            </div>
+          </p-divider>
+          <div class="formgroup-inline mb-2">
+            <label for="make" class="col-5 md:col-5 lg:col-5" style="white-space: pre-line;">Make- <strong>Bmw</strong></label>
+            <label for="model" class="col-5 md:col-5 lg:col-5">Model - <strong>Bmwdfg</strong></label>
+          </div>
+
+          <div class="formgroup-inline  mb-2">
+            <label for="yearOfManufacture" class="col-5 md:col-5 lg:col-5">Year</label>
+            <label for="location" class="col-5 md:col-5 lg:col-5">Location</label>
+          </div>
+
+          <div class="formgroup-inline mb-2">
+            <label for="price" class="col-5 md:col-5 lg:col-5">Price</label>
+            <label for="mileage" class="col-5 md:col-5 lg:col-5">Mileage</label>
+          </div>
+
+          <div class="formgroup-inline mb-2">
+            <label for="fueltype" class="col-5 md:col-5 lg:col-5">Fuel type</label>
+            <label for="vehicleType" class="col-5 md:col-5 lg:col-5">Body type</label>
+          </div>
+
+          <div class="formgroup-inline mb-2">
+            <label for="transmission" class="col-5 md:col-5 lg:col-5">Transmission</label>
+            <label for="color" class="col-5 md:col-5 lg:col-5">Color</label>
+          </div>
+
+          <div class="formgroup-inline mb-2">
+            <label for="steering" class="col-5 md:col-5 lg:col-5">Steering</label>
+            <label for="engineSize" class="col-5 md:col-5 lg:col-5">Engine power</label>
+          </div>
+
+          <div class="formgroup-inline mb-2">
+            <label for="drivetype" class="col-5 md:col-5 lg:col-5">Drive train</label>
+            <label for="description" class="col-5 md:col-5 lg:col-5">Description</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <button pButton pRipple label="Submit" class="w-20rem p-3 text-xl ml-5" type="submit"></button> -->
+
+
 <h5 style="text-align: center;">Conditional Assessment</h5>
 <!-- <hr class="width:65px"> -->
 <p-divider></p-divider>

@@ -46,7 +46,7 @@ const routes: Routes = [
       {path: 'basicinfo', component:BasicinfoComponent},
       {path: 'uploadpicture', component:UploadpictureComponent},
       {path: 'cardetails', component:CardetailsComponent},
-      // {path: 'preview', component:PreviewComponent}
+      {path: 'preview', component:PreviewComponent}
 
     ]
   },

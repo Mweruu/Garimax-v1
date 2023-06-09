@@ -44,6 +44,7 @@ import { DialogModule } from 'primeng/dialog';
 import { ViewComponent } from '../homepage/vehicles/view/view.component';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { VehiclesPipe } from '../homepage/vehicles/vehicles.pipe';
+import { ChipModule } from 'primeng/chip';
 
 
 @NgModule({
@@ -94,6 +95,7 @@ import { VehiclesPipe } from '../homepage/vehicles/vehicles.pipe';
         ReactiveFormsModule,
         DialogModule,
         TabMenuModule,
+        ChipModule,
     ],
     providers:[DataService, MessageService],
     exports: [AppLayoutComponent]
