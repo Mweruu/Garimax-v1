@@ -69,7 +69,7 @@ import { FileUploadModule } from 'primeng/fileupload';
     ToastModule,
     FieldsetModule,
     StepsModule,
-    FileUploadModule
+    FileUploadModule,
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

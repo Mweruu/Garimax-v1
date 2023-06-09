@@ -230,6 +230,20 @@ export const DRIVETRAIN = [
 
 ]
 
+export const ENGINE = [
+  {"name": "Start The Engine", "key": "STE" },
+  {"name": "No Engine Noise - Crank Shaft Bearings/Knocking/Metal Bearing", "key": "NEN" },
+  {"name": "Smoke In Exhaust", "key": "SIE" },
+  {"name": "Engine Misfiring", "key": "EMS" },
+  {"name": "Arm Or Head Rest Upholstery", "key": "AHRU" },
+  {"name": "No Sludge Found", "key": "NSF" },
+  {"name": "Oil Leakage", "key": "OL" },
+  {"name": "Coolant /Reservior /Radiator /Hose /Cap", "key": "CRHC" },
+  {"name": "Engine Overhaul Extent /Repair History", "key": "EOE" },
+  {"name": "Rpm At Idle", "key": "RAI" },
+  {"name": "Other Engine Noise", "key": "OEN" },
+  {"name": "Engine Mounts", "key": "EM" },
+]
 
 const carModels = {
   Acura:[],
@@ -248,3 +262,90 @@ const carModels = {
 };
 
 
+export const ELECTRICALS = [
+{"name": "Transmission Electrical Malfunction", "key": "TEM" },
+{"name": "Eps", "key": "EPS" },
+{"name": "Tampered Odometer", "key": "TO" },
+{"name": "Switch On Stereo & Play Music", "key": "SSPM" },
+{"name": "Starter Operation", "key": "SO" },
+{"name": "Ignition Key", "key": "IK" },
+{"name": "Wiper Mechanism", "key": "WM" },
+{"name": "Trafficator/Side Indicators", "key": "TSI" },
+{"name": "Battery Condition", "key": "BC" },
+
+]
+
+export const TRANSMISSION_AND_CLUTCH = [
+{"name": "Leakage/Condition", "key": "LC" },
+{"name": "Clutch Operation", "key": "CO" },
+{"name": "Gear Mount", "key": "GM" },
+
+]
+
+export const SUSPENSION_STEERING = [
+{"name": "Power Steering Pump/Steering Rack", "key": "PSPR" },
+{"name": "Turn Steering Wheel Full From Leftwards And Rightwards", "key": "TSLR" },
+{"name": "Air Suspension/Height Control", "key": "ASHC" },
+{"name": "Struts & Lift Springs", "key": "SLS" },
+{"name": "4wd Option", "key": "4O" },
+{"name": "No Leakage From Shocks", "key": "NLFS" },
+{"name": "Brake Disc/Drums Rear", "key": "BD" },
+
+]
+
+export const TESTDRIVE = [
+{"name": "Gear Shift/Movement", "key": "GSM" },
+{"name": "Suspension Noise", "key": "SN" },
+{"name": "Braking Efficiency & Performance", "key": "BEP" },
+{"name": "Over Heating", "key": "OH" },
+{"name": "Drive The Vehicle & Observe", "key": "DVO" },
+{"name": "Engine Noise", "key": "EN" },
+{"name": "Transmission Noise", "key": "TN" },
+
+]
+
+export const EXTERIOR = [
+{"name": "Chassis", "key": "CHS" },
+{"name": "Body Pillar", "key": "BP" },
+{"name": "First Body", "key": "FB" },
+{"name": "Engraved", "key": "ENGVD" },
+{"name": "Radiator Core Support", "key": "RCS" },
+{"name": "Underbody", "key": "UNBD" },
+{"name": "Boot/Trunk/Tail Gate/Piller", "key": "BTTGP" },
+{"name": "Side Mirror", "key": "SM" },
+{"name": "Bonnet", "key": "BNT" },
+{"name": "Front Windshield", "key": "FW" },
+{"name": "Door Handles", "key": "DH" },
+{"name": "Bumper Front", "key": "BF" },
+{"name": "Door Frt Lh & Rh", "key": "DFLR" },
+{"name": "Back Door Rh & Lh", "key": "BDLR" },
+{"name": "Bumper Rear", "key": "BR" },
+{"name": "Cowl Panel", "key": "CP" },
+{"name": "Fender Rear Rh & Lh", "key": "FRRL" },
+{"name": "Fender Frt Lh & Rh", "key": "FFLR" },
+{"name": "Head/Tail Lamp", "key": "HTL" },
+{"name": "Rear Windshield", "key": "RW" },
+]
+
+export const INTERIOR = [
+{"name": "Seat And Arm Rest Upholstery", "key": "SARU" },
+{"name": "Dashboard/Fittings/Center Console", "key": "DFCC" },
+{"name": "Roof Upholstery", "key": "RU" },
+{"name": "Door Fittings/Trim", "key": "DFT" },
+{"name": "Seat Adjuster Function/Controls", "key": "SAFC" },
+{"name": "Seat Belt", "key": "SB" },
+{"name": "Interior Floor Carpet", "key": "IFC" },
+{"name": "Door Handle Inner", "key": "DHI" },
+{"name": "Boot Trim/Fittings", "key": "BRF" },
+{"name": "Steering Wheel", "key": "SW" },
+{"name": "Sunvisors", "key": "SNVSR" },
+{"name": "Inner Mirror", "key": "IM" },
+
+]
+
+export const AIRCONDITIONING_SYSTEM = [
+  {"name": "Compressor", "key": "CP" },
+  {"name": "Other Control Button/Knob", "key": "OCB" },
+  {"name": "Repair History", "key": "RH" },
+
+]
