@@ -2,6 +2,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { LayoutService } from "./service/app.layout.service";
 import { DatastorageserviceService } from '../datastorage.service';
+import { VehiclesComponent } from '../homepage/vehicles/vehicles.component';
 
 @Component({
     selector: 'app-topbar',
@@ -20,7 +21,8 @@ export class AppTopBarComponent {
     @ViewChild('topbarmenu') menu!: ElementRef;
 
     constructor(public layoutService: LayoutService,
-                public ds: DatastorageserviceService
+                public ds: DatastorageserviceService,
+                public vehicles:VehiclesComponent
                 ) { }
 
 

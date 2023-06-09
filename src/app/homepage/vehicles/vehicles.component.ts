@@ -14,6 +14,7 @@ export class VehiclesComponent implements OnInit {
   vendor:any;
   vehicle!:string;
   vehicles:any;
+  searchText:any;
 
   constructor(
     private ds:DatastorageserviceService
