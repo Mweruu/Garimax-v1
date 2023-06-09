@@ -12,12 +12,12 @@
             <p-tag [severity]="vehicle.foreignUsed? 'info':'warning'" value= "Foreign Used" [icon]="vehicle.foreignUsed? 'pi pi-check': 'pi pi-times'" [rounded]="true" class="ml-1"></p-tag>
             <p-tag [severity]="vehicle.locallyUsed? 'info':'warning'" value= "Locally Used" [icon]="vehicle.locallyUsed? 'pi pi-check': 'pi pi-times'" [rounded]="true" class="ml-2"></p-tag>
           </div>
-        <h3 class="m-2">
+        <h5 class="m-2">
             {{vehicle.price}}Ksh
-          </h3>
-          <p class="m-2">
+          </h5>
+          <h6 class="m-2">
           {{vehicle.make}} {{vehicle.model}} ({{vehicle.yearOfManufactor.split('-')[0]}})
-          </p>
+          </h6>
           <p class="m-2">
             <strong>
               {{vehicle.transmission}} | {{vehicle.engineSize}} | {{vehicle.mileage}}KM | {{vehicle.color}} | {{vehicle.vehicleType}}

@@ -1,0 +1,10 @@
+<!-- <p>vehicle-search works!</p> -->
+<div class="flex justify-content-center m-2 p-7">
+  <span class="p-input-icon-left">
+    <i class="pi pi-search"></i>
+    <input pInputText type="text" name="search" id="search" class="p-inputtext-sm" style="width: 400px;" placeholder="Search" [(ngModel)]="searchText" (input)="filterVehicles()"/>
+  </span>
+</div>
+<ul>
+  <li *ngFor="let result of filteredVehicles">{{ result }}</li>
+</ul>

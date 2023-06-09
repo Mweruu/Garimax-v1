@@ -43,6 +43,7 @@ import { ViewComponent } from '../homepage/vehicles/view/view.component';
 import { TabMenuModule } from 'primeng/tabmenu';
 
 
+
 @NgModule({
     declarations: [
         AppTopBarComponent,
@@ -57,6 +58,7 @@ import { TabMenuModule } from 'primeng/tabmenu';
         CardetailsComponent,
         PreviewComponent,
         ViewComponent,
+
 
     ],
     imports: [
@@ -90,7 +92,7 @@ import { TabMenuModule } from 'primeng/tabmenu';
         DialogModule,
         TabMenuModule,
     ],
-    providers:[BasicinfoComponent,],
+    providers:[BasicinfoComponent,VehiclesComponent],
     exports: [AppLayoutComponent]
 })
 export class AppLayoutModule { }
