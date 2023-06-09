@@ -41,6 +41,7 @@ import { PreviewComponent } from '../homepage/vehicles/uploadcar/preview/preview
 import { DialogModule } from 'primeng/dialog';
 import { ViewComponent } from '../homepage/vehicles/view/view.component';
 import { TabMenuModule } from 'primeng/tabmenu';
+import { VehiclesPipe } from '../homepage/vehicles/vehicles.pipe';
 
 
 @NgModule({
@@ -57,6 +58,7 @@ import { TabMenuModule } from 'primeng/tabmenu';
         CardetailsComponent,
         PreviewComponent,
         ViewComponent,
+        VehiclesPipe
 
     ],
     imports: [
@@ -90,7 +92,7 @@ import { TabMenuModule } from 'primeng/tabmenu';
         DialogModule,
         TabMenuModule,
     ],
-    providers:[BasicinfoComponent,],
+    providers:[BasicinfoComponent,VehiclesComponent],
     exports: [AppLayoutComponent]
 })
 export class AppLayoutModule { }

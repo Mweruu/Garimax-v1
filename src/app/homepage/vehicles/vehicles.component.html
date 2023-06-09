@@ -1,4 +1,4 @@
-<div *ngFor="let vehicle of vehicles">
+<div *ngFor="let vehicle of vehicles |filter:searchText">
   <div class="card flex mb-3">
     <div class="grid">
       <div class="col-12 md:col-12 lg:col-4 flex align-items-center justify-content-center">
