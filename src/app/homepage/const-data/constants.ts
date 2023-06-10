@@ -244,9 +244,12 @@ export const ENGINE = [
   {"name": "Other Engine Noise", "key": "OEN" },
   {"name": "Engine Mounts", "key": "EM" },
 ]
+export interface CarModels {
+  [make: string]: string[];
+}
 
-const carModels = {
-  Acura:[],
+export const CAR_MODELS:CarModels = {
+  // Acura:[],
   Audi:["A3","A4","A5","A6","A7","A8","Q3","Q5","Q7","Q8","R8","S3","S4","S5","S6","S7","S8","SQ5","SQ7","TT"],
   BMW: ["M2", "M3", "M4","i4","i7","iX","M2","M3","M4","M5","M8","X1","X2","X3","X4","X5","X6","X7","Z4"],
   Mercedes: ["C-Class", "E-Class", "S-Class"],

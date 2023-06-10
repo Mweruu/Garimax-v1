@@ -1,13 +1,32 @@
 <div class="grid p-fluid">
+  <!-- <form [formGroup]="filtersForm"> -->
+
     <div class="field col-12 md:col-12 lg:col-12  mt-1">
+      <!-- <div class="p-inputgroup">
+        <button class="flex" type="button" [style]="{ width: '170px' }" pButton pRipple label="Make"></button>
+        <p-dropdown class="flex" [options]="makes" formControlName="make" inputId="dropdown" (onChange)="onMakeChange()"></p-dropdown>
+      </div>
+      <small *ngIf="informationForm['make'].invalid && informationForm['make'].touched" class="p-error">Make is required</small>
+    </div>
+    <div class="col-12 md:col-12 mb-3">
+      <div class="p-inputgroup">
+        <button class="flex" type="button" [style]="{ width: '170px' }" pButton pRipple label="Model"></button>
+        <p-dropdown class="flex" [options]="models" formControlName="model" inputId="dropdown"></p-dropdown>
+      </div>
+      <small *ngIf="informationForm['model'].invalid && informationForm['model'].touched" class="p-error">Model is required</small>
+    </div> -->
         <span class="p-float-label">
-            <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="name"></p-dropdown>
+            <p-dropdown class="flex" [options]="makes" formControlName="make" inputId="dropdown" (onChange)="onMakeChange()"></p-dropdown>
+
+            <!-- <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="name"></p-dropdown> -->
             <label for="dropdown">Make</label>
         </span>
     </div>
     <div class="field col-12 md:col-12 lg:col-12  mt-1">
         <span class="p-float-label">
-            <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="a"></p-dropdown>
+          <p-dropdown class="flex" [options]="models" formControlName="model" inputId="dropdown"></p-dropdown>
+
+            <!-- <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="a"></p-dropdown> -->
             <label for="dropdown">Model</label>
         </span>
     </div>
@@ -173,4 +192,5 @@
             <label for="dropdown">Accessibility</label>
         </span>
     </div>
+  <!-- </form> -->
 </div>
