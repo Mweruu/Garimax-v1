@@ -12,32 +12,32 @@
               <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
                 <div class="mb-5">
                   <label for="firstName" class="block text-900 text-xl font-medium mb-2">First name</label>
-                  <input id="firstName" formControlName="firstName" [(ngModel)]="user.firstName" type="text" placeholder="First name" pInputText class="w-full md:w-30rem mb-2" style="padding:1rem"><br>
+                  <input id="firstName" formControlName="firstName" type="text" placeholder="First name" pInputText class="w-full md:w-30rem mb-2" style="padding:1rem"><br>
                   <small *ngIf="userSignupForm['firstName'].invalid && isSubmitted" class="p-error">First name is required</small>
                 </div>
                 <div class="mb-5">
                   <label for="lastName" class="block text-900 text-xl font-medium mb-2">Last name</label>
-                  <input id="lastName" formControlName="lastName" [(ngModel)]="user.lastName" type="text" placeholder="Last name" pInputText class="w-full md:w-30rem mb-2" style="padding:1rem"><br>
+                  <input id="lastName" formControlName="lastName" type="text" placeholder="Last name" pInputText class="w-full md:w-30rem mb-2" style="padding:1rem"><br>
                   <small *ngIf="userSignupForm['lastName'].invalid && isSubmitted" class="p-error">Last name is required</small>
                 </div>
                 <div class="mb-5">
                   <label for="mobile" class="block text-900 text-xl font-medium mb-2">Phone number</label>
-                  <input id="mobile" formControlName="mobile" [(ngModel)]="user.mobile" type="number" placeholder="phone number" pInputText class="w-full md:w-30rem mb-2" style="padding:1rem"><br>
+                  <input id="mobile" formControlName="mobile" type="number" placeholder="phone number" pInputText class="w-full md:w-30rem mb-2" style="padding:1rem"><br>
                   <small *ngIf="userSignupForm['mobile'].invalid && isSubmitted" class="p-error">Phone number is required</small>
                 </div>
                 <div class="mb-5">
                   <label for="email" class="block text-900 text-xl font-medium mb-2">Email</label>
-                  <input id="email" formControlName="email" [(ngModel)]="user.email" type="text" placeholder="Email address" pInputText class="w-full md:w-30rem mb-2" style="padding:1rem"><br>
+                  <input id="email" formControlName="email" type="text" placeholder="Email address" pInputText class="w-full md:w-30rem mb-2" style="padding:1rem"><br>
                   <small *ngIf="userSignupForm['email'].invalid && isSubmitted" class="p-error">Email is required</small>
                 </div>
                 <div class="mb-5">
                   <label for="password" class="block text-900 font-medium text-xl mb-2">Password</label>
-                  <p-password id="password" formControlName="password" [(ngModel)]="password" placeholder="Password" [toggleMask]="true" styleClass="mb-2" inputStyleClass="w-full p-3 md:w-30rem"></p-password><br>
+                  <p-password id="password" formControlName="password" placeholder="Password" [toggleMask]="true" styleClass="mb-2" inputStyleClass="w-full p-3 md:w-30rem"></p-password><br>
                   <small *ngIf="userSignupForm['password'].invalid && isSubmitted" class="p-error">Password is required</small>
                 </div>
                 <div class="mb-5">
                   <label for="confirmPassword" class="block text-900 font-medium text-xl mb-2">Confirm Password</label>
-                  <p-password id="confirmPassword" formControlName="confirmPassword" [(ngModel)]="user.confirmPassword" placeholder="Password" [toggleMask]="true" styleClass="mb-2" inputStyleClass="w-full p-3 md:w-30rem"></p-password><br>
+                  <p-password id="confirmPassword" formControlName="confirmPassword" placeholder="Password" [toggleMask]="true" styleClass="mb-2" inputStyleClass="w-full p-3 md:w-30rem"></p-password><br>
                   <small *ngIf="userSignupForm['confirmPassword'].invalid && isSubmitted" class="p-error">Password is required</small>
                 </div>
                   <div class="flex align-items-center justify-content-between mb-5 gap-5">
