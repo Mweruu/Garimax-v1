@@ -25,6 +25,7 @@ export class CardetailsComponent implements OnInit {
     isSubmitted = false;
     vendor:any;
     visible!: boolean;
+    myForm!: FormGroup;
 
     constructor( private ds:DataStorageService,
                 private fb:FormBuilder,
@@ -43,6 +44,7 @@ export class CardetailsComponent implements OnInit {
         drivetype:['',Validators.required],
         description:['']
     });
+
     }
 
     onSubmit(){
@@ -78,4 +80,15 @@ export class CardetailsComponent implements OnInit {
     get carDetails(){
       return this.carDetsForm.controls;
     }
+
+
+    onCheckboxChange() {
+      const options = document.querySelectorAll('input[type="checkbox"]');
+      const selectedOptions = Array.from(options).filter(checkbox => (checkbox as HTMLInputElement).checked);
+      console.log(selectedOptions);
+      // const selectedOptions = this.options.filter((option: any) => option.selected);
+      // console.log(selectedOptions);
+    }
+
+
 }

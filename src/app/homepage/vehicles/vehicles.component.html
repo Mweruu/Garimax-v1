@@ -1,5 +1,13 @@
-<div *ngFor="let vehicle of vehicles |filter:searchText">
-  <div class="card flex mb-3">
+<!-- <input class="form-control" type="text" placeholder="Search" [(ngModel)]="searchText"> -->
+<div class="flex justify-content-center m-2">
+  <span class="p-input-icon-left">
+    <i class="pi pi-search"></i>
+    <input pInputText type="text" class="p-inputtext-sm"  style="width: 400px;" placeholder="Search" [(ngModel)]="searchText"/>
+  </span>
+</div>
+
+<div *ngFor="let vehicle of vehicles | search:searchText">
+  <div class="card flex mb-3 mt-3">
     <div class="grid">
       <div class="col-12 md:col-12 lg:col-4 flex align-items-center justify-content-center">
           <div class="p-fluid">

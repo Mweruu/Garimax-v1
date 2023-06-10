@@ -97,7 +97,7 @@ import { ChipModule } from 'primeng/chip';
         TabMenuModule,
         ChipModule,
     ],
-    providers:[DataService, MessageService],
+    providers:[DataService, MessageService,VehiclesComponent],
     exports: [AppLayoutComponent]
 })
 export class AppLayoutModule { }

@@ -1,22 +1,22 @@
 <form [formGroup]="basicInfoForm" (ngSubmit)="onSubmit()">
   <div class="formgroup-inline justify-content-center">
     <div class="card grid p-fluid mt-0 p-5 col-4 md:col-4 lg:col-4">
-        <!-- <div class="card grid p-fluid mt-0 p-5 col-4 md:col-4 lg:col-4"> -->
-          <div class="col-12 md:col-12 mb-3">
+        <div class="col-12 md:col-12 mb-3">
           <div class="p-inputgroup">
-            <button class="flex" type="button"  [style]="{width:'170px'}" pButton pRipple label="Make"></button>
-            <p-dropdown class="flex" formControlName="make" inputId="dropdown" [options]="make" optionValue="make" optionLabel="make"></p-dropdown><br>
+            <button class="flex" type="button" [style]="{ width: '170px' }" pButton pRipple label="Make"></button>
+            <p-dropdown class="flex" [options]="makes" formControlName="make" inputId="dropdown" (onChange)="onMakeChange()"></p-dropdown>
           </div>
-          <small *ngIf="informationForm['make'].invalid && isSubmitted" class="p-error">Make is required</small>
+          <small *ngIf="informationForm['make'].invalid && informationForm['make'].touched" class="p-error">Make is required</small>
         </div>
         <div class="col-12 md:col-12 mb-3">
           <div class="p-inputgroup">
-            <button class="flex" type="button" [style]="{width:'170px'}" pButton pRipple label="Model"></button>
-            <p-dropdown class="flex" formControlName="model" inputId="dropdown" [options]="make"  optionValue="model" optionLabel="model"></p-dropdown>
-            <!-- <button pButton pRipple label="Finish" class="w-20rem p-3 text-xl ml-5" type="submit"></button> -->
+            <button class="flex" type="button" [style]="{ width: '170px' }" pButton pRipple label="Model"></button>
+            <p-dropdown class="flex" [options]="models" formControlName="model" inputId="dropdown"></p-dropdown>
           </div>
-          <small *ngIf="informationForm['model'].invalid && isSubmitted" class="p-error">Model is required</small>
+          <small *ngIf="informationForm['model'].invalid && informationForm['model'].touched" class="p-error">Model is required</small>
         </div>
+        <!-- <div class="card grid p-fluid mt-0 p-5 col-4 md:col-4 lg:col-4"> -->
+
         <div class="col-12 md:col-12 mb-3">
           <div class="p-inputgroup">
             <button class="flex" type="button"  [style]="{width:'170px'}" pButton pRipple label="Year of Manufacture"></button>
