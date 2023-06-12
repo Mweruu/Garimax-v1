@@ -47,26 +47,54 @@ export class PreviewComponent implements OnInit {
   // additionalFeatures: req.body.additionalFeatures
 
   onSubmit(){
-    const vehicleData:any = {
-      userId: 1,
-      model: this.carData.basicInfo.model,
-      make: this.carData.basicInfo.make,
-      price: this.carData.basicInfo.price,
-      location: this.carData.basicInfo.location,
-      yearOfManufactor: this.carData.basicInfo.yearOfManufacture,
-      mileage: this.carData.basicInfo.mileage,
-      images: this.dataServive.getuploadPictureData(),
-      color: this.carData.carDetails.color,
-      condition: this.carData.carDetails.steering,
-      transmission: this.carData.carDetails.transmission,
-      engineSize: this.carData.carDetails.engineSize,
-      foreignUsed: true,
-      localUsed: false,
-      vehicleType: this.carData.carDetails.vehicleType,
-      additionalFeatures: [this.carData.carDetails.drivetype,
-                          this.carData.carDetails.description,
-                          this.carData.carDetails.fueltype]
+    const userId = 2
+    const images: File[] = this.dataServive.getuploadPictureData();
+
+    const vehicleData = new FormData();
+    vehicleData.append("userId", userId.toString());
+    vehicleData.append("model", this.carData.basicInfo.model);
+    vehicleData.append("make", this.carData.basicInfo.make);
+    vehicleData.append("price", this.carData.basicInfo.price);
+    vehicleData.append("location", this.carData.basicInfo.location);
+    vehicleData.append("yearOfManufactor", this.carData.basicInfo.yearOfManufacture);
+    vehicleData.append("mileage", this.carData.basicInfo.mileage);
+    for (let i = 0; i < images.length; i++) {
+      vehicleData.append('images', images[i]);
     }
+    // vehicleData.append("images", this.dataServive.getuploadPictureData());
+    vehicleData.append("color", this.carData.carDetails.color);
+    vehicleData.append("condition", this.carData.carDetails.steering);
+    vehicleData.append("transmission", this.carData.carDetails.transmission);
+    vehicleData.append("engineSize", this.carData.carDetails.engineSize);
+    vehicleData.append("vehicleType", this.carData.carDetails.vehicleType);
+    vehicleData.append("foreignUsed", true.toString());
+    vehicleData.append("localUsed", false.toString());
+    // vehicleData.append("additionalFeatures", [this.carData.carDetails.drivetype,
+    //                                   this.carData.carDetails.description,
+    //                                   this.carData.carDetails.fueltype].toString());
+
+
+
+    // const vehicleData: any = {
+    //   userId: 1,
+    //   model: this.carData.basicInfo.model,
+    //   make: this.carData.basicInfo.make,
+    //   price: this.carData.basicInfo.price,
+    //   location: this.carData.basicInfo.location,
+    //   yearOfManufactor: this.carData.basicInfo.yearOfManufacture,
+    //   mileage: this.carData.basicInfo.mileage,
+    //   images: form,
+    //   color: this.carData.carDetails.color,
+    //   condition: this.carData.carDetails.steering,
+    //   transmission: this.carData.carDetails.transmission,
+    //   engineSize: this.carData.carDetails.engineSize,
+    //   foreignUsed: true,
+    //   localUsed: false,
+    //   vehicleType: this.carData.carDetails.vehicleType,
+    //   additionalFeatures: [this.carData.carDetails.drivetype,
+    //                       this.carData.carDetails.description,
+    //                       this.carData.carDetails.fueltype]
+    // }
     console.log("final -> ", vehicleData)
 
     this.ds.createVehicle(vehicleData).subscribe(response => {
