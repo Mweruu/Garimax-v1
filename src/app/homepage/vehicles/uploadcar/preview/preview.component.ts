@@ -48,8 +48,8 @@ export class PreviewComponent implements OnInit {
 
   onSubmit(){
     const userId = 2
-    // const form = new FormData();
-    // form.append('images', this.dataServive.getuploadPictureData());
+    const images: File[] = this.dataServive.getuploadPictureData();
+
     const vehicleData = new FormData();
     vehicleData.append("userId", userId.toString());
     vehicleData.append("model", this.carData.basicInfo.model);
@@ -58,7 +58,10 @@ export class PreviewComponent implements OnInit {
     vehicleData.append("location", this.carData.basicInfo.location);
     vehicleData.append("yearOfManufactor", this.carData.basicInfo.yearOfManufacture);
     vehicleData.append("mileage", this.carData.basicInfo.mileage);
-    vehicleData.append("images", this.dataServive.getuploadPictureData());
+    for (let i = 0; i < images.length; i++) {
+      vehicleData.append('images', images[i]);
+    }
+    // vehicleData.append("images", this.dataServive.getuploadPictureData());
     vehicleData.append("color", this.carData.carDetails.color);
     vehicleData.append("condition", this.carData.carDetails.steering);
     vehicleData.append("transmission", this.carData.carDetails.transmission);
