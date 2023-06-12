@@ -40,6 +40,11 @@ import { CalendarModule } from 'primeng/calendar';
 import { PreviewComponent } from '../homepage/vehicles/uploadcar/preview/preview.component';
 import { DataService } from './data.service';
 import { MessageService } from 'primeng/api';
+import { DialogModule } from 'primeng/dialog';
+import { ViewComponent } from '../homepage/vehicles/view/view.component';
+import { TabMenuModule } from 'primeng/tabmenu';
+import { VehiclesPipe } from '../homepage/vehicles/vehicles.pipe';
+import { ChipModule } from 'primeng/chip';
 
 
 @NgModule({
@@ -54,7 +59,11 @@ import { MessageService } from 'primeng/api';
         BasicinfoComponent,
         UploadpictureComponent,
         CardetailsComponent,
-        PreviewComponent
+        PreviewComponent,
+        ViewComponent,
+        VehiclesPipe
+
+
     ],
     imports: [
         BrowserModule,
@@ -84,9 +93,11 @@ import { MessageService } from 'primeng/api';
         TagModule,
         CalendarModule,
         ReactiveFormsModule,
-
+        DialogModule,
+        TabMenuModule,
+        ChipModule,
     ],
-    providers:[DataService, MessageService],
+    providers:[DataService, MessageService,VehiclesComponent],
     exports: [AppLayoutComponent]
 })
 export class AppLayoutModule { }

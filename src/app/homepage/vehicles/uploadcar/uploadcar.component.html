@@ -1,9 +1,7 @@
 <app-topbar></app-topbar>
-<!-- <form   (ngSubmit)="onSubmit()"> -->
-  <div class="col-12 md:col-12 lg:col-12" style="padding: 150px; padding-bottom: 10px;">
+  <div class="bar col-6 md:col-6 lg:col-12" style="padding: 150px; padding-bottom: 10px;">
     <p-toast></p-toast>
-    <p-steps  [model]="items" [readonly]="false"></p-steps>
+    <p-steps [model]="items" [readonly]="false"></p-steps>
   </div>
-<!-- </form> -->
 <router-outlet></router-outlet>
 <app-footer></app-footer>

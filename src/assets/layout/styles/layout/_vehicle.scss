@@ -23,17 +23,28 @@
 }
 
 .p-steps .p-steps-item .p-menuitem-link {
+  --d: 1.5rem;
   background: transparent;
   transition: box-shadow 0.2s;
   padding-left: 4rem;
   padding-right: 4rem;
-  padding-top: 3rem;
+  padding-top: 1rem;
   padding-bottom: 1rem;
-  border-radius: 50% / 100%;
-  transform: scaleX(1.1);
+  // border-radius: 50% / 100%;
+  // transform: scaleX(1.1);
+  // margin-left: 10px;
   // transform: translateY(1%);
   margin-bottom: 2rem;
+  width: 400px;
   background: var(--blue-200);
+  clip-path: polygon(
+    0% 0%,
+    calc(100% - var(--d)) 0%,
+    100% 50%,
+    calc(100% - var(--d)) 100%,
+    0% 100%,
+    var(--d) 50%
+  );
 }
 
 .p-steps .p-steps-item:before {
@@ -59,4 +70,8 @@
 
 .p-fileupload{
   width: 100%;
+.view{
+  padding-left: 350px;
+  padding-right: 350px;
+}
 }

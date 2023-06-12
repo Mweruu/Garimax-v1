@@ -1,3 +1,7 @@
+<app-topbar></app-topbar>
+<div class="card"> </div>
+<div class="view">
+<!-- <app-preview></app-preview> -->
 <!-- <p>preview works!</p> -->
 <!-- <div class="card flex justify-content-center">
   <p-sidebar [(visible)]="sidebarVisible3" [fullScreen]="true">
@@ -27,33 +31,26 @@
   <div class="col-7 md:col-7 lg:col-7">
     <div class="card">
       <div class="grid formgrid">
-        <div class="card mb-5">edrcfghjn</div>
+        <div class="card mb-5">{{vehicle}}</div>
         </div>
       <div class="grid formgrid">
-        <!-- <div class="col-12 mb-2 md:col-3 lg:col-3 lg:mb-0"> -->
+        <div class="text-500 w-6 md:w-2 font-medium">Genre</div>
+                <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">
+                    <p-chip label="Automatic" class="mr-2"></p-chip>
+                    <p-chip label="54637km" class="mr-2"></p-chip>
+                    <p-chip label="1080CC"></p-chip>
+                    <p-chip label="Automatic" class="mr-2"></p-chip>
+                    <p-chip label="54637km" class="mr-2"></p-chip>
+                    <p-chip label="1080CC"></p-chip>
+                </div>
           <p-tag severity="success" value="Automatic" class="m-2"></p-tag>
-        <!-- </div> -->
-        <!-- <div class="col-12 mb-2 md:col-3 lg:col-3 lg:mb-0"> -->
           <p-tag severity="secondary" value="54637km" class="m-2"></p-tag>
-        <!-- </div> -->
-        <!-- <div class="col-12 mb-2 md:col-3 lg:col-3 lg:mb-0"> -->
           <p-tag severity="success" value="1080CC" class="m-2"></p-tag>
-        <!-- </div> -->
-        <!-- <div class="col-12 mb-2 md:col-3 lg:col-3 lg:mb-0"> -->
           <p-tag severity="success" value="Mombasa" class="m-2"></p-tag>
-        <!-- </div> -->
-        <!-- <div class="col-12 mb-2 md:col-3 lg:col-3 lg:mb-0"> -->
           <p-tag severity="success" value="Automatic" class="m-2"></p-tag>
-        <!-- </div> -->
-        <!-- <div class="col-12 mb-2 md:col-3 lg:col-3 lg:mb-0"> -->
           <p-tag severity="success" value="54637km" class="m-2"></p-tag>
-        <!-- </div> -->
-        <!-- <div class="col-12 mb-2 md:col-3 lg:col-3 lg:mb-0"> -->
           <p-tag severity="success" value="1080CC" class="m-2"></p-tag>
-        <!-- </div> -->
-        <!-- <div class="col-12 mb-2 md:col-3 lg:col-3 lg:mb-0"> -->
           <p-tag severity="success" value="Mombasa" class="m-2"></p-tag>
-        <!-- </div> -->
       </div>
       <div class="grid formgrid">
         <div class="p-fluid col-12 md:col-12 lg:col-12">
@@ -101,5 +98,15 @@
     </div>
   </div>
 </div>
-<button pButton pRipple label="Submit" class="w-20rem p-3 text-xl ml-5" type="submit"></button>
+<!-- <button pButton pRipple label="Submit" class="w-20rem p-3 text-xl ml-5" type="submit"></button> -->
 
+
+<h5 style="text-align: center;">Conditional Assessment</h5>
+<!-- <hr class="width:65px"> -->
+<p-divider></p-divider>
+<div class="card">
+  <p-tabMenu [scrollable]="true" [model]="items" [activeItem]="activeItem"></p-tabMenu>
+</div>
+<div class="card"></div>
+</div>
+<app-footer></app-footer>

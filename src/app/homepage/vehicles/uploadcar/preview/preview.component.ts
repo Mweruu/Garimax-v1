@@ -116,8 +116,8 @@ export class PreviewComponent implements OnInit {
         summary:'Error',
         detail:'Failed to upload vehicle'
       })
-    }
-  );
+      }
+    );
   }
 
 }

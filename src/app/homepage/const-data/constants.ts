@@ -230,5 +230,125 @@ export const DRIVETRAIN = [
 
 ]
 
+export const ENGINE = [
+  {"name": "Start The Engine", "key": "STE" },
+  {"name": "No Engine Noise - Crank Shaft Bearings/Knocking/Metal Bearing", "key": "NEN" },
+  {"name": "Smoke In Exhaust", "key": "SIE" },
+  {"name": "Engine Misfiring", "key": "EMS" },
+  {"name": "Arm Or Head Rest Upholstery", "key": "AHRU" },
+  {"name": "No Sludge Found", "key": "NSF" },
+  {"name": "Oil Leakage", "key": "OL" },
+  {"name": "Coolant /Reservior /Radiator /Hose /Cap", "key": "CRHC" },
+  {"name": "Engine Overhaul Extent /Repair History", "key": "EOE" },
+  {"name": "Rpm At Idle", "key": "RAI" },
+  {"name": "Other Engine Noise", "key": "OEN" },
+  {"name": "Engine Mounts", "key": "EM" },
+]
+export interface CarModels {
+  [make: string]: string[];
+}
+
+export const CAR_MODELS:CarModels = {
+  // Acura:[],
+  Audi:["A3","A4","A5","A6","A7","A8","Q3","Q5","Q7","Q8","R8","S3","S4","S5","S6","S7","S8","SQ5","SQ7","TT"],
+  BMW: ["M2", "M3", "M4","i4","i7","iX","M2","M3","M4","M5","M8","X1","X2","X3","X4","X5","X6","X7","Z4"],
+  Mercedes: ["C-Class", "E-Class", "S-Class"],
+  Hyundai:["Kona","NEXO","IONIQ 5"],
+  Ford:["Mustang","Maverick","Escape","Edge","EcoSport"],
+  Honda:["CR-V","HR-V","Civic"],
+  Lexus:["ES","GX","IS","LC","LS","LX","NX","RC","RX",'RZ',"TX","UX"],
+  Mazda:["CX-5","CX-9","MX-30","MAZDA3","CX-90","CX-70","CX-50","CX-30"],
+  Nissan:["Z","Versa","LEAF","Kicks"],
+  Subaru:["BRZ","Impreza","Forester","Impreza","Legacy","Outback","Solterra","Ascent","Crosstrek"],
+  Toyota:["Crown","Camry","C-HR","bZ4X","Avalon","Model Y", "Model X","Prius","RAv4","Sienna","Venza",],
+  Volvo:["S90","V90","V60","S60","EX90","EX30","XC40","XC60","XC90"],
+};
 
 
+export const ELECTRICALS = [
+{"name": "Transmission Electrical Malfunction", "key": "TEM" },
+{"name": "Eps", "key": "EPS" },
+{"name": "Tampered Odometer", "key": "TO" },
+{"name": "Switch On Stereo & Play Music", "key": "SSPM" },
+{"name": "Starter Operation", "key": "SO" },
+{"name": "Ignition Key", "key": "IK" },
+{"name": "Wiper Mechanism", "key": "WM" },
+{"name": "Trafficator/Side Indicators", "key": "TSI" },
+{"name": "Battery Condition", "key": "BC" },
+
+]
+
+export const TRANSMISSION_AND_CLUTCH = [
+{"name": "Leakage/Condition", "key": "LC" },
+{"name": "Clutch Operation", "key": "CO" },
+{"name": "Gear Mount", "key": "GM" },
+
+]
+
+export const SUSPENSION_STEERING = [
+{"name": "Power Steering Pump/Steering Rack", "key": "PSPR" },
+{"name": "Turn Steering Wheel Full From Leftwards And Rightwards", "key": "TSLR" },
+{"name": "Air Suspension/Height Control", "key": "ASHC" },
+{"name": "Struts & Lift Springs", "key": "SLS" },
+{"name": "4wd Option", "key": "4O" },
+{"name": "No Leakage From Shocks", "key": "NLFS" },
+{"name": "Brake Disc/Drums Rear", "key": "BD" },
+
+]
+
+export const TESTDRIVE = [
+{"name": "Gear Shift/Movement", "key": "GSM" },
+{"name": "Suspension Noise", "key": "SN" },
+{"name": "Braking Efficiency & Performance", "key": "BEP" },
+{"name": "Over Heating", "key": "OH" },
+{"name": "Drive The Vehicle & Observe", "key": "DVO" },
+{"name": "Engine Noise", "key": "EN" },
+{"name": "Transmission Noise", "key": "TN" },
+
+]
+
+export const EXTERIOR = [
+{"name": "Chassis", "key": "CHS" },
+{"name": "Body Pillar", "key": "BP" },
+{"name": "First Body", "key": "FB" },
+{"name": "Engraved", "key": "ENGVD" },
+{"name": "Radiator Core Support", "key": "RCS" },
+{"name": "Underbody", "key": "UNBD" },
+{"name": "Boot/Trunk/Tail Gate/Piller", "key": "BTTGP" },
+{"name": "Side Mirror", "key": "SM" },
+{"name": "Bonnet", "key": "BNT" },
+{"name": "Front Windshield", "key": "FW" },
+{"name": "Door Handles", "key": "DH" },
+{"name": "Bumper Front", "key": "BF" },
+{"name": "Door Frt Lh & Rh", "key": "DFLR" },
+{"name": "Back Door Rh & Lh", "key": "BDLR" },
+{"name": "Bumper Rear", "key": "BR" },
+{"name": "Cowl Panel", "key": "CP" },
+{"name": "Fender Rear Rh & Lh", "key": "FRRL" },
+{"name": "Fender Frt Lh & Rh", "key": "FFLR" },
+{"name": "Head/Tail Lamp", "key": "HTL" },
+{"name": "Rear Windshield", "key": "RW" },
+]
+
+export const INTERIOR = [
+{"name": "Seat And Arm Rest Upholstery", "key": "SARU" },
+{"name": "Dashboard/Fittings/Center Console", "key": "DFCC" },
+{"name": "Roof Upholstery", "key": "RU" },
+{"name": "Door Fittings/Trim", "key": "DFT" },
+{"name": "Seat Adjuster Function/Controls", "key": "SAFC" },
+{"name": "Seat Belt", "key": "SB" },
+{"name": "Interior Floor Carpet", "key": "IFC" },
+{"name": "Door Handle Inner", "key": "DHI" },
+{"name": "Boot Trim/Fittings", "key": "BRF" },
+{"name": "Steering Wheel", "key": "SW" },
+{"name": "Sunvisors", "key": "SNVSR" },
+{"name": "Inner Mirror", "key": "IM" },
+
+]
+
+export const AIRCONDITIONING_SYSTEM = [
+  {"name": "Compressor", "key": "CP" },
+  {"name": "Other Control Button/Knob", "key": "OCB" },
+  {"name": "Repair History", "key": "RH" },
+
+]

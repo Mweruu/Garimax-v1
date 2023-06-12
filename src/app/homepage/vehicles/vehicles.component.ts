@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
 import { DataStorageService } from '../../datastorage.service';
+import { AppTopBarComponent } from 'src/app/layout/app.topbar.component';
 
 @Component({
   selector: 'app-vehicles',
@@ -8,15 +8,15 @@ import { DataStorageService } from '../../datastorage.service';
   styleUrls: ['./vehicles.component.scss']
 })
 export class VehiclesComponent implements OnInit {
-  formGroup!: FormGroup;
   value: number | undefined;
   panelSizes = [30,70]
   vendor:any;
   vehicle!:string;
   vehicles:any;
+  searchText:any;
 
   constructor(
-    private ds:DataStorageService
+    private ds:DataStorageService,
   ) { }
 
   ngOnInit() {
@@ -34,8 +34,6 @@ export class VehiclesComponent implements OnInit {
       (vehicles) => {
         console.log(vehicles);
         console.log(vehicles.vehicles);
-        console.log(vehicles.vehicles.color);
-
         this.vehicles = vehicles.vehicles;
 
       },
