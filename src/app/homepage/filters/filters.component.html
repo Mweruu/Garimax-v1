@@ -1,196 +1,202 @@
 <div class="grid p-fluid">
   <!-- <form [formGroup]="filtersForm"> -->
+  <p-fieldset legend="Basic Filter" class="col-12 md:col-12 lg:col-12 mt-1" >
+      <div class="formgroup-inline">
+      <div class="field col-5 md:col-12 lg:col-5  mt-1">
+        <!-- <div class="p-inputgroup">
+          <button class="flex" type="button" [style]="{ width: '170px' }" pButton pRipple label="Make"></button>
+          <p-dropdown class="flex" [options]="makes" formControlName="make" inputId="dropdown" (onChange)="onMakeChange()"></p-dropdown>
+        </div>
+        <small *ngIf="informationForm['make'].invalid && informationForm['make'].touched" class="p-error">Make is required</small>
+      </div>
+      <div class="col-12 md:col-12 mb-3">
+        <div class="p-inputgroup">
+          <button class="flex" type="button" [style]="{ width: '170px' }" pButton pRipple label="Model"></button>
+          <p-dropdown class="flex" [options]="models" formControlName="model" inputId="dropdown"></p-dropdown>
+        </div>
+        <small *ngIf="informationForm['model'].invalid && informationForm['model'].touched" class="p-error">Model is required</small>
+      </div> -->
 
-    <div class="field col-12 md:col-12 lg:col-12  mt-1">
-      <!-- <div class="p-inputgroup">
-        <button class="flex" type="button" [style]="{ width: '170px' }" pButton pRipple label="Make"></button>
-        <p-dropdown class="flex" [options]="makes" formControlName="make" inputId="dropdown" (onChange)="onMakeChange()"></p-dropdown>
-      </div>
-      <small *ngIf="informationForm['make'].invalid && informationForm['make'].touched" class="p-error">Make is required</small>
-    </div>
-    <div class="col-12 md:col-12 mb-3">
-      <div class="p-inputgroup">
-        <button class="flex" type="button" [style]="{ width: '170px' }" pButton pRipple label="Model"></button>
-        <p-dropdown class="flex" [options]="models" formControlName="model" inputId="dropdown"></p-dropdown>
-      </div>
-      <small *ngIf="informationForm['model'].invalid && informationForm['model'].touched" class="p-error">Model is required</small>
-    </div> -->
         <span class="p-float-label">
             <p-dropdown class="flex" [options]="makes" formControlName="make" inputId="dropdown" (onChange)="onMakeChange()"></p-dropdown>
-
             <!-- <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="name"></p-dropdown> -->
             <label for="dropdown">Make</label>
         </span>
-    </div>
-    <div class="field col-12 md:col-12 lg:col-12  mt-1">
+      </div>
+      <div class="field col-5 md:col-12 lg:col-5  mt-1">
         <span class="p-float-label">
           <p-dropdown class="flex" [options]="models" formControlName="model" inputId="dropdown"></p-dropdown>
-
             <!-- <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="a"></p-dropdown> -->
             <label for="dropdown">Model</label>
         </span>
+      </div>
     </div>
     <div class="field col-12 md:col-12 lg:col-12  mt-1">
-        <span class="p-float-label">
-            <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="b"></p-dropdown>
-            <label for="dropdown">Location</label>
-        </span>
+      <span class="p-float-label">
+          <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="b"></p-dropdown>
+          <label for="dropdown">Location</label>
+      </span>
     </div>
-    <p-fieldset legend="Year of Manufacture" class="col-12 md:col-12 lg:col-12 mt-1" >
-        <div class="formgroup-inline">
-            <div class="field col-5 md:col-12 lg:col-5">
-                <span class="p-float-label">
-                    <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="c"></p-dropdown>
-                    <label for="dropdown">Min</label>
-                </span>
-            </div>
-            <div class="field col-5 md:col-12 lg:col-5">
-                <span class="p-float-label">
-                    <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="d"></p-dropdown>
-                    <label for="dropdown">Max</label>
-                </span>
-            </div>
-        </div>
-    </p-fieldset>
-    <p-fieldset legend="Price" class="col-12 md:col-12 lg:col-12 mt-1" >
-        <div class="formgroup-inline">
-            <div class="field col-5 md:col-12 lg:col-5">
-                <span class="p-float-label">
-                    <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="e"></p-dropdown>
-                    <label for="dropdown">Min</label>
-                </span>
-            </div>
-            <div class="field col-5 md:col-12 lg:col-5">
-                <span class="p-float-label">
-                    <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="f"></p-dropdown>
-                    <label for="dropdown">Max</label>
-                </span>
-            </div>
-        </div>
-    </p-fieldset>
-    <div class="field col-12 md:col-12 lg:col-12  mt-1">
+  </p-fieldset>
+
+  <p-fieldset legend="Year of Manufacture" class="col-12 md:col-12 lg:col-12 mt-1" >
+    <div class="formgroup-inline">
+      <div class="field col-5 md:col-12 lg:col-5">
         <span class="p-float-label">
-            <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="g"></p-dropdown>
-            <label for="dropdown">Vehicle Type</label>
+          <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="c"></p-dropdown>
+          <label for="dropdown">Min</label>
         </span>
-    </div>
-    <div class="field col-12 md:col-12 lg:col-12  mt-1">
+      </div>
+      <div class="field col-5 md:col-12 lg:col-5">
         <span class="p-float-label">
-            <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="h"></p-dropdown>
-            <label for="dropdown">Verified</label>
+          <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="d"></p-dropdown>
+          <label for="dropdown">Max</label>
         </span>
+      </div>
     </div>
-    <div class="field col-12 md:col-12 lg:col-12  mt-1">
+  </p-fieldset>
+  <p-fieldset legend="Price" class="col-12 md:col-12 lg:col-12 mt-1" >
+    <div class="formgroup-inline">
+      <div class="field col-5 md:col-12 lg:col-5">
         <span class="p-float-label">
-            <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="i"></p-dropdown>
-            <label for="dropdown">Usage</label>
+          <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="e"></p-dropdown>
+          <label for="dropdown">Min</label>
         </span>
-    </div>
-    <div class="field col-12 md:col-12 lg:col-12  mt-1">
+      </div>
+      <div class="field col-5 md:col-12 lg:col-5">
         <span class="p-float-label">
-            <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="j"></p-dropdown>
-            <label for="dropdown">Condition</label>
+          <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="f"></p-dropdown>
+          <label for="dropdown">Max</label>
         </span>
+      </div>
     </div>
-    <div class="field col-12 md:col-12 lg:col-12  mt-1">
-        <span class="p-float-label">
-            <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="k"></p-dropdown>
-            <label for="dropdown">Transmission</label>
-        </span>
-    </div>
-    <div class="field col-12 md:col-12 lg:col-12  mt-1">
-        <span class="p-float-label">
-            <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="l"></p-dropdown>
-            <label for="dropdown">Mileage</label>
-        </span>
-    </div>
-    <p-fieldset legend="Perfomance" class="col-12 md:col-12 lg:col-12 mt-1">
-        <label>Engine Size</label>
-        <div class="formgroup-inline m-2">
-            <div class="field col-5 md:col-12 lg:col-5">
-                <span class="p-float-label">
-                    <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="m"></p-dropdown>
-                    <label for="dropdown">Min</label>
-                </span>
-            </div>
-            <div class="field col-5 md:col-12 lg:col-5">
-                <span class="p-float-label">
-                    <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="n"></p-dropdown>
-                    <label for="dropdown">Max</label>
-                </span>
-            </div>
-        </div>
-        <label>Engine Power</label>
-        <div class="formgroup-inline m-2">
-            <div class="field col-5 md:col-12 lg:col-5">
-                <span class="p-float-label">
-                    <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="o"></p-dropdown>
-                    <label for="dropdown">Min</label>
-                </span>
-            </div>
-            <div class="field col-5 md:col-12 lg:col-5">
-                <span class="p-float-label">
-                    <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="p"></p-dropdown>
-                    <label for="dropdown">Max</label>
-                </span>
-            </div>
-        </div>
-        <div class="formgroup-inline">
-            <div class="field col-5 md:col-12 lg:col-12">
-                <span class="p-float-label">
-                    <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="q"></p-dropdown>
-                    <label for="dropdown">Acceleration</label>
-                </span>
-            </div>
-            <div class="field col-5 md:col-12 lg:col-12">
-                <span class="p-float-label">
-                    <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="r"></p-dropdown>
-                    <label for="dropdown">Drive Train</label>
-                </span>
-            </div>
-        </div>
-    </p-fieldset>
-    <p-fieldset legend="Specification" class="col-12 md:col-12 lg:col-12 mt-1" >
-        <div class="formgroup-inline">
-        <div class="field col-5 md:col-12 lg:col-5">
-            <span class="p-float-label">
-                <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="s"></p-dropdown>
-                <label for="dropdown">Doors</label>
-            </span>
-        </div>
-        <div class="field col-5 md:col-12 lg:col-5">
-            <span class="p-float-label">
-                <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="t"></p-dropdown>
-                <label for="dropdown">Color</label>
-            </span>
-        </div>
-        </div>
-        <div class="formgroup-inline">
-        <div class="field col-5 md:col-12 lg:col-4">
-            <span class="p-float-label">
-                <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="u"></p-dropdown>
-                <label for="dropdown">Seats</label>
-            </span>
-        </div>
-        <div class="field col-5 md:col-12 lg:col-6">
-            <span class="p-float-label">
-                <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="v"></p-dropdown>
-                <label for="dropdown">Boot Space</label>
-            </span>
-        </div>
-        </div>
-    </p-fieldset>
-    <div class="field col-12 md:col-12 lg:col-12 mt-1">
-        <span class="p-float-label">
-            <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="w"></p-dropdown>
-            <label for="dropdown">Fuel Consumption</label>
-        </span>
-    </div>
-    <div class="field col-12 md:col-12 lg:col-12 mt-1">
-        <span class="p-float-label">
-            <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="x"></p-dropdown>
-            <label for="dropdown">Accessibility</label>
-        </span>
-    </div>
+  </p-fieldset>
+  <!-- <a href="#showmore">Show More</a> -->
+  <div id="showmore">
+  <div class="field col-12 md:col-12 lg:col-12  mt-1">
+      <span class="p-float-label">
+          <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="g"></p-dropdown>
+          <label for="dropdown">Vehicle Type</label>
+      </span>
+  </div>
+  <div class="field col-12 md:col-12 lg:col-12  mt-1">
+      <span class="p-float-label">
+          <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="h"></p-dropdown>
+          <label for="dropdown">Verified</label>
+      </span>
+  </div>
+  <div class="field col-12 md:col-12 lg:col-12  mt-1">
+      <span class="p-float-label">
+          <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="i"></p-dropdown>
+          <label for="dropdown">Usage</label>
+      </span>
+  </div>
+  <div class="field col-12 md:col-12 lg:col-12  mt-1">
+      <span class="p-float-label">
+          <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="j"></p-dropdown>
+          <label for="dropdown">Condition</label>
+      </span>
+  </div>
+  <div class="field col-12 md:col-12 lg:col-12  mt-1">
+      <span class="p-float-label">
+          <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="k"></p-dropdown>
+          <label for="dropdown">Transmission</label>
+      </span>
+  </div>
+  <div class="field col-12 md:col-12 lg:col-12  mt-1">
+      <span class="p-float-label">
+          <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="l"></p-dropdown>
+          <label for="dropdown">Mileage</label>
+      </span>
+  </div>
+  <p-fieldset legend="Perfomance" class="col-12 md:col-12 lg:col-12 mt-1">
+      <label>Engine Size</label>
+      <div class="formgroup-inline m-2">
+          <div class="field col-5 md:col-12 lg:col-5">
+              <span class="p-float-label">
+                  <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="m"></p-dropdown>
+                  <label for="dropdown">Min</label>
+              </span>
+          </div>
+          <div class="field col-5 md:col-12 lg:col-5">
+              <span class="p-float-label">
+                  <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="n"></p-dropdown>
+                  <label for="dropdown">Max</label>
+              </span>
+          </div>
+      </div>
+      <label>Engine Power</label>
+      <div class="formgroup-inline m-2">
+          <div class="field col-5 md:col-12 lg:col-5">
+              <span class="p-float-label">
+                  <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="o"></p-dropdown>
+                  <label for="dropdown">Min</label>
+              </span>
+          </div>
+          <div class="field col-5 md:col-12 lg:col-5">
+              <span class="p-float-label">
+                  <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="p"></p-dropdown>
+                  <label for="dropdown">Max</label>
+              </span>
+          </div>
+      </div>
+      <div class="formgroup-inline">
+          <div class="field col-5 md:col-12 lg:col-12">
+              <span class="p-float-label">
+                  <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="q"></p-dropdown>
+                  <label for="dropdown">Acceleration</label>
+              </span>
+          </div>
+          <div class="field col-5 md:col-12 lg:col-12">
+              <span class="p-float-label">
+                  <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="r"></p-dropdown>
+                  <label for="dropdown">Drive Train</label>
+              </span>
+          </div>
+      </div>
+  </p-fieldset>
+  <p-fieldset legend="Specification" class="col-12 md:col-12 lg:col-12 mt-1" >
+      <div class="formgroup-inline">
+      <div class="field col-5 md:col-12 lg:col-5">
+          <span class="p-float-label">
+              <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="s"></p-dropdown>
+              <label for="dropdown">Doors</label>
+          </span>
+      </div>
+      <div class="field col-5 md:col-12 lg:col-5">
+          <span class="p-float-label">
+              <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="t"></p-dropdown>
+              <label for="dropdown">Color</label>
+          </span>
+      </div>
+      </div>
+      <div class="formgroup-inline">
+      <div class="field col-5 md:col-12 lg:col-4">
+          <span class="p-float-label">
+              <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="u"></p-dropdown>
+              <label for="dropdown">Seats</label>
+          </span>
+      </div>
+      <div class="field col-5 md:col-12 lg:col-6">
+          <span class="p-float-label">
+              <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="v"></p-dropdown>
+              <label for="dropdown">Boot Space</label>
+          </span>
+      </div>
+      </div>
+  </p-fieldset>
+  <div class="field col-12 md:col-12 lg:col-12 mt-1">
+      <span class="p-float-label">
+          <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="w"></p-dropdown>
+          <label for="dropdown">Fuel Consumption</label>
+      </span>
+  </div>
+  <div class="field col-12 md:col-12 lg:col-12 mt-1">
+      <span class="p-float-label">
+          <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="x"></p-dropdown>
+          <label for="dropdown">Accessibility</label>
+      </span>
+  </div>
+</div>
   <!-- </form> -->
 </div>

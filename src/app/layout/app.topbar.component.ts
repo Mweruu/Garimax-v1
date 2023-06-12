@@ -15,7 +15,7 @@ export class AppTopBarComponent {
     loggedin = false;
     searchData: any[] = []; // This array will hold the search results
     vehicles:any;
-
+    searchText:any;
 
     @ViewChild('menubutton') menuButton!: ElementRef;
 
@@ -25,7 +25,7 @@ export class AppTopBarComponent {
 
     constructor(public layoutService: LayoutService,
                 public ds: DataStorageService,
-                public allVehicles:VehiclesComponent
+               
                 ) { }
 
 

@@ -45,6 +45,7 @@ import { ViewComponent } from '../homepage/vehicles/view/view.component';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { VehiclesPipe } from '../homepage/vehicles/vehicles.pipe';
 import { ChipModule } from 'primeng/chip';
+import { LayoutPipe } from './layout.pipe';
 
 
 @NgModule({
@@ -61,8 +62,8 @@ import { ChipModule } from 'primeng/chip';
         CardetailsComponent,
         PreviewComponent,
         ViewComponent,
-        VehiclesPipe
-
+        VehiclesPipe,
+        LayoutPipe
 
     ],
     imports: [
@@ -97,7 +98,7 @@ import { ChipModule } from 'primeng/chip';
         TabMenuModule,
         ChipModule,
     ],
-    providers:[DataService, MessageService,VehiclesComponent],
+    providers:[DataService, MessageService,ViewComponent, AppTopBarComponent],
     exports: [AppLayoutComponent]
 })
 export class AppLayoutModule { }

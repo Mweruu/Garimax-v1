@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DataStorageService } from '../../datastorage.service';
 import { AppTopBarComponent } from 'src/app/layout/app.topbar.component';
+import { ViewComponent } from './view/view.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-vehicles',
@@ -17,6 +19,9 @@ export class VehiclesComponent implements OnInit {
 
   constructor(
     private ds:DataStorageService,
+    public view:ViewComponent,
+    public router: Router,
+    public topbar: AppTopBarComponent,
   ) { }
 
   ngOnInit() {
@@ -41,6 +46,10 @@ export class VehiclesComponent implements OnInit {
         console.error(error);
       }
     );
+  }
+
+  getVehicle(vehicleId: string){
+    this.router.navigateByUrl(`view/${vehicleId}`);
   }
 
 }

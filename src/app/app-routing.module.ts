@@ -51,9 +51,9 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'view', component:ViewComponent,
+    path: 'view/:vehicleId', component:ViewComponent,
     // children:[{},{},{}, {},{},{},{},{},]
-  },
+  }
 
 
 ];
