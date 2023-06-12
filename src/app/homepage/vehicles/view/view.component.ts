@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { DataStorageService } from 'src/app/datastorage.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-view',
@@ -8,18 +9,33 @@ import { DataStorageService } from 'src/app/datastorage.service';
   styleUrls: ['./view.component.scss']
 })
 export class ViewComponent implements OnInit {
-
-  constructor(private ds:DataStorageService) { }
   items!: MenuItem[];
-  vehicleId!:string;
   vehicle:any;
   activeItem!: MenuItem;
+  currentVehicleId!:string;
+  fetched = false;
 
-  ngOnInit() {
-    //   this.items = Array.from({ length: 8 },() => ({
-    //     label: `Engine`
-    // }
-    //   ));
+  constructor(private ds:DataStorageService,
+              private router: ActivatedRoute,
+             ) { }
+
+  async ngOnInit() {
+    this.router.params.subscribe(params => {
+      if(params['vehicleId']){
+        this.currentVehicleId = params['vehicleId'];
+        console.log("ID:",this.currentVehicleId)
+        this.ds.getVehicle(this.currentVehicleId).subscribe(vehicle => {
+          this.vehicle = vehicle;
+          console.log("DATA", vehicle)
+        })
+      }
+    })
+
+
+
+
+
+
      this.items = [
             { label: 'Inspection Cert', icon: 'pi pi-fw pi-check-circle', },
             { label: 'Engine', icon: 'pi pi-fw pi-check-circle' },
@@ -33,41 +49,15 @@ export class ViewComponent implements OnInit {
 
         ];
       this.activeItem = this.items[0];
-      this.getSingleVehicle()
   }
 
-  getAllVehicles(){
-    this.ds.getVehicles().subscribe(
-      (vehicles) => {
-        console.log(vehicles);
-        console.log(vehicles.vehicles);
-        console.log(vehicles.vehicles.color);
-
-        // this.vehicle = vehicles.vehicles;
-
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
+  async getSingleVehicle(vehicleId: string) {
+    try {
+      const vehicle = await this.ds.getVehicle(vehicleId).toPromise();
+      this.vehicle = vehicle;
+      this.fetched = true;
+    } catch (error) {
+      console.error(error);
+    }
   }
-  getSingleVehicle(){
-    this.ds.getVehicle(this.vehicleId).subscribe(
-      (vehicle) => {
-        console.log(vehicle);
-        // console.log(vehicle.vehicle);
-        // console.log(vehicle.vehicle.color);
-
-        // this.vehicles = vehicle.vehicle;
-
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
-  }
-
-  // filterByUserId(vehicleId:string) {
-  //   return this.vehicles?.filter?.((vehicle: { vehicleId: string; }) => vehicle.vehicleId === vehicleId);
-  // }
 }

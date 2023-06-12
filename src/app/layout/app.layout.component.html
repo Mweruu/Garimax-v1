@@ -1,18 +1,17 @@
 <div class="layout-wrapper" >
-    <app-topbar></app-topbar>
+    <app-topbar #topbar ></app-topbar>
     <div class="layout-main-container">
         <div class="layout-main">
             <router-outlet></router-outlet>
-            <div _ngcontent-wvy-c28="" class="grid layout-dashboard">
-                <div _ngcontent-wvy-c28="" class="col-12 md:col-3 lg:col-3">
-                    <div _ngcontent-wvy-c28="" class="card card-w-title">
-                    <app-filters></app-filters>
-                </div>
+            <div class="grid layout-dashboard">
+              <div class="col-12 md:col-3 lg:col-3">
+                <div  class="card card-w-title">
+                  <app-filters></app-filters>
+              </div>
             </div>
-            <div _ngcontent-wvy-c28="" class="col-12 md:col-9 lg:col-9">
-                <div _ngcontent-wvy-c28="" class="card card-w-title">
-                        <app-vehicles></app-vehicles>
-                </div>
+            <div class="col-12 md:col-8 lg:col-8">
+                <div class="card card-w-title">
+                  <app-vehicles></app-vehicles></div>
             </div>
         </div>
     </div>

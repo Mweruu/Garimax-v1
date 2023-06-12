@@ -70,8 +70,33 @@
 
 .p-fileupload{
   width: 100%;
-.view{
-  padding-left: 350px;
-  padding-right: 350px;
+
 }
+.view{
+  padding-left: 100px;
+  padding-right: 100px;
+}
+dl {
+  border: 1px solid #bdc8ca;
+  /* background-color: #f7fafa; */
+}
+dt, dd {
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+dd ~ dt,
+dd ~ dd {
+  border-top: 1px solid #bdc8ca;
+}
+dt {
+  float: left;
+  width: 35%;
+  padding-bottom: 0;
+}
+
+dd:after {
+  content: "";
+  display: block;
+  clear: both;
 }
