@@ -34,6 +34,7 @@ import { StepsModule } from 'primeng/steps';
 import { FieldsetModule } from 'primeng/fieldset';
 import { FileUploadModule } from 'primeng/fileupload';
 import { ChipModule } from 'primeng/chip';
+import { AuthService } from './auth.service';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,7 @@ import { ChipModule } from 'primeng/chip';
     FileUploadModule,
     ChipModule,
   ],
-  providers: [MessageService],
+  providers: [MessageService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

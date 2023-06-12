@@ -5,9 +5,22 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  getUsersUrl= 'http://localhost:8080/api/users';
-
+  userName: any
+  userToken: any
+  userId: any
   constructor() { }
 
-  // login(email:string, pasword:string):Observable<use>{}
+  setUserCredentials(data: any) {
+    this.userName = data.user.firstName,
+    this.userId = data.user.id
+    this.userToken = data.token
+  }
+
+  getUserCredentials(){
+    return {
+      name: this.userName,
+      tokem: this.userToken,
+      userId: this.userId
+    }
+  }
 }
