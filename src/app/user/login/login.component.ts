@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { DataStorageService } from 'src/app/datastorage.service';
 import { MessageService } from 'primeng/api';
 import { timer } from 'rxjs';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -26,6 +27,7 @@ export class LoginComponent implements OnInit {
   constructor(public layoutService: LayoutService,
               private fb:FormBuilder,
                private ds: DataStorageService,
+               private authService: AuthService,
                private router: Router,
                private messageService: MessageService) { }
 
@@ -55,6 +57,7 @@ export class LoginComponent implements OnInit {
       response => {
         console.log('User authenticated', response);
         console.log(response.token)
+        this.authService.setUserCredentials(response);
         this.messageService.add({
           severity:'success',
           summary:'Success',

@@ -26,25 +26,8 @@ export class PreviewComponent implements OnInit {
       "carDetails": this.dataServive.getcardetailsData()
     }
     console.log(this.carData)
-    this.onSubmit()
   }
-  // userId: req.body.userId,
-  // model: req.body.model,
-  // image: imagePath,
-  // images: imagesPaths,
-  // make: req.body.make,
-  // location: req.body.location,
-  // price: req.body.price,
-  // yearOfManufactor: req.body.yearOfManufactor,
-  // color: req.body.color,
-  // vehicleType: req.body.vehicleType,
-  // condition: req.body.condition,
-  // transmission: req.body.transmission,
-  // engineSize: req.body.engineSize,
-  // mileage: req.body.mileage,
-  // foreignUsed: req.body.foreignUsed,
-  // localUsed: req.body.localUsed,
-  // additionalFeatures: req.body.additionalFeatures
+
 
   onSubmit(){
     const userId = 2
@@ -73,28 +56,6 @@ export class PreviewComponent implements OnInit {
     //                                   this.carData.carDetails.description,
     //                                   this.carData.carDetails.fueltype].toString());
 
-
-
-    // const vehicleData: any = {
-    //   userId: 1,
-    //   model: this.carData.basicInfo.model,
-    //   make: this.carData.basicInfo.make,
-    //   price: this.carData.basicInfo.price,
-    //   location: this.carData.basicInfo.location,
-    //   yearOfManufactor: this.carData.basicInfo.yearOfManufacture,
-    //   mileage: this.carData.basicInfo.mileage,
-    //   images: form,
-    //   color: this.carData.carDetails.color,
-    //   condition: this.carData.carDetails.steering,
-    //   transmission: this.carData.carDetails.transmission,
-    //   engineSize: this.carData.carDetails.engineSize,
-    //   foreignUsed: true,
-    //   localUsed: false,
-    //   vehicleType: this.carData.carDetails.vehicleType,
-    //   additionalFeatures: [this.carData.carDetails.drivetype,
-    //                       this.carData.carDetails.description,
-    //                       this.carData.carDetails.fueltype]
-    // }
     console.log("final -> ", vehicleData)
 
     this.ds.createVehicle(vehicleData).subscribe(response => {

@@ -43,7 +43,7 @@ export class CardetailsComponent implements OnInit {
         engineSize:['', Validators.required],
         drivetype:['',Validators.required],
         description:['']
-    });
+      });
 
     }
 
