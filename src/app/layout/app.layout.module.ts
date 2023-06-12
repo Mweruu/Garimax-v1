@@ -64,7 +64,6 @@ import { AuthService } from '../auth.service';
         ViewComponent,
         VehiclesPipe
 
-
     ],
     imports: [
         BrowserModule,

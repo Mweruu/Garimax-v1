@@ -13,6 +13,7 @@ import { timer } from 'rxjs';
 export class PreviewComponent implements OnInit {
   sidebarVisible3!: boolean;
   carData: any;
+  vehicle:any;
 
   constructor(private dataServive: DataService,
               private messageService: MessageService,
@@ -60,6 +61,8 @@ export class PreviewComponent implements OnInit {
 
     this.ds.createVehicle(vehicleData).subscribe(response => {
       console.log('Vehicle Uploaded successfully!', response);
+      this.vehicle = response
+
       this.messageService.add({
         severity:'success',
         summary:'Success',

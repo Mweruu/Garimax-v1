@@ -9,19 +9,19 @@
 <div *ngFor="let vehicle of vehicles | search:searchText">
   <div class="card flex mb-3 mt-3">
     <div class="grid">
-      <div class="col-12 md:col-12 lg:col-4 flex align-items-center justify-content-center">
+      <div class="col-12 md:col-12 lg:col-5 flex align-items-center justify-content-center">
           <div class="p-fluid">
             <p-image src="{{vehicle.image}}" alt="Image" width="100%" [preview]="true"></p-image>
           </div>
       </div>
-      <div class="col-12 md:col-12 lg:col-7 flex align-items-center justify-content-center" routerLink="/view">
+      <div class="col-12 md:col-12 lg:col-7 flex align-items-center justify-content-center" routerLink="/view" (click)="getVehicle(vehicle.id)">
         <div class="card col-12 md:col-12 lg:col-12 ">
           <div class="mt-2">
             <p-tag [severity]="vehicle.foreignUsed? 'info':'warning'" value= "Foreign Used" [icon]="vehicle.foreignUsed? 'pi pi-check': 'pi pi-times'" [rounded]="true" class="ml-1"></p-tag>
             <p-tag [severity]="vehicle.locallyUsed? 'info':'warning'" value= "Locally Used" [icon]="vehicle.locallyUsed? 'pi pi-check': 'pi pi-times'" [rounded]="true" class="ml-2"></p-tag>
           </div>
         <h5 class="m-2">
-            {{vehicle.price}}Ksh
+          Ksh. {{vehicle.price}}
           </h5>
           <h6 class="m-2">
           {{vehicle.make}} {{vehicle.model}} ({{vehicle.yearOfManufactor.split('-')[0]}})

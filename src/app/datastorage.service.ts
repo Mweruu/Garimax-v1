@@ -12,7 +12,8 @@ export class DataStorageService {
   private createindividualVendorUrl = 'http://localhost:8080/api/singleVendor/register';
   private createcompanyVendorUrl = 'http://localhost:8080/api/coVendor/register';
   private createVehicleUrl = 'http://localhost:8080/api/addVehicle';
-  private getVehicleUrl = 'http://localhost:8080/api/getVehicles'
+  private getVehicleUrl = 'http://localhost:8080/api/getVehicles';
+  private getSingleVehicleUrl = 'http://localhost:8080/api/getVehicle'
 
   user:any;
 
@@ -40,14 +41,8 @@ export class DataStorageService {
     return this.http.get<any>(`${this.getVehicleUrl}`);
   }
   getVehicle(id:string): Observable<any> {
-    const singleVehicleUrl = `${this.getVehicleUrl}/${id}`; // Append the vehicleId to the URL
-    return this.http.get<any>(singleVehicleUrl);
-    // return this.http.get<any>(`${this.getVehicleUrl}`);
+    return this.http.get<any>(`${this.getSingleVehicleUrl}/${id}`);
   }
-  getOptions(): Observable<any> {
-    return this.http.get<any>('/assets/data/carproperties.json')
-        // .toPromise()
-        // .then(res => res.data as any[])
-        // .then(data => data);
-}
+
+
 }

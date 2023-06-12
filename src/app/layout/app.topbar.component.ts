@@ -16,7 +16,7 @@ export class AppTopBarComponent implements OnInit{
     loggedin = false;
     searchData: any[] = []; // This array will hold the search results
     vehicles:any;
-
+    searchText:any;
 
     @ViewChild('menubutton') menuButton!: ElementRef;
 
