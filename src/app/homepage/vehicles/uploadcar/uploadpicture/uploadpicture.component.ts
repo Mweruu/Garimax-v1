@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { DataService } from 'src/app/layout/data.service';
@@ -12,6 +12,7 @@ import { DataService } from 'src/app/layout/data.service';
 export class UploadpictureComponent implements OnInit {
   uploadedFiles: any[] = [];
   imageForm!:FormGroup;
+  file: any
   imageUploaded = false;
   isSubmitted = false;
   vendor:any;
@@ -24,32 +25,29 @@ export class UploadpictureComponent implements OnInit {
 
   ngOnInit(){
     this.imageForm= this.fb.group({
-      image:['',Validators.required],
+      images: new FormControl(),
     })
   }
 
 
-  onUpload(event: { files: any; }) {
+  onUpload(event: any) {
     try{
       let count = 0;
       for(let file of event.files) {
         count = count + 1
-        console.log(file)
         this.uploadedFiles.push(file);
       }
+      this.file = event.files[0];
       this.imageUploaded = true;
-      this.messageService.add({severity: 'info', summary: 'Image(s) Uploaded', detail: `${count} Image(s) uploaded`});
+      this.messageService.add({severity: 'info', summary: 'File Uploaded', detail: `${count} Image(s) uploaded`});
     } catch(err){
+      console.log(err)
       this.messageService.add({severity: 'dagger', summary: 'Image(s) Upload Failed', detail: `Failed to upload Images`});
     }
   }
 
   onSubmit(){
-    const formData = new FormData();
-    for(let file of this.uploadedFiles){
-      formData.append('images', file.data, file.data.name);
-    }
-    this.dataService.setuploadPictureData(formData);
+    this.dataService.setuploadPictureData(this.file);
     console.log(this.dataService.getuploadPictureData())
     this.isSubmitted = true
     if(!this.imageUploaded){
