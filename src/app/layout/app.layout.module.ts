@@ -47,6 +47,7 @@ import { VehiclesPipe } from '../homepage/vehicles/vehicles.pipe';
 import { ChipModule } from 'primeng/chip';
 import { AuthService } from '../auth.service';
 import { GalleriaModule } from 'primeng/galleria';
+import { TabViewModule } from 'primeng/tabview';
 
 
 @NgModule({
@@ -97,7 +98,7 @@ import { GalleriaModule } from 'primeng/galleria';
         DialogModule,
         TabMenuModule,
         ChipModule,
-        GalleriaModule
+        GalleriaModule,
     ],
     providers:[DataService, AuthService, MessageService, ViewComponent],
     exports: [AppLayoutComponent]

@@ -29,7 +29,20 @@ export class PreviewComponent implements OnInit {
   drivetype!:string;
   images!:[];
   properties:any[] = [];
-
+  responsiveOptions: any[] = [
+    {
+        breakpoint: '1024px',
+        numVisible: 5
+    },
+    {
+        breakpoint: '768px',
+        numVisible: 3
+    },
+    {
+        breakpoint: '560px',
+        numVisible: 1
+    }
+];
   constructor(private dataServive: DataService,
               private messageService: MessageService,
               private router: Router,

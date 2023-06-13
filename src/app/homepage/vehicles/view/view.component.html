@@ -14,25 +14,16 @@
   <div class="col-5 md:col-5 lg:col-5">
     <div class="card">
       <h5>Image</h5>
-			<div class="grid formgrid">
-				<div class="col-12 mb-2 lg:col-12 lg:mb-0">
-
       <div class="card">
-        <!-- <p-galleria [(value)]={{vehicle.image}} [responsiveOptions]="responsiveOptions" [containerStyle]="{ 'max-width': '640px' }" [numVisible]="5"> -->
-          <!-- <p-galleria value={{vehicle.image}}>   -->
-          <ng-template pTemplate="item" let-item>
-                <img [src]="vehicle.image" style="width: 100%;" />
-            </ng-template>
-            <ng-template pTemplate="thumbnail" let-item>
-                <div class="grid grid-nogutter justify-content-center">
-                    <img [src]="vehicle.image" />
-                </div>
-            </ng-template>
-        <!-- </p-galleria> -->
+        <!-- <p-galleria [value]="images" [responsiveOptions]="responsiveOptions" [containerStyle]="{ 'max-width': '640px' }" [numVisible]="5"> -->
+          <p-galleria [value]="images" [numVisible]="5" [circular]="true" [showItemNavigators]="true" [showThumbnails]="false" [responsiveOptions]="responsiveOptions" [containerStyle]="{ 'max-width': '640px' }">
+            <ng-template pTemplate="item" let-item>
+            <img [src]="item" style="width: 100%; display: block;" />
+          </ng-template>
+        </p-galleria>
       </div>
           <!-- <p-image src={{vehicle.image}} alt="Image" width="100%" [preview]="true"></p-image> -->
-				</div>
-			</div>
+
       <div class="grid formgrid">
         <p-divider align="left">
           <div class="inline-flex align-items-center">
@@ -138,6 +129,9 @@
         </div> -->
       </div>
     </div>
+    <p-divider></p-divider>
+    <p-button icon="pi pi-fw pi-phone" label="Contact Seller" styleClass="p-button-danger"></p-button>
+
   </div>
 </div>
 <!-- <button pButton pRipple label="Submit" class="w-20rem p-3 text-xl ml-5" type="submit"></button> -->
@@ -146,8 +140,81 @@
 <!-- <hr class="width:65px"> -->
 <p-divider></p-divider>
 <div class="card col-12 md:col-12 lg:col-12">
-  <p-tabMenu [scrollable]="true" [model]="items" [activeItem]="activeItem"></p-tabMenu>
+  <!-- <p-tabMenu [scrollable]="true" [model]="items" [activeItem]="activeItem" ></p-tabMenu> -->
+  <p-tabMenu [scrollable]="true" [model]="items"  [activeItem]="activeItem"  (onTabChange)="onTabChange($event)"></p-tabMenu>
 </div>
+    <div class=" col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Inspection Cert'">
+    </div>
+    <div class="card col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'engine'">
+      <div class="formgroup-inline">
+        <div *ngFor="let engine of engines" class="field-checkbox col-5 md:col-5 lg:col-5">
+          <p-checkbox name="group" [value]="engine" [inputId]="engine.key"></p-checkbox>
+          <label [for]="engine.key">{{ engine.name }}</label>
+        </div>
+      </div>
+    </div>
+    <div class="card col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Electricals'">
+      <div class="formgroup-inline">
+        <div *ngFor="let electrical of electricals" class="field-checkbox col-5 md:col-5 lg:col-5">
+          <p-checkbox name="group" [value]="electrical" [inputId]="electrical.key"></p-checkbox>
+          <label [for]="electrical.key">{{ electrical.name }}</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Transmissson & Clutch'">
+      <div class="formgroup-inline">
+        <div *ngFor="let clutch of clutches" class="field-checkbox col-5 md:col-5 lg:col-5">
+          <p-checkbox name="group" [value]="clutch" [inputId]="clutch.key"></p-checkbox>
+          <label [for]="clutch.key">{{ clutch.name }}</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Suspension & Steering'">
+      <div class="formgroup-inline">
+        <div *ngFor="let suspension of suspensions" class="field-checkbox col-5 md:col-5 lg:col-5">
+          <p-checkbox name="group" [value]="suspension" [inputId]="suspension.key"></p-checkbox>
+          <label [for]="suspension.key">{{ suspension.name }}</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Test Drive'">
+      <div class="formgroup-inline">
+        <div *ngFor="let testdrive of testdrives" class="field-checkbox col-5 md:col-5 lg:col-5">
+          <p-checkbox name="group" [value]="testdrive" [inputId]="testdrive.key"></p-checkbox>
+          <label [for]="testdrive.key">{{ testdrive.name }}</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Exterior'">
+      <div class="formgroup-inline">
+        <div *ngFor="let exterior of exteriors" class="field-checkbox col-5 md:col-5 lg:col-5">
+          <p-checkbox name="group" [value]="exterior" [inputId]="exterior.key"></p-checkbox>
+          <label [for]="exterior.key">{{ exterior.name }}</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Interior'">
+      <div class="formgroup-inline">
+        <div *ngFor="let interior of interiors" class="field-checkbox col-5 md:col-5 lg:col-5">
+          <p-checkbox name="group" [value]="interior" [inputId]="interior.key"></p-checkbox>
+          <label [for]="interior.key">{{ interior.name }}</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Airconditioning System'">
+      <div class="formgroup-inline">
+        <div *ngFor="let airsystem of airsystems" class="field-checkbox col-5 md:col-5 lg:col-5">
+          <p-checkbox name="group" [value]="airsystem" [inputId]="airsystem.key"></p-checkbox>
+          <label [for]="airsystem.key">{{ airsystem.name }}</label>
+        </div>
+      </div>
+    </div>
 </div>
 </div>
 <app-footer></app-footer>
