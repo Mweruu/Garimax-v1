@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CAR_MODELS } from '../const-data/constants';
+import { BODY_TYPE, CAR_MODELS, CAR_OPTIONS, COLOR, DRIVETRAIN, ENGINE_POWER, FUEL_TYPE, KENYA_LOCATION, STEERING, TRANSMISSION } from '../const-data/constants';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/layout/data.service';
@@ -26,6 +26,16 @@ export class FiltersComponent implements OnInit {
   filtersForm!:FormGroup
   isSubmitted = false;
   vendor:any;
+  location:any = KENYA_LOCATION;
+  options: any[] = CAR_OPTIONS;
+  color: any = COLOR;
+  fueltype:any = FUEL_TYPE;
+  bodytype:any = BODY_TYPE;
+  engineSize:any = ENGINE_POWER;
+  steering:any = STEERING;
+  gear:any = TRANSMISSION;
+  drivetrain:any = DRIVETRAIN;
+  showMore: boolean = false;
 
   constructor( private fb:FormBuilder,
                private router: Router,
@@ -47,6 +57,10 @@ export class FiltersComponent implements OnInit {
       location:['',Validators.required],
       mileage:['',Validators.required],
     })
+  }
+
+  toggleShowMore() {
+    this.showMore = !this.showMore;
   }
 
   onMakeChange(): void {

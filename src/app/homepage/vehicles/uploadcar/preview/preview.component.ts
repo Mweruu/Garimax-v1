@@ -27,7 +27,7 @@ export class PreviewComponent implements OnInit {
   steering!:string;
   engine!:string;
   drivetype!:string;
-  // images!:;
+  images!:[];
   properties:any[] = [];
 
   constructor(private dataServive: DataService,
@@ -60,7 +60,8 @@ export class PreviewComponent implements OnInit {
     this.steering = this.carData.carDetails.steering;
     this.engine = this.carData.carDetails.engineSize;
     this.drivetype = this.carData.carDetails.drivetype;
-
+    this.images = this.carData.images
+    console.log(23456,this.images)
   }
 
 
