@@ -230,20 +230,6 @@ export const DRIVETRAIN = [
 
 ]
 
-export const ENGINE = [
-  {"name": "Start The Engine", "key": "STE" },
-  {"name": "No Engine Noise - Crank Shaft Bearings/Knocking/Metal Bearing", "key": "NEN" },
-  {"name": "Smoke In Exhaust", "key": "SIE" },
-  {"name": "Engine Misfiring", "key": "EMS" },
-  {"name": "Arm Or Head Rest Upholstery", "key": "AHRU" },
-  {"name": "No Sludge Found", "key": "NSF" },
-  {"name": "Oil Leakage", "key": "OL" },
-  {"name": "Coolant /Reservior /Radiator /Hose /Cap", "key": "CRHC" },
-  {"name": "Engine Overhaul Extent /Repair History", "key": "EOE" },
-  {"name": "Rpm At Idle", "key": "RAI" },
-  {"name": "Other Engine Noise", "key": "OEN" },
-  {"name": "Engine Mounts", "key": "EM" },
-]
 export interface CarModels {
   [make: string]: string[];
 }
@@ -264,7 +250,20 @@ export const CAR_MODELS:CarModels = {
   Volvo:["S90","V90","V60","S60","EX90","EX30","XC40","XC60","XC90"],
 };
 
-
+export const ENGINE = [
+  {"name": "Start The Engine", "key": "STE" },
+  {"name": "No Engine Noise - Crank Shaft Bearings/Knocking/Metal Bearing", "key": "NEN" },
+  {"name": "Smoke In Exhaust", "key": "SIE" },
+  {"name": "Engine Misfiring", "key": "EMS" },
+  {"name": "Arm Or Head Rest Upholstery", "key": "AHRU" },
+  {"name": "No Sludge Found", "key": "NSF" },
+  {"name": "Oil Leakage", "key": "OL" },
+  {"name": "Coolant /Reservior /Radiator /Hose /Cap", "key": "CRHC" },
+  {"name": "Engine Overhaul Extent /Repair History", "key": "EOE" },
+  {"name": "Rpm At Idle", "key": "RAI" },
+  {"name": "Other Engine Noise", "key": "OEN" },
+  {"name": "Engine Mounts", "key": "EM" },
+]
 export const ELECTRICALS = [
 {"name": "Transmission Electrical Malfunction", "key": "TEM" },
 {"name": "Eps", "key": "EPS" },
