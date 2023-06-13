@@ -48,7 +48,6 @@ export class UploadpictureComponent implements OnInit {
 
   onSubmit(){
     this.dataService.setuploadPictureData(this.uploadedFiles);
-    console.log(this.dataService.getuploadPictureData())
     this.isSubmitted = true
     if(!this.imageUploaded){
       return;

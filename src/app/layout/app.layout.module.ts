@@ -47,9 +47,7 @@ import { VehiclesPipe } from '../homepage/vehicles/vehicles.pipe';
 import { ChipModule } from 'primeng/chip';
 import { AuthService } from '../auth.service';
 import { GalleriaModule } from 'primeng/galleria';
-import { TabViewModule } from 'primeng/tabview';
-
-
+import { TabViewModule } from 'primeng/tabview'
 @NgModule({
     declarations: [
         AppTopBarComponent,
@@ -64,8 +62,7 @@ import { TabViewModule } from 'primeng/tabview';
         CardetailsComponent,
         PreviewComponent,
         ViewComponent,
-        VehiclesPipe
-
+        VehiclesPipe,
     ],
     imports: [
         BrowserModule,

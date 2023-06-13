@@ -27,7 +27,7 @@ export class PreviewComponent implements OnInit {
   steering!:string;
   engine!:string;
   drivetype!:string;
-  images!:[];
+  images: string[] =[];
   properties:any[] = [];
   responsiveOptions: any[] = [
     {
@@ -55,26 +55,33 @@ export class PreviewComponent implements OnInit {
       "images": this.dataServive.getuploadPictureData(),
       "carDetails": this.dataServive.getcardetailsData()
     }
-    this.properties = this.dataServive.getbasicInfoData()
-    console.log(77856,this.properties)
-    // console.log(77856,this.properties.make)
-
-    console.log(33,this.carData)
-    this.make = this.carData.basicInfo.make;
-    this.model = this.carData.basicInfo.model;
-    this.year = this.carData.basicInfo.year;
-    this.price = this.carData.basicInfo.price;
-    this.location = this.carData.basicInfo.location;
-    this.mileage = this.carData.basicInfo.mileage;
+    if(this.carData.images){
+      this.processImageFiles(this.carData.images)
+      console.log(this.images);
+    }
+    if(this.carData.basicInfo){
+      this.make = this.carData.basicInfo.make;
+      this.model = this.carData.basicInfo.model;
+      this.year = this.carData.basicInfo.year;
+      this.price = this.carData.basicInfo.price;
+      this.location = this.carData.basicInfo.location;
+      this.mileage = this.carData.basicInfo.mileage;
+    }
     // this.fueltype = this.carData.carDetails.fueltype;
-    this.bodytype = this.carData.carDetails.bodytype;
-    this.transmission = this.carData.carDetails.transmission;
-    this.color = this.carData.carDetails.color;
-    this.steering = this.carData.carDetails.steering;
-    this.engine = this.carData.carDetails.engineSize;
-    this.drivetype = this.carData.carDetails.drivetype;
-    this.images = this.carData.images
-    console.log(23456,this.images)
+    if(this.carData.carDetails){
+      this.bodytype = this.carData.carDetails.bodytype;
+      this.transmission = this.carData.carDetails.transmission;
+      this.color = this.carData.carDetails.color;
+      this.steering = this.carData.carDetails.steering;
+      this.engine = this.carData.carDetails.engineSize;
+      this.drivetype = this.carData.carDetails.drivetype;
+    }
+  }
+
+  processImageFiles(files: any[]): void {
+    for (const file of files) {
+      this.images.push(file.objectURL);
+    }
   }
 
 

@@ -12,17 +12,13 @@
       <h5>Image</h5>
 			<div class="grid formgrid">
 				<div class="col-12 mb-2 lg:col-12 lg:mb-0">
-          <!-- <p>{{carData.images}}</p> -->
-          <!-- <p-image src={{carData.images}} alt="Image" width="100%" [preview]="true"></p-image> -->
           <div class="card">
-            <!-- <p-galleria [value]="images" [responsiveOptions]="responsiveOptions" [containerStyle]="{ 'max-width': '640px' }" [numVisible]="5"> -->
               <p-galleria [value]="images" [numVisible]="5" [circular]="true" [showItemNavigators]="true" [showThumbnails]="false" [responsiveOptions]="responsiveOptions" [containerStyle]="{ 'max-width': '640px' }">
                 <ng-template pTemplate="item" let-item>
                 <img [src]="item" style="width: 100%; display: block;" />
               </ng-template>
             </p-galleria>
           </div>
-          <!-- <p-image src="../../../../../assets/layout/images/vehicles/2023-bmw-x7.jpg" alt="Image" width="100%" [preview]="true"></p-image> -->
 				</div>
 			</div>
       <div class="grid formgrid">
