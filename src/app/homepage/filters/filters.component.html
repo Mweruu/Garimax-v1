@@ -1,36 +1,39 @@
 <!-- <div class="grid p-fluid"> -->
   <div class="grid">
     <div class="col-12 md:col-12">
-  <!-- <form [formGroup]="filtersForm"> -->
-  <!-- <p-fieldset legend="Basic Filter" class="col-12 md:col-12 lg:col-12" > -->
 		<div class="p-fluid">
 			<div class="p-formgrid grid">
-				<div class="field m-1 col">
-					<label htmlFor="name2">Make</label>
-          <p-dropdown [options]="makes" formControlName="make" inputId="dropdown" (onChange)="onMakeChange()"></p-dropdown>
-				</div>
-				<div class="field m-1 col">
-					<label htmlFor="email2">Model</label>
-          <p-dropdown  [options]="models" formControlName="model" inputId="dropdown"></p-dropdown>
-				</div>
+        <div class="col-12 md:col-12 mb-2">
+          <div class="p-inputgroup">
+            <p-button label="Make" styleClass="p-button-secondary p-button-text flex"></p-button>
+            <p-dropdown class="flex" [options]="makes" inputId="dropdown" (onChange)="onMakeChange()"></p-dropdown>
+          </div>
+        </div>
+        <div class="col-12 md:col-12 mb-2 border">
+          <div class="p-inputgroup">
+            <p-button label="Make" styleClass="p-button-secondary p-button-text flex"></p-button>
+            <p-dropdown class="flex" [options]="models" inputId="dropdown"></p-dropdown>
+          </div>
+        </div>
+				<div class="col-12 md:col-12 mb-2">
+          <div class="p-inputgroup">
+            <p-button label="Location" styleClass="p-button-secondary p-button-text flex"></p-button>
+            <p-dropdown class="flex" inputId="dropdown"  [options]="location"  optionValue="location"  optionLabel="location"></p-dropdown><br>
+          </div>
+        </div>
+        <div class="col-12 md:col-12 mb-2">
+          <div class="p-inputgroup">
+            <p-button label="Mileage" styleClass="p-button-secondary p-button-text flex"></p-button>
+            <p-dropdown class="flex" inputId="dropdown"  [options]="location"  optionValue="location"  optionLabel="location"></p-dropdown><br>
+          </div>
+        </div>
 			</div>
 		</div>
-    <div class="p-fluid">
-			<div class="field m-1">
-				<label htmlFor="name1">Location</label>
-        <p-dropdown inputId="dropdown" formControlName="location" [options]="location"  optionValue="location"  optionLabel="location"></p-dropdown><br>
-			</div>
-			<div class="field m-1 mb-3">
-				<label htmlFor="email1">Mileage</label>
-        <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="l"></p-dropdown>
-			</div>
-		</div>
-    <!-- <p-divider></p-divider> -->
 
     <div class="p-fluid">
 			<div class="field m-1">
 				<div class="p-fluid">
-          <p class="m-1 ml-0">Year of Manufacture</p>
+          <div class="m-2 text-black-500 hover:text-red-700  font-bold ">Year of Manufacture</div>
           <div class="p-formgrid grid">
             <div class="field col">
               <label htmlFor="name2">Min</label>
@@ -46,7 +49,7 @@
       <p-divider></p-divider>
 			<div class="field m-1">
 				<div class="p-fluid">
-          <p class="m-1 ml-0">Price</p>
+          <div class="m-2 text-black-500 hover:text-red-700  font-bold ">Price</div>
           <div class="p-formgrid grid">
             <div class="field col">
               <label htmlFor="name2">Min</label>
@@ -63,38 +66,39 @@
     </div>
 
   <a (click)="toggleShowMore()" *ngIf="!showMore">Show More</a>
-  <div *ngIf="showMore">
-    <div class="field col-12 md:col-12 lg:col-12  mt-1">
-        <span class="p-float-label">
-          <p-dropdown inputId="dropdown" formControlName="vehicleType"  [options]="bodytype"  optionValue="bodytype" optionLabel="bodytype"></p-dropdown>
-          <label for="dropdown">Body Type</label>
-        </span>
+  <div class="col-12 md:col-12">
+		<div class="p-fluid">
+  <div *ngIf="showMore" class="p-formgrid grid">
+    <div class="col-12 md:col-12 mb-2">
+      <div class="p-inputgroup">
+        <p-button label="Body Type" styleClass="p-button-secondary p-button-text flex"></p-button>
+        <p-dropdown class="flex" inputId="dropdown" [options]="bodytype"  optionValue="bodytype" optionLabel="bodytype"></p-dropdown>
+      </div>
     </div>
-    <div class="field col-12 md:col-12 lg:col-12  mt-1">
-        <span class="p-float-label">
-            <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="h"></p-dropdown>
-            <label for="dropdown">Verified</label>
-        </span>
+    <div class="col-12 md:col-12 mb-2">
+      <div class="p-inputgroup">
+        <p-button label="Verified" styleClass="p-button-secondary p-button-text flex"></p-button>
+        <p-dropdown class="flex" inputId="dropdown" [options]="bodytype"  optionValue="bodytype" optionLabel="bodytype"></p-dropdown>
+      </div>
     </div>
-    <div class="field col-12 md:col-12 lg:col-12  mt-1">
-        <span class="p-float-label">
-            <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="i"></p-dropdown>
-            <label for="dropdown">Usage</label>
-        </span>
+    <div class="col-12 md:col-12 mb-2">
+      <div class="p-inputgroup">
+        <p-button label="Usage" styleClass="p-button-secondary p-button-text flex"></p-button>
+        <p-dropdown class="flex" inputId="dropdown" [options]="bodytype"  optionValue="bodytype" optionLabel="bodytype"></p-dropdown>
+      </div>
     </div>
-    <div class="field col-12 md:col-12 lg:col-12  mt-1">
-        <span class="p-float-label">
-            <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="j"></p-dropdown>
-            <label for="dropdown">Condition</label>
-        </span>
+    <div class="col-12 md:col-12 mb-2">
+      <div class="p-inputgroup">
+        <p-button label="Condition" styleClass="p-button-secondary p-button-text flex"></p-button>
+        <p-dropdown class="flex" inputId="dropdown" [options]="bodytype"  optionValue="bodytype" optionLabel="bodytype"></p-dropdown>
+      </div>
     </div>
-    <div class="field col-12 md:col-12 lg:col-12  mt-1">
-        <span class="p-float-label">
-          <p-dropdown inputId="dropdown" formControlName="transmission"   [options]="gear"  optionValue="gear" optionLabel="gear"></p-dropdown>
-          <label for="dropdown">Transmission</label>
-        </span>
+    <div class="col-12 md:col-12 mb-2">
+      <div class="p-inputgroup">
+        <p-button label="Transmission" styleClass="p-button-secondary p-button-text flex"></p-button>
+        <p-dropdown class="flex" inputId="dropdown" [options]="gear"  optionValue="gear" optionLabel="gear"></p-dropdown>
+      </div>
     </div>
-    <p-fieldset legend="Perfomance" class="col-12 md:col-12 lg:col-12 mt-1">
         <label>Engine Size</label>
         <div class="formgroup-inline m-2">
             <div class="field col-5 md:col-12 lg:col-5">
@@ -125,69 +129,61 @@
                 </span>
             </div>
         </div>
-        <div class="formgroup-inline">
-            <div class="field col-5 md:col-12 lg:col-12">
-                <span class="p-float-label">
-                    <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="q"></p-dropdown>
-                    <label for="dropdown">Acceleration</label>
-                </span>
-            </div>
-            <div class="field col-5 md:col-12 lg:col-12">
-                <span class="p-float-label">
-                  <p-dropdown inputId="dropdown" formControlName="drivetype" [options]="drivetrain"  optionValue="drivetrain" optionLabel="drivetrain"></p-dropdown>
-                  <label for="dropdown">Drive Train</label>
-                </span>
-            </div>
+        <div class="col-12 md:col-12 mb-2">
+          <div class="p-inputgroup">
+            <p-button label="Acceleration" styleClass="p-button-secondary p-button-text flex"></p-button>
+            <p-dropdown class="flex" inputId="dropdown" [options]="gear"  optionValue="gear" optionLabel="gear"></p-dropdown>
+          </div>
         </div>
-    </p-fieldset>
-    <p-fieldset legend="Specification" class="col-12 md:col-12 lg:col-12 mt-1" >
-        <div class="formgroup-inline">
-        <div class="field col-5 md:col-12 lg:col-5">
-            <span class="p-float-label">
-                <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="s"></p-dropdown>
-                <label for="dropdown">Doors</label>
-            </span>
+        <div class="col-12 md:col-12 mb-2">
+          <div class="p-inputgroup">
+            <p-button label="Drive Train" styleClass="p-button-secondary p-button-text flex"></p-button>
+            <p-dropdown class="flex" inputId="dropdown" [options]="gear"  optionValue="gear" optionLabel="gear"></p-dropdown>
+          </div>
         </div>
-        <div class="field col-5 md:col-12 lg:col-5">
-            <span class="p-float-label">
-              <p-dropdown inputId="dropdown" formControlName="color"   [options]="color"  optionValue="color" optionLabel="color"></p-dropdown>
-              <label for="dropdown">Color</label>
-            </span>
+        <div class="col-12 md:col-12 mb-2">
+          <div class="p-inputgroup">
+            <p-button label="Doors " styleClass="p-button-secondary p-button-text flex"></p-button>
+            <p-dropdown class="flex" inputId="dropdown" [options]="gear"  optionValue="gear" optionLabel="gear"></p-dropdown>
+          </div>
         </div>
+        <div class="col-12 md:col-12 mb-2">
+          <div class="p-inputgroup">
+            <p-button label="Color " styleClass="p-button-secondary p-button-text flex"></p-button>
+            <p-dropdown class="flex" inputId="dropdown" [options]="color"  optionValue="color" optionLabel="color"></p-dropdown>
+          </div>
         </div>
-        <div class="formgroup-inline">
-        <div class="field col-5 md:col-12 lg:col-4">
-            <span class="p-float-label">
-                <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="u"></p-dropdown>
-                <label for="dropdown">Seats</label>
-            </span>
+        <div class="col-12 md:col-12 mb-2">
+          <div class="p-inputgroup">
+            <p-button label="Seats" styleClass="p-button-secondary p-button-text flex"></p-button>
+            <p-dropdown class="flex" inputId="dropdown" [options]="color"  optionValue="color" optionLabel="color"></p-dropdown>
+          </div>
         </div>
-        <div class="field col-5 md:col-12 lg:col-6">
-            <span class="p-float-label">
-                <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="v"></p-dropdown>
-                <label for="dropdown">Boot Space</label>
-            </span>
+        <div class="col-12 md:col-12 mb-2">
+          <div class="p-inputgroup">
+            <p-button label="Boot Space" styleClass="p-button-secondary p-button-text flex"></p-button>
+            <p-dropdown class="flex" inputId="dropdown" [options]="color"  optionValue="color" optionLabel="color"></p-dropdown>
+          </div>
         </div>
+        <div class="col-12 md:col-12 mb-2">
+          <div class="p-inputgroup">
+            <p-button label=" Fuel type" styleClass="p-button-secondary p-button-text flex"></p-button>
+            <p-dropdown class="flex" inputId="dropdown" [options]="fueltype"  optionValue="fueltype" optionLabel="fueltype"></p-dropdown>
+          </div>
         </div>
-    </p-fieldset>
-    <div class="field col-12 md:col-12 lg:col-12 mt-1">
-        <span class="p-float-label">
-          <p-dropdown inputId="dropdown" formControlName="fueltype" [options]="fueltype"  optionValue="fueltype" optionLabel="fueltype"></p-dropdown>
-          <label for="dropdown">Fuel type</label>
-        </span>
-    </div>
-    <div class="field col-12 md:col-12 lg:col-12 mt-1">
-      <span class="p-float-label">
-        <!-- <p-dropdown inputId="dropdown" formControlName="fueltype" [options]="fueltype"  optionValue="fueltype" optionLabel="fueltype"></p-dropdown> -->
-        <label for="dropdown">Fuel Consumption</label>
-      </span>
-    </div>
-    <div class="field col-12 md:col-12 lg:col-12 mt-1">
-        <span class="p-float-label">
-            <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="x"></p-dropdown>
-            <label for="dropdown">Accessibility</label>
-        </span>
-    </div>
+        <div class="col-12 md:col-12 mb-2">
+          <div class="p-inputgroup">
+            <p-button label="Fuel Consumption" styleClass="p-button-secondary p-button-text flex"></p-button>
+            <p-dropdown class="flex" inputId="dropdown" [options]="fueltype"  optionValue="fueltype" optionLabel="fueltype"></p-dropdown>
+          </div>
+        </div>
+        <div class="col-12 md:col-12 mb-2">
+          <div class="p-inputgroup">
+            <p-button label="Accessibility" styleClass="p-button-secondary p-button-text flex"></p-button>
+            <p-dropdown class="flex" inputId="dropdown" [options]="fueltype"  optionValue="fueltype" optionLabel="fueltype"></p-dropdown>
+          </div>
+        </div>
   </div>
+  </div></div>
   <!-- </form> -->
 </div>

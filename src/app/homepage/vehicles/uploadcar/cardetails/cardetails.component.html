@@ -1,3 +1,4 @@
+<p-toast></p-toast>
 <form [formGroup]="carDetsForm" (ngSubmit)="onSubmit()">
   <div class="formgroup-inline  justify-content-center">
     <div class="card grid p-fluid mt-0 p-5 col-4 md:col-4 lg:col-4 ">
@@ -71,9 +72,22 @@
                 </span>
             </div>
         </div>
-        <p-toast></p-toast>
-        <p-fileUpload mode="basic" name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" accept=".pdf"  (onUpload)="onBasicUploadAuto($event)" [auto]="true" chooseLabel="Browse"></p-fileUpload>
-
+        <!-- <div class="formgroup-inline col-12 md:col-12 lg:col-12 mt-2">
+          <label>Upload inspection certificate</label><br />
+          <p-fileUpload mode="basic" name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" accept=".pdf"  (onUpload)="onBasicUploadAuto($event)" [auto]="true" chooseLabel="Browse"></p-fileUpload>
+        </div> -->
+        <div class="p-fluid">
+          <div class="field ml-3">
+            <label>Upload inspection certificate</label>
+          </div>
+          <div class="field ml-3">
+            <p-fileUpload mode="basic" name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" accept=".pdf"  (onUpload)="onBasicUploadAuto($event)" [auto]="true" chooseLabel="Browse"></p-fileUpload>
+          </div>
+        </div>
+        <!-- <div class="grid">
+          <label>Upload inspection certificate</label>
+          <p-fileUpload mode="basic" name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" accept=".pdf"  (onUpload)="onBasicUploadAuto($event)" [auto]="true" chooseLabel="Browse"></p-fileUpload>
+        </div> -->
         <div class="flex justify-content-center ml-2">
           <span class="p-float-label">
               <textarea id="float-input" formControlName="description" rows="10" cols="30" pInputTextarea></textarea>

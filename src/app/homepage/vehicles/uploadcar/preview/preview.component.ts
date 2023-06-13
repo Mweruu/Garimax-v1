@@ -62,7 +62,7 @@ export class PreviewComponent implements OnInit {
     if(this.carData.basicInfo){
       this.make = this.carData.basicInfo.make;
       this.model = this.carData.basicInfo.model;
-      this.year = this.carData.basicInfo.year;
+      this.year = this.carData.basicInfo.yearOfManufacture.toString().split(' ')[3];
       this.price = this.carData.basicInfo.price;
       this.location = this.carData.basicInfo.location;
       this.mileage = this.carData.basicInfo.mileage;
