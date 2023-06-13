@@ -16,7 +16,21 @@
       <h5>Image</h5>
 			<div class="grid formgrid">
 				<div class="col-12 mb-2 lg:col-12 lg:mb-0">
-          <p-image src={{vehicle.image}} alt="Image" width="100%" [preview]="true"></p-image>
+
+      <div class="card">
+        <!-- <p-galleria [(value)]={{vehicle.image}} [responsiveOptions]="responsiveOptions" [containerStyle]="{ 'max-width': '640px' }" [numVisible]="5"> -->
+          <!-- <p-galleria value={{vehicle.image}}>   -->
+          <ng-template pTemplate="item" let-item>
+                <img [src]="vehicle.image" style="width: 100%;" />
+            </ng-template>
+            <ng-template pTemplate="thumbnail" let-item>
+                <div class="grid grid-nogutter justify-content-center">
+                    <img [src]="vehicle.image" />
+                </div>
+            </ng-template>
+        <!-- </p-galleria> -->
+      </div>
+          <!-- <p-image src={{vehicle.image}} alt="Image" width="100%" [preview]="true"></p-image> -->
 				</div>
 			</div>
       <div class="grid formgrid">

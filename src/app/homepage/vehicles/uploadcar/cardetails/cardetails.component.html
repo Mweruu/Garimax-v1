@@ -71,6 +71,9 @@
                 </span>
             </div>
         </div>
+        <p-toast></p-toast>
+        <p-fileUpload mode="basic" name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" accept=".pdf"  (onUpload)="onBasicUploadAuto($event)" [auto]="true" chooseLabel="Browse"></p-fileUpload>
+
         <div class="flex justify-content-center ml-2">
           <span class="p-float-label">
               <textarea id="float-input" formControlName="description" rows="10" cols="30" pInputTextarea></textarea>
@@ -104,7 +107,7 @@
       <!-- <button pButton pRipple label="Reset" (click)="onReset()" class="w-20rem p-3 text-xl" type="submit"></button> -->
       <button pButton pRipple label="Back" routerLink="/uploadpicture" class="w-20rem p-3  ml-5" type="button"></button>
       <p-toast></p-toast>
-      <button pButton pRipple label="Finish" class="w-20rem p-3  ml-5" type="submit" (click)="onSubmit()"></button>
+      <button pButton pRipple label="Finish" class="w-20rem p-3  ml-5" type="submit" ></button>
       <div class="flex justify-content-center">
         <button pButton pRipple label="Preview" (click)="showDialog()" class="w-20rem p-3  ml-5" type="button"></button>
         <p-dialog header="fgf" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">

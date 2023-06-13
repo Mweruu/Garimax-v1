@@ -4,6 +4,7 @@ import { DataStorageService } from 'src/app/datastorage.service';
 import { BODY_TYPE, CAR_OPTIONS, COLOR, DRIVETRAIN, ENGINE_POWER, FUEL_TYPE, STEERING, TRANSMISSION } from '../../../const-data/constants'
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/layout/data.service';
+import { MessageService } from 'primeng/api';
 
 
 @Component({
@@ -30,7 +31,8 @@ export class CardetailsComponent implements OnInit {
     constructor( private ds:DataStorageService,
                 private fb:FormBuilder,
                 private router:Router,
-                private dataService: DataService
+                private dataService: DataService,
+                private messageService:MessageService
       ) { }
 
     ngOnInit(){
@@ -46,6 +48,9 @@ export class CardetailsComponent implements OnInit {
       });
 
     }
+    onBasicUploadAuto(event: any) {
+      this.messageService.add({ severity: 'info', summary: 'Success', detail: 'File Uploaded Successfully' });
+  }
 
     onSubmit(){
       this.isSubmitted = true;

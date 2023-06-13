@@ -14,11 +14,27 @@ export class PreviewComponent implements OnInit {
   sidebarVisible3!: boolean;
   carData: any;
   vehicle:any;
+  make!:string;
+  model!:string;
+  year!:string;
+  price!:string;
+  location!:string;
+  mileage!:string;
+  fueltype!:string;
+  bodytype!:string;
+  transmission!:string;
+  color!:string;
+  steering!:string;
+  engine!:string;
+  drivetype!:string;
+  images!:[];
+  properties:any[] = [];
 
   constructor(private dataServive: DataService,
               private messageService: MessageService,
               private router: Router,
-              private ds: DataStorageService) { }
+              private ds: DataStorageService,
+              ) { }
 
   async ngOnInit(): Promise<void> {
     this.carData = {
@@ -26,7 +42,26 @@ export class PreviewComponent implements OnInit {
       "images": this.dataServive.getuploadPictureData(),
       "carDetails": this.dataServive.getcardetailsData()
     }
-    console.log(this.carData)
+    this.properties = this.dataServive.getbasicInfoData()
+    console.log(77856,this.properties)
+    // console.log(77856,this.properties.make)
+
+    console.log(33,this.carData)
+    this.make = this.carData.basicInfo.make;
+    this.model = this.carData.basicInfo.model;
+    this.year = this.carData.basicInfo.year;
+    this.price = this.carData.basicInfo.price;
+    this.location = this.carData.basicInfo.location;
+    this.mileage = this.carData.basicInfo.mileage;
+    // this.fueltype = this.carData.carDetails.fueltype;
+    this.bodytype = this.carData.carDetails.bodytype;
+    this.transmission = this.carData.carDetails.transmission;
+    this.color = this.carData.carDetails.color;
+    this.steering = this.carData.carDetails.steering;
+    this.engine = this.carData.carDetails.engineSize;
+    this.drivetype = this.carData.carDetails.drivetype;
+    this.images = this.carData.images
+    console.log(23456,this.images)
   }
 
 

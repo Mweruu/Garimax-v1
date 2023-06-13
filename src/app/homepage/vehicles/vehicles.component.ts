@@ -19,9 +19,8 @@ export class VehiclesComponent implements OnInit {
 
   constructor(
     private ds:DataStorageService,
-    public view:ViewComponent,
     public router: Router,
-    public topbar: AppTopBarComponent,
+
   ) { }
 
   ngOnInit() {

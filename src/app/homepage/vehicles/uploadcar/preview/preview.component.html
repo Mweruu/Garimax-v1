@@ -12,7 +12,10 @@
       <h5>Image</h5>
 			<div class="grid formgrid">
 				<div class="col-12 mb-2 lg:col-12 lg:mb-0">
-          <p-image src="../../../../../assets/layout/images/vehicles/2023-bmw-x7.jpg" alt="Image" width="100%" [preview]="true"></p-image>
+          <!-- <p>{{carData.images}}</p> -->
+          <p-image src={{carData.images}} alt="Image" width="100%" [preview]="true"></p-image>
+
+          <!-- <p-image src="../../../../../assets/layout/images/vehicles/2023-bmw-x7.jpg" alt="Image" width="100%" [preview]="true"></p-image> -->
 				</div>
 			</div>
       <div class="grid formgrid">
@@ -27,7 +30,7 @@
   <div class="col-7 md:col-7 lg:col-7">
     <div class="card">
       <div class="grid formgrid">
-        <div class="card mb-5">edrcfghjn</div>
+        <div><h2>{{make}}{{model}}({{year}})</h2></div>
         </div>
       <div class="grid formgrid">
         <!-- <div class="col-12 mb-2 md:col-3 lg:col-3 lg:mb-0"> -->
@@ -63,38 +66,37 @@
             </div>
           </p-divider>
           <div class="formgroup-inline mb-2">
-            <label for="make" class="col-5 md:col-5 lg:col-5" style="white-space: pre-line;">Make- <strong></strong></label>
-            <label for="model" class="col-5 md:col-5 lg:col-5">Model - <strong>Bmwdfg</strong></label>
+            <label for="make" class="col-5 md:col-5 lg:col-5" style="white-space: pre-line;">Make <strong>{{make}}</strong></label>
+            <label for="model" class="col-5 md:col-5 lg:col-5">Model  <strong>{{model}}</strong></label>
           </div>
 
           <div class="formgroup-inline  mb-2">
-            <label for="yearOfManufacture" class="col-5 md:col-5 lg:col-5">Year</label>
-            <label for="location" class="col-5 md:col-5 lg:col-5">Location</label>
+            <label for="yearOfManufacture" class="col-5 md:col-5 lg:col-5">Year - <strong>{{year}}</strong></label>
+            <label for="location" class="col-5 md:col-5 lg:col-5">Location - <strong>{{location}}</strong></label>
           </div>
 
           <div class="formgroup-inline mb-2">
-            <label for="price" class="col-5 md:col-5 lg:col-5">Price</label>
-            <label for="mileage" class="col-5 md:col-5 lg:col-5">Mileage</label>
-            <!-- <p> - {{vehicleData}}</p> -->
+            <label for="price" class="col-5 md:col-5 lg:col-5">Price - <strong>{{price}}</strong></label>
+            <label for="mileage" class="col-5 md:col-5 lg:col-5">Mileage - <strong>{{mileage}}</strong></label>
           </div>
 
           <div class="formgroup-inline mb-2">
-            <label for="fueltype" class="col-5 md:col-5 lg:col-5">Fuel type</label>
-            <label for="vehicleType" class="col-5 md:col-5 lg:col-5">Body type</label>
+            <label for="fueltype" class="col-5 md:col-5 lg:col-5">Fuel type - <strong>{{fueltype}}</strong></label>
+            <label for="vehicleType" class="col-5 md:col-5 lg:col-5">Body type - <strong>{{bodytype}}</strong></label>
           </div>
 
           <div class="formgroup-inline mb-2">
-            <label for="transmission" class="col-5 md:col-5 lg:col-5">Transmission</label>
-            <label for="color" class="col-5 md:col-5 lg:col-5">Color</label>
+            <label for="transmission" class="col-5 md:col-5 lg:col-5">Transmission - <strong>{{transmission}}</strong></label>
+            <label for="color" class="col-5 md:col-5 lg:col-5">Color - <strong>{{color}}</strong></label>
           </div>
 
           <div class="formgroup-inline mb-2">
-            <label for="steering" class="col-5 md:col-5 lg:col-5">Steering</label>
-            <label for="engineSize" class="col-5 md:col-5 lg:col-5">Engine power</label>
+            <label for="steering" class="col-5 md:col-5 lg:col-5">Steering - <strong>{{steering}}</strong></label>
+            <label for="engineSize" class="col-5 md:col-5 lg:col-5">Engine power - <strong>{{engine}}</strong></label>
           </div>
 
           <div class="formgroup-inline mb-2">
-            <label for="drivetype" class="col-5 md:col-5 lg:col-5">Drive train </label>
+            <label for="drivetype" class="col-5 md:col-5 lg:col-5">Drive train - <strong>{{drivetype}}</strong> </label>
             <label for="description" class="col-5 md:col-5 lg:col-5">Description</label>
           </div>
         </div>
