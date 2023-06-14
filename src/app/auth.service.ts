@@ -11,9 +11,10 @@ export class AuthService {
   constructor() { }
 
   setUserCredentials(data: any) {
+    console.log('auth',data);
     localStorage.setItem('userName', data.user.firstName)
-    localStorage.setItem('userId', data.user.firstName)
-    localStorage.setItem('userToken', data.user.token)
+    localStorage.setItem('userId', data.user.id)
+    localStorage.setItem('userToken', data.token)
   }
 
   getUserCredentials(){

@@ -1,11 +1,3 @@
-<!-- <p>preview works!</p> -->
-<!-- <div class="card flex justify-content-center">
-  <p-sidebar [(visible)]="sidebarVisible3" [fullScreen]="true">
-    <h3>Full Screen Sidebar</h3>
-  </p-sidebar>
-  <p-button (click)="sidebarVisible3 = true" icon="pi pi-th-large"></p-button>
-</div> -->
-
 <div class="card grid p-fluid">
   <div class="col-5 md:col-5 lg:col-5">
     <div class="card">
@@ -36,13 +28,11 @@
         <div><h2>{{make}} {{model}} ({{year}})</h2></div>
         </div>
       <div class="grid formgrid">
-          <p-tag severity="success" value="Automatic" class="m-2"></p-tag>          <p-tag severity="secondary" value="54637km" class="m-2"></p-tag>
-          <p-tag severity="success" value="1080CC" class="m-2"></p-tag>
-          <p-tag severity="success" value="Mombasa" class="m-2"></p-tag>
-          <p-tag severity="success" value="Automatic" class="m-2"></p-tag>
-          <p-tag severity="success" value="54637km" class="m-2"></p-tag>
-          <p-tag severity="success" value="1080CC" class="m-2"></p-tag>
-          <p-tag severity="success" value="Mombasa" class="m-2"></p-tag>
+          <p-tag severity="info" value={{location}} class="m-2"></p-tag>
+          <p-tag severity="info" value={{price}} class="m-2"></p-tag>
+          <p-tag severity="info" value={{mileage}} class="m-2"></p-tag>
+          <p-tag severity="info" value={{color}} class="m-2"></p-tag>
+
       </div>
       <div class="grid formgrid">
         <div class="p-fluid col-12 md:col-12 lg:col-12">
