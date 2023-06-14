@@ -43,7 +43,6 @@ import { MessageService } from 'primeng/api';
 import { DialogModule } from 'primeng/dialog';
 import { ViewComponent } from '../homepage/vehicles/view/view.component';
 import { TabMenuModule } from 'primeng/tabmenu';
-import { VehiclesPipe } from '../homepage/vehicles/vehicles.pipe';
 import { ChipModule } from 'primeng/chip';
 import { AuthService } from '../auth.service';
 import { GalleriaModule } from 'primeng/galleria';
@@ -63,7 +62,6 @@ import { SplitButtonModule } from 'primeng/splitbutton';
         CardetailsComponent,
         PreviewComponent,
         ViewComponent,
-        VehiclesPipe,
     ],
     imports: [
         BrowserModule,

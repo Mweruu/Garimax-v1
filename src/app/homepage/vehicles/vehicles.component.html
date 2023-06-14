@@ -1,14 +1,17 @@
-<!-- <input class="form-control" type="text" placeholder="Search" [(ngModel)]="searchText"> -->
 <div class="flex justify-content-center m-2">
   <span class="p-input-icon-left">
     <i class="pi pi-search"></i>
     <input pInputText type="text" class="p-inputtext-sm"  style="width: 800px;" placeholder="Search" [(ngModel)]="searchText"/>
   </span>
 </div>
-
-<div *ngFor="let vehicle of vehicles | search:searchText">
-  <div class="card flex mb-3 mt-3">
-    <div class="grid">
+<div>
+  <app-topbar (searchTextChanged)="onSearchTextEntered($event)"></app-topbar>
+  <!-- <app-filters (searchFilterChanged)="onSearchFilterEntered($event)"></app-filters> -->
+</div>
+<div *ngFor="let vehicle of vehicles">
+  <div class="card flex mb-3 mt-3" *ngIf="searchText === '' || vehicle.make.toLowerCase().includes(searchText) || vehicle.model.toLowerCase().includes(searchText) || vehicle.price.toLowerCase().includes(searchText) || vehicle.yearOfManufactor.toLowerCase().includes(searchText)">
+  <div class="flex mb-3 mt-3" *ngIf="searchFilter === '' || vehicle.make.toLowerCase().includes(searchFilter) || vehicle.model.toLowerCase().includes(searchFilter) || vehicle.price.toLowerCase().includes(searchFilter)">
+      <div class="grid">
       <div class="col-12 md:col-12 lg:col-5 flex align-items-center justify-content-center">
           <div class="p-fluid">
             <p-image src="{{vehicle.image}}" alt="Image" width="100%" [preview]="true"></p-image>
@@ -49,5 +52,6 @@
         </div>
       </div>
     </div>
+  </div>
   </div>
 </div>

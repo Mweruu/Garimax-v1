@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { BODY_TYPE, CAR_MODELS, CAR_OPTIONS, COLOR, DRIVETRAIN, ENGINE_POWER, FUEL_TYPE, KENYA_LOCATION, STEERING, TRANSMISSION } from '../const-data/constants';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -40,6 +40,10 @@ export class FiltersComponent implements OnInit {
   date!: Date;
   date1!: Date;
 
+  enteredFilter:any;
+
+  @Output()
+  searchFilterChanged:EventEmitter<string>=new EventEmitter<string>();
 
   constructor( private fb:FormBuilder,
                private router: Router,
@@ -77,8 +81,7 @@ export class FiltersComponent implements OnInit {
     return this.filtersForm.controls;
   }
 
-  onSearch(){
-
+  onSearchFilterhanged(){
+    this.searchFilterChanged.emit(this.enteredFilter)
   }
-
 }

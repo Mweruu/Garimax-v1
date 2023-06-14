@@ -5,8 +5,10 @@
         <div class="p-formgrid grid">
           <div class="col-12 md:col-12">
             <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);" >
-              <p-button label="Make" styleClass="p-button-info p-button-text w-11rem"></p-button>
-              <p-dropdown class="flex" [options]="makes" inputId="dropdown" (onChange)="onMakeChange()" ></p-dropdown>
+              <!-- <p-button label="Make" styleClass="p-button-info p-button-text w-11rem" ></p-button>
+              <p-dropdown class="flex" [options]="makes" inputId="dropdown" (onChange)="onMakeChange()" ></p-dropdown> -->
+              <p-button label="Make" styleClass="p-button-info p-button-text w-11rem" ></p-button>
+              <p-dropdown class="flex" [options]="makes" inputId="dropdown" ></p-dropdown>
             </div>
           </div>
           <!-- <p-divider></p-divider> -->
@@ -26,7 +28,7 @@
           <div class="col-12 md:col-12 mb-2">
             <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
               <p-button label="Mileage" styleClass="p-button-info p-button-text w-11rem"></p-button>
-              <p-dropdown class="flex" inputId="dropdown"   [editable]="true" [options]="location"  optionValue="location"  optionLabel="location"></p-dropdown><br>
+              <p-dropdown class="flex" inputId="dropdown"   [editable]="true" [options]="location"  optionValue="location"  optionLabel="location" [(ngModel)]="enteredFilter" (input)="onSearchFilterhanged()" ></p-dropdown><br>
             </div>
           </div>
         </div>

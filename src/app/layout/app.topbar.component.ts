@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { LayoutService } from "./service/app.layout.service";
 import { DataStorageService } from '../datastorage.service';
@@ -16,7 +16,11 @@ export class AppTopBarComponent implements OnInit{
     loggedin = false;
     searchData: any[] = []; // This array will hold the search results
     vehicles:any;
-    searchText:any;
+    enteredSearchValue:any;
+
+    @Output()
+    searchTextChanged:EventEmitter<string>=new EventEmitter<string>();
+
 
     @ViewChild('menubutton') menuButton!: ElementRef;
 
@@ -51,7 +55,9 @@ export class AppTopBarComponent implements OnInit{
       window.location.reload();
     }
 
-
+    onSearchTextChanged(){
+      this.searchTextChanged.emit(this.enteredSearchValue)
+    }
   //   getAllVehicles(){
   //     return new Promise((resolve, reject) => {
 
