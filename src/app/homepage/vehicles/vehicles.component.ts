@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DataStorageService } from '../../datastorage.service';
-import { AppTopBarComponent } from 'src/app/layout/app.topbar.component';
-import { ViewComponent } from './view/view.component';
 import { Router } from '@angular/router';
 
 @Component({
