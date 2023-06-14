@@ -44,7 +44,10 @@ export class AppTopBarComponent implements OnInit{
       console.log('User Data:',userData);
     }
 
-    reloadPage() {
+    logOut() {
+      localStorage.removeItem('userName');
+      localStorage.removeItem('userId');
+      localStorage.removeItem('userToken');
       window.location.reload();
     }
 
