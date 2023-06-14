@@ -47,7 +47,8 @@ import { VehiclesPipe } from '../homepage/vehicles/vehicles.pipe';
 import { ChipModule } from 'primeng/chip';
 import { AuthService } from '../auth.service';
 import { GalleriaModule } from 'primeng/galleria';
-import { TabViewModule } from 'primeng/tabview'
+import { SplitButtonModule } from 'primeng/splitbutton';
+
 @NgModule({
     declarations: [
         AppTopBarComponent,
@@ -96,6 +97,7 @@ import { TabViewModule } from 'primeng/tabview'
         TabMenuModule,
         ChipModule,
         GalleriaModule,
+        SplitButtonModule
     ],
     providers:[DataService, AuthService, MessageService, ViewComponent],
     exports: [AppLayoutComponent]
