@@ -1,12 +1,12 @@
 <!-- <div class="grid p-fluid"> -->
   <div class="grid">
-    <div class="col-12 md:col-12">
+    <div class="col-12 md:col-12 mt-2">
       <div class="p-fluid">
         <div class="p-formgrid grid">
           <div class="col-12 md:col-12">
             <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);" >
               <p-button label="Make" styleClass="p-button-info p-button-text w-11rem"></p-button>
-              <p-dropdown class="flex" [options]="makes" inputId="dropdown" (onChange)="onMakeChange()"></p-dropdown>
+              <p-dropdown class="flex" [options]="makes" inputId="dropdown" (onChange)="onMakeChange()" ></p-dropdown>
             </div>
           </div>
           <!-- <p-divider></p-divider> -->
@@ -26,55 +26,55 @@
           <div class="col-12 md:col-12 mb-2">
             <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
               <p-button label="Mileage" styleClass="p-button-info p-button-text w-11rem"></p-button>
-              <p-dropdown class="flex" inputId="dropdown"  [options]="location"  optionValue="location"  optionLabel="location"></p-dropdown><br>
+              <p-dropdown class="flex" inputId="dropdown"   [editable]="true" [options]="location"  optionValue="location"  optionLabel="location"></p-dropdown><br>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- <div class="p-fluid">
-        <div class="field m-1">
+      <div class="p-fluid">
+        <div class="card field m-1">
           <div class="p-fluid">
-            <div class="m-2 text-black-500 hover:text-red-700  font-bold ">Year of Manufacture</div>
+            <div class="m-2 text-blue-400 hover:text-red-700  font-bold ">Year of Manufacture</div>
             <div class="p-formgrid grid">
               <div class="field col">
                 <label htmlFor="name2">Min</label>
-                <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="e"></p-dropdown>
+                <p-calendar [(ngModel)]="date" view="year" [showIcon]="true" dateFormat="yy"></p-calendar>
               </div>
               <div class="field col">
                 <label htmlFor="email2">Max</label>
-                <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="e"></p-dropdown>
+                <p-calendar [(ngModel)]="date1" view="year" [showIcon]="true" dateFormat="yy"></p-calendar>
               </div>
             </div>
           </div>
         </div>
         <p-divider></p-divider>
-        <div class="field m-1">
+        <div class="card field m-1">
           <div class="p-fluid">
-            <div class="m-2 text-black-500 hover:text-red-700  font-bold ">Price</div>
+            <div class="m-2 text-blue-400 hover:text-red-700  font-bold ">Price</div>
             <div class="p-formgrid grid">
               <div class="field col">
                 <label htmlFor="name2">Min</label>
-                <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="e"></p-dropdown>
+                <p-dropdown inputId="dropdown" [options]="cities" [(ngModel)]="selectedCity" optionLabel="e"></p-dropdown>
               </div>
               <div class="field col">
                 <label htmlFor="email2">Max</label>
-                <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="e"></p-dropdown>
+                <p-dropdown inputId="dropdown" [options]="cities" [(ngModel)]="selectedCity" optionLabel="e"></p-dropdown>
               </div>
             </div>
           </div>
         </div>
-      </div> -->
+      </div>
     </div>
 
-  <a (click)="toggleShowMore()" *ngIf="!showMore">Show More</a>
+  <a (click)="toggleShowMore()" *ngIf="!showMore" class="ml-2">Show More</a>
   <div class="col-12 md:col-12">
 		<div class="p-fluid">
   <div *ngIf="showMore" class="p-formgrid grid">
     <div class="col-12 md:col-12 mb-2">
       <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
         <p-button label="Body Type" styleClass="p-button-info p-button-text w-11rem"></p-button>
-        <p-dropdown class="flex" inputId="dropdown" [options]="bodytype"  optionValue="bodytype" optionLabel="bodytype"></p-dropdown>
+        <p-dropdown class="flex" inputId="dropdown" [options]="bodytype"  optionValue="bodytype" optionLabel="bodytype" ></p-dropdown>
       </div>
     </div>
     <div class="col-12 md:col-12 mb-2">
@@ -101,17 +101,50 @@
         <p-dropdown class="flex" inputId="dropdown" [options]="gear"  optionValue="gear" optionLabel="gear"></p-dropdown>
       </div>
     </div>
+    <div class="p-fluid">
+      <div class="card field m-1">
+        <div class="p-fluid">
+          <div class="m-2 text-blue-400 hover:text-red-700  font-bold ">Engine Size</div>
+          <div class="p-formgrid grid">
+            <div class="field col">
+              <label htmlFor="name2">Min</label>
+              <p-dropdown inputId="dropdown" [options]="engineSize" [(ngModel)]="engineSize" optionLabel="engineSize"></p-dropdown>
+            </div>
+            <div class="field col">
+              <label htmlFor="email2">Max</label>
+              <p-dropdown inputId="dropdown" [options]="engineSize" [(ngModel)]="engineSize" optionLabel="engineSize"></p-dropdown>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p-divider></p-divider>
+      <div class="card field m-1">
+        <div class="p-fluid">
+          <div class="m-2 text-blue-400 hover:text-red-700  font-bold ">Engine Power</div>
+          <div class="p-formgrid grid">
+            <div class="field col">
+              <label htmlFor="name2">Min</label>
+              <p-dropdown inputId="dropdown" [options]="engineSize" [(ngModel)]="engineSize" optionLabel="engineSize"></p-dropdown>
+            </div>
+            <div class="field col">
+              <label htmlFor="email2">Max</label>
+              <p-dropdown inputId="dropdown" [options]="engineSize" [(ngModel)]="engineSize" optionLabel="engineSize"></p-dropdown>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
         <!-- <label>Engine Size</label>
         <div class="formgroup-inline m-2">
             <div class="field col-5 md:col-12 lg:col-5">
                 <span class="p-float-label">
-                    <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="m"></p-dropdown>
+                    <p-dropdown inputId="dropdown" [options]="cities" [(ngModel)]="selectedCity" optionLabel="m"></p-dropdown>
                     <label for="dropdown">Min</label>
                 </span>
             </div>
             <div class="field col-5 md:col-12 lg:col-5">
                 <span class="p-float-label">
-                    <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="n"></p-dropdown>
+                    <p-dropdown inputId="dropdown" [options]="cities" [(ngModel)]="selectedCity" optionLabel="n"></p-dropdown>
                     <label for="dropdown">Max</label>
                 </span>
             </div>
@@ -120,13 +153,13 @@
         <div class="formgroup-inline m-2">
             <div class="field col-5 md:col-12 lg:col-5">
                 <span class="p-float-label">
-                    <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="o"></p-dropdown>
+                    <p-dropdown inputId="dropdown" [options]="cities" [(ngModel)]="selectedCity" optionLabel="o"></p-dropdown>
                     <label for="dropdown">Min</label>
                 </span>
             </div>
             <div class="field col-5 md:col-12 lg:col-5">
                 <span class="p-float-label">
-                    <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="selectedCity" optionLabel="p"></p-dropdown>
+                    <p-dropdown inputId="dropdown" [options]="cities" [(ngModel)]="selectedCity" optionLabel="p"></p-dropdown>
                     <label for="dropdown">Max</label>
                 </span>
             </div>
@@ -185,6 +218,8 @@
             <p-dropdown class="flex" inputId="dropdown" [options]="fueltype"  optionValue="fueltype" optionLabel="fueltype"></p-dropdown>
           </div>
         </div>
+        <a (click)="toggleShowMore()" *ngIf="showMore" class="ml-2">Show Less</a>
+
   </div>
   </div></div>
   <!-- </form> -->

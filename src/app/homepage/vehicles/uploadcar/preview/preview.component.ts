@@ -86,7 +86,7 @@ export class PreviewComponent implements OnInit {
 
 
   onSubmit(){
-    const userId = 2
+    const userId = 5
     const images: File[] = this.dataServive.getuploadPictureData();
 
     const vehicleData = new FormData();

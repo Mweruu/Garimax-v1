@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { BODY_TYPE, CAR_MODELS, CAR_OPTIONS, COLOR, DRIVETRAIN, ENGINE_POWER, FUEL_TYPE, KENYA_LOCATION, STEERING, TRANSMISSION } from '../const-data/constants';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -36,6 +36,10 @@ export class FiltersComponent implements OnInit {
   gear:any = TRANSMISSION;
   drivetrain:any = DRIVETRAIN;
   showMore: boolean = false;
+  searchTextProperty:any;
+  date!: Date;
+  date1!: Date;
+
 
   constructor( private fb:FormBuilder,
                private router: Router,
@@ -73,6 +77,8 @@ export class FiltersComponent implements OnInit {
     return this.filtersForm.controls;
   }
 
+  onSearch(){
 
+  }
 
 }

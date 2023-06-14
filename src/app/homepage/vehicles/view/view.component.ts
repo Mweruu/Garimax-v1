@@ -41,6 +41,7 @@ export class ViewComponent implements OnInit {
         numVisible: 1
     }
 ];
+value: any;
 
   constructor(private ds:DataStorageService,
               private router: ActivatedRoute,
@@ -58,15 +59,9 @@ export class ViewComponent implements OnInit {
         })
       }
     })
-
-
-
-
-
-
      this.items = [
             { label: 'Inspection Cert', icon: 'pi pi-fw pi-check-circle', command: () => this.selectTab('Inspection Cert')},
-            { label: 'Engine', icon: 'pi pi-fw pi-check-circle',command: () => this.selectTab('engine')},
+            { label: 'Engine', icon: 'pi pi-fw pi-check-circle',command: () => this.selectTab('Engine')},
             { label: 'Electricals', icon: 'pi pi-fw pi-check-circle',command: () => this.selectTab('Electricals') },
             { label: 'Transmissson & Clutch', icon: 'pi pi-fw pi-check-circle',command: () => this.selectTab('Transmissson & Clutch') },
             { label: 'Suspension & Steering', icon: 'pi pi-fw pi-check-circle',command: () => this.selectTab('Suspension & Steering') },
@@ -76,7 +71,8 @@ export class ViewComponent implements OnInit {
             { label: 'Airconditioning System', icon: 'pi pi-fw pi-check-circle',command: () => this.selectTab('Airconditioning System')}
 
         ];
-      this.activeItem = this.items[0];
+      this.activeItem = this.items[1];
+      this.selectTab('Engine')
   }
 
   async getSingleVehicle(vehicleId: string) {
