@@ -11,12 +11,16 @@ export class AuthService {
   constructor() { }
 
   setUserCredentials(data: any) {
-    this.userName = data.user.firstName,
-    this.userId = data.user.id
-    this.userToken = data.token
+    localStorage.setItem('userName', data.user.firstName)
+    localStorage.setItem('userId', data.user.firstName)
+    localStorage.setItem('userToken', data.user.token)
   }
 
   getUserCredentials(){
+    this.userName = localStorage.getItem('userName')
+    this.userId = localStorage.getItem('userId')
+    this.userToken = localStorage.getItem('userToken')
+
     return {
       name: this.userName,
       tokem: this.userToken,

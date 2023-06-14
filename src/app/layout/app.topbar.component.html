@@ -24,7 +24,7 @@
         <span class="span-toolbar" routerLink="#">{{ username ? username: '' }}</span>
       </button>
       <button class="p-link m">
-        <span class="span-toolbar" (click)="reloadPage()">{{ username ? 'logout': '' }}</span>
+        <span class="span-toolbar" (click)="logOut()">{{ username ? 'logout': '' }}</span>
       </button>
       <button class="p-link layout-topbar-button" routerLink="/sociallogin">
           <i class="pi pi-user"></i>

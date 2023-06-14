@@ -86,11 +86,11 @@ export class PreviewComponent implements OnInit {
 
 
   onSubmit(){
-    const userId = 5
+    let userId = localStorage.getItem('userId');
     const images: File[] = this.dataServive.getuploadPictureData();
 
     const vehicleData = new FormData();
-    vehicleData.append("userId", userId.toString());
+    vehicleData.append("userId", userId || '1');
     vehicleData.append("model", this.carData.basicInfo.model);
     vehicleData.append("make", this.carData.basicInfo.make);
     vehicleData.append("price", this.carData.basicInfo.price);
