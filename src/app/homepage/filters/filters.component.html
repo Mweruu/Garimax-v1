@@ -1,198 +1,166 @@
-<!-- <div class="grid p-fluid"> -->
-  <div class="grid">
-    <div class="col-12 md:col-12 mt-2">
-      <div class="p-fluid">
-        <div class="p-formgrid grid">
-          <div class="col-12 md:col-12">
-            <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);" >
-              <!-- <p-button label="Make" styleClass="p-button-info p-button-text w-11rem" ></p-button>
-              <p-dropdown class="flex" [options]="makes" inputId="dropdown" (onChange)="onMakeChange()" ></p-dropdown> -->
-              <p-button label="Make" styleClass="p-button-info p-button-text w-11rem" ></p-button>
-              <p-dropdown class="flex" [options]="makes" inputId="dropdown" ></p-dropdown>
-            </div>
-          </div>
-          <!-- <p-divider></p-divider> -->
-          <div class="col-12 md:col-12">
-            <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
-              <p-button label="Model" styleClass="p-button-info p-button-text w-11rem" ></p-button>
-              <p-dropdown class="flex" [options]="models" inputId="dropdown"></p-dropdown>
-            </div>
-          </div>
-          <div class="col-12 md:col-12">
-            <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
-              <p-button label="Location" styleClass="p-button-info p-button-text w-11rem"></p-button>
-              <p-dropdown class="flex" inputId="dropdown"  [options]="location"  optionValue="location"  optionLabel="location"></p-dropdown><br>
-              <!-- <p-splitButton label="Loccation" [model]="location" optionValue="location"  optionLabel="location" styleClass="p-button-text p-button-info mr-2 mb-2"></p-splitButton> -->
-            </div>
-          </div>
-          <div class="col-12 md:col-12 mb-2">
-            <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
-              <p-button label="Mileage" styleClass="p-button-info p-button-text w-11rem"></p-button>
-              <p-dropdown class="flex" inputId="dropdown"   [editable]="true" [options]="location"  optionValue="location"  optionLabel="location" [(ngModel)]="enteredFilter" (input)="onSearchFilterhanged()" ></p-dropdown><br>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="p-fluid">
-        <div class="card field m-1 p-1 pl-3 pr-5">
-          <div class="p-fluid">
-            <div class="mt-2 mb-2 text-blue-400 hover:text-red-700">Year of Manufacture</div>
-            <div class="p-formgrid grid">
-              <div class="field col">
-                <label htmlFor="name2">Min</label>
-                <p-calendar [(ngModel)]="date" view="year" [showIcon]="true" dateFormat="yy"></p-calendar>
-              </div>
-              <div class="field col">
-                <label htmlFor="email2">Max</label>
-                <p-calendar [(ngModel)]="date1" view="year" [showIcon]="true" dateFormat="yy"></p-calendar>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- <p-divider></p-divider> -->
-        <div class="card field m-1 p-1 pl-3 pr-5">
-          <div class="p-fluid">
-            <div class="mt-2 mb-2 text-blue-400 hover:text-red-700">Price</div>
-            <div class="p-formgrid grid">
-              <div class="field col">
-                <label htmlFor="name2">Min</label>
-                <p-dropdown inputId="dropdown" [options]="cities" [(ngModel)]="selectedCity" optionLabel="e"></p-dropdown>
-              </div>
-              <div class="field col">
-                <label htmlFor="email2">Max</label>
-                <p-dropdown inputId="dropdown" [options]="cities" [(ngModel)]="selectedCity" optionLabel="e"></p-dropdown>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+<div class="p-fluid">
+  <div class="p-formgrid grid">
+    <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);" >
+      <p-button class="flex col-4 md:col-6 mt-0" label="Make"  styleClass="p-button-info p-button-text" ></p-button>
+      <p-dropdown class="flex col-8 md:col-6 mb-0" style="border: 1px solid rgb(192, 190, 190);" [options]="makes" inputId="dropdown" ></p-dropdown>
     </div>
-
-  <a (click)="toggleShowMore()" *ngIf="!showMore" class="ml-2">Show More</a>
-  <div class="col-12 md:col-12">
-		<div class="p-fluid">
-  <div *ngIf="showMore" class="p-formgrid grid">
-    <div class="col-12 md:col-12 mb-2">
-      <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
-        <p-button label="Body Type" styleClass="p-button-info p-button-text w-11rem"></p-button>
-        <p-dropdown class="flex" inputId="dropdown" [options]="bodytype"  optionValue="bodytype" optionLabel="bodytype" ></p-dropdown>
-      </div>
+    <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
+      <p-button class="flex col-4 md:col-6 mb-0" label="Model" styleClass="p-button-info p-button-text" ></p-button>
+      <p-dropdown class="flex col-8 md:col-6 mb-0" [options]="models" inputId="dropdown"></p-dropdown>
     </div>
-    <div class="col-12 md:col-12 mb-2">
-      <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
-        <p-button label="Verified" styleClass="p-button-info p-button-text w-11rem"></p-button>
-        <p-dropdown class="flex" inputId="dropdown" [options]="bodytype"  optionValue="bodytype" optionLabel="bodytype"></p-dropdown>
-      </div>
+    <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
+      <p-button class="flex col-4 md:col-6 mb-0" label="Location" styleClass="p-button-info p-button-text"></p-button>
+      <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown"  [options]="location"  optionValue="location"  optionLabel="location"  [(ngModel)]="enteredFilter" (onChange)="onSearchFilterChanged($event.value)"></p-dropdown><br>
     </div>
-    <div class="col-12 md:col-12 mb-2">
-      <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
-        <p-button label="Usage" styleClass="p-button-info p-button-text w-11rem"></p-button>
-        <p-dropdown class="flex" inputId="dropdown" [options]="bodytype"  optionValue="bodytype" optionLabel="bodytype"></p-dropdown>
-      </div>
+    <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
+      <p-button class="flex col-4 md:col-6 mb-0" label="Mileage" styleClass="p-button-info p-button-text"></p-button>
+      <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown"   [editable]="true" [options]="location"  optionValue="location"  optionLabel="location"></p-dropdown><br>
     </div>
-    <div class="col-12 md:col-12 mb-2">
-      <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
-        <p-button label="Condition" styleClass="p-button-info p-button-text w-11rem"></p-button>
-        <p-dropdown class="flex" inputId="dropdown" [options]="bodytype"  optionValue="bodytype" optionLabel="bodytype"></p-dropdown>
-      </div>
-    </div>
-    <div class="col-12 md:col-12 mb-2">
-      <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
-        <p-button label="Transmission" styleClass="p-button-info p-button-text w-11rem"></p-button>
-        <p-dropdown class="flex" inputId="dropdown" [options]="gear"  optionValue="gear" optionLabel="gear"></p-dropdown>
-      </div>
-    </div>
-    <div class="p-fluid">
-      <div class="card field m-1 p-1 pl-5 pr-5">
-        <div class="p-fluid">
-          <div class="m-2 text-blue-400 hover:text-red-700  font-bold ">Engine Size</div>
-          <div class="p-formgrid grid">
-            <div class="field col">
-              <label htmlFor="name2">Min</label>
-              <p-dropdown inputId="dropdown" [options]="engineSize" [(ngModel)]="engineSize" optionLabel="engineSize"></p-dropdown>
-            </div>
-            <div class="field col">
-              <label htmlFor="email2">Max</label>
-              <p-dropdown inputId="dropdown" [options]="engineSize" [(ngModel)]="engineSize" optionLabel="engineSize"></p-dropdown>
-            </div>
-          </div>
-        </div>
-      </div>
-      <p-divider></p-divider>
-      <div class="card field m-1 p-1 pl-5 pr-5">
-        <div class="p-fluid">
-          <div class="m-2 text-blue-400 hover:text-red-700  font-bold ">Engine Power</div>
-          <div class="p-formgrid grid">
-            <div class="field col">
-              <label htmlFor="name2">Min</label>
-              <p-dropdown inputId="dropdown" [options]="engineSize" [(ngModel)]="engineSize" optionLabel="engineSize"></p-dropdown>
-            </div>
-            <div class="field col">
-              <label htmlFor="email2">Max</label>
-              <p-dropdown inputId="dropdown" [options]="engineSize" [(ngModel)]="engineSize" optionLabel="engineSize"></p-dropdown>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-        <div class="col-12 md:col-12 mb-2">
-          <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
-            <p-button label="Acceleration" styleClass="p-button-info p-button-text w-11rem"></p-button>
-            <p-dropdown class="flex" inputId="dropdown" [options]="gear"  optionValue="gear" optionLabel="gear"></p-dropdown>
-          </div>
-        </div>
-        <div class="col-12 md:col-12 mb-2">
-          <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
-            <p-button label="Drive Train" styleClass="p-button-info p-button-text w-11rem"></p-button>
-            <p-dropdown class="flex" inputId="dropdown" [options]="gear"  optionValue="gear" optionLabel="gear"></p-dropdown>
-          </div>
-        </div>
-        <div class="col-12 md:col-12 mb-2">
-          <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
-            <p-button label="Doors " styleClass="p-button-info p-button-text w-11rem"></p-button>
-            <p-dropdown class="flex" inputId="dropdown" [options]="gear"  optionValue="gear" optionLabel="gear"></p-dropdown>
-          </div>
-        </div>
-        <div class="col-12 md:col-12 mb-2">
-          <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
-            <p-button label="Color " styleClass="p-button-info p-button-text w-11rem"></p-button>
-            <p-dropdown class="flex" inputId="dropdown" [options]="color"  optionValue="color" optionLabel="color"></p-dropdown>
-          </div>
-        </div>
-        <div class="col-12 md:col-12 mb-2">
-          <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
-            <p-button label="Seats" styleClass="p-button-info p-button-text w-11rem"></p-button>
-            <p-dropdown class="flex" inputId="dropdown" [options]="color"  optionValue="color" optionLabel="color"></p-dropdown>
-          </div>
-        </div>
-        <div class="col-12 md:col-12 mb-2">
-          <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
-            <p-button label="Boot Space" styleClass="p-button-info p-button-text w-11rem"></p-button>
-            <p-dropdown class="flex" inputId="dropdown" [options]="color"  optionValue="color" optionLabel="color"></p-dropdown>
-          </div>
-        </div>
-        <div class="col-12 md:col-12 mb-2">
-          <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
-            <p-button label=" Fuel type" styleClass="p-button-info p-button-text w-11rem"></p-button>
-            <p-dropdown class="flex" inputId="dropdown" [options]="fueltype"  optionValue="fueltype" optionLabel="fueltype"></p-dropdown>
-          </div>
-        </div>
-        <div class="col-12 md:col-12 mb-2">
-          <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
-            <p-button label="Fuel Consumption" styleClass="p-button-info p-button-text w-11rem"></p-button>
-            <p-dropdown class="flex" inputId="dropdown" [options]="fueltype"  optionValue="fueltype" optionLabel="fueltype"></p-dropdown>
-          </div>
-        </div>
-        <div class="col-12 md:col-12 mb-2">
-          <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
-            <p-button label="Accessibility" styleClass="p-button-info p-button-text w-11rem"></p-button>
-            <p-dropdown class="flex" inputId="dropdown" [options]="fueltype"  optionValue="fueltype" optionLabel="fueltype"></p-dropdown>
-          </div>
-        </div>
-        <a (click)="toggleShowMore()" *ngIf="showMore" class="ml-2">Show Less</a>
-
   </div>
-  </div></div>
-  <!-- </form> -->
 </div>
+<fieldset class="mt-3">
+<legend>Year</legend>
+<div class="p-formgrid grid">
+  <div class="field col">
+    <label htmlFor="name2">Min</label>
+    <p-calendar [(ngModel)]="date" view="year" [showIcon]="true" dateFormat="yy"></p-calendar>
+  </div>
+  <div class="field col">
+    <label htmlFor="email2">Max</label>
+    <p-calendar [(ngModel)]="date1" view="year" [showIcon]="true" dateFormat="yy"></p-calendar>
+  </div>
+</div>
+</fieldset>
+<fieldset class="mt-3 mb-3">
+<legend>Price</legend>
+<div class="p-formgrid grid">
+  <div class="field col">
+    <label htmlFor="name2">Min</label>
+    <p-dropdown inputId="dropdown" [options]="cities" [(ngModel)]="selectedCity" optionLabel="e"></p-dropdown>
+  </div>
+  <div class="field col">
+    <label htmlFor="email2">Max</label>
+    <p-dropdown inputId="dropdown" [options]="cities" [(ngModel)]="selectedCity" optionLabel="e"></p-dropdown>
+  </div>
+</div>
+</fieldset>
+
+<a (click)="toggleShowMore()" *ngIf="!showMore" class="ml-2" style="cursor: pointer;">Show More</a>
+<!-- <div class="p-fluid"> -->
+<div *ngIf="showMore" class="p-formgrid grid">
+    <div  class="p-inputgroup mt-3" style="border: 1px solid rgb(192, 190, 190);">
+      <p-button  class="flex col-4 md:col-6 mt-0"  label="Body Type" styleClass="p-button-info p-button-text w-11rem"></p-button>
+      <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="bodytype"  optionValue="bodytype" optionLabel="bodytype" ></p-dropdown>
+    </div>
+
+
+    <!-- <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
+      <label>Verified</label>
+      <div *ngFor="let state of states" class="field-checkbox col-5 md:col-5 lg:col-5">
+        <p-checkbox name="group" [value]="state" [inputId]="state.key"></p-checkbox>
+        <label [for]="state.key">{{ state.condition }}</label>
+      </div>
+    </div> -->
+
+
+    <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
+      <p-button  class="flex col-4 md:col-6 mt-0"  label="Usage" styleClass="p-button-info p-button-text w-11rem"></p-button>
+      <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="bodytype"  optionValue="bodytype" optionLabel="bodytype"></p-dropdown>
+    </div>
+
+    <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
+      <p-button  class="flex col-4 md:col-6 mt-0"  label="Condition" styleClass="p-button-info p-button-text w-11rem"></p-button>
+      <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="bodytype"  optionValue="bodytype" optionLabel="bodytype"></p-dropdown>
+    </div>
+
+
+    <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
+      <p-button  class="flex col-4 md:col-6 mt-0"  label="Transmission" styleClass="p-button-info p-button-text w-11rem"></p-button>
+      <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="gear"  optionValue="gear" optionLabel="gear"></p-dropdown>
+    </div>
+
+<fieldset>
+  <legend>Engine Size</legend>
+  <div class="p-formgrid grid">
+    <div class="field col">
+      <label htmlFor="name2">Min</label>
+      <p-dropdown inputId="dropdown" [options]="engineSize" [(ngModel)]="engineSize" optionLabel="engineSize"></p-dropdown>
+    </div>
+    <div class="field col">
+      <label htmlFor="email2">Max</label>
+      <p-dropdown inputId="dropdown" [options]="engineSize" [(ngModel)]="engineSize" optionLabel="engineSize"></p-dropdown>
+    </div>
+  </div>
+</fieldset>
+
+    <fieldset  class="mb-3">
+      <legend>Engine Power</legend>
+      <div class="p-formgrid grid">
+        <div class="field col">
+          <label htmlFor="name2">Min</label>
+          <p-dropdown inputId="dropdown" [options]="engineSize" [(ngModel)]="engineSize" optionLabel="engineSize"></p-dropdown>
+        </div>
+        <div class="field col">
+          <label htmlFor="email2">Max</label>
+          <p-dropdown inputId="dropdown" [options]="engineSize" [(ngModel)]="engineSize" optionLabel="engineSize"></p-dropdown>
+        </div>
+      </div>
+    </fieldset>
+
+
+        <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
+          <p-button  class="flex col-4 md:col-6 mt-0"  label="Acceleration" styleClass="p-button-info p-button-text w-11rem"></p-button>
+          <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="gear"  optionValue="gear" optionLabel="gear"></p-dropdown>
+        </div>
+
+
+        <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
+          <p-button  class="flex col-4 md:col-6 mt-0"  label="Drive Train" styleClass="p-button-info p-button-text w-11rem"></p-button>
+          <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="gear"  optionValue="gear" optionLabel="gear"></p-dropdown>
+        </div>
+
+
+        <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
+          <p-button  class="flex col-4 md:col-6 mt-0"  label="Doors " styleClass="p-button-info p-button-text w-11rem"></p-button>
+          <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="gear"  optionValue="gear" optionLabel="gear"></p-dropdown>
+        </div>
+
+        <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
+          <p-button   class="flex col-4 md:col-6 mt-0"  label="Color " styleClass="p-button-info p-button-text w-11rem"></p-button>
+          <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="color"  optionValue="color" optionLabel="color"></p-dropdown>
+        </div>
+
+
+        <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
+          <p-button  class="flex col-4 md:col-6 mt-0"  label="Seats" styleClass="p-button-info p-button-text w-11rem"></p-button>
+          <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="color"  optionValue="color" optionLabel="color"></p-dropdown>
+        </div>
+
+
+        <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
+          <p-button  class="flex col-4 md:col-6 mt-0"  label="Boot Space" styleClass="p-button-info p-button-text w-11rem"></p-button>
+          <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="color"  optionValue="color" optionLabel="color"></p-dropdown>
+        </div>
+
+
+        <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
+          <p-button  class="flex col-4 md:col-6 mt-0"  label=" Fuel type" styleClass="p-button-info p-button-text w-11rem"></p-button>
+          <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="fueltype"  optionValue="fueltype" optionLabel="fueltype"></p-dropdown>
+        </div>
+
+
+        <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
+          <p-button  class="flex col-4 md:col-6 mt-0" label="Fuel Consumption" styleClass="p-button-info p-button-text w-11rem"></p-button>
+          <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="fueltype"  optionValue="fueltype" optionLabel="fueltype"></p-dropdown>
+        </div>
+
+
+        <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
+          <p-button  class="flex col-4 md:col-6 mt-0"  label="Accessibility" styleClass="p-button-info p-button-text w-11rem"></p-button>
+          <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="fueltype"  optionValue="fueltype" optionLabel="fueltype"></p-dropdown>
+        </div>
+
+      <a (click)="toggleShowMore()" *ngIf="showMore" class="ml-2" style="cursor: pointer;">Show Less</a>
+</div>
+<!-- </div>
+</div> -->

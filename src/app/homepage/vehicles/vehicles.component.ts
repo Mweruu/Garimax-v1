@@ -16,7 +16,9 @@ export class VehiclesComponent implements OnInit {
   search:any;
   searchText:string = '';
   searchFilter:string = '';
-
+  first: number = 0;
+  rows: number = 2;
+  totalRecords:number = 0;
   // @Output()
   // searchTextChanged:EventEmitter<string>=new EventEmitter<string>();
 
@@ -26,14 +28,13 @@ export class VehiclesComponent implements OnInit {
   constructor(
     private ds:DataStorageService,
     public router: Router,
-
   ) { }
 
   ngOnInit() {
     this.value = 4;
     this._setValues();
     this.getAllVehicles()
-    // this.onSearchTextChanged()
+    this.totalRecords = this.vehicles.length;
   }
 
   _setValues(){
@@ -46,7 +47,8 @@ export class VehiclesComponent implements OnInit {
         console.log(vehicles);
         console.log(vehicles.vehicles);
         this.vehicles = vehicles.vehicles;
-
+        this.totalRecords = vehicles.total;
+        console.log(this.vehicles.length, this.totalRecords)
       },
       (error) => {
         console.error(error);
@@ -67,4 +69,25 @@ export class VehiclesComponent implements OnInit {
       this.searchFilter = filterValue;
       console.log(2,this.searchFilter)
   }
+
+  isMatched(vehicle: any): boolean {
+    if (this.searchText === '') {
+      return this.searchFilter === '' || vehicle.location.toLowerCase().includes(this.searchFilter);
+    } else {
+      const searchText = this.searchText.toLowerCase();
+      return (
+        vehicle.make.toLowerCase().includes(searchText) ||
+        vehicle.model.toLowerCase().includes(searchText) ||
+        vehicle.price.toLowerCase().includes(searchText) ||
+        vehicle.yearOfManufactor.toLowerCase().includes(searchText)
+      ) && (
+        this.searchFilter === '' || vehicle.location.toLowerCase().includes(this.searchFilter)
+      );
+    }
+  }
+
+    onPageChange(event: { first: number; rows: number; }) {
+        this.first = event.first;
+        this.rows = event.rows;
+    }
 }

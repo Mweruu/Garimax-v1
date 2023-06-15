@@ -47,6 +47,7 @@ import { ChipModule } from 'primeng/chip';
 import { AuthService } from '../auth.service';
 import { GalleriaModule } from 'primeng/galleria';
 import { SplitButtonModule } from 'primeng/splitbutton';
+import { PaginatorModule } from 'primeng/paginator';
 
 @NgModule({
     declarations: [
@@ -95,7 +96,8 @@ import { SplitButtonModule } from 'primeng/splitbutton';
         TabMenuModule,
         ChipModule,
         GalleriaModule,
-        SplitButtonModule
+        SplitButtonModule,
+        PaginatorModule,
     ],
     providers:[DataService, AuthService, MessageService, ViewComponent],
     exports: [AppLayoutComponent]

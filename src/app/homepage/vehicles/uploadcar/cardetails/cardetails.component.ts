@@ -79,7 +79,8 @@ export class CardetailsComponent implements OnInit {
         this.visible = true;
     }
     onReset(){
-
+        //Set first index to 0
+        // this.firstIndex = 0;
     }
 
     get carDetails(){

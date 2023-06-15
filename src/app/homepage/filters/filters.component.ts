@@ -3,6 +3,8 @@ import { BODY_TYPE, CAR_MODELS, CAR_OPTIONS, COLOR, DRIVETRAIN, ENGINE_POWER, FU
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/layout/data.service';
+import { DataStorageService } from 'src/app/datastorage.service';
+import {FilterService} from 'primeng/api';
 
 
 interface City {
@@ -39,15 +41,20 @@ export class FiltersComponent implements OnInit {
   searchTextProperty:any;
   date!: Date;
   date1!: Date;
-
   enteredFilter:any;
+  states = [{condition:"Verified" , key:"v",},{condition:"Not Verified", key:"nv"}]
+  vehicles:any;
+  checked: boolean = false;
 
   @Output()
   searchFilterChanged:EventEmitter<string>=new EventEmitter<string>();
 
   constructor( private fb:FormBuilder,
                private router: Router,
-               private dataServive: DataService) { }
+               private dataServive: DataService,
+               private ds:DataStorageService,
+               private filterService: FilterService,
+               ) { }
 
   ngOnInit(){
     this.cities = [
@@ -65,6 +72,9 @@ export class FiltersComponent implements OnInit {
       location:['',Validators.required],
       mileage:['',Validators.required],
     })
+
+    const naks = this.filterService.filters.contains(this.vehicles,'Nakuru')
+    console.log(naks)
   }
 
   toggleShowMore() {
@@ -81,7 +91,23 @@ export class FiltersComponent implements OnInit {
     return this.filtersForm.controls;
   }
 
-  onSearchFilterhanged(){
-    this.searchFilterChanged.emit(this.enteredFilter)
+  getAllVehicles(){
+    this.ds.getVehicles().subscribe(
+      (vehicles) => {
+        console.log(vehicles);
+        console.log(vehicles.vehicles);
+        this.vehicles = vehicles.vehicles;
+
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
   }
+
+  onSearchFilterChanged(selectedFilter:string){
+    this.searchFilterChanged.emit(selectedFilter)
+    console.log("ef",selectedFilter)
+  }
+
 }

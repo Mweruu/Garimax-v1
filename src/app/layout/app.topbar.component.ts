@@ -4,6 +4,7 @@ import { LayoutService } from "./service/app.layout.service";
 import { DataStorageService } from '../datastorage.service';
 import { VehiclesComponent } from '../homepage/vehicles/vehicles.component';
 import { AuthService } from '../auth.service';
+import { KENYA_LOCATION } from '../homepage/const-data/constants';
 
 @Component({
     selector: 'app-topbar',
@@ -17,6 +18,9 @@ export class AppTopBarComponent implements OnInit{
     searchData: any[] = []; // This array will hold the search results
     vehicles:any;
     enteredSearchValue:any;
+    location:any = KENYA_LOCATION;
+    enteredFilter:any
+
 
     @Output()
     searchTextChanged:EventEmitter<string>=new EventEmitter<string>();
