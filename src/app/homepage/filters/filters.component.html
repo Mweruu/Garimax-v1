@@ -2,11 +2,11 @@
   <div class="p-formgrid grid">
     <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);" >
       <p-button class="flex col-4 md:col-6 mt-0" label="Make"  styleClass="p-button-info p-button-text" ></p-button>
-      <p-dropdown class="flex col-8 md:col-6 mb-0" style="border: 1px solid rgb(192, 190, 190);" [options]="makes" inputId="dropdown" ></p-dropdown>
+      <p-dropdown class="flex col-8 md:col-6 mb-0" [options]="makes" inputId="dropdown" inputId="dropdown" (onChange)="onMakeChange()"></p-dropdown>
     </div>
     <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
       <p-button class="flex col-4 md:col-6 mb-0" label="Model" styleClass="p-button-info p-button-text" ></p-button>
-      <p-dropdown class="flex col-8 md:col-6 mb-0" [options]="models" inputId="dropdown"></p-dropdown>
+      <p-dropdown class="flex col-8 md:col-6 mb-0" [options]="models"  inputId="dropdown" ></p-dropdown>
     </div>
     <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
       <p-button class="flex col-4 md:col-6 mb-0" label="Location" styleClass="p-button-info p-button-text"></p-button>
@@ -14,35 +14,45 @@
     </div>
     <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
       <p-button class="flex col-4 md:col-6 mb-0" label="Mileage" styleClass="p-button-info p-button-text"></p-button>
-      <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown"   [editable]="true" [options]="location"  optionValue="location"  optionLabel="location"></p-dropdown><br>
+      <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown"  [options]="mileage"  optionValue="mileage"  optionLabel="mileage" [(ngModel)]="mileageFilter" (onChange)="onMileageFilterChanged($event.value)"></p-dropdown><br>
     </div>
   </div>
 </div>
-<fieldset class="mt-3">
+<fieldset class="mt-3 fieldset">
 <legend>Year</legend>
-<div class="p-formgrid grid">
-  <div class="field col">
-    <label htmlFor="name2">Min</label>
-    <p-calendar [(ngModel)]="date" view="year" [showIcon]="true" dateFormat="yy"></p-calendar>
+<div class="formgroup-inline col-12 md:col-12 lg:col-12 m-0">
+  <div class="field col-12 md:col-12 lg:col-5 mb-2 p-0">
+    <span class="field">
+      <label for="dropdown" class="">Min </label>
+      <p-calendar [(ngModel)]="date" view="year" [showIcon]="true" dateFormat="yy"></p-calendar>
+    </span>
   </div>
-  <div class="field col">
-    <label htmlFor="email2">Max</label>
-    <p-calendar [(ngModel)]="date1" view="year" [showIcon]="true" dateFormat="yy"></p-calendar>
+  <div class="field col-12 md:col-12 lg:col-5  mb-2 p-0">
+    <span class="field">
+      <label for="dropdown"> Max</label>
+      <p-calendar [(ngModel)]="date1" view="year" [showIcon]="true" dateFormat="yy" ></p-calendar>
+    </span>
   </div>
 </div>
+
 </fieldset>
-<fieldset class="mt-3 mb-3">
-<legend>Price</legend>
-<div class="p-formgrid grid">
-  <div class="field col">
-    <label htmlFor="name2">Min</label>
-    <p-dropdown inputId="dropdown" [options]="cities" [(ngModel)]="selectedCity" optionLabel="e"></p-dropdown>
+
+<fieldset class="mt-3 mb-3 fieldset">
+  <legend>Price</legend>
+  <div class="formgroup-inline col-12 md:col-12 lg:col-12">
+    <div class="field col-12 md:col-12 lg:col-5 m-2 p-0">
+      <span class="field">
+        <label for="dropdown">Max</label>
+        <p-dropdown inputId="dropdown" [options]="price" optionValue="price"  optionLabel="price" [(ngModel)]="priceFilter" (onChange)="onPriceFilterChanged($event.value)"></p-dropdown>
+      </span>
+    </div>
+    <div class="field col-12 md:col-12 lg:col-5  m-2 p-0">
+      <span class="field">
+        <label for="dropdown">Min</label>
+        <p-dropdown inputId="dropdown" [options]="price" optionValue="price"  optionLabel="price" [(ngModel)]="priceFilter" (onChange)="onPriceFilterChanged($event.value)"></p-dropdown>
+      </span>
+    </div>
   </div>
-  <div class="field col">
-    <label htmlFor="email2">Max</label>
-    <p-dropdown inputId="dropdown" [options]="cities" [(ngModel)]="selectedCity" optionLabel="e"></p-dropdown>
-  </div>
-</div>
 </fieldset>
 
 <a (click)="toggleShowMore()" *ngIf="!showMore" class="ml-2" style="cursor: pointer;">Show More</a>
@@ -50,117 +60,137 @@
 <div *ngIf="showMore" class="p-formgrid grid">
     <div  class="p-inputgroup mt-3" style="border: 1px solid rgb(192, 190, 190);">
       <p-button  class="flex col-4 md:col-6 mt-0"  label="Body Type" styleClass="p-button-info p-button-text w-11rem"></p-button>
-      <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="bodytype"  optionValue="bodytype" optionLabel="bodytype" ></p-dropdown>
+      <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="bodytype"  optionValue="bodytype" optionLabel="bodytype" [(ngModel)]="bodyTypeFilter" (onChange)="onBodyTypeFilterChanged($event.value)"></p-dropdown>
     </div>
+    <!-- <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);"> -->
+      <!-- <label class="label mb-2">Verified</label> -->
+      <div class="col-12"><fieldset class="mt-3 fieldset"><legend>Verified</legend>
+      <div class="grid formgrid">
 
-
-    <!-- <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
-      <label>Verified</label>
-      <div *ngFor="let state of states" class="field-checkbox col-5 md:col-5 lg:col-5">
-        <p-checkbox name="group" [value]="state" [inputId]="state.key"></p-checkbox>
+     <div *ngFor="let state of states" class="field-checkbox col-5 md:col-5 lg:col-5">
+        <p-checkbox name="state" [value]="state" [inputId]="state.key"></p-checkbox>
         <label [for]="state.key">{{ state.condition }}</label>
       </div>
-    </div> -->
+    </div></fieldset>
+    <!-- <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);"> -->
+      <!-- <label class="label mb-2">Usage</label> -->
+      <fieldset class="mt-3 fieldset"><legend>Usage</legend>
+      <div class="grid formgrid">
+      <div *ngFor="let use of uses" class="field-checkbox col-5 md:col-5 lg:col-5">
+        <p-checkbox name="use" [value]="use" [inputId]="use.key"></p-checkbox>
+        <label [for]="use.key">{{ use.use }}</label>
+      </div>
+      <!-- </div> -->
+    </div></fieldset>
+    <!-- <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);"> -->
+      <!-- <label class="label mb-2">Condition</label> -->
+      <fieldset class="mt-3 mb-3 fieldset">
+        <legend> Condition </legend>
 
-
-    <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
-      <p-button  class="flex col-4 md:col-6 mt-0"  label="Usage" styleClass="p-button-info p-button-text w-11rem"></p-button>
-      <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="bodytype"  optionValue="bodytype" optionLabel="bodytype"></p-dropdown>
-    </div>
-
-    <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
-      <p-button  class="flex col-4 md:col-6 mt-0"  label="Condition" styleClass="p-button-info p-button-text w-11rem"></p-button>
-      <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="bodytype"  optionValue="bodytype" optionLabel="bodytype"></p-dropdown>
-    </div>
-
+      <div class="grid formgrid">
+      <div *ngFor="let condition of conditions" class="field-checkbox col-5 md:col-5 lg:col-5">
+        <p-checkbox name="condition" [value]="condition" [inputId]="condition.key"></p-checkbox>
+        <label [for]="condition.key">{{ condition.state }}</label>
+      </div>
+    </div></fieldset>
+</div>
 
     <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
       <p-button  class="flex col-4 md:col-6 mt-0"  label="Transmission" styleClass="p-button-info p-button-text w-11rem"></p-button>
-      <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="gear"  optionValue="gear" optionLabel="gear"></p-dropdown>
+      <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="gear"  optionValue="gear" optionLabel="gear" [(ngModel)]="transmissionFilter" (onChange)="onTransmissionFilterChanged($event.value)"></p-dropdown>
     </div>
-
-<fieldset>
-  <legend>Engine Size</legend>
-  <div class="p-formgrid grid">
-    <div class="field col">
-      <label htmlFor="name2">Min</label>
-      <p-dropdown inputId="dropdown" [options]="engineSize" [(ngModel)]="engineSize" optionLabel="engineSize"></p-dropdown>
+<div class="col-12">
+<fieldset class="mt-3 mb-3 fieldset">
+  <legend>Engine Size (cc)</legend>
+  <div class="formgroup-inline col-12 md:col-12 lg:col-12 m-0">
+    <div class="field col-12 md:col-12 lg:col-5 mb-0 p-0">
+      <span class="field">
+        <label for="dropdown">Min (cc)</label>
+        <p-dropdown inputId="dropdown" [options]="engineSize" optionValue="enginesize" optionLabel="enginesize"></p-dropdown>
+      </span>
     </div>
-    <div class="field col">
-      <label htmlFor="email2">Max</label>
-      <p-dropdown inputId="dropdown" [options]="engineSize" [(ngModel)]="engineSize" optionLabel="engineSize"></p-dropdown>
+    <div class="field col-12 md:col-12 lg:col-5  mb-0 p-0">
+      <span class="field">
+        <label for="dropdown">Max (cc)</label>
+        <p-dropdown inputId="dropdown" [options]="engineSize"  optionValue="enginesize" optionLabel="enginesize"></p-dropdown>
+      </span>
     </div>
   </div>
 </fieldset>
 
-    <fieldset  class="mb-3">
-      <legend>Engine Power</legend>
-      <div class="p-formgrid grid">
-        <div class="field col">
-          <label htmlFor="name2">Min</label>
-          <p-dropdown inputId="dropdown" [options]="engineSize" [(ngModel)]="engineSize" optionLabel="engineSize"></p-dropdown>
-        </div>
-        <div class="field col">
-          <label htmlFor="email2">Max</label>
-          <p-dropdown inputId="dropdown" [options]="engineSize" [(ngModel)]="engineSize" optionLabel="engineSize"></p-dropdown>
-        </div>
-      </div>
-    </fieldset>
-
+<fieldset  class="mb-3 fieldset">
+  <legend>Engine Power</legend>
+  <div class="formgroup-inline col-12 md:col-12 lg:col-12 m-0">
+    <div class="field col-12 md:col-12 lg:col-5 mb-0 p-0">
+      <span class="field">
+        <label for="dropdown">Min</label>
+        <p-dropdown inputId="dropdown" [options]="enginepower" optionValue="enginepower"  optionLabel="enginepower"></p-dropdown>
+      </span>
+    </div>
+    <div class="field col-12 md:col-12 lg:col-5  mb-0 p-0">
+      <span class="field">
+        <label for="dropdown">Max </label>
+        <p-dropdown inputId="dropdown" [options]="enginepower" optionValue="enginepower" optionLabel="enginepower"></p-dropdown>
+      </span>
+    </div>
+  </div>
+</fieldset>
+</div>
 
         <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
           <p-button  class="flex col-4 md:col-6 mt-0"  label="Acceleration" styleClass="p-button-info p-button-text w-11rem"></p-button>
-          <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="gear"  optionValue="gear" optionLabel="gear"></p-dropdown>
+          <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="acceleration"  optionValue="acceleration" optionLabel="acceleration" [(ngModel)]="accelerationFilter" (onChange)="onAccelerationFilterChanged($event.value)"></p-dropdown>
         </div>
 
 
         <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
           <p-button  class="flex col-4 md:col-6 mt-0"  label="Drive Train" styleClass="p-button-info p-button-text w-11rem"></p-button>
-          <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="gear"  optionValue="gear" optionLabel="gear"></p-dropdown>
+          <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="drivetrain"  optionValue="drivetrain" optionLabel="drivetrain" [(ngModel)]="driveTrainFilter" (onChange)="onDriveTrainFilterChanged($event.value)"></p-dropdown>
         </div>
 
 
         <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
           <p-button  class="flex col-4 md:col-6 mt-0"  label="Doors " styleClass="p-button-info p-button-text w-11rem"></p-button>
-          <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="gear"  optionValue="gear" optionLabel="gear"></p-dropdown>
+          <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="doors"  optionValue="doors" optionLabel="doors" [(ngModel)]="doorsFilter" (onChange)="onDoorsFilterChanged($event.value)"></p-dropdown>
         </div>
 
         <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
           <p-button   class="flex col-4 md:col-6 mt-0"  label="Color " styleClass="p-button-info p-button-text w-11rem"></p-button>
-          <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="color"  optionValue="color" optionLabel="color"></p-dropdown>
+          <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="color"  optionValue="color" optionLabel="color" [(ngModel)]="colorFilter" (onChange)="onColorFilterChanged($event.value)"></p-dropdown>
         </div>
 
 
         <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
           <p-button  class="flex col-4 md:col-6 mt-0"  label="Seats" styleClass="p-button-info p-button-text w-11rem"></p-button>
-          <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="color"  optionValue="color" optionLabel="color"></p-dropdown>
+          <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="seats"  optionValue="seats" optionLabel="seats" [(ngModel)]="seatsFilter" (onChange)="onSeatsFilterChanged($event.value)"></p-dropdown>
         </div>
 
 
         <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
           <p-button  class="flex col-4 md:col-6 mt-0"  label="Boot Space" styleClass="p-button-info p-button-text w-11rem"></p-button>
-          <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="color"  optionValue="color" optionLabel="color"></p-dropdown>
+          <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="bootspace"  optionValue="bootspace" optionLabel="bootspace" [(ngModel)]="bootSpaceFilter" (onChange)="onBootSpaceFilterChanged($event.value)"></p-dropdown>
         </div>
 
 
         <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
           <p-button  class="flex col-4 md:col-6 mt-0"  label=" Fuel type" styleClass="p-button-info p-button-text w-11rem"></p-button>
-          <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="fueltype"  optionValue="fueltype" optionLabel="fueltype"></p-dropdown>
+          <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="fueltype"  optionValue="fueltype" optionLabel="fueltype"  [(ngModel)]="fuelTypeFilter" (onChange)="onFuelTypeFilterChanged($event.value)"></p-dropdown>
         </div>
 
 
         <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
           <p-button  class="flex col-4 md:col-6 mt-0" label="Fuel Consumption" styleClass="p-button-info p-button-text w-11rem"></p-button>
-          <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="fueltype"  optionValue="fueltype" optionLabel="fueltype"></p-dropdown>
+          <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="fuelconsumption"  optionValue="fuelconsumption" optionLabel="fuelconsumption"  [(ngModel)]="fuelConsumptionFilter" (onChange)="onFuelConsumptionFilterChanged($event.value)"></p-dropdown>
         </div>
 
 
-        <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
-          <p-button  class="flex col-4 md:col-6 mt-0"  label="Accessibility" styleClass="p-button-info p-button-text w-11rem"></p-button>
-          <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="fueltype"  optionValue="fueltype" optionLabel="fueltype"></p-dropdown>
+        <div  class="p-inputgroup mb-3 p-3" style="border: 1px solid rgb(192, 190, 190);">
+          <!-- <p-button  class="flex col-4 md:col-6 mt-0"  label="Accessibility" styleClass="p-button-info p-button-text w-11rem"></p-button> -->
+          <p-checkbox class="mr-2" [(ngModel)]="checked" [binary]="true" inputId="binary"></p-checkbox>
+          <p>Wheelchair accessible vehicles(WAV)</p>
         </div>
+
 
       <a (click)="toggleShowMore()" *ngIf="showMore" class="ml-2" style="cursor: pointer;">Show Less</a>
 </div>
-<!-- </div>
-</div> -->
+

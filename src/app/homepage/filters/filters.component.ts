@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { BODY_TYPE, CAR_MODELS, CAR_OPTIONS, COLOR, DRIVETRAIN, ENGINE_POWER, FUEL_TYPE, KENYA_LOCATION, STEERING, TRANSMISSION } from '../const-data/constants';
+import { ACCELERATION, BODY_TYPE, BOOTSPACE, CAR_MODELS, CAR_OPTIONS, COLOR, DOORS, DRIVETRAIN, ENGINE_POWER, ENGINE_SIZE, FUEL_CONSUMPTION, FUEL_TYPE, KENYA_LOCATION, MILEAGE, PRICE, SEATS, STEERING, TRANSMISSION } from '../const-data/constants';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/layout/data.service';
@@ -33,21 +33,46 @@ export class FiltersComponent implements OnInit {
   color: any = COLOR;
   fueltype:any = FUEL_TYPE;
   bodytype:any = BODY_TYPE;
-  engineSize:any = ENGINE_POWER;
+  engineSize:any = ENGINE_SIZE;
   steering:any = STEERING;
   gear:any = TRANSMISSION;
   drivetrain:any = DRIVETRAIN;
+  mileage:any = MILEAGE;
+  price:any =PRICE;
+  seats:any = SEATS;
+  doors:any = DOORS;
+  bootspace:any = BOOTSPACE;
+  acceleration:any = ACCELERATION
+  fuelconsumption:any = FUEL_CONSUMPTION
+  enginepower:any = ENGINE_POWER
   showMore: boolean = false;
   searchTextProperty:any;
   date!: Date;
   date1!: Date;
   enteredFilter:any;
+  makeFilter:any;
   states = [{condition:"Verified" , key:"v",},{condition:"Not Verified", key:"nv"}]
+  uses = [{use:"Kenyan used", key:"KU"},{use:"Foreign used", key:"FU"}]
+  conditions:any[] = [{state:"Used", key:"U"},{state:"Brand new", key:"BN"}]
   vehicles:any;
   checked: boolean = false;
+  mileageFilter:any;
+  priceFilter:any;
+  yearFilter:any;
+  bodyTypeFilter:any;
+  transmissionFilter:any;
+  fuelConsumptionFilter:any;
+  fuelTypeFilter:any;
+  colorFilter:any;
+  bootSpaceFilter:any;
+  doorsFilter:any;
+  seatsFilter:any;
+  accelerationFilter:any;
+  driveTrainFilter:any;
 
   @Output()
   searchFilterChanged:EventEmitter<string>=new EventEmitter<string>();
+
 
   constructor( private fb:FormBuilder,
                private router: Router,
@@ -64,17 +89,7 @@ export class FiltersComponent implements OnInit {
       { name: 'Istanbul', code: 'IST' },
       { name: 'Paris', code: 'PRS' }
   ];
-    this.filtersForm= this.fb.group({
-      make:['',Validators.required],
-      model:['',Validators.required],
-      yearOfManufacture:['',Validators.required],
-      price:['',Validators.required],
-      location:['',Validators.required],
-      mileage:['',Validators.required],
-    })
 
-    const naks = this.filterService.filters.contains(this.vehicles,'Nakuru')
-    console.log(naks)
   }
 
   toggleShowMore() {
@@ -82,8 +97,8 @@ export class FiltersComponent implements OnInit {
   }
 
   onMakeChange(): void {
-    const make = this.filtersForm.value.make;
-    this.models = CAR_MODELS[make] || [];
+    const make = this.makes;
+    // this.models = CAR_MODELS[make] || [];
     this.filtersForm.patchValue({ model: '' });
   }
 
@@ -109,5 +124,65 @@ export class FiltersComponent implements OnInit {
     this.searchFilterChanged.emit(selectedFilter)
     console.log("ef",selectedFilter)
   }
+  onMileageFilterChanged(selectedFilter:string){
+    this.searchFilterChanged.emit(selectedFilter)
+    console.log("ef",selectedFilter)
+  }
+  onPriceFilterChanged(selectedFilter:string){
+    this.searchFilterChanged.emit(selectedFilter)
+    console.log("ef",selectedFilter)
+  }
+  // onYearFilterChanged(selectedFilter:string){
+  //   this.searchFilterChanged.emit(selectedFilter)
+  //   console.log("ef",selectedFilter)
+  // }
+  onBodyTypeFilterChanged(selectedFilter:string){
+    this.searchFilterChanged.emit(selectedFilter)
+    console.log("ef",selectedFilter)
+  }
+
+  onTransmissionFilterChanged(selectedFilter:string){
+    this.searchFilterChanged.emit(selectedFilter)
+    console.log("ef",selectedFilter)
+  }
+
+  onAccelerationFilterChanged(selectedFilter:string){
+    this.searchFilterChanged.emit(selectedFilter)
+    console.log("ef",selectedFilter)
+  }
+  onFuelTypeFilterChanged(selectedFilter:string){
+      this.searchFilterChanged.emit(selectedFilter)
+      console.log("ef",selectedFilter)
+    }
+
+  onFuelConsumptionFilterChanged(selectedFilter:string){
+      this.searchFilterChanged.emit(selectedFilter)
+      console.log("ef",selectedFilter)
+    }
+
+  onColorFilterChanged(selectedFilter:string){
+      this.searchFilterChanged.emit(selectedFilter)
+      console.log("ef",selectedFilter)
+    }
+
+  onBootSpaceFilterChanged(selectedFilter:string){
+      this.searchFilterChanged.emit(selectedFilter)
+      console.log("ef",selectedFilter)
+    }
+
+  onDoorsFilterChanged(selectedFilter:string){
+      this.searchFilterChanged.emit(selectedFilter)
+      console.log("ef",selectedFilter)
+    }
+
+  onSeatsFilterChanged(selectedFilter:string){
+      this.searchFilterChanged.emit(selectedFilter)
+      console.log("ef",selectedFilter)
+    }
+
+  onDriveTrainFilterChanged(selectedFilter:string){
+      this.searchFilterChanged.emit(selectedFilter)
+      console.log("ef",selectedFilter)
+    }
 
 }

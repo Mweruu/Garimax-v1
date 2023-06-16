@@ -28,7 +28,8 @@
         <div class="col-12 md:col-12 mb-3">
           <div class="p-inputgroup">
             <button class="flex" type="button"  [style]="{width:'170px'}" pButton pRipple label="Price"></button>
-            <input type="number" formControlName="price" pInputText placeholder="Kshs"><br>
+            <!-- <input type="number" formControlName="price" pInputText placeholder="Kshs"><br> -->
+            <p-inputNumber inputId="integeronly" formControlName="price" placeholder="Kshs"></p-inputNumber>
           </div>
           <small *ngIf="informationForm['price'].invalid && isSubmitted" class="p-error">Price is required</small>
         </div>

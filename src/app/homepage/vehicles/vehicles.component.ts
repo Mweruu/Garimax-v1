@@ -34,7 +34,6 @@ export class VehiclesComponent implements OnInit {
     this.value = 4;
     this._setValues();
     this.getAllVehicles()
-    this.totalRecords = this.vehicles.length;
   }
 
   _setValues(){
@@ -48,7 +47,7 @@ export class VehiclesComponent implements OnInit {
         console.log(vehicles.vehicles);
         this.vehicles = vehicles.vehicles;
         this.totalRecords = vehicles.total;
-        console.log(this.vehicles.length, this.totalRecords)
+        console.log(this.vehicles.length)
       },
       (error) => {
         console.error(error);
@@ -66,7 +65,7 @@ export class VehiclesComponent implements OnInit {
   }
 
   onSearchFilterEntered(filterValue:string){
-      this.searchFilter = filterValue;
+      this.searchFilter = filterValue.toLowerCase();
       console.log(2,this.searchFilter)
   }
 
@@ -81,7 +80,11 @@ export class VehiclesComponent implements OnInit {
         vehicle.price.toLowerCase().includes(searchText) ||
         vehicle.yearOfManufactor.toLowerCase().includes(searchText)
       ) && (
-        this.searchFilter === '' || vehicle.location.toLowerCase().includes(this.searchFilter)
+        this.searchFilter === '' || vehicle.location.toLowerCase().includes(this.searchFilter)||
+        vehicle.make.toLowerCase().includes(this.searchFilter) ||
+        vehicle.vehicleType.toLowerCase().includes(searchText)
+
+
       );
     }
   }

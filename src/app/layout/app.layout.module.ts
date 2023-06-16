@@ -48,6 +48,7 @@ import { AuthService } from '../auth.service';
 import { GalleriaModule } from 'primeng/galleria';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { PaginatorModule } from 'primeng/paginator';
+import { SelectButtonModule } from 'primeng/selectbutton';
 
 @NgModule({
     declarations: [
@@ -98,6 +99,7 @@ import { PaginatorModule } from 'primeng/paginator';
         GalleriaModule,
         SplitButtonModule,
         PaginatorModule,
+        SelectButtonModule
     ],
     providers:[DataService, AuthService, MessageService, ViewComponent],
     exports: [AppLayoutComponent]

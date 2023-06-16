@@ -23,11 +23,11 @@
   <div class="col-7 md:col-7 lg:col-7">
     <div class="card">
       <div class="grid formgrid">
-        <div><h2>{{vehicle.make}} {{vehicle.model}} ({{vehicle.yearOfManufactor.split('-')[0]}})</h2></div>
+        <div><h2>{{vehicle.yearOfManufactor.split('-')[0]}} {{vehicle.make}} {{vehicle.model}}</h2></div>
         </div>
         <p-rating [(ngModel)]="value" [readonly]="true" [cancel]="false"></p-rating>
 
-        <div class=" mt-2 text-red-500 hover:text-red-700  font-bold text-xl">Ksh. {{vehicle.price}}</div>
+        <div class=" mt-2 text-red-500 hover:text-red-700  font-bold text-xl">Ksh. {{vehicle.price.toLocaleString()}}</div>
       <div class="grid formgrid">
           <p-tag severity="info" value={{vehicle.location}} class="m-2"></p-tag>
           <p-tag severity="info" value={{vehicle.color}} class="m-2"></p-tag>
@@ -51,7 +51,7 @@
               <dt>Location</dt>
               <dd><strong>{{vehicle.location}}</strong></dd>
               <dt>Price </dt>
-              <dd><strong>Ksh. {{vehicle.price}}</strong></dd>
+              <dd><strong>Ksh. {{vehicle.price.toLocaleString()}}</strong></dd>
               <dt>Mileage</dt>
               <dd><strong>{{vehicle.mileage}} KM</strong></dd>
               <dt>Body type</dt>

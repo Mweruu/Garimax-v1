@@ -125,89 +125,35 @@ export const BODY_TYPE = [
   {"bodytype":"Van"},
 
 ]
-export const ENGINE_POWER = [
-  {"enginepower":"1,000CC"},
-  {"enginepower":"1,500CC"},
-  {"enginepower":"1,606CC"},
-  {"enginepower":"1,721CC"},
-  {"enginepower":"1,836CC"},
-  {"enginepower":"1983CC"},
-  {"enginepower":"2000CC"},
-  {"enginepower":"2196CC"},
-  {"enginepower":"2213CC"},
-  {"enginepower":"2295CC"},
-  {"enginepower":"2475CC"},
-  {"enginepower":"2606CC"},
-  {"enginepower":"2786CC"},
-  {"enginepower":"2803CC"},
-  {"enginepower":"2835CC"},
-  {"enginepower":"2967CC"},
-  {"enginepower":"3212CC"},
-  {"enginepower":"3278CC"},
-  {"enginepower":"3475CC"},
-  {"enginepower":"3688CC"},
-  {"enginepower":"3753CC"},
-  {"enginepower":"3786CC"},
-  {"enginepower":"3802CC"},
-  {"enginepower":"3901CC"},
-  {"enginepower":"4097CC"},
+export const ENGINE_SIZE = [
+  {"enginesize":"500 CC"},
+  {"enginesize":"700 CC"},
+  {"enginesize":"1,000 CC"},
+  {"enginesize":"2,000 CC"},
+  {"enginesize":"3,000 CC"},
+  {"enginesize":"4,000 CC"},
+  {"enginesize":"5,000 CC"},
+  {"enginesize":"6,000 CC"},
+  {"enginesize":"7,000 CC"},
+  {"enginesize":"8,000 CC"},
 
-// 4.1	4,097	250
-// 4.1	4,130	252
-// 4.2	4,179	255
-// 4.2	4,229	258
-// 4.3	4,261	260
-// 4.3	4,343	265
-// 4.4	4,376	267
-// 4.8	4,786	292
-// 4.9	4,917	300
-// 4.9	4,933	301
-// 5.0	4,949	302
-// 5.0	4,983	304
-// 5.0	4,999	305
-// 5.0	5,032	307
-// 5.2	5,212	318
-// 5.7	5,736	350
-// 5.8	5,753	351
-// 5.9	5,884	359
-// 5.9	5,900	360
-// 6.0	6,032	368
-// 6.2	6,195	378
-// 6.2	6,212	379
-// 6.6	6,556	400
-// 6.6	6,605	403
-// 6.9	6,884	420
-// 7.0	6,966	425
-// 7.0	6,982	426
-// 7.4	7,447	454
-// 7.5	7,539	460
-// 7.6	7,638	466
-// 7.8	7,785	475
-// 8.1	8,113	495
-// 8.2	8,195	500
-// 8.3	8,261	504
-// 8.6	8,605	525
-// 9.0	9,031	551
-// 9.0	9,047	552
-// 9.1	9,096	555
-// 9.3	9,310	568
-// 10.0	10,014	611
-// 10.4	10,424	636
-// 10.5	10,457	638
-// 11.0	11,014	672
-// 11.0	11,030	673
-// 11.6	11,588	707
-// 12.0	12,036	736
-// 12.2	12,178	743
-// 13.9	13,964	852
-// 14.0	14,013	855
-// 14.2	14,161	864
-// 14.2	14,194	866
-// 14.6	14,636	893
-// 14.8	14,800	903
-// 15.2	15,193	927
-// 18.0	18,013	1,099
-// 18.8	18,848
+]
+export const ENGINE_POWER = [
+  {"enginepower":"0bhp"},
+  {"enginepower":"50bhp"},
+  {"enginepower":"100bhp"},
+  {"enginepower":"150bhp"},
+  {"enginepower":"200bhp"},
+  {"enginepower":"250bhp"},
+  {"enginepower":"300bhp"},
+  {"enginepower":"3500bhp"},
+  {"enginepower":"400bhp"},
+  {"enginepower":"450bhp"},
+  {"enginepower":"500bhp"},
+  {"enginepower":"550bhp"},
+  {"enginepower":"950bhp"},
+  {"enginepower":"1000bhp"},
+
 ]
 export const FUEL_TYPE = [
   {"fueltype":"Diesel"},
@@ -216,7 +162,11 @@ export const FUEL_TYPE = [
 ]
 export const TRANSMISSION = [
   {"gear":"Automatic"},
-  {"gear":"Manual"}
+  {"gear":"Manual"},
+  {"gear":"CVT"},
+  {"gear":"Other"},
+  {"gear":"Automanual"},
+
 ]
 export const STEERING = [
   {"steering":"Left Hand Drive"},
@@ -227,6 +177,96 @@ export const DRIVETRAIN = [
   {"drivetrain":"Four Wheel Drive"},
   {"drivetrain":"Front Wheel Drive"},
   {"drivetrain":"Rear Wheel Drive"},
+
+]
+
+export const MILEAGE = [
+  {"mileage":"10,000 km"},
+  {"mileage":"20,000 km"},
+  {"mileage":"30,000 km"},
+  {"mileage":"40,000 km"},
+  {"mileage":"50,000 km"},
+  {"mileage":"60,000 km"},
+  {"mileage":"70,000 km"},
+  {"mileage":"80,000 km"},
+  {"mileage":"90,000 km"},
+  {"mileage":"100,000 km"},
+  {"mileage":"110,000 km"},
+  {"mileage":"120,000 km"},
+  {"mileage":"130,000 km"},
+  {"mileage":"140,000 km"},
+  {"mileage":"150,000 km"},
+  {"mileage":"160,000 km"},
+  {"mileage":"170,000 km"},
+  {"mileage":"180,000 km"},
+  {"mileage":"190,000 km"},
+  {"mileage":"200,000 km"},
+  {"mileage":"250,000 km"},
+  {"mileage":"300,000 km"},
+
+]
+
+export const PRICE = [
+  {"price":"100,000 Ksh."},
+  {"price":"300,000 Ksh."},
+  {"price":"500,000 Ksh."},
+  {"price":"700,000 Ksh."},
+  {"price":"1 million Ksh."},
+  {"price":"1.2 million Ksh."},
+  {"price":"1.5 million Ksh."},
+  {"price":"2 million Ksh."},
+  {"price":"3 million Ksh."},
+  {"price":"4 million Ksh."},
+  {"price":"5 million Ksh."},
+  {"price":"6 million Ksh."},
+  {"price":"7 million Ksh."},
+  {"price":"8 million Ksh."},
+  {"price":"9 million Ksh."},
+  {"price":"10 million Ksh."},
+  {"price":"15 million Ksh."},
+  {"price":"20 million Ksh."},
+
+]
+
+export const DOORS = [
+  {"doors":"1"},
+  {"doors":"2"},
+  {"doors":"3"},
+  {"doors":"4"},
+  {"doors":"5"},
+  {"doors":"6"},
+
+]
+export const SEATS = [
+  {"seats":"1"},
+  {"seats":"2"},
+  {"seats":"3"},
+  {"seats":"4"},
+  {"seats":"5"},
+  {"seats":"6"},
+  {"seats":"7"},
+  {"seats":"8"},
+  {"seats":"9"},
+
+]
+export const BOOTSPACE = [
+  {"bootspace":"Up to 3  (0-300 Litres)"},
+  {"bootspace":"3-5 suitcases(301-500 Litres)"},
+  {"bootspace":"More the 5 suitcases (over 500 Litres) "},
+
+]
+export const ACCELERATION = [
+  {"acceleration":"0-5s"},
+  {"acceleration":"0-8s"},
+  {"acceleration":"8-12s"},
+  {"acceleration":"12s+"},
+
+]
+export const FUEL_CONSUMPTION = [
+  {"fuelconsumption":"30+mpg"},
+  {"fuelconsumption":"40+mpg"},
+  {"fuelconsumption":"50+mpg"},
+  {"fuelconsumption":"60+mpg"},
 
 ]
 
