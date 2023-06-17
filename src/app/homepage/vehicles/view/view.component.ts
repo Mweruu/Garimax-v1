@@ -55,6 +55,8 @@ value: any;
         this.ds.getVehicle(this.currentVehicleId).subscribe(vehicle => {
           this.vehicle = vehicle;
           console.log("DATA", vehicle.images)
+          console.log(vehicle)
+
           this.images = vehicle.images
         })
       }

@@ -38,7 +38,7 @@ export class FiltersComponent implements OnInit {
   gear:any = TRANSMISSION;
   drivetrain:any = DRIVETRAIN;
   mileage:any = MILEAGE;
-  price:any =PRICE;
+  price:any = PRICE
   seats:any = SEATS;
   doors:any = DOORS;
   bootspace:any = BOOTSPACE;
@@ -58,6 +58,8 @@ export class FiltersComponent implements OnInit {
   checked: boolean = false;
   mileageFilter:any;
   priceFilter:any;
+  maxPriceFilter:any;
+  minPriceFilter:any;
   yearFilter:any;
   bodyTypeFilter:any;
   transmissionFilter:any;
@@ -125,6 +127,14 @@ export class FiltersComponent implements OnInit {
     console.log("ef",selectedFilter)
   }
   onMileageFilterChanged(selectedFilter:string){
+    this.searchFilterChanged.emit(selectedFilter)
+    console.log("ef",selectedFilter)
+  }
+  // onMinPriceFilterChanged(selectedFilter:string){
+  //   this.searchFilterChanged.emit(selectedFilter)
+  //   console.log("ef",selectedFilter)
+  // }
+  onMaxPriceFilterChanged(selectedFilter:string){
     this.searchFilterChanged.emit(selectedFilter)
     console.log("ef",selectedFilter)
   }

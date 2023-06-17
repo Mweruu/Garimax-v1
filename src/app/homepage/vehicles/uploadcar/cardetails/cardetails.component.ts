@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DataStorageService } from 'src/app/datastorage.service';
-import { BODY_TYPE, CAR_OPTIONS, COLOR, DRIVETRAIN, ENGINE_POWER, FUEL_TYPE, STEERING, TRANSMISSION } from '../../../const-data/constants'
+import { BODY_TYPE, CAR_OPTIONS, COLOR, DRIVETRAIN, ENGINE_POWER, ENGINE_SIZE, FUEL_TYPE, STEERING, TRANSMISSION } from '../../../const-data/constants'
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/layout/data.service';
 import { MessageService } from 'primeng/api';
@@ -18,7 +18,7 @@ export class CardetailsComponent implements OnInit {
     color: any = COLOR;
     fueltype:any = FUEL_TYPE;
     bodytype:any = BODY_TYPE;
-    engineSize:any = ENGINE_POWER;
+    engineSize:any = ENGINE_SIZE;
     steering:any = STEERING;
     gear:any = TRANSMISSION;
     drivetrain:any = DRIVETRAIN;

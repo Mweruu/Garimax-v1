@@ -15,7 +15,6 @@
         <input pInputText type="text" class="p-inputtext-sm" placeholder="Search" [(ngModel)]="searchText" />
       </div>
     </div>
-
     <div *ngFor="let vehicle of vehicles">
       <div class="vehicles-card flex mb-3 mt-3" *ngIf="isMatched(vehicle)">
       <!-- <div class="card flex mb-3 mt-3" *ngIf="searchText === '' || vehicle.make.toLowerCase().includes(searchText) || vehicle.model.toLowerCase().includes(searchText) || vehicle.price.toLowerCase().includes(searchText) || vehicle.yearOfManufactor.toLowerCase().includes(searchText)">
@@ -38,7 +37,7 @@
               </h6>
               <p class="m-2">
                 <strong>
-                  {{vehicle.transmission}} | {{vehicle.engineSize}} | {{vehicle.mileage}}KM | {{vehicle.color}} | {{vehicle.vehicleType}}
+                  {{vehicle.transmission}} | {{vehicle.engineSize}} | {{vehicle.mileage}} KM | {{vehicle.color}} | {{vehicle.vehicleType}}
                 </strong>
               </p>
               <!-- <p-tag [value]={{vehicle.foreignUsed}} [severity]="getSeverity(vehicle.foreignUsed)"></p-tag> -->
@@ -62,9 +61,9 @@
           </div>
       </div>
     </div>
-
-    <div class="card flex justify-content-center">
-      <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="totalRecords" [rowsPerPageOptions]="[2,5, 10, 20, 30]"></p-paginator>
+    <div class=" flex justify-content-center">
+      <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="totalRecords" [rowsPerPageOptions]="[5, 10, 20, 30]" [showFirstLastIcon]="false"></p-paginator>
     </div>
   </div>
 </div>
+

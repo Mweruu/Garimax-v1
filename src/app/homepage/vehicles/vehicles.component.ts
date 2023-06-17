@@ -2,6 +2,13 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { DataStorageService } from '../../datastorage.service';
 import { Router } from '@angular/router';
 
+interface PageEvent {
+  first: number;
+  rows: number;
+  page: number;
+  pageCount: number;
+}
+
 @Component({
   selector: 'app-vehicles',
   templateUrl: './vehicles.component.html',
@@ -19,6 +26,14 @@ export class VehiclesComponent implements OnInit {
   first: number = 0;
   rows: number = 2;
   totalRecords:number = 0;
+  minPrice:any;
+  maxPrice:any;
+  options = [
+    { label: 5, value: 5 },
+    { label: 10, value: 10 },
+    { label: 20, value: 20 },
+    { label: 120, value: 120 }
+];
   // @Output()
   // searchTextChanged:EventEmitter<string>=new EventEmitter<string>();
 
@@ -34,6 +49,7 @@ export class VehiclesComponent implements OnInit {
     this.value = 4;
     this._setValues();
     this.getAllVehicles()
+
   }
 
   _setValues(){
@@ -46,8 +62,10 @@ export class VehiclesComponent implements OnInit {
         console.log(vehicles);
         console.log(vehicles.vehicles);
         this.vehicles = vehicles.vehicles;
-        this.totalRecords = vehicles.total;
+        this.totalRecords = this.vehicles.length;
         console.log(this.vehicles.length)
+        console.log(this.totalRecords)
+
       },
       (error) => {
         console.error(error);
@@ -70,8 +88,29 @@ export class VehiclesComponent implements OnInit {
   }
 
   isMatched(vehicle: any): boolean {
+    // console.log(vehicle)
     if (this.searchText === '') {
-      return this.searchFilter === '' || vehicle.location.toLowerCase().includes(this.searchFilter);
+      return this.searchFilter === '' || vehicle.location.toLowerCase().includes(this.searchFilter) ||
+      vehicle.transmission.toLowerCase().includes(this.searchFilter) ||
+      vehicle.vehicleType.toLowerCase().includes(this.searchFilter) ||
+      vehicle.model.toLowerCase().includes(this.searchFilter) ||
+      vehicle.mileage.toLowerCase().includes(this.searchFilter) ||
+      vehicle.make.toLowerCase().includes(this.searchFilter) ||
+      vehicle.price.toLowerCase().includes(this.searchFilter)
+      // &&(vehicle.price >= this.minPrice && vehicle.price <= this.maxPrice)
+      ||
+      // vehicle.acceleration.toLowerCase().includes(this.searchFilter) ||
+      // vehicle.drivetrain.toLowerCase().includes(this.searchFilter) ||
+      // vehicle.doors.toLowerCase().includes(this.searchFilter) ||
+      vehicle.engineSize.toLowerCase().includes(this.searchFilter) ||
+      vehicle.color.toLowerCase().includes(this.searchFilter)
+      // vehicle.seats.toLowerCase().includes(this.searchFilter) ||
+      // vehicle.bootspace.toLowerCase().includes(this.searchFilter) ||
+      // vehicle.fueltype.toLowerCase().includes(this.searchFilter)||
+      // vehicle.fuelconsumption.toLowerCase().includes(this.searchFilter)
+      ;
+
+
     } else {
       const searchText = this.searchText.toLowerCase();
       return (
@@ -89,8 +128,10 @@ export class VehiclesComponent implements OnInit {
     }
   }
 
-    onPageChange(event: { first: number; rows: number; }) {
+    onPageChange(event: PageEvent) {
+      console.log('got here')
         this.first = event.first;
         this.rows = event.rows;
+        console.log(this.rows)
     }
 }

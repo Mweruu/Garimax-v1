@@ -4,19 +4,19 @@
         <span routerLink="/">GARIMAX</span>
     </a>
     <button class="p-link m">
-      <span class="span-toolbar" routerLink="#">Used cars</span>
+      <span class="span-toolbar">Used cars</span>
     </button>
     <button class="p-link m">
-      <span class="span-toolbar" routerLink="/basicinfo">New cars</span>
+      <span class="span-toolbar">New cars</span>
     </button>
     <button class="p-link m">
         <span class="span-toolbar" [routerLink]="username? '/basicinfo' : '/vendorsignup'">Sell car</span>
     </button>
     <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
       <button class="p-link m">
-        <span class="span-toolbar" routerLink="#">{{ username ? username: '' }}</span>
+        <span class="span-toolbar" routerLink="/">{{ username ? username: '' }}</span>
       </button>
-      <button class="p-link m">
+      <button class="p-link m m-2">
         <span class="span-toolbar" (click)="logOut()">{{ username ? 'logout': '' }}</span>
       </button>
       <button class="p-link layout-topbar-button" routerLink="/sociallogin">
