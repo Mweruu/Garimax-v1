@@ -67,10 +67,10 @@ export class SignupComponent implements OnInit {
           this.messageService.add({
             severity:'success',
             summary:'Success',
-            detail:'User created successfully'
+            detail:'User created successfully, kindly login'
           })
           timer(2500).toPromise().then(()=>{
-            this.router.navigate(['/'])
+            this.router.navigate(['/login'])
           })
         },
         error => {

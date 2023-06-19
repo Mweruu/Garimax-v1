@@ -11,7 +11,7 @@
       </div>
     </div>
   </form>
-  <div class="p-formgrid grid">
+  <div class="p-formgrid grid mt-0">
     <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
       <p-button class="flex col-4 md:col-6 mb-0" label="Location" styleClass="p-button-info p-button-text"></p-button>
       <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown"  [options]="location"  optionValue="location"  optionLabel="location" placeholder="Select a City" [(ngModel)]="enteredFilter" (onChange)="onSearchFilterChanged($event.value)"></p-dropdown><br>

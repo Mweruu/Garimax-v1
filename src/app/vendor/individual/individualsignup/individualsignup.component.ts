@@ -71,10 +71,10 @@ export class IndividualsignupComponent implements OnInit {
           this.messageService.add({
             severity:'success',
             summary:'Success',
-            detail:'Vendor created successfully'
+            detail:'Vendor created successfully, kindly login'
           })
           timer(2500).toPromise().then(()=>{
-            this.router.navigate(['/'])
+            this.router.navigate(['/login'])
           })
 
 
