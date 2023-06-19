@@ -1,19 +1,28 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, isDevMode } from '@angular/core';
 import { Observable } from 'rxjs';
+
+
+const LOCAL_BASE_URL = 'http://localhost:8080';
+const PROD_BASE_URL = 'https://garimax-front-zf57t.ondigitalocean.app/garimax-backend';
+let BASE_URL: String
+if(!isDevMode()){
+  BASE_URL = PROD_BASE_URL;
+}
+BASE_URL = LOCAL_BASE_URL;
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataStorageService {
-  private getUsersUrl= 'http://localhost:8080/api/users';
-  private userLoginUrl = 'http://localhost:8080/api/users/login';
-  private createUserUrl = 'http://localhost:8080/api/users/register';
-  private createindividualVendorUrl = 'http://localhost:8080/api/singleVendor/register';
-  private createcompanyVendorUrl = 'http://localhost:8080/api/coVendor/register';
-  private createVehicleUrl = 'http://localhost:8080/api/addVehicle';
-  private getVehicleUrl = 'http://localhost:8080/api/getVehicles';
-  private getSingleVehicleUrl = 'http://localhost:8080/api/getVehicle'
+  private getUsersUrl= `${BASE_URL}/api/users`;
+  private userLoginUrl = `${BASE_URL}/api/users/login`;
+  private createUserUrl = `${BASE_URL}/api/users/register`;
+  private createindividualVendorUrl = `${BASE_URL}/api/singleVendor/register`;
+  private createcompanyVendorUrl = `${BASE_URL}/api/coVendor/register`;
+  private createVehicleUrl = `${BASE_URL}/api/addVehicle`;
+  private getVehicleUrl = `${BASE_URL}/api/getVehicles`;
+  private getSingleVehicleUrl = `${BASE_URL}/api/getVehicle`
 
   user:any;
 

@@ -1,18 +1,23 @@
 <div class="p-fluid mt-2">
+  <form [formGroup]="filtersForm">
+    <div class="p-formgrid grid">
+      <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);" >
+        <p-button class="flex col-4 md:col-6 mt-0" label="Make"  styleClass="p-button-info p-button-text" ></p-button>
+        <p-dropdown class="flex col-8 md:col-6 mb-0" formControlName="make" [options]="makes" inputId="dropdown" inputId="dropdown" (onChange)="onMakeChange()" [(ngModel)]="makeFilter" (onChange)="onMakeFilterChanged($event.value)" ></p-dropdown>
+      </div>
+      <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
+        <p-button class="flex col-4 md:col-6 mb-0" label="Model" styleClass="p-button-info p-button-text" ></p-button>
+        <p-dropdown class="flex col-8 md:col-6 mb-0" formControlName="model" [options]="models"  inputId="dropdown" [(ngModel)]="modelFilter" (onChange)="onModelFilterChanged($event.value)"></p-dropdown>
+      </div>
+    </div>
+  </form>
   <div class="p-formgrid grid">
-    <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);" >
-      <p-button class="flex col-4 md:col-6 mt-0" label="Make"  styleClass="p-button-info p-button-text" ></p-button>
-      <p-dropdown class="flex col-8 md:col-6 mb-0" [options]="makes" inputId="dropdown" inputId="dropdown" (onChange)="onMakeChange()"></p-dropdown>
-    </div>
-    <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
-      <p-button class="flex col-4 md:col-6 mb-0" label="Model" styleClass="p-button-info p-button-text" ></p-button>
-      <p-dropdown class="flex col-8 md:col-6 mb-0" [options]="models"  inputId="dropdown" ></p-dropdown>
-    </div>
     <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
       <p-button class="flex col-4 md:col-6 mb-0" label="Location" styleClass="p-button-info p-button-text"></p-button>
       <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown"  [options]="location"  optionValue="location"  optionLabel="location"  [(ngModel)]="enteredFilter" (onChange)="onSearchFilterChanged($event.value)"></p-dropdown><br>
     </div>
   </div>
+
 </div>
 <fieldset class="mt-3 fieldset">
   <legend>Mileage</legend>

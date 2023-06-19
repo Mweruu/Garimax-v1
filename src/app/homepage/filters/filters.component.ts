@@ -50,12 +50,13 @@ export class FiltersComponent implements OnInit {
   date!: Date;
   date1!: Date;
   enteredFilter:any;
-  makeFilter:any;
   states = [{condition:"Verified" , key:"v",},{condition:"Not Verified", key:"nv"}]
   uses = [{use:"Kenyan used", key:"KU"},{use:"Foreign used", key:"FU"}]
   conditions:any[] = [{state:"Used", key:"U"},{state:"Brand new", key:"BN"}]
   vehicles:any;
   checked: boolean = false;
+  modelFilter:any;
+  makeFilter:any;
   mileageFilter:any;
   priceFilter:any;
   maxPriceFilter:any;
@@ -84,13 +85,11 @@ export class FiltersComponent implements OnInit {
                ) { }
 
   ngOnInit(){
-    this.cities = [
-      { name: 'New York', code: 'NY' },
-      { name: 'Rome', code: 'RM' },
-      { name: 'London', code: 'LDN' },
-      { name: 'Istanbul', code: 'IST' },
-      { name: 'Paris', code: 'PRS' }
-  ];
+    this.filtersForm= this.fb.group({
+      make:['',Validators.required],
+      model:['',Validators.required]
+
+    })
 
   }
 
@@ -98,9 +97,13 @@ export class FiltersComponent implements OnInit {
     this.showMore = !this.showMore;
   }
 
-  onMakeChange(): void {
-    const make = this.makes;
-    // this.models = CAR_MODELS[make] || [];
+  onMakeChange(){
+    console.log("Got here!")
+    const make = this.filtersForm.value.make;
+    console.log(make)
+
+    this.models = CAR_MODELS[make] || [];
+    console.log(this.models)
     this.filtersForm.patchValue({ model: '' });
   }
 
@@ -123,6 +126,13 @@ export class FiltersComponent implements OnInit {
   }
 
   onSearchFilterChanged(selectedFilter:string){
+    this.searchFilterChanged.emit(selectedFilter)
+    console.log("ef",selectedFilter)
+  }
+  onModelFilterChanged(selectedFilter:string){
+    this.searchFilterChanged.emit(selectedFilter)
+    console.log("ef",selectedFilter)
+  }onMakeFilterChanged(selectedFilter:string){
     this.searchFilterChanged.emit(selectedFilter)
     console.log("ef",selectedFilter)
   }
