@@ -14,7 +14,7 @@
     </button>
     <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
       <button class="p-link m">
-        <span class="span-toolbar" routerLink="/">{{ username ? username: '' }}</span>
+        <span class="span-toolbar" routerLink="/profile">{{ username ? username: '' }}</span>
       </button>
       <button class="p-link m m-2">
         <span class="span-toolbar" (click)="logOut()">{{ username ? 'logout': '' }}</span>

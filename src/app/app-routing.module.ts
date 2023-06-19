@@ -15,6 +15,7 @@ import { UploadpictureComponent } from './homepage/vehicles/uploadcar/uploadpict
 import { CardetailsComponent } from './homepage/vehicles/uploadcar/cardetails/cardetails.component';
 import { PreviewComponent } from './homepage/vehicles/uploadcar/preview/preview.component';
 import { ViewComponent } from './homepage/vehicles/view/view.component';
+import { UserProfileComponent } from './user/user-profile/user-profile.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,9 @@ const routes: Routes = [
   },
   {
     path: 'signup', component:SignupComponent
+  },
+  {
+    path: 'profile', component:UserProfileComponent
   },
   {
     path: 'vendorsignup', component:SignupTabsComponent,

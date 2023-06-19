@@ -43,9 +43,9 @@
         <div class="formgroup-inline col-12 md:col-12 lg:col-12">
           <div class="field col-12 md:col-12 lg:col-5 mb-0 p-0">
               <span class="field">
-                <label for="dropdown">Steering(LHD/RHD)</label>
-                <p-dropdown inputId="dropdown" formControlName="steering" [options]="steering"  optionValue="steering" optionLabel="steering"></p-dropdown>
-                  <small *ngIf="carDetails['steering'].invalid && isSubmitted" class="p-error">Steering is required</small>
+                <label for="dropdown">Vin Number</label>
+                <input type="text" pInputText formControlName="vinNo"/>
+                  <small *ngIf="carDetails['vinNo'].invalid && isSubmitted" class="p-error">Steering is required</small>
               </span>
           </div>
           <div class="field col-12 md:col-12 lg:col-5 mb-0 p-0">
@@ -60,9 +60,9 @@
         <div class="formgroup-inline col-12 md:col-12 lg:col-12">
             <div class="field col-12 md:col-12 lg:col-5 mb-0 p-0">
                 <span class="field">
-                  <label for="dropdown">Drive Type</label>
-                  <p-dropdown inputId="dropdown" formControlName="drivetype" [options]="drivetrain"  optionValue="drivetrain" optionLabel="drivetrain"></p-dropdown>
-                    <small *ngIf="carDetails['drivetype'].invalid && isSubmitted" class="p-error">Drive type is required</small>
+                  <label for="dropdown">Usage</label>
+                  <p-dropdown inputId="dropdown" formControlName="Usage" [options]="usage"  optionValue="usage" optionLabel="usage"></p-dropdown>
+                    <small *ngIf="carDetails['Usage'].invalid && isSubmitted" class="p-error">Drive type is required</small>
                 </span>
             </div>
             <div class="field col-12 md:col-12 lg:col-5 ">

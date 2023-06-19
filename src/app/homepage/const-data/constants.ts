@@ -168,6 +168,10 @@ export const TRANSMISSION = [
   {"gear":"Automanual"},
 
 ]
+export const USAGE = [
+ {"usage":"Locally Used"},
+ {"usage":"Foreign Used"}
+]
 export const STEERING = [
   {"steering":"Left Hand Drive"},
   {"steering":"Right Hand Drive"}

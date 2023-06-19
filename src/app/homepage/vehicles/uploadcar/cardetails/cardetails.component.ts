@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DataStorageService } from 'src/app/datastorage.service';
-import { BODY_TYPE, CAR_OPTIONS, COLOR, DRIVETRAIN, ENGINE_POWER, ENGINE_SIZE, FUEL_TYPE, STEERING, TRANSMISSION } from '../../../const-data/constants'
+import { BODY_TYPE, CAR_OPTIONS, COLOR, DRIVETRAIN, ENGINE_POWER, ENGINE_SIZE, FUEL_TYPE, STEERING, TRANSMISSION, USAGE } from '../../../const-data/constants'
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/layout/data.service';
 import { MessageService } from 'primeng/api';
@@ -22,6 +22,7 @@ export class CardetailsComponent implements OnInit {
     steering:any = STEERING;
     gear:any = TRANSMISSION;
     drivetrain:any = DRIVETRAIN;
+    usage:any = USAGE;
     carDetsForm!: FormGroup;
     isSubmitted = false;
     vendor:any;
@@ -44,6 +45,8 @@ export class CardetailsComponent implements OnInit {
         steering:['', Validators.required],
         engineSize:['', Validators.required],
         drivetype:['',Validators.required],
+        vinNo:[''],
+        Usage:['', Validators.required],
         description:['']
       });
 

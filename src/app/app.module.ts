@@ -35,6 +35,7 @@ import { FieldsetModule } from 'primeng/fieldset';
 import { FileUploadModule } from 'primeng/fileupload';
 import { ChipModule } from 'primeng/chip';
 import { AuthService } from './auth.service';
+import { UserProfileComponent } from './user/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { AuthService } from './auth.service';
     IndividualsignupComponent,
     SignupTabsComponent,
     SocialLoginComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,

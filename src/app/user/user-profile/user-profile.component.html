@@ -1,0 +1,62 @@
+<p>user-profile works!</p>
+<div class=""></div>
+<div class="card col-12">
+  My account
+  <a (click)="toggleShowMore()" *ngIf="showMore" class="ml-2" style="cursor: pointer;"><i class="pi pi-plus" style="font-size: 1.5rem"></i></a>
+  <a (click)="toggleShowMore()" *ngIf="!showMore" class="ml-2" style="cursor: pointer;"><i class="pi pi-minus" style="font-size: 1.5rem"></i></a>
+</div>
+<div class="card col-12 " *ngIf="!showMore">
+<div class="card formgroup-inline p-5 gap-5" >
+  <div class="card grid p-fluid col-5 md:col-5 lg:col-5 ">
+    <div class="card flex justify-content-center">
+      <p-fileUpload name="myfile[]" url="https://www.primefaces.org/cdn/api/upload.php" [multiple]="true" accept="image/*">
+          <ng-template pTemplate="toolbar">
+              <div class="py-3">Upload 3 Files</div>
+          </ng-template>
+          <ng-template let-file pTemplate="file">
+              <div>Custom UI to display a file</div>
+          </ng-template>
+          <ng-template pTemplate="content" let-files>
+            <i class="pi pi-user" style="font-size: 22.5rem"></i>
+              <div>Click to add an image here an update your profile</div>
+          </ng-template>
+      </p-fileUpload>
+    </div>
+</div>
+<!-- <div class="col-6">    -->
+   <div class="card grid p-fluid p-5 col-6 md:col-6 lg:col-6 ">
+
+  <div class="mb-2">
+    <label for="firstName" class="block text-900 text-xl font-medium mb-2">First name</label>
+    <input id="firstName" formControlName="firstName" type="text" value="" pInputText class="w-full md:w-30rem mb-2" style="padding:1rem"><br>
+  </div>
+  <div class="mb-2">
+    <label for="lastName" class="block text-900 text-xl font-medium mb-2">Last name</label>
+    <input id="lastName" formControlName="lastName" type="text" value="" pInputText class="w-full md:w-30rem mb-2" style="padding:1rem"><br>
+  </div>
+  <div class="mb-2">
+    <label for="mobile" class="block text-900 text-xl font-medium mb-2">Phone number</label>
+    <input id="mobile" formControlName="mobile" type="number" value="" pInputText class="w-full md:w-30rem mb-2" style="padding:1rem"><br>
+  </div>
+  <div class="mb-2">
+    <label for="email" class="block text-900 text-xl font-medium mb-2">Email</label>
+    <input id="email" formControlName="email" type="email" value="" pInputText class="w-full md:w-30rem mb-2" style="padding:1rem"><br>
+  </div>
+</div>
+</div>
+<p-button>Save</p-button>
+</div>
+<div class="formgroup-inline col-12 gap-5">
+<div class="card col-5">
+  <h4>Your vehicles for sale</h4>
+  <a (click)="toggleShowOnSaleVehicles()" *ngIf="!showOnSaleVehicles" class="ml-2" style="cursor: pointer;"><i class="pi pi-plus" style="font-size: 1.5rem"></i></a>
+  <a (click)="toggleShowOnSaleVehicles()" *ngIf="showOnSaleVehicles" class="ml-2" style="cursor: pointer;"><i class="pi pi-minus" style="font-size: 1.5rem"></i></a>
+
+</div>
+<div class="card col-5">
+  <h4>Your sold vehicles</h4>
+  <a (click)="toggleShowSoldVehicles()" *ngIf="!showSoldVehicles" class="ml-2" style="cursor: pointer;"><i class="pi pi-plus" style="font-size: 1.5rem"></i></a>
+  <a (click)="toggleShowSoldVehicles()" *ngIf="showSoldVehicles" class="ml-2" style="cursor: pointer;"><i class="pi pi-minus" style="font-size: 1.5rem"></i></a>
+
+</div>
+</div>
