@@ -1,15 +1,18 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, isDevMode } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-
+const env = process.env['NODE_ENV'];
 const LOCAL_BASE_URL = 'http://localhost:8080';
 const PROD_BASE_URL = 'https://garimax-front-zf57t.ondigitalocean.app/garimax-backend';
 let BASE_URL: String
-if(!isDevMode()){
+
+if(env === 'production'){
   BASE_URL = PROD_BASE_URL;
+}else{
+  BASE_URL = LOCAL_BASE_URL;
 }
-BASE_URL = LOCAL_BASE_URL;
+console.log("environment", env)
 
 @Injectable({
   providedIn: 'root'
