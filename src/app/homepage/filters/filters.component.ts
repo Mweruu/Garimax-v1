@@ -205,4 +205,7 @@ export class FiltersComponent implements OnInit {
       console.log("ef",selectedFilter)
     }
 
+  clear(){
+    window.location.reload();
+  }
 }
