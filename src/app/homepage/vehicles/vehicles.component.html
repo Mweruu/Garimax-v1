@@ -31,7 +31,7 @@
                 <p-tag [severity]="vehicle.foreignUsed? 'info':'warning'" value= "Foreign Used" [icon]="vehicle.foreignUsed? 'pi pi-check': 'pi pi-times'" [rounded]="true" class="ml-1"></p-tag>
                 <p-tag [severity]="vehicle.locallyUsed? 'info':'warning'" value= "Locally Used" [icon]="vehicle.locallyUsed? 'pi pi-check': 'pi pi-times'" [rounded]="true" class="ml-2"></p-tag>
               </div>
-            <div class="m-2 text-red-500 hover:text-red-700  font-bold ">Ksh. {{vehicle.price | number: '3.1-4' }}</div>
+            <div class="m-2 text-red-500 hover:text-red-700  font-bold ">Ksh. {{vehicle.price | currency:'KSH':'' }}</div>
               <h6 class="m-2">
                 {{vehicle.yearOfManufactor.split('-')[0]}} {{vehicle.make}} {{vehicle.model}}
               </h6>
