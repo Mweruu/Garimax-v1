@@ -35,7 +35,8 @@
 
         <div class="mb-2">
           <label for="gender" class="block text-900 text-xl font-medium mb-2">Gender</label>
-          <input id="gender" formControlName="gender"   type="text" placeholder="Gender" pInputText class="w-full md:w-30rem mb-2" style="padding:1rem"><br>
+          <p-dropdown class="flex col-8 md:col-6 mb-0" formControlName="gender" [options]="genders"  optionValue="gender"  optionLabel="gender" inputId="dropdown" placeholder="Select" [(ngModel)]="gender" (onChange)="ongenderChanged($event.value)"></p-dropdown>
+          <!-- <input id="gender" formControlName="gender"   type="text" placeholder="Gender" pInputText class="w-full md:w-30rem mb-2" style="padding:1rem"><br> -->
           <small *ngIf="individualForm['gender'].invalid && isSubmitted" class="p-error">Gender is required</small>
         </div>
 

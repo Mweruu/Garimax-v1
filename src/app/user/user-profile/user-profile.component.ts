@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MessageService } from 'primeng/api';
+
+interface UploadEvent {
+  originalEvent: Event;
+  files: File[];
+}
 
 @Component({
   selector: 'app-user-profile',
@@ -9,7 +15,9 @@ export class UserProfileComponent implements OnInit {
   showMore: boolean = false;
   showOnSaleVehicles : boolean = false;
   showSoldVehicles: boolean = false;
-  constructor() { }
+  clicked = false;
+
+  constructor(private messageService:MessageService) { }
 
   ngOnInit(): void {
   }
@@ -27,4 +35,8 @@ export class UserProfileComponent implements OnInit {
     this.showOnSaleVehicles = !this.showOnSaleVehicles;
   }
 
+  onUpload(event: UploadEvent) {
+    this.clicked=true
+    this.messageService.add({ severity: 'info', summary: 'Success', detail: 'File Uploaded with Auto Mode' });
+}
 }

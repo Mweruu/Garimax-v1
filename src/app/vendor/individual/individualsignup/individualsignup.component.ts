@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { timer } from 'rxjs';
 import { DataStorageService } from 'src/app/datastorage.service';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
+import { GENDER} from '../../../homepage/const-data/constants';
 
 @Component({
   selector: 'app-individualsignup',
@@ -21,6 +22,11 @@ export class IndividualsignupComponent implements OnInit {
   passwordControl = new FormControl('', [Validators.required, Validators.minLength(6)]);
   emailControl = new FormControl('', [Validators.required, Validators.email]);
   signupForm!: FormGroup;
+  gender:any;
+  genders:any = GENDER;
+
+  @Output()
+  genderChanged:EventEmitter<string>=new EventEmitter<string>();
 
 
   constructor(public layoutService: LayoutService,
@@ -95,5 +101,10 @@ export class IndividualsignupComponent implements OnInit {
 
   get individualForm(){
     return this.signupForm.controls;
+  }
+  ongenderChanged(selectedGender:string){
+    this.genderChanged.emit(selectedGender)
+    this.gender = selectedGender
+    console.log("ef",this.gender)
   }
 }

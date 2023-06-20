@@ -49,21 +49,22 @@ import { GalleriaModule } from 'primeng/galleria';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { PaginatorModule } from 'primeng/paginator';
 import { SelectButtonModule } from 'primeng/selectbutton';
+import { InplaceModule } from 'primeng/inplace';
 
 @NgModule({
     declarations: [
-        AppTopBarComponent,
-        AppFooterComponent,
-        AppSidebarComponent,
-        AppLayoutComponent,
-        FiltersComponent,
-        VehiclesComponent,
-        UploadcarComponent,
-        BasicinfoComponent,
-        UploadpictureComponent,
-        CardetailsComponent,
-        PreviewComponent,
-        ViewComponent,
+        // AppTopBarComponent,
+        // AppFooterComponent,
+        // AppSidebarComponent,
+        // AppLayoutComponent,
+        // FiltersComponent,
+        // VehiclesComponent,
+        // UploadcarComponent,
+        // BasicinfoComponent,
+        // UploadpictureComponent,
+        // CardetailsComponent,
+        // PreviewComponent,
+        // ViewComponent,
     ],
     imports: [
         BrowserModule,
@@ -99,9 +100,10 @@ import { SelectButtonModule } from 'primeng/selectbutton';
         GalleriaModule,
         SplitButtonModule,
         PaginatorModule,
-        SelectButtonModule
+        SelectButtonModule,
+        InplaceModule,
     ],
     providers:[DataService, AuthService, MessageService, ViewComponent],
-    exports: [AppLayoutComponent]
+    // exports: [AppLayoutComponent]
 })
 export class AppLayoutModule { }

@@ -132,7 +132,8 @@ export class FiltersComponent implements OnInit {
   onModelFilterChanged(selectedFilter:string){
     this.searchFilterChanged.emit(selectedFilter)
     console.log("ef",selectedFilter)
-  }onMakeFilterChanged(selectedFilter:string){
+  }
+  onMakeFilterChanged(selectedFilter:string){
     this.searchFilterChanged.emit(selectedFilter)
     console.log("ef",selectedFilter)
   }

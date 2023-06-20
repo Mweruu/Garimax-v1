@@ -26,6 +26,7 @@ export class ViewComponent implements OnInit {
   exteriors:any = EXTERIOR;
   interiors:any = INTERIOR;
   airsystems:any = AIRCONDITIONING_SYSTEM;
+  visible: boolean = false;
 
   responsiveOptions: any[] = [
     {
@@ -94,4 +95,12 @@ value: any;
   onTabChange(event: any) {
     this.selectedTab = event.index;
   }
+
+
+  showDialog() {
+      this.visible = true;
+  }
+  showDialogs() {
+    this.visible = false;
+}
 }

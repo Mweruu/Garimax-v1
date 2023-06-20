@@ -36,7 +36,34 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { ChipModule } from 'primeng/chip';
 import { AuthService } from './auth.service';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
-
+import { FiltersComponent } from './homepage/filters/filters.component';
+import { BasicinfoComponent } from './homepage/vehicles/uploadcar/basicinfo/basicinfo.component';
+import { CardetailsComponent } from './homepage/vehicles/uploadcar/cardetails/cardetails.component';
+import { PreviewComponent } from './homepage/vehicles/uploadcar/preview/preview.component';
+import { UploadcarComponent } from './homepage/vehicles/uploadcar/uploadcar.component';
+import { UploadpictureComponent } from './homepage/vehicles/uploadcar/uploadpicture/uploadpicture.component';
+import { VehiclesComponent } from './homepage/vehicles/vehicles.component';
+import { ViewComponent } from './homepage/vehicles/view/view.component';
+import { AppFooterComponent } from './layout/app.footer.component';
+import { AppLayoutComponent } from './layout/app.layout.component';
+import { AppSidebarComponent } from './layout/app.sidebar.component';
+import { AppTopBarComponent } from './layout/app.topbar.component';
+import { DataService } from './layout/data.service';
+import { GalleriaModule } from 'primeng/galleria';
+import { InplaceModule } from 'primeng/inplace';
+import { PaginatorModule } from 'primeng/paginator';
+import { SelectButtonModule } from 'primeng/selectbutton';
+import { SplitButtonModule } from 'primeng/splitbutton';
+import { DialogModule } from 'primeng/dialog';
+import { TagModule } from 'primeng/tag';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { BadgeModule } from 'primeng/badge';
+import { CalendarModule } from 'primeng/calendar';
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { RippleModule } from 'primeng/ripple';
+import { SidebarModule } from 'primeng/sidebar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,12 +74,24 @@ import { UserProfileComponent } from './user/user-profile/user-profile.component
     SignupTabsComponent,
     SocialLoginComponent,
     UserProfileComponent,
+    AppTopBarComponent,
+    AppFooterComponent,
+    AppSidebarComponent,
+    AppLayoutComponent,
+    FiltersComponent,
+    VehiclesComponent,
+    UploadcarComponent,
+    BasicinfoComponent,
+    UploadpictureComponent,
+    CardetailsComponent,
+    PreviewComponent,
+    ViewComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    AppLayoutModule,
+    // AppLayoutModule,
     CardModule,
     DropdownModule,
     CommonModule,
@@ -75,8 +114,25 @@ import { UserProfileComponent } from './user/user-profile/user-profile.component
     StepsModule,
     FileUploadModule,
     ChipModule,
+    GalleriaModule,
+    SplitButtonModule,
+    PaginatorModule,
+    SelectButtonModule,
+    InplaceModule,
+    DialogModule,
+    TagModule,
+    BrowserModule,
+    HttpClientModule,
+    SidebarModule,
+    BadgeModule,
+    RadioButtonModule,
+    InputSwitchModule,
+    RippleModule,
+    RouterModule,
+    CalendarModule,
+
   ],
-  providers: [MessageService, AuthService],
+  providers: [MessageService, AuthService,DataService, ViewComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

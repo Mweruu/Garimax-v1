@@ -155,11 +155,13 @@ export const ENGINE_POWER = [
   {"enginepower":"1000bhp"},
 
 ]
+
 export const FUEL_TYPE = [
   {"fueltype":"Diesel"},
   {"fueltype":"Gasoline"},
   {"fueltype":"Compressed Natural Gas"}
 ]
+
 export const TRANSMISSION = [
   {"gear":"Automatic"},
   {"gear":"Manual"},
@@ -168,10 +170,17 @@ export const TRANSMISSION = [
   {"gear":"Automanual"},
 
 ]
+
 export const USAGE = [
  {"usage":"Locally Used"},
  {"usage":"Foreign Used"}
 ]
+
+export const GENDER = [
+  {"gender":"Male"},
+  {"gender":"Female"}
+]
+
 export const STEERING = [
   {"steering":"Left Hand Drive"},
   {"steering":"Right Hand Drive"}
@@ -207,7 +216,6 @@ export const MILEAGE = [
   {"mileage":"200,000 km"},
   {"mileage":"250,000 km"},
   {"mileage":"300,000 km"},
-
 ]
 
 export const PRICE = [
@@ -229,7 +237,6 @@ export const PRICE = [
   {"price":"10 million Ksh.", "maxPrice":"10 million Ksh."},
   {"price":"15 million Ksh.", "maxPrice":"15 million Ksh."},
   {"price":"20 million Ksh.", "maxPrice":"20 million Ksh."},
-
 ]
 
 export const DOORS = [
@@ -239,8 +246,8 @@ export const DOORS = [
   {"doors":"4"},
   {"doors":"5"},
   {"doors":"6"},
-
 ]
+
 export const SEATS = [
   {"seats":"1"},
   {"seats":"2"},
@@ -251,27 +258,26 @@ export const SEATS = [
   {"seats":"7"},
   {"seats":"8"},
   {"seats":"9"},
-
 ]
+
 export const BOOTSPACE = [
   {"bootspace":"Up to 3  (0-300 Litres)"},
   {"bootspace":"3-5 suitcases(301-500 Litres)"},
   {"bootspace":"More the 5 suitcases (over 500 Litres) "},
-
 ]
+
 export const ACCELERATION = [
   {"acceleration":"0-5s"},
   {"acceleration":"0-8s"},
   {"acceleration":"8-12s"},
   {"acceleration":"12s+"},
-
 ]
+
 export const FUEL_CONSUMPTION = [
   {"fuelconsumption":"30+mpg"},
   {"fuelconsumption":"40+mpg"},
   {"fuelconsumption":"50+mpg"},
   {"fuelconsumption":"60+mpg"},
-
 ]
 
 export interface CarModels {
