@@ -72,6 +72,7 @@ export class FiltersComponent implements OnInit {
   seatsFilter:any;
   accelerationFilter:any;
   driveTrainFilter:any;
+  filteredNumbers!: number[];
 
   @Output()
   searchFilterChanged:EventEmitter<string>=new EventEmitter<string>();
@@ -125,6 +126,17 @@ export class FiltersComponent implements OnInit {
     );
   }
 
+  applyFilter() {
+    this.filteredNumbers = this.vehicles.filter((vehicle: { price: number; }) => {
+      if (this.minPriceFilter&& vehicle.price < this.minPriceFilter) {
+        return false; // Exclude numbers below the minimum value
+      }
+      if (this.maxPriceFilter && vehicle.price > this.maxPriceFilter) {
+        return false; // Exclude numbers above the maximum value
+      }
+      return true; // Include numbers within the selected range
+    });
+  }
   onSearchFilterChanged(selectedFilter:string){
     this.searchFilterChanged.emit(selectedFilter)
     console.log("ef",selectedFilter)

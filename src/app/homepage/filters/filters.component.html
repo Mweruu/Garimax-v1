@@ -36,7 +36,7 @@
     </div>
   </div>
 
-  </fieldset>
+</fieldset>
 <fieldset class="mt-3 fieldset">
 <legend class="ml-2">Year</legend>
 <div class="formgroup-inline col-12 md:col-12 lg:col-12 m-0">
@@ -62,13 +62,13 @@
     <div class="field col-5 md:col-12 lg:col-5 m-2 p-0">
       <span class="field">
         <label for="dropdown">Min</label>
-        <p-dropdown inputId="dropdown" [options]="price" optionValue="price"  optionLabel="price" placeholder="Select" [(ngModel)]="priceFilter" (onChange)="onPriceFilterChanged($event.value)"></p-dropdown>
+        <p-dropdown inputId="dropdown" [options]="price" optionValue="price"  optionLabel="price" placeholder="Select" [(ngModel)]="priceFilter" (onChange)="applyFilter()"></p-dropdown>
       </span>
     </div>
     <div class="field col-5 md:col-12 lg:col-5  m-2 p-0">
       <span class="field">
         <label for="dropdown">Max</label>
-        <p-dropdown inputId="dropdown" [options]="price" optionValue="maxPrice"  optionLabel="maxPrice" placeholder="Select" [(ngModel)]="maxPriceFilter" (onChange)="onPriceFilterChanged($event.value)"></p-dropdown>
+        <p-dropdown inputId="dropdown" [options]="price" optionValue="maxPrice"  optionLabel="maxPrice" placeholder="Select" [(ngModel)]="maxPriceFilter" (onChange)="applyFilter()"></p-dropdown>
       </span>
     </div>
   </div>

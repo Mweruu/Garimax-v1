@@ -3,7 +3,7 @@
   <div class="card"></div>
 <div class="card col-12 formgroup-inline">
   <div class=" p-formgrid grid col-12">
-  <h2>My account</h2>
+  <h5>My account</h5>
   <a (click)="toggleShowMore()" *ngIf="showMore" class="ml-2" style="cursor: pointer;"><i class="pi pi-plus" style="font-size: 1.5rem"></i></a>
   <a (click)="toggleShowMore()" *ngIf="!showMore" class="ml-2" style="cursor: pointer;"><i class="pi pi-minus" style="font-size: 1.5rem"></i></a>
 </div>
@@ -30,21 +30,22 @@
 <!-- </div> -->
   <div class="col-12 md:col-12 lg:col-6 ">
     <div class="card p-fluid justify-content-center align-items-center">
-
-    <div class="mb-2 field">
-      <label for="firstName" class="block text-900 text-xl font-medium mb-2">First name</label>
-      <input id="firstName" type="text" value="Christine" pInputText style="padding:1rem"><br>
+    <div class="p-formgrid grid">
+      <div class="mb-2 field col">
+        <label for="firstName" class="block text-900 font-medium mb-2">First name</label>
+        <input id="firstName" type="text" value="Christine" pInputText style="padding:1rem"><br>
+      </div>
+      <div class="mb-2 field col">
+        <label for="lastName" class="block text-900 font-medium mb-2">Last name</label>
+        <input id="lastName" type="text" value="Lora" pInputText style="padding:1rem"><br>
+      </div>
     </div>
     <div class="mb-2 field">
-      <label for="lastName" class="block text-900 text-xl font-medium mb-2">Last name</label>
-      <input id="lastName" type="text" value="Lora" pInputText style="padding:1rem"><br>
-    </div>
-    <div class="mb-2 field">
-      <label for="mobile" class="block text-900 text-xl font-medium mb-2">Phone number</label>
+      <label for="mobile" class="block text-900 font-medium mb-2">Phone number</label>
       <input id="mobile" type="number" value="710559980" pInputText  style="padding:1rem"><br>
     </div>
     <div class="mb-2 field">
-      <label for="email" class="block text-900 text-xl font-medium mb-2">Email</label>
+      <label for="email" class="block text-900 font-medium mb-2">Email</label>
       <input id="email" type="email" value="christine@gmail.com" pInputText style="padding:1rem"><br>
     </div>
   <!-- <div class="grid"></div> -->
@@ -62,13 +63,13 @@
 </div>
 <div class="formgroup-inline col-12 gap-5">
 <div class="card col-12 md:col-12 lg:col-5 formgroup-inline gap-5">
-  <h4>Your vehicles for sale</h4>
+  <h5>Your vehicles for sale</h5>
   <a (click)="toggleShowOnSaleVehicles()" *ngIf="!showOnSaleVehicles" class="ml-2" style="cursor: pointer;"><i class="pi pi-plus" style="font-size: 1.0rem"></i></a>
   <a (click)="toggleShowOnSaleVehicles()" *ngIf="showOnSaleVehicles" class="ml-2" style="cursor: pointer;"><i class="pi pi-minus" style="font-size: 1.0rem"></i></a>
 
 </div>
 <div class="card col-12 md:col-12 lg:col-5 formgroup-inline gap-5 ">
-  <h4>Your sold vehicles</h4>
+  <h5>Your sold vehicles</h5>
   <a (click)="toggleShowSoldVehicles()" *ngIf="!showSoldVehicles" class="ml-2" style="cursor: pointer;"><i class="pi pi-plus" style="font-size: 1.0rem"></i></a>
   <a (click)="toggleShowSoldVehicles()" *ngIf="showSoldVehicles" class="ml-2" style="cursor: pointer;"><i class="pi pi-minus" style="font-size: 1.0rem"></i></a>
 
