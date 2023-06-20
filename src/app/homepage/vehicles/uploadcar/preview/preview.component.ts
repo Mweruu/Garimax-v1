@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, LOCALE_ID } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/layout/data.service';
 import { DataStorageService } from 'src/app/datastorage.service';
 import { timer } from 'rxjs';
+import { formatNumber } from '@angular/common';
 
 @Component({
   selector: 'app-preview',
@@ -29,6 +30,9 @@ export class PreviewComponent implements OnInit {
   drivetype!:string;
   images: string[] =[];
   properties:any[] = [];
+  curr = formatNumber(56789,this.locale,
+    '3.1-4');
+
   responsiveOptions: any[] = [
     {
         breakpoint: '1024px',
@@ -43,7 +47,9 @@ export class PreviewComponent implements OnInit {
         numVisible: 1
     }
 ];
-  constructor(private dataServive: DataService,
+  constructor(
+    @Inject(LOCALE_ID) public locale : string,
+              private dataServive: DataService,
               private messageService: MessageService,
               private router: Router,
               private ds: DataStorageService,
@@ -63,7 +69,7 @@ export class PreviewComponent implements OnInit {
       this.make = this.carData.basicInfo.make;
       this.model = this.carData.basicInfo.model;
       this.year = this.carData.basicInfo.yearOfManufacture.toString().split(' ')[3];
-      this.price = this.carData.basicInfo.price;
+      this.price =formatNumber(this.carData.basicInfo.price,this.locale,'3.1-4');
       this.location = this.carData.basicInfo.location;
       this.mileage = this.carData.basicInfo.mileage;
     }
@@ -76,6 +82,7 @@ export class PreviewComponent implements OnInit {
       this.engine = this.carData.carDetails.engineSize;
       this.drivetype = this.carData.carDetails.drivetype;
     }
+
   }
 
   processImageFiles(files: any[]): void {

@@ -34,7 +34,7 @@
         </div>
         <p-rating [(ngModel)]="value" [readonly]="true" [cancel]="false"></p-rating>
 
-        <div class=" mt-2 text-red-500 hover:text-red-700  font-bold text-xl">Ksh. {{vehicle.price.toLocaleString()}}</div>
+        <div class=" mt-2 text-red-500 hover:text-red-700  font-bold text-xl">Ksh. {{vehicle.price | number: '3.1-4' }}</div>
       <div class="grid formgrid">
           <p-tag severity="info" value={{vehicle.location}} class="m-2"></p-tag>
           <p-tag severity="info" value={{vehicle.color}} class="m-2"></p-tag>
@@ -58,9 +58,9 @@
               <dt>Location</dt>
               <dd><strong>{{vehicle.location}}</strong></dd>
               <dt>Price </dt>
-              <dd><strong>Ksh. {{vehicle.price.toLocaleString()}}</strong></dd>
+              <dd><strong>Ksh. {{vehicle.price | number: '3.1-4' }}</strong></dd>
               <dt>Mileage</dt>
-              <dd><strong>{{vehicle.mileage}} KM</strong></dd>
+              <dd><strong>{{vehicle.mileage| number: '3.1-4' }} KM</strong></dd>
               <dt>Body type</dt>
               <dd><strong>{{vehicle.vehicleType}}</strong></dd>
             </dl>
