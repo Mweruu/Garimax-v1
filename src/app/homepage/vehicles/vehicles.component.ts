@@ -28,6 +28,9 @@ export class VehiclesComponent implements OnInit {
   totalRecords:number = 0;
   minPrice:any;
   maxPrice:any;
+  dates: string[] = [];
+  sortedDates!: string[];
+
   options = [
     { label: 5, value: 5 },
     { label: 10, value: 10 },
@@ -49,7 +52,6 @@ export class VehiclesComponent implements OnInit {
     this.value = 4;
     this._setValues();
     this.getAllVehicles()
-
   }
 
   _setValues(){
@@ -65,14 +67,35 @@ export class VehiclesComponent implements OnInit {
         this.totalRecords = this.vehicles.length;
         console.log(this.vehicles.length)
         console.log(this.totalRecords)
+        // for (const vehicle of this.vehicles) {
+        //   this.dates=vehicle.updatedAt
+        this.vehicles.sort((a: { updatedAt: string | number | Date; }, b: { updatedAt: string | number | Date; }) => {
+          const dateA = new Date(a.updatedAt);
+          const dateB = new Date(b.updatedAt);
+          return dateB.getTime() - dateA.getTime();
+        });
 
+        console.log(this.vehicles);
+
+        // }
       },
       (error) => {
         console.error(error);
       }
     );
+
   }
 
+  sortDates() {
+    console.log(33233,this.dates);
+    this.sortedDates= this.dates
+    .map(dateString => new Date(dateString))
+    .sort((a, b) => b.getTime() - a.getTime())
+    .map(date => date.toISOString());
+    console.log(3444,this.sortedDates)
+    // return this.dates.sort((a, b) => b.getTime() - a.getTime());
+
+  }
   getVehicle(vehicleId: string){
     this.router.navigateByUrl(`view/${vehicleId}`);
   }
