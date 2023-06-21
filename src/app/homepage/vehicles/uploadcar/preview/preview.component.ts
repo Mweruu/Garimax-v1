@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { DataService } from 'src/app/layout/data.service';
 import { DataStorageService } from 'src/app/datastorage.service';
 import { timer } from 'rxjs';
-import { formatNumber } from '@angular/common';
 
 @Component({
   selector: 'app-preview',
@@ -30,8 +29,6 @@ export class PreviewComponent implements OnInit {
   drivetype!:string;
   images: string[] =[];
   properties:any[] = [];
-  curr = formatNumber(56789,this.locale,
-    '3.1-4');
 
   responsiveOptions: any[] = [
     {
@@ -48,7 +45,6 @@ export class PreviewComponent implements OnInit {
     }
 ];
   constructor(
-    @Inject(LOCALE_ID) public locale : string,
               private dataServive: DataService,
               private messageService: MessageService,
               private router: Router,
@@ -69,7 +65,7 @@ export class PreviewComponent implements OnInit {
       this.make = this.carData.basicInfo.make;
       this.model = this.carData.basicInfo.model;
       this.year = this.carData.basicInfo.yearOfManufacture.toString().split(' ')[3];
-      this.price =formatNumber(this.carData.basicInfo.price,this.locale,'3.1-4');
+      this.price =this.carData.basicInfo.price,
       this.location = this.carData.basicInfo.location;
       this.mileage = this.carData.basicInfo.mileage;
     }
