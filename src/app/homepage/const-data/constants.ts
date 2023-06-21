@@ -158,16 +158,16 @@ export const ENGINE_POWER = [
 
 export const FUEL_TYPE = [
   {"fueltype":"Diesel"},
-  {"fueltype":"Gasoline"},
+  {"fueltype":"Petrol"},
   {"fueltype":"Compressed Natural Gas"}
 ]
 
 export const TRANSMISSION = [
   {"gear":"Automatic"},
   {"gear":"Manual"},
-  {"gear":"CVT"},
-  {"gear":"Other"},
-  {"gear":"Automanual"},
+  // {"gear":"CVT"},
+  // {"gear":"Other"},
+  // {"gear":"Automanual"},
 
 ]
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
+import { DataStorageService } from 'src/app/datastorage.service';
 
 interface UploadEvent {
   originalEvent: Event;
@@ -16,10 +17,13 @@ export class UserProfileComponent implements OnInit {
   showOnSaleVehicles : boolean = false;
   showSoldVehicles: boolean = false;
   clicked = false;
+  vehicles:any;
 
-  constructor(private messageService:MessageService) { }
+  constructor(private messageService:MessageService,
+    private ds:DataStorageService) { }
 
   ngOnInit(): void {
+    this.getAllVehicles()
   }
 
 
@@ -38,5 +42,33 @@ export class UserProfileComponent implements OnInit {
   onUpload(event: UploadEvent) {
     this.clicked=true
     this.messageService.add({ severity: 'info', summary: 'Success', detail: 'File Uploaded with Auto Mode' });
-}
+  }
+
+  getAllVehicles(){
+    this.ds.getVehicles().subscribe(
+      (vehicles) => {
+        console.log(vehicles);
+        console.log(vehicles.vehicles);
+        this.vehicles = vehicles.vehicles;
+        console.log(this.vehicles.length)
+        this.vehicles.sort((a: { updatedAt: string | number | Date; }, b: { updatedAt: string | number | Date; }) => {
+          const dateA = new Date(a.updatedAt);
+          const dateB = new Date(b.updatedAt);
+          return dateB.getTime() - dateA.getTime();
+        });
+
+        console.log(this.vehicles);
+
+        // }
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+
+  }
+  checked(){
+    console.log(55655667745, this.vehicles);
+
+  }
 }

@@ -59,9 +59,9 @@ value: any;
           console.log(vehicle)
 
           this.images = vehicle.images
-        })
+        });
       }
-    })
+    });
      this.items = [
             { label: 'Inspection Cert', icon: 'pi pi-fw pi-check-circle', command: () => this.selectTab('Inspection Cert')},
             { label: 'Engine', icon: 'pi pi-fw pi-check-circle',command: () => this.selectTab('Engine')},

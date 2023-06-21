@@ -20,8 +20,8 @@ export class CompanysignupComponent implements OnInit {
   mobileControl = new FormControl('', [Validators.required, Validators.minLength(9)]);
   passwordControl = new FormControl('', [Validators.required, Validators.minLength(6)]);
   emailControl = new FormControl('', [Validators.required, Validators.email]);
-
-
+  showContent =false;
+  
   constructor(
     // public layoutService: LayoutService,
               private fb:FormBuilder,
@@ -40,7 +40,7 @@ export class CompanysignupComponent implements OnInit {
       mobile:this.mobileControl,
       password:this.passwordControl,
       confirmPassword:['', Validators.required],
-      dealerLicense:false,
+      dealerLicense:true,
 
     });
   }
@@ -59,7 +59,7 @@ export class CompanysignupComponent implements OnInit {
       location:this.companyForm['location'].value,
       password:this.companyForm['password'].value,
       confirmPassword:this.companyForm['confirmPassword'].value,
-      // dealerLicense:this.companyForm['dealerLicense'].value,
+      dealerLicense:this.companyForm['dealerLicense'].value,
     }
     this.signUp(company)
   }

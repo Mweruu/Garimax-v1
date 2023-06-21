@@ -1,4 +1,4 @@
-<div class="card grid p-fluid">
+<div class="mid-display grid p-fluid">
   <div class="col-5 md:col-5 lg:col-5">
     <div class="card">
       <h5>Image</h5>
@@ -52,7 +52,7 @@
           </div>
 
           <div class="formgroup-inline mb-2">
-            <label for="price" class="col-5 md:col-5 lg:col-5">Price - <strong>{{price | currency:'KSH':''}}</strong></label>
+            <label for="price" class="col-5 md:col-5 lg:col-5">Price - <strong>{{price | currency:'Ksh. ':'symbol':'1.0-0'}}</strong></label>
             <label for="mileage" class="col-5 md:col-5 lg:col-5">Mileage - <strong>{{mileage}}</strong></label>
           </div>
 
@@ -80,5 +80,5 @@
     </div>
   </div>
 </div>
-<button pButton pRipple label="Submit" class="w-20rem p-3 text-xl ml-5" type="submit" (click)="onSubmit()"></button>
+<button pButton pRipple label="Submit" class="w-20rem p-3 text-xl ml-5 mb-5" type="submit" (click)="onSubmit()"></button>
 
