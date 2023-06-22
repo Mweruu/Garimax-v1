@@ -16,9 +16,9 @@ export class IndividualsignupComponent implements OnInit {
   valCheck: string[] = ['remember'];
   signin = false;
   isSubmitted = false;
-  individual = { firstName:'',lastName:'',email:'',mobile:'',gender:'',passportNo:'',password:'',confirmPassword:''}
+  individual = { firstName:'',lastName:'',email:'',phoneNumber:'',gender:'',passportNo:'',password:'',confirmPassword:''}
   password!: string;
-  mobileControl = new FormControl('', [Validators.required, Validators.minLength(9)]);
+  phoneNumberControl = new FormControl('', [Validators.required, Validators.minLength(9)]);
   passwordControl = new FormControl('', [Validators.required, Validators.minLength(6)]);
   emailControl = new FormControl('', [Validators.required, Validators.email]);
   signupForm!: FormGroup;
@@ -42,7 +42,7 @@ export class IndividualsignupComponent implements OnInit {
       firstName:['', Validators.required],
       lastName:['', Validators.required],
       email:this.emailControl,
-      mobile:this.mobileControl,
+      phoneNumber:this.phoneNumberControl,
       gender: ['',Validators.required],
       passportNo:['', Validators.required],
       password:this.passwordControl,
@@ -55,11 +55,12 @@ export class IndividualsignupComponent implements OnInit {
     if(this.signupForm.invalid){
       return;
     }
+    console.log(this.individualForm['phoneNumber'].value.toString())
     const individual:any = {
       firstName: this.individualForm['firstName'].value,
       lastName:this.individualForm['lastName'].value,
       email:this.individualForm['email'].value,
-      mobile:this.individualForm['mobile'].value,
+      phoneNumber:this.individualForm['phoneNumber'].value.toString(),
       gender:this.individualForm['gender'].value,
       passportNo:this.individualForm['passportNo'].value,
       password:this.individualForm['password'].value,

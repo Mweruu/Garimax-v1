@@ -3,14 +3,14 @@
     <div class="card grid p-fluid mt-0 p-5 col-4 md:col-4 lg:col-4">
         <div class="col-12 md:col-12 mb-3">
           <div class="p-inputgroup">
-            <button class="flex" type="button" [style]="{ width: '170px' }" pButton pRipple label="Make"></button>
+            <button class="flex" type="button" [style]="{ width: '150px' }" pButton pRipple label="Make"></button>
             <p-dropdown class="flex" [options]="makes" formControlName="make" inputId="dropdown" (onChange)="onMakeChange()" placeholder="Select"></p-dropdown>
           </div>
           <small *ngIf="informationForm['make'].invalid && informationForm['make'].touched" class="p-error">Make is required</small>
         </div>
         <div class="col-12 md:col-12 mb-3">
           <div class="p-inputgroup">
-            <button class="flex" type="button" [style]="{ width: '170px' }" pButton pRipple label="Model"></button>
+            <button class="flex" type="button" [style]="{ width: '150px' }" pButton pRipple label="Model"></button>
             <p-dropdown class="flex" [options]="models" formControlName="model" inputId="dropdown" placeholder="Select"></p-dropdown>
           </div>
           <small *ngIf="informationForm['model'].invalid && informationForm['model'].touched" class="p-error">Model is required</small>
@@ -19,7 +19,7 @@
 
         <div class="col-12 md:col-12 mb-3">
           <div class="p-inputgroup">
-            <button class="flex" type="button"  [style]="{width:'170px'}" pButton pRipple label="Year of Manufacture"></button>
+            <button class="flex" type="button"  [style]="{width:'150px'}" pButton pRipple label="Year of Manufacture"></button>
             <!-- <p-calendar  dateFormat="yy"></p-calendar> -->
             <p-calendar view="year" formControlName="yearOfManufacture" dateFormat="yy" inputId="yearpicker" placeholder="Select"></p-calendar><br>
           </div>
@@ -27,25 +27,32 @@
         </div>
         <div class="col-12 md:col-12 mb-3">
           <div class="p-inputgroup">
-            <button class="flex" type="button"  [style]="{width:'170px'}" pButton pRipple label="Price"></button>
-            <!-- <input type="number" formControlName="price" pInputText placeholder="Kshs"><br> -->
-            <p-inputNumber inputId="integeronly" formControlName="price" placeholder="Kshs"></p-inputNumber>
+            <button class="flex" type="button"  [style]="{width:'150px'}" pButton pRipple label="Price"></button>
+            <!-- <input type="number" inputId="integeronly" formControlName="price" pInputText placeholder="Kshs"><br> -->
+            <p-inputNumber  formControlName="price" placeholder="Kshs"></p-inputNumber>
           </div>
           <small *ngIf="informationForm['price'].invalid && isSubmitted" class="p-error">Price is required</small>
         </div>
         <div class="col-12 md:col-12 mb-3">
           <div class="p-inputgroup">
-            <button class="flex" type="button"  [style]="{width:'170px'}" pButton pRipple label="Location"></button>
+            <button class="flex" type="button"  [style]="{width:'150px'}" pButton pRipple label="Location"></button>
             <p-dropdown class="flex" inputId="dropdown" formControlName="location" [options]="location"  optionValue="location"  optionLabel="location" placeholder="Select"></p-dropdown><br>
           </div>
           <small *ngIf="informationForm['location'].invalid && isSubmitted" class="p-error">Location is required</small>
         </div>
         <div class="col-12 md:col-12 mb-3">
           <div class="p-inputgroup">
-            <button class="flex" type="button"  [style]="{width:'170px'}" pButton pRipple label="Mileage"></button>
+            <button class="flex" type="button"  [style]="{width:'150px'}" pButton pRipple label="Mileage"></button>
             <input type="number" formControlName="mileage" pInputText placeholder="Mileage"><br>
           </div>
           <small *ngIf="informationForm['mileage'].invalid && isSubmitted" class="p-error">Mileage is required</small>
+        </div>
+        <div class="col-12 md:col-12 mb-3">
+          <div class="p-inputgroup">
+            <button class="flex" type="button"  [style]="{width:'150px'}" pButton pRipple label="Transmission"></button>
+            <p-dropdown class="flex" inputId="dropdown" formControlName="transmission"   [options]="gear"  optionValue="gear" optionLabel="gear" placeholder="Transmission"></p-dropdown>
+          </div>
+          <small *ngIf="informationForm['transmission'].invalid && isSubmitted" class="p-error">Transmission is required</small>
         </div>
       <!-- </form> -->
     </div>

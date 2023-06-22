@@ -11,7 +11,10 @@
           </ng-template>
           <ng-template pTemplate="thumbnail" let-item>
             <div class="grid grid-nogutter justify-content-center">
-                <img [src]="item" style="width: 100%; display: block;" />
+              <span class="text-2xl font-semibold">
+                <img [src]="item" alt="logo" height="30" class="mb-3">
+               </span>
+                <!-- <img [src]="item" class="logo" style="width: 100%; display: block;" /> -->
             </div>
         </ng-template>
         </p-galleria>
@@ -22,7 +25,8 @@
           </div>
       </p-divider>
       </div>
-      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore, sed sapiente nam ea vel tempore totam in cumque aliquid modi quas sunt nostrum eveniet id consequuntur repudiandae inventore neque impedit.</p>
+      <p>{{vehicle.accessories}}</p>
+
       <div class="grid formgrid">
         <p-divider align="left">
           <div class="inline-flex align-items-center">
@@ -30,22 +34,23 @@
           </div>
       </p-divider>
       </div>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae adipisci laborum deleniti cum accusamus facilis cupiditate, non officia! Esse veniam dolorum nostrum at hic? Similique consequatur vel esse? Quia, ratione?</p>
+      <p>{{vehicle.description}}</p>
     </div>
   </div>
   <div class="col-7 md:col-7 lg:col-7">
     <div class="card">
       <div class="grid formgrid">
-        <div><h2>{{vehicle.yearOfManufactor.split('-')[0]}} {{vehicle.make}} {{vehicle.model}}</h2></div>
+        <div><h2>{{vehicle.yearOfManufacture.split('-')[0]}} {{vehicle.make}} {{vehicle.model}}</h2></div>
         </div>
         <!-- <p-rating [(ngModel)]="value" [readonly]="true" [cancel]="false"></p-rating> -->
 
         <div class=" mt-2 text-red-500 hover:text-red-700  font-bold text-xl">{{vehicle.price | currency:'Ksh. ':'symbol':'1.0-0'}}</div>
       <div class="grid formgrid">
-          <p-tag severity="info" value={{vehicle.location}} class="m-2"></p-tag>
+          <p-tag severity="info" value={{vehicle.steering}} class="m-2"></p-tag>
           <p-tag severity="info" value={{vehicle.color}} class="m-2"></p-tag>
           <p-tag severity="info" value={{vehicle.condition}} class="m-2"></p-tag>
-          <p-tag severity="info" value={{vehicle.vehicleType}} class="m-2"></p-tag>
+          <p-tag severity="info" value={{vehicle.enginePower}} class="m-2"></p-tag>
+          <p-tag severity="info" value={{vehicle.usage}} class="m-2"></p-tag>
 
       </div>
       <div class="grid formgrid">
@@ -63,16 +68,16 @@
               <dd> <strong>{{vehicle.model}}</strong></dd>
               <dt>Location</dt>
               <dd><strong>{{vehicle.location}}</strong></dd>
-              <dt>Price </dt>
-              <dd><strong>{{vehicle.price | currency:'Ksh. ':'symbol':'1.0-0'}}</strong></dd>
+              <!-- <dt>Price </dt>
+              <dd><strong>{{vehicle.price | currency:'Ksh. ':'symbol':'1.0-0'}}</strong></dd> -->
               <dt>Mileage</dt>
               <dd><strong>{{vehicle.mileage| number: '3.1-4' }} KM</strong></dd>
               <dt>Body type</dt>
-              <dd><strong>{{vehicle.vehicleType}}</strong></dd>
+              <dd><strong>{{vehicle.bodyType}}</strong></dd>
             </dl>
             <dl class="col-6 md:col-12 lg:col-6">
               <dt>Fuel type </dt>
-              <dd><strong>{{vehicle.fueltype}}{{vehicle.drivetype}}</strong></dd>
+              <dd><strong>{{vehicle.fuelType}}{{vehicle.driveTrain}}</strong></dd>
               <dt>Transmission </dt>
               <dd><strong>{{vehicle.transmission}}</strong></dd>
               <dt>Color</dt>
@@ -82,7 +87,7 @@
               <dt>Condition</dt>
               <dd><strong>{{vehicle.condition}}</strong></dd>
               <dt>VIN number</dt>
-              <dd><strong>KCA 345B</strong> </dd>
+              <dd><strong>{{vehicle.vinNumber}}</strong> </dd>
             </dl>
           </div>
       </div>

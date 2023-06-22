@@ -22,9 +22,9 @@
         </div>
 
         <div class="mb-3">
-          <label for="mobile" class="block text-900 text-xl font-medium mb-1">Phone number</label>
-          <input id="individualmobile"  formControlName="mobile"  type="number" placeholder="phone number" pInputText class="w-full md:w-30rem mb-1" style="padding:1rem"><br>
-          <small *ngIf="individualForm['mobile'].invalid && isSubmitted" class="p-error">Phone number is required</small>
+          <label for="phoneNumber" class="block text-900 text-xl font-medium mb-1">Phone number</label>
+          <input id="phoneNumber"  formControlName="phoneNumber"  type="number" placeholder="phone number" pInputText class="w-full md:w-30rem mb-1" style="padding:1rem"><br>
+          <small *ngIf="individualForm['phoneNumber'].invalid && isSubmitted" class="p-error">Phone number is required</small>
         </div>
 
         <div class="mb-3">
@@ -35,7 +35,7 @@
         <div class="mb-3">
           <label for="gender" class="block text-900 text-xl font-medium mb-0">Gender</label>
           <div  class="p-inputgroup">
-            <p-dropdown class="flex w-full md:w-30rem col-12 md:col-12 mb-0" formControlName="gender" [options]="genders"  optionValue="gender" optionLabel="gender" inputId="dropdown" placeholder="Select" [style]="{'padding':'0.5rem'}" [(ngModel)]="gender" (onChange)="ongenderChanged($event.value)"></p-dropdown>
+            <p-dropdown class="flex w-full md:w-30rem col-12 md:col-12 mb-0" formControlName="gender" [options]="genders"  optionValue="gender" optionLabel="gender" inputId="dropdown" placeholder="Select" [style]="{'padding':'0.5rem'}" (onChange)="ongenderChanged($event.value)"></p-dropdown>
           </div>
           <!-- <input id="gender" formControlName="gender"   type="text" placeholder="Gender" pInputText class="w-full md:w-30rem mb-1" style="padding:1rem"><br> -->
           <small *ngIf="individualForm['gender'].invalid && isSubmitted" class="p-error">Gender is required</small>

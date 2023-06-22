@@ -26,6 +26,8 @@ export class DataStorageService {
   private createVehicleUrl = `${BASE_URL}/api/addVehicle`;
   private getVehicleUrl = `${BASE_URL}/api/getVehicles`;
   private getSingleVehicleUrl = `${BASE_URL}/api/getVehicle`
+  private getSingleUserUrl = `${BASE_URL}/api/user`
+  private updateProfileUrl = `${BASE_URL}/api/user/updateProfile`
 
   user:any;
 
@@ -39,6 +41,9 @@ export class DataStorageService {
   }
   getUsers(): Observable<any> {
     return this.http.get<any>(`${this.getUsersUrl}`);
+  }
+  getUser(id:string): Observable<any> {
+    return this.http.get<any>(`${this.getSingleUserUrl}/${id}`);
   }
   createIndividualVendor(vendor:any): Observable<any> {
     return this.http.post<any>(`${this.createindividualVendorUrl}`,vendor);
@@ -55,6 +60,8 @@ export class DataStorageService {
   getVehicle(id:string): Observable<any> {
     return this.http.get<any>(`${this.getSingleVehicleUrl}/${id}`);
   }
-
+  updateProfile(id:string){
+    return this.http.get<any>(`${this.updateProfileUrl}/${id}`);
+  }
 
 }

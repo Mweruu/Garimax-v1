@@ -115,7 +115,7 @@ export class VehiclesComponent implements OnInit {
     if (this.searchText === '') {
       return this.searchFilter === '' || vehicle.location.toLowerCase().includes(this.searchFilter) ||
       vehicle.transmission.toLowerCase().includes(this.searchFilter) ||
-      vehicle.vehicleType.toLowerCase().includes(this.searchFilter) ||
+      vehicle.bodyType.toLowerCase().includes(this.searchFilter) ||
       vehicle.model.toLowerCase().includes(this.searchFilter) ||
       vehicle.mileage.toLowerCase().includes(this.searchFilter) ||
       vehicle.make.toLowerCase().includes(this.searchFilter) ||
@@ -129,9 +129,9 @@ export class VehiclesComponent implements OnInit {
       vehicle.engineSize.toLowerCase().includes(this.searchFilter) ||
       vehicle.color.toLowerCase().includes(this.searchFilter)
       // vehicle.seats.toLowerCase().includes(this.searchFilter) ||
-      // vehicle.bootspace.toLowerCase().includes(this.searchFilter) ||
-      // vehicle.fueltype.toLowerCase().includes(this.searchFilter)||
-      // vehicle.fuelconsumption.toLowerCase().includes(this.searchFilter)
+      // vehicle.bootSpace.toLowerCase().includes(this.searchFilter) ||
+      // vehicle.fuelType.toLowerCase().includes(this.searchFilter)||
+      // vehicle.fuelConsumption.toLowerCase().includes(this.searchFilter)
       ;
 
 
@@ -141,11 +141,11 @@ export class VehiclesComponent implements OnInit {
         vehicle.make.toLowerCase().includes(searchText) ||
         vehicle.model.toLowerCase().includes(searchText) ||
         vehicle.price.toLowerCase().includes(searchText) ||
-        vehicle.yearOfManufactor.toLowerCase().includes(searchText)
+        vehicle.yearOfManufacture.toLowerCase().includes(searchText)
       ) && (
         this.searchFilter === '' || vehicle.location.toLowerCase().includes(this.searchFilter)||
         vehicle.make.toLowerCase().includes(this.searchFilter) ||
-        vehicle.vehicleType.toLowerCase().includes(searchText)
+        vehicle.bodyType.toLowerCase().includes(searchText)
 
 
       );

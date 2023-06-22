@@ -13,15 +13,18 @@ import { DataStorageService } from 'src/app/datastorage.service';
 export class CompanysignupComponent implements OnInit {
   valCheck: string[] = ['remember'];
   signupForm!: FormGroup;
-  company = {email:'',companyName:'', kraPin:'', mobile: '' ,address:'', location:'',password:'',confirmPassword:''}
+  company = {email:'',companyName:'', kraPin:'', phoneNumber: '' ,address:'', location:'',password:'',confirmPassword:''}
   signin = false;
   isSubmitted = false;
   password!: string;
-  mobileControl = new FormControl('', [Validators.required, Validators.minLength(9)]);
+  confirmPassword!: string;
+  phoneNumberControl = new FormControl('', [Validators.required, Validators.minLength(9)]);
   passwordControl = new FormControl('', [Validators.required, Validators.minLength(6)]);
   emailControl = new FormControl('', [Validators.required, Validators.email]);
   showContent =false;
-  
+
+
+
   constructor(
     // public layoutService: LayoutService,
               private fb:FormBuilder,
@@ -37,12 +40,13 @@ export class CompanysignupComponent implements OnInit {
       kraPin:['', Validators.required, Validators.minLength(11), Validators.maxLength(11)],
       address:[''],
       location:[''],
-      mobile:this.mobileControl,
+      phoneNumber:this.phoneNumberControl,
       password:this.passwordControl,
       confirmPassword:['', Validators.required],
-      dealerLicense:true,
+      dealerLicense:false,
 
     });
+
   }
 
   onSubmit(){
@@ -54,7 +58,7 @@ export class CompanysignupComponent implements OnInit {
       email:this.companyForm['email'].value,
       companyName:this.companyForm['companyName'].value,
       kraPin:this.companyForm['kraPin'].value,
-      mobile:this.companyForm['mobile'].value,
+      phoneNumber:this.companyForm['phoneNumber'].value,
       address:this.companyForm['address'].value,
       location:this.companyForm['location'].value,
       password:this.companyForm['password'].value,
@@ -95,5 +99,6 @@ export class CompanysignupComponent implements OnInit {
   get companyForm(){
     return this.signupForm.controls;
   }
+
 
 }

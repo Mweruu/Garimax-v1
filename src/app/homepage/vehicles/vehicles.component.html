@@ -17,7 +17,7 @@
     </div>
     <div *ngFor="let vehicle of vehicles">
       <div class="vehicles-card flex mb-3 mt-3" *ngIf="isMatched(vehicle)">
-      <!-- <div class="card flex mb-3 mt-3" *ngIf="searchText === '' || vehicle.make.toLowerCase().includes(searchText) || vehicle.model.toLowerCase().includes(searchText) || vehicle.price.toLowerCase().includes(searchText) || vehicle.yearOfManufactor.toLowerCase().includes(searchText)">
+      <!-- <div class="card flex mb-3 mt-3" *ngIf="searchText === '' || vehicle.make.toLowerCase().includes(searchText) || vehicle.model.toLowerCase().includes(searchText) || vehicle.price.toLowerCase().includes(searchText) || vehicle.yearOfManufacture.toLowerCase().includes(searchText)">
       <div class="flex mb-3 mt-3" *ngIf="searchFilter === '' || vehicle.location.toLowerCase().includes(searchFilter)"> -->
           <div class="grid" style="cursor: pointer;">
           <div class="col-12 md:col-12 lg:col-5 flex align-items-center justify-content-center">
@@ -33,11 +33,11 @@
               </div>
             <div class="m-2 text-red-500 hover:text-red-700  font-bold ">{{vehicle.price | currency:'Ksh. ':'symbol':'1.0-0' }}</div>
               <h6 class="m-2">
-                {{vehicle.yearOfManufactor.split('-')[0]}} {{vehicle.make}} {{vehicle.model}}
+                {{vehicle.yearOfManufacture.split('-')[0]}} {{vehicle.make}} {{vehicle.model}}
               </h6>
               <p class="m-2">
                 <strong>
-                  {{vehicle.transmission}} | {{vehicle.engineSize}} | {{vehicle.mileage| number: '3.1-4' }} KM | {{vehicle.color}} | {{vehicle.vehicleType}}
+                  {{vehicle.fuelType}} | {{vehicle.transmission}} | {{vehicle.engineSize}} | {{vehicle.mileage| number: '1.0-0' }} KM | {{vehicle.color}} | {{vehicle.bodyType}}
                 </strong>
               </p>
               <!-- <p-tag [value]={{vehicle.foreignUsed}} [severity]="getSeverity(vehicle.foreignUsed)"></p-tag> -->
@@ -52,7 +52,8 @@
               <p-rating [(ngModel)]="value" [readonly]="true" [cancel]="false"></p-rating>
               <div class="flex sm:flex-column align-items-center sm:align-items-end gap-3 sm:gap-2">
                 <span class="text-2xl font-semibold">
-                <img src={{vehicle.image}} alt="logo" height="30" class="mb-3"></span>
+                 <img src={{vehicle.image}} alt="logo" height="30" class="mb-3">
+                </span>
               </div>
             </div>
           </div>

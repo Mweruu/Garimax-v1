@@ -114,52 +114,52 @@ export const COLOR = [
   {"color":" Yellow"},
 ]
 export const BODY_TYPE = [
-  {"bodytype":"Coupe"},
-  {"bodytype":"Jeep"},
-  {"bodytype":"Hatchback"},
-  {"bodytype":"Sedan"},
-  {"bodytype":"MUV/SUV"},
-  {"bodytype":"Coupe"},
-  {"bodytype":"Convertible"},
-  {"bodytype":"Wagon"},
-  {"bodytype":"Van"},
+  {"bodyType":"Coupe"},
+  {"bodyType":"Jeep"},
+  {"bodyType":"Hatchback"},
+  {"bodyType":"Sedan"},
+  {"bodyType":"MUV/SUV"},
+  {"bodyType":"Coupe"},
+  {"bodyType":"Convertible"},
+  {"bodyType":"Wagon"},
+  {"bodyType":"Van"},
 
 ]
 export const ENGINE_SIZE = [
-  {"enginesize":"500 CC"},
-  {"enginesize":"700 CC"},
-  {"enginesize":"1,000 CC"},
-  {"enginesize":"2,000 CC"},
-  {"enginesize":"3,000 CC"},
-  {"enginesize":"4,000 CC"},
-  {"enginesize":"5,000 CC"},
-  {"enginesize":"6,000 CC"},
-  {"enginesize":"7,000 CC"},
-  {"enginesize":"8,000 CC"},
+  {"engineSize":"500 CC"},
+  {"engineSize":"700 CC"},
+  {"engineSize":"1,000 CC"},
+  {"engineSize":"2,000 CC"},
+  {"engineSize":"3,000 CC"},
+  {"engineSize":"4,000 CC"},
+  {"engineSize":"5,000 CC"},
+  {"engineSize":"6,000 CC"},
+  {"engineSize":"7,000 CC"},
+  {"engineSize":"8,000 CC"},
 
 ]
 export const ENGINE_POWER = [
-  {"enginepower":"0bhp"},
-  {"enginepower":"50bhp"},
-  {"enginepower":"100bhp"},
-  {"enginepower":"150bhp"},
-  {"enginepower":"200bhp"},
-  {"enginepower":"250bhp"},
-  {"enginepower":"300bhp"},
-  {"enginepower":"3500bhp"},
-  {"enginepower":"400bhp"},
-  {"enginepower":"450bhp"},
-  {"enginepower":"500bhp"},
-  {"enginepower":"550bhp"},
-  {"enginepower":"950bhp"},
-  {"enginepower":"1000bhp"},
+  {"enginePower":"0bhp"},
+  {"enginePower":"50bhp"},
+  {"enginePower":"100bhp"},
+  {"enginePower":"150bhp"},
+  {"enginePower":"200bhp"},
+  {"enginePower":"250bhp"},
+  {"enginePower":"300bhp"},
+  {"enginePower":"3500bhp"},
+  {"enginePower":"400bhp"},
+  {"enginePower":"450bhp"},
+  {"enginePower":"500bhp"},
+  {"enginePower":"550bhp"},
+  {"enginePower":"950bhp"},
+  {"enginePower":"1000bhp"},
 
 ]
 
 export const FUEL_TYPE = [
-  {"fueltype":"Diesel"},
-  {"fueltype":"Petrol"},
-  {"fueltype":"Compressed Natural Gas"}
+  {"fuelType":"Diesel"},
+  {"fuelType":"Petrol"},
+  {"fuelType":"Compressed Natural Gas"}
 ]
 
 export const TRANSMISSION = [
@@ -187,9 +187,9 @@ export const STEERING = [
 
 ]
 export const DRIVETRAIN = [
-  {"drivetrain":"Four Wheel Drive"},
-  {"drivetrain":"Front Wheel Drive"},
-  {"drivetrain":"Rear Wheel Drive"},
+  {"driveTrain":"Four Wheel Drive"},
+  {"driveTrain":"Front Wheel Drive"},
+  {"driveTrain":"Rear Wheel Drive"},
 
 ]
 
@@ -261,9 +261,9 @@ export const SEATS = [
 ]
 
 export const BOOTSPACE = [
-  {"bootspace":"Up to 3  (0-300 Litres)"},
-  {"bootspace":"3-5 suitcases(301-500 Litres)"},
-  {"bootspace":"More the 5 suitcases (over 500 Litres) "},
+  {"bootSpace":"Up to 3  (0-300 Litres)"},
+  {"bootSpace":"3-5 suitcases(301-500 Litres)"},
+  {"bootSpace":"More the 5 suitcases (over 500 Litres) "},
 ]
 
 export const ACCELERATION = [
@@ -274,11 +274,14 @@ export const ACCELERATION = [
 ]
 
 export const FUEL_CONSUMPTION = [
-  {"fuelconsumption":"30+mpg"},
-  {"fuelconsumption":"40+mpg"},
-  {"fuelconsumption":"50+mpg"},
-  {"fuelconsumption":"60+mpg"},
+  {"fuelConsumption":"30+mpg"},
+  {"fuelConsumption":"40+mpg"},
+  {"fuelConsumption":"50+mpg"},
+  {"fuelConsumption":"60+mpg"},
 ]
+export const CONDITION = [
+    {state:"Used", key:"U"},
+    {state:"Brand New", key:"BN"}]
 
 export interface CarModels {
   [make: string]: string[];

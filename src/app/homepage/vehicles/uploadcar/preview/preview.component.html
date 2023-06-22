@@ -29,7 +29,7 @@
         </div>
       <div class="grid formgrid">
           <p-tag severity="info" value={{location}} class="m-2"></p-tag>
-          <p-tag severity="info" value={{price}} class="m-2"></p-tag>
+          <p-tag severity="info" value={{usage}} class="m-2"></p-tag>
           <p-tag severity="info" value={{mileage}} class="m-2"></p-tag>
           <p-tag severity="info" value={{color}} class="m-2"></p-tag>
 
@@ -57,8 +57,8 @@
           </div>
 
           <div class="formgroup-inline mb-2">
-            <label for="fueltype" class="col-5 md:col-5 lg:col-5">Fuel type - <strong>{{fueltype}}</strong></label>
-            <label for="vehicleType" class="col-5 md:col-5 lg:col-5">Body type - <strong>{{bodytype}}</strong></label>
+            <label for="fuelType" class="col-5 md:col-5 lg:col-5">Fuel type - <strong>{{fuelType}}</strong></label>
+            <label for="bodyType" class="col-5 md:col-5 lg:col-5">Body type - <strong>{{bodyType}}</strong></label>
           </div>
 
           <div class="formgroup-inline mb-2">
@@ -67,13 +67,22 @@
           </div>
 
           <div class="formgroup-inline mb-2">
-            <label for="steering" class="col-5 md:col-5 lg:col-5">Steering - <strong>{{steering}}</strong></label>
-            <label for="engineSize" class="col-5 md:col-5 lg:col-5">Engine power - <strong>{{engine}}</strong></label>
+            <label for="steering" class="col-5 md:col-5 lg:col-5">Engine power - <strong>{{enginePower}}</strong></label>
+            <label for="engineSize" class="col-5 md:col-5 lg:col-5">Engine size - <strong>{{engineSize}}</strong></label>
           </div>
 
           <div class="formgroup-inline mb-2">
-            <label for="drivetype" class="col-5 md:col-5 lg:col-5">Drive train - <strong>{{drivetype}}</strong> </label>
-            <label for="description" class="col-5 md:col-5 lg:col-5">Description</label>
+            <label for="steering" class="col-5 md:col-5 lg:col-5">Vin Number - <strong>{{vinNumber}}</strong></label>
+            <label for="engineSize" class="col-5 md:col-5 lg:col-5">Acceleration - <strong>{{acceleration}}</strong></label>
+          </div>
+
+          <div class="formgroup-inline mb-2">
+            <label for="steering" class="col-5 md:col-5 lg:col-5">Steering - <strong>{{steering}}</strong></label>
+            <label for="description" class="col-5 md:col-5 lg:col-5">duty <strong>{{duty}}</strong></label>
+          </div>
+          <div class="formgroup-inline mb-2">
+            <label for="description" class="col-5 md:col-5 lg:col-5">Condition <strong>{{condition}}</strong></label>
+            <label for="description" class="col-5 md:col-5 lg:col-5">Description <strong>{{description}}</strong></label>
           </div>
         </div>
       </div>

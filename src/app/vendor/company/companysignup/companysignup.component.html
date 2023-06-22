@@ -23,9 +23,9 @@
           </div>
 
           <div class="mb-3">
-            <label for="mobile" class="block text-900 text-xl font-medium mb-1">Phone number</label>
-            <input id="companymobile" formControlName="mobile" type="number" placeholder="phone number" pInputText class="w-full md:w-30rem mb-3" style="padding:1rem"><br>
-            <small *ngIf="companyForm['mobile'].invalid && isSubmitted" class="p-error">Phone number is required</small>
+            <label for="phoneNumber" class="block text-900 text-xl font-medium mb-1">Phone number</label>
+            <input id="companymobile" formControlName="phoneNumber" type="number" placeholder="phone number" pInputText class="w-full md:w-30rem mb-3" style="padding:1rem"><br>
+            <small *ngIf="companyForm['phoneNumber'].invalid && isSubmitted" class="p-error">Phone number is required</small>
           </div>
 
           <label for="address" class="block text-900 text-xl font-medium mb-1">Address</label>
@@ -34,10 +34,14 @@
           <label for="location" class="block text-900 text-xl font-medium mb-1">Location</label>
           <input id="location" formControlName="location"  type="text" placeholder="Location" pInputText class="w-full md:w-30rem mb-3" style="padding:1rem"><br>
 
-          <div class="card deal-license-card">
+          <div class="card p-fluid deal-license-card">
+            <div class="field mb-0">
                 <p-checkbox class="mr-2" formControlName="dealerLicense" value="dealerLicense" inputId="dealerLicense"></p-checkbox>
                 <label for="dealerLicense">Dealership license provided by NTSA</label>
-                <!-- <input *ngIf="signupForm.get('dealerLicense')?.value === true" class="m-2" type="file" class="file-upload" onchange="console.log(event.target.files)"> -->
+            </div>
+            <div class="field mb-0">
+              <input *ngIf="signupForm.get('dealerLicense')?.value === true" type="file" class="file-upload" onchange="console.log(event.target.files)">
+            </div>
           </div>
 
           <div class="mb-3">

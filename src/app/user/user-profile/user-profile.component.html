@@ -5,46 +5,56 @@
   <div class="col-12 md:col-12 lg:col-12">
   <p-panel header="My account" [toggleable]="true">
     <div class="col-12 pb-3 pt-3" >
-      <div class="formgroup-inline mb-5" >
-        <div class="col-12 md:col-12 lg:col-6">
-          <div class="card p-fluid">
-            <div class="flex formgroup-inline justify-content-center">
-            <i  *ngIf="!clicked" class="pi pi-user field justify-content-center align-items-center" style="font-size: 12.5rem"></i>
-            <!-- <p-fileUpload mode="basic"  chooseLabel="Click here to add an image" name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" accept="image/*" (onUpload)="onUpload($event)"></p-fileUpload> -->
+      <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+        <div class="formgroup-inline mb-5" >
+          <div class="col-12 md:col-12 lg:col-6">
+            <div class="flex align-items-center justify-content-center">
+              <div class="card" style="background-color: rgb(207, 205, 205);" (click)="fileInput.click()">
+                <div class="card-body">
+                  <div class="flex align-items-center justify-content-center">
+                    <i *ngIf="!imageSelected" class="pi pi-user field " style="font-size: 12.5rem"></i>
+                    <img *ngIf="imageSelected" [src]="selectedImage" alt="profile-picture" class="profile-picture mb-5">
+                  </div>
+                  <div class="flex align-items-center justify-content-center">
+                    <p>Click or drag an image here to update your profile picture</p>
+                  </div>
+                </div>
+              </div>
+              <input type="file" #fileInput style="display: none;" (change)="onFileSelected($event)">
             </div>
           </div>
-      </div>
-      <div class="col-12 md:col-12 lg:col-6 ">
-        <div class="card p-fluid justify-content-center align-items-center">
-        <div class="p-formgrid grid">
-          <div class="mb-2 field col">
-            <label for="firstName" class="block text-900 font-medium mb-2">First name</label>
-            <input id="firstName" type="text" value="Christine" pInputText ><br>
+          <div class="col-12 md:col-12 lg:col-6 ">
+            <div class="p-fluid justify-content-center align-items-center">
+            <div class="p-formgrid grid">
+              <div class="mb-2 field col">
+                <label for="firstName" class="block text-900 font-medium mb-2">First name</label>
+                <input id="firstName" type="text" value={{user.firstName}} pInputText ><br>
+              </div>
+              <div class="mb-2 field col">
+                <label for="lastName" class="block text-900 font-medium mb-2">Last name</label>
+                <input id="lastName" type="text" value={{user.firstName}} pInputText ><br>
+              </div>
+            </div>
+            <div class="mb-2 field">
+              <label for="phoneNumber" class="block text-900 font-medium mb-2">Phone number</label>
+              <input id="phoneNumber" type="number" value={{user.phoneNumber}} pInputText ><br>
+            </div>
+            <div class="mb-2 field">
+              <label for="email" class="block text-900 font-medium mb-2">Email</label>
+              <input id="email" type="email" value={{user.email}} pInputText ><br>
+            </div>
+          <!-- <div class="grid"></div> -->
+            <div class="field flex align-items-center justify-content-between ">
+              <i [style]="{'font-size':'12px'}">This email has not been verified  <a class="font-xm no-underline ml-2 text-right cursor-pointer" style="color: var(--primary-color)">Verify now</a></i>
+            </div>
+            <div class=" field flex align-items-center justify-content-between mt-3">
+              <p>Want to change password  <a class="font-medium no-underline ml-2 text-right cursor-pointer" style="color: var(--primary-color)">Click here</a></p>
+            </div>
           </div>
-          <div class="mb-2 field col">
-            <label for="lastName" class="block text-900 font-medium mb-2">Last name</label>
-            <input id="lastName" type="text" value="Lora" pInputText ><br>
           </div>
         </div>
-        <div class="mb-2 field">
-          <label for="mobile" class="block text-900 font-medium mb-2">Phone number</label>
-          <input id="mobile" type="number" value="710559980" pInputText ><br>
-        </div>
-        <div class="mb-2 field">
-          <label for="email" class="block text-900 font-medium mb-2">Email</label>
-          <input id="email" type="email" value="christine@gmail.com" pInputText ><br>
-        </div>
-      <!-- <div class="grid"></div> -->
-        <div class="field flex align-items-center justify-content-between ">
-          <i [style]="{'font-size':'12px'}">This email has not been verified  <a class="font-xm no-underline ml-2 text-right cursor-pointer" style="color: var(--primary-color)">Verify now</a></i>
-        </div>
-        <div class=" field flex align-items-center justify-content-between mt-3">
-          <p>Want to change password  <a class="font-medium no-underline ml-2 text-right cursor-pointer" style="color: var(--primary-color)">Click here</a></p>
-        </div>
-      </div>
-      </div>
-      </div>
-      <p-button class="flex justify-content-center" styleClass="p-button-success w-21rem">Save</p-button>
+        <p-button class="flex justify-content-center" styleClass="p-button-success w-21rem" type="submit">Save</p-button>
+      </form>
     </div>
   </p-panel>
 </div>
@@ -57,7 +67,7 @@
       <p-image src="{{vehicle.image}}" alt="Image" width="100%" [preview]="true"></p-image>
     </div>
     <div class="col-8">
-      <h6>{{vehicle.make}} {{vehicle.model}} {{vehicle.yearOfManufactor.split('-')[0]}}</h6>
+      <h6>{{vehicle.make}} {{vehicle.model}} {{vehicle.yearOfManufacture.split('-')[0]}}</h6>
       <div class="m-2 text-red-500 font-bold ">{{vehicle.price | currency:'Ksh. ':'symbol':'1.0-0'}}</div>
       <div class="flex align-items-center justify-content-between mb-5">
         <div class="flex align-items-center">

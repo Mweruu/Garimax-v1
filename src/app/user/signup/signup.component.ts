@@ -14,11 +14,11 @@ import { timer } from 'rxjs';
 export class SignupComponent implements OnInit {
   valCheck: string[] = ['remember'];
   isSubmitted = false;
-  user = {firstName:'', lastName:'',email:'',mobile:'', password:'',confirmPassword:''};
+  user = {firstName:'', lastName:'',email:'',phoneNumber:'', password:'',confirmPassword:''};
   signin = false;
   signupForm! :FormGroup;
   emailControl = new FormControl('', [Validators.required, Validators.email]);
-  mobileControl = new FormControl('', [Validators.required, Validators.minLength(9)]);
+  phoneNumberControl = new FormControl('', [Validators.required, Validators.minLength(9)]);
   passwordControl = new FormControl('', [Validators.required, Validators.minLength(6)]);
 
   password!: string;
@@ -35,7 +35,7 @@ export class SignupComponent implements OnInit {
         firstName:['', Validators.required],
         lastName:['', Validators.required],
         email:this.emailControl,
-        mobile:this.mobileControl,
+        phoneNumber:this.phoneNumberControl,
         password:this.passwordControl,
         confirmPassword:['', Validators.required]
     });
@@ -50,7 +50,7 @@ export class SignupComponent implements OnInit {
         firstName:this.userSignupForm['firstName'].value,
         lastName:this.userSignupForm['lastName'].value,
         email:this.userSignupForm['email'].value,
-        mobile:this.userSignupForm['mobile'].value,
+        phoneNumber:this.userSignupForm['phoneNumber'].value,
         password:this.userSignupForm['password'].value,
         confirmPassword:this.userSignupForm['confirmPassword'].value
     }

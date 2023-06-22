@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CAR_MODELS, KENYA_LOCATION, VEHICLE_DATA } from 'src/app/homepage/const-data/constants';
+import { CAR_MODELS, KENYA_LOCATION, TRANSMISSION, VEHICLE_DATA } from 'src/app/homepage/const-data/constants';
 import { DataService } from 'src/app/layout/data.service';
 
 
@@ -13,6 +13,7 @@ import { DataService } from 'src/app/layout/data.service';
 export class BasicinfoComponent implements OnInit {
   make: any = VEHICLE_DATA;
   location:any = KENYA_LOCATION;
+  gear:any = TRANSMISSION;
   makes:string[] =Object.keys(CAR_MODELS);
   models: string[] = [];
   selectedMake: string = '';
@@ -34,6 +35,7 @@ export class BasicinfoComponent implements OnInit {
       price:['',Validators.required],
       location:['',Validators.required],
       mileage:['',Validators.required],
+      transmission:['', Validators.required],
     })
   }
 
@@ -57,7 +59,8 @@ export class BasicinfoComponent implements OnInit {
       yearOfManufacture:this.informationForm['yearOfManufacture'].value,
       price:this.informationForm['price'].value,
       location:this.informationForm['location'].value,
-      mileage: this.informationForm['mileage'].value
+      mileage: this.informationForm['mileage'].value,
+      transmission:this.informationForm['transmission'].value,
     }
     this.dataServive.setbasicInfoData(basicInformation);
     console.log('Basic data' ,basicInformation)

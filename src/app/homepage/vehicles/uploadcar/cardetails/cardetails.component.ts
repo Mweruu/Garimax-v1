@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DataStorageService } from 'src/app/datastorage.service';
-import { BODY_TYPE, CAR_OPTIONS, COLOR, DRIVETRAIN, ENGINE_POWER, ENGINE_SIZE, FUEL_TYPE, STEERING, TRANSMISSION, USAGE } from '../../../const-data/constants'
+import { ACCELERATION, BODY_TYPE, CAR_OPTIONS, COLOR, CONDITION, DRIVETRAIN, ENGINE_POWER, ENGINE_SIZE, FUEL_TYPE, STEERING, TRANSMISSION, USAGE } from '../../../const-data/constants'
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/layout/data.service';
 import { MessageService } from 'primeng/api';
@@ -16,18 +16,22 @@ export class CardetailsComponent implements OnInit {
     selectedOptions: any[] = [];
     options: any[] = CAR_OPTIONS;
     color: any = COLOR;
-    fueltype:any = FUEL_TYPE;
-    bodytype:any = BODY_TYPE;
+    fuelType:any = FUEL_TYPE;
+    bodyType:any = BODY_TYPE;
     engineSize:any = ENGINE_SIZE;
     steering:any = STEERING;
-    gear:any = TRANSMISSION;
-    drivetrain:any = DRIVETRAIN;
+    driveTrain:any = DRIVETRAIN;
     usage:any = USAGE;
+    enginePower:any = ENGINE_POWER;
+    acceleration:any = ACCELERATION;
     carDetsForm!: FormGroup;
     isSubmitted = false;
     vendor:any;
     visible!: boolean;
     myForm!: FormGroup;
+    duty = [{"duty":"paid"},{"duty":"not paid"}]
+    condition:any = CONDITION;
+    accessories:any =[];
 
     constructor( private ds:DataStorageService,
                 private fb:FormBuilder,
@@ -38,16 +42,20 @@ export class CardetailsComponent implements OnInit {
 
     ngOnInit(){
       this.carDetsForm = this.fb.group({
-        fueltype:['', Validators.required],
-        vehicleType:['', Validators.required],
-        transmission:['', Validators.required],
+        fuelType:['', Validators.required],
+        bodyType:['', Validators.required],
         color:['', Validators.required],
         steering:['', Validators.required],
         engineSize:['', Validators.required],
-        drivetype:['',Validators.required],
-        vinNo:[''],
-        Usage:[''],
-        description:['']
+        enginePower:['', Validators.required],
+        acceleration:[''],
+        // driveTrain:['',Validators.required],
+        vinNumber:[''],
+        usage:[''],
+        description:['', Validators.required],
+        duty:['', Validators.required],
+        condition:[''],
+        accessories:[]
       });
 
     }
@@ -64,14 +72,20 @@ export class CardetailsComponent implements OnInit {
       }
 
       const details = {
-        fueltype:this.carDetails['fueltype'].value,
-        vehicleType:this.carDetails['vehicleType'].value,
-        transmission:this.carDetails['transmission'].value,
+        fuelType:this.carDetails['fuelType'].value,
+        bodyType:this.carDetails['bodyType'].value,
         color:this.carDetails['color'].value,
         steering:this.carDetails['steering'].value,
         engineSize:this.carDetails['engineSize'].value,
-        drivetype:this.carDetails['drivetype'].value,
-        description:this.carDetails['description'].value
+        enginePower:this.carDetails['enginePower'].value,
+        vinNumber:this.carDetails['vinNumber'].value,
+        usage:this.carDetails['usage'].value,
+        duty:this.carDetails['duty'].value,
+        condition:this.carDetails['condition'].value,
+        acceleration:this.carDetails['acceleration'].value,
+        description:this.carDetails['description'].value,
+        accessories:this.carDetails['accessories'].value
+
       }
       this.dataService.setcardetailsData(details)
       console.log('Details Data!',details)
@@ -94,6 +108,7 @@ export class CardetailsComponent implements OnInit {
     onCheckboxChange() {
       const options = document.querySelectorAll('input[type="checkbox"]');
       const selectedOptions = Array.from(options).filter(checkbox => (checkbox as HTMLInputElement).checked);
+      this.selectedOptions = this.accessories
       console.log(selectedOptions);
       // const selectedOptions = this.options.filter((option: any) => option.selected);
       // console.log(selectedOptions);
