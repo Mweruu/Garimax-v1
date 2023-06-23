@@ -25,8 +25,9 @@
                 <p-image src="{{vehicle.image}}" alt="Image" width="100%" [preview]="true"></p-image>
               </div>
           </div>
-          <div class="col-12 md:col-12 lg:col-7 flex align-items-center justify-content-center" routerLink="/view" (click)="getVehicle(vehicle.id)">
+          <div class="col-12 md:col-12 lg:col-7 flex align-items-center justify-content-center">
             <div class="col-12 md:col-12 lg:col-12 ">
+              <div routerLink="/view" (click)="getVehicle(vehicle.id)">
               <div class="mt-2">
                 <p-tag [severity]="vehicle.foreignUsed? 'info':'warning'" value= "Foreign Used" [icon]="vehicle.foreignUsed? 'pi pi-check': 'pi pi-times'" [rounded]="true" class="ml-1"></p-tag>
                 <p-tag [severity]="vehicle.locallyUsed? 'info':'warning'" value= "Locally Used" [icon]="vehicle.locallyUsed? 'pi pi-check': 'pi pi-times'" [rounded]="true" class="ml-2"></p-tag>
@@ -43,8 +44,9 @@
               <!-- <p-tag [value]={{vehicle.foreignUsed}} [severity]="getSeverity(vehicle.foreignUsed)"></p-tag> -->
 
               <p-divider></p-divider>
+              </div>
               <!-- <div class="formgroup-inline gap-7"> -->
-                <h5 class="m-0">
+                <h5 class="m-0" routerLink="/vendorprofile" (click)="getUser(vehicle.user.id)" >
                   {{vehicle.user.firstName}}
                 </h5>
 

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -13,7 +13,6 @@ if(env === 'production'){
   BASE_URL = LOCAL_BASE_URL;
 }
 console.log("environment", env)
-
 @Injectable({
   providedIn: 'root'
 })
@@ -29,7 +28,6 @@ export class DataStorageService {
   private getSingleUserUrl = `${BASE_URL}/api/user`
   private updateProfileUrl = `${BASE_URL}/api/user/updateProfile`
   private getVehicleByUserId = `${BASE_URL}/api/getVendorVehicles`
-
 
   user:any;
 
@@ -62,8 +60,9 @@ export class DataStorageService {
   getVehicle(id:string): Observable<any> {
     return this.http.get<any>(`${this.getSingleVehicleUrl}/${id}`);
   }
-  updateProfile(id:string){
-    return this.http.get<any>(`${this.updateProfileUrl}/${id}`);
+  updateProfile(id:string, value:any){
+    console.log("yee",id)
+    return this.http.put<any>(`${this.updateProfileUrl}/${id}`,value);
   }
   getUserVehicle(userId:string){
     return this.http.get<any>(`${this.getVehicleByUserId}/${userId}`);

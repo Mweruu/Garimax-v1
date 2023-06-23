@@ -43,7 +43,6 @@ export class AppTopBarComponent implements OnInit{
 
     ngOnInit(){
       this.getUsersCreds();
-      this.getAllUsers()
     }
 
     toggle() {
@@ -71,17 +70,5 @@ export class AppTopBarComponent implements OnInit{
     getUser(userId: string){
       this.router.navigateByUrl(`profile/${userId}`);
     }
- 
-    getAllUsers(){
-      this.ds.getUsers().subscribe(
-        (users) => {
-          console.log(users);
-          console.log(users.users);
-          this.users = users.users;
-        },
-        (error) => {
-          console.error(error);
-        }
-      );
-    }
+
 }

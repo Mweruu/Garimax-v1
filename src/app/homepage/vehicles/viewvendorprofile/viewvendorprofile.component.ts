@@ -1,0 +1,107 @@
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
+import { MessageService } from 'primeng/api';
+import { timer } from 'rxjs';
+import { DataStorageService } from 'src/app/datastorage.service';
+
+@Component({
+  selector: 'app-viewvendorprofile',
+  templateUrl: './viewvendorprofile.component.html',
+  styleUrls: ['./viewvendorprofile.component.scss']
+})
+export class ViewvendorprofileComponent implements OnInit {
+  showMore: boolean = false;
+  showOnSaleVehicles : boolean = false;
+  showSoldVehicles: boolean = false;
+  clicked = false;
+  vehicles:any;
+  imageSelected: boolean = false;
+  selectedImage: any;
+  updateForm!:FormGroup;
+  // updateForm!:FormGroup;
+  rateForm!:FormGroup;
+  isSubmitted = false;
+  currentUserId!:string;
+  user:any
+  currentVehicleId!:string;
+  vehicle:any;
+  userId :any;
+
+
+  constructor(private messageService:MessageService,
+              private ds:DataStorageService,
+              private fb: FormBuilder,
+              private router: Router,
+              private activatedRouter: ActivatedRoute,
+  ) { }
+
+  async ngOnInit(){
+    this.activatedRouter.params.subscribe(params => {
+      if(params['userId']){
+        this.currentUserId = params['userId'];
+        console.log("ID:",this.currentUserId)
+        this.ds.getUser(this.currentUserId).subscribe(user => {
+          this.user = user;
+          console.log("DATA", user)
+          this.userRateForm['value'].setValue(user.firstName)
+          // this.userUpdateForm['lastName'].setValue(user.lastName)
+          // this.userUpdateForm['phoneNumber'].setValue(user.phoneNumber)
+          // this.userUpdateForm['email'].setValue(user.email)
+
+        });
+        this.ds.getUserVehicle(this.currentUserId).subscribe(vehicles =>{
+          this.vehicles = vehicles;
+          console.log(2323,vehicles)
+        })
+      }
+    });
+    this.rateForm = this.fb.group({
+      value:['', Validators.required],
+
+  });
+  }
+
+
+  toggleShowMore() {
+    this.showMore = !this.showMore;
+  }
+
+  toggleShowSoldVehicles(){
+    this.showSoldVehicles =! this.showSoldVehicles;
+  }
+
+  toggleShowOnSaleVehicles(){
+    this.showOnSaleVehicles = !this.showOnSaleVehicles;
+  }
+
+
+  checked(){
+    console.log(55655667745, this.vehicles);
+
+  }
+
+  onFileSelected(event: any) {
+    // const file = event.target.files[0];
+
+    // Perform further processing with the file, e.g., upload to a server
+    // console.log('Selected file:', file);
+    if (event.target.files && event.target.files.length > 0) {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+
+      reader.onload = (e: any) => {
+        this.selectedImage = e.target.result;
+        this.imageSelected = true;
+      };
+
+      reader.readAsDataURL(file);
+    }
+  }
+
+  get userRateForm(){
+    return this.rateForm.controls;
+  }
+
+}
+

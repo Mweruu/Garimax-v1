@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { DataStorageService } from '../../datastorage.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 interface PageEvent {
   first: number;
@@ -18,7 +18,7 @@ export class VehiclesComponent implements OnInit {
   value: number | undefined;
   panelSizes = [30,70]
   vendor:any;
-  vehicle!:string;
+  // vehicle!:string;
   vehicles:any;
   search:any;
   searchText:string = '';
@@ -30,6 +30,10 @@ export class VehiclesComponent implements OnInit {
   maxPrice:any;
   dates: string[] = [];
   sortedDates!: string[];
+  currentVehicleId!:string;
+  vehicle:any;
+  userId :any;
+
 
   options = [
     { label: 5, value: 5 },
@@ -46,12 +50,14 @@ export class VehiclesComponent implements OnInit {
   constructor(
     private ds:DataStorageService,
     public router: Router,
+    public activatedRouter:ActivatedRoute
   ) { }
 
   ngOnInit() {
     this.value = 4;
     this._setValues();
-    this.getAllVehicles()
+    this.getAllVehicles();
+    this.getUserId()
   }
 
   _setValues(){
@@ -75,8 +81,10 @@ export class VehiclesComponent implements OnInit {
           return dateB.getTime() - dateA.getTime();
         });
 
-        console.log(this.vehicles);
-
+        // console.log(this.vehicles);
+        //  for (const vehicle of this.vehicles) {
+        //   this.userId = vehicle.user.id
+        //   console.log(this.userId);
         // }
       },
       (error) => {
@@ -98,6 +106,38 @@ export class VehiclesComponent implements OnInit {
   }
   getVehicle(vehicleId: string){
     this.router.navigateByUrl(`view/${vehicleId}`);
+  }
+
+  getUserId(){
+    this.activatedRouter.params.subscribe(params => {
+      if(params['vehicleId']){
+        this.currentVehicleId = params['vehicleId'];
+        console.log("ID:",this.currentVehicleId)
+        this.ds.getVehicle(this.currentVehicleId).subscribe(vehicle => {
+          this.vehicle = vehicle;
+          console.log("DATA", vehicle.images)
+          console.log(vehicle.userId)
+          this.userId = vehicle.userId
+        });
+      }
+    });
+  }
+
+  getUser(userId: string){
+    this.activatedRouter.params.subscribe(params => {
+      if(params['vehicleId']){
+        this.currentVehicleId = params['vehicleId'];
+        console.log("ID:",this.currentVehicleId)
+        this.ds.getVehicle(this.currentVehicleId).subscribe(vehicle => {
+          this.vehicle = vehicle;
+          console.log("DATA", vehicle.images)
+          console.log(vehicle.userId)
+          this.userId = vehicle.userId
+        });
+      }
+    });
+    console.log('gothere',this.userId)
+    this.router.navigateByUrl(`vendorprofile/${userId}`);
   }
 
   onSearchTextEntered(searchValue:string){

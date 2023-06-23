@@ -51,7 +51,7 @@ export class CardetailsComponent implements OnInit {
         acceleration:[''],
         // driveTrain:['',Validators.required],
         vinNumber:[''],
-        usage:[''],
+        usage:['', Validators.required],
         description:['', Validators.required],
         duty:['', Validators.required],
         condition:[''],

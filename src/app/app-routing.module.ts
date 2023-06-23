@@ -16,6 +16,8 @@ import { CardetailsComponent } from './homepage/vehicles/uploadcar/cardetails/ca
 import { PreviewComponent } from './homepage/vehicles/uploadcar/preview/preview.component';
 import { ViewComponent } from './homepage/vehicles/view/view.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
+import { ViewvendorprofileComponent } from './homepage/vehicles/viewvendorprofile/viewvendorprofile.component';
+import { UpdateprofileComponent } from './user/updateprofile/updateprofile.component';
 
 const routes: Routes = [
   {
@@ -35,7 +37,13 @@ const routes: Routes = [
     path: 'signup', component:SignupComponent
   },
   {
-    path: 'profile/:userId', component:UserProfileComponent
+    path: 'profile/:userId', component:UserProfileComponent,
+  },
+  // {
+  //   path: 'updateprofile/:userId', component:UpdateprofileComponent
+  // },
+  {
+    path: 'vendorprofile/:userId', component:ViewvendorprofileComponent
   },
   {
     path: 'vendorsignup', component:SignupTabsComponent,

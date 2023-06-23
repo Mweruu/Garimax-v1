@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { DataStorageService } from 'src/app/datastorage.service';
 import { timer } from 'rxjs';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 interface UploadEvent {
@@ -26,7 +26,13 @@ export class UserProfileComponent implements OnInit {
   updateForm!:FormGroup;
   isSubmitted = false;
   currentUserId!:string;
-  user:any
+  user:any;
+  updatedData :any;
+  userId:any;
+  imageUploaded = false;
+  uploadedFiles: any[] = [];
+  imageForm!:FormGroup;
+  file: any
 
   constructor(private messageService:MessageService,
               private ds:DataStorageService,
@@ -43,11 +49,15 @@ export class UserProfileComponent implements OnInit {
         console.log("ID:",this.currentUserId)
         this.ds.getUser(this.currentUserId).subscribe(user => {
           this.user = user;
-          console.log("DATA", user)
+          this.userId= user.id
+          console.log("DATA", this.userId)
           this.userUpdateForm['firstName'].setValue(user.firstName)
           this.userUpdateForm['lastName'].setValue(user.lastName)
           this.userUpdateForm['phoneNumber'].setValue(user.phoneNumber)
           this.userUpdateForm['email'].setValue(user.email)
+          this.userUpdateForm['companyUrl'].setValue(user.companyUrl)
+          this.userUpdateForm['profileImage'].setValue(user.profileImage)
+          // this.userUpdateForm['password'].setValue(user.password)
 
         });
         this.ds.getUserVehicle(this.currentUserId).subscribe(vehicles =>{
@@ -62,7 +72,9 @@ export class UserProfileComponent implements OnInit {
       lastName:['', Validators.required],
       email:['', Validators.required],
       phoneNumber:['', Validators.required],
-
+      companyUrl:[''],
+      profileImage:new FormControl(),
+      // password: ['']
   });
   }
 
@@ -79,10 +91,10 @@ export class UserProfileComponent implements OnInit {
     this.showOnSaleVehicles = !this.showOnSaleVehicles;
   }
 
-  onUpload(event: UploadEvent) {
-    this.clicked=true
-    this.messageService.add({ severity: 'info', summary: 'Success', detail: 'File Uploaded with Auto Mode' });
-  }
+  // onUpload(event: UploadEvent) {
+  //   this.clicked=true
+  //   this.messageService.add({ severity: 'info', summary: 'Success', detail: 'File Uploaded with Auto Mode' });
+  // }
   checked(){
     console.log(55655667745, this.vehicles);
 
@@ -106,58 +118,86 @@ export class UserProfileComponent implements OnInit {
     }
   }
 
-  onSubmit(){
-    this.isSubmitted = true;
-    if(this.updateForm.invalid){
-      return;
-    }
-    console.log(this.userUpdateForm['email'].value)
-    const user={
-        // this.imageSelected
-        firstName:this.userUpdateForm['firstName'].value,
-        lastName:this.userUpdateForm['lastName'].value,
-        email:this.userUpdateForm['email'].value,
-        phoneNumber:this.userUpdateForm['phoneNumber'].value,
-    }
-    this.update(user)
-  }
-  update(user:any){
-    console.log('User updated successfully!');
 
-    this.isSubmitted = true;
-    this.ds.updateProfile(user).subscribe(
-        response => {
-          console.log('User updated successfully!', response);
-          // Handle success response here
-          console.log(1123,response.token)
-          this.messageService.add({
-            severity:'success',
-            summary:'Success',
-            detail:'User created successfully, kindly login'
-          })
-          timer(2500).toPromise().then(()=>{
-            this.router.navigate(['/login'])
-          })
-        },
-        error => {
-          console.error('Failed to create user:', error);
-          // Handle error response here
-          this.messageService.add({
-            severity:'error',
-            summary:'Error',
-            detail:'Failed to create user'
-          })
-        }
-      );
 
-  }
-  get userUpdateForm(){
-    return this.updateForm.controls;
-  }
+  // updateUser(userId: string){
+  //   console.log('gothere',this.user)
+  //   this.router.navigateByUrl(`profile/${userId}/updateprofile/${userId}`);
+  // }
+
 
   getVehiclebyId(){
     this.ds.getUserVehicle(this.currentUserId).subscribe(vehicles =>{
       console.log(vehicles)
     })
+  }
+
+  get userUpdateForm(){
+    return this.updateForm.controls;
+  }
+
+  onSubmit(userId: string){
+    this.isSubmitted = true;
+    if(this.updateForm.invalid){
+      return;
+    }
+    console.log(this.userUpdateForm['companyUrl'].value)
+    const user={
+        // this.imageSelected
+        firstName:this.userUpdateForm['firstName'].value,
+        lastName:this.userUpdateForm['lastName'].value,
+        email:this.userUpdateForm['email'].value,
+        companyUrl:this.userUpdateForm['companyUrl'].value,
+        phoneNumber:this.userUpdateForm['phoneNumber'].value,
+        profileImage:this.userUpdateForm['profileImage'].value,
+        // password:this.userUpdateForm['password'].value || this.user.p,
+
+    }
+    this.updatedData= user
+    console.log(this.updatedData)
+    this.update(userId)
+  }
+
+
+  update(userId: string){
+    this.isSubmitted = true;
+    this.ds.updateProfile(userId, this.updatedData).subscribe(
+        response => {
+          console.log('User details updated successfully!', response);
+          // Handle success response here
+          console.log(1123,response)
+          this.messageService.add({
+            severity:'success',
+            summary:'Success',
+            detail:'User details updated successfully'
+          })
+        },
+        error => {
+          console.error('Failed to update user:', error);
+          // Handle error response here
+          this.messageService.add({
+            severity:'error',
+            summary:'Error',
+            detail:'Failed to update user'
+          })
+        }
+      );
+
+  }
+
+  onUpload(event: any) {
+    try{
+      let count = 0;
+      for(let file of event.files) {
+        count = count + 1
+        this.uploadedFiles.push(file);
+      }
+      this.file = event.files[0];
+      this.imageUploaded = true;
+      this.messageService.add({severity: 'info', summary: 'File Uploaded', detail: `${count} Image(s) uploaded`});
+    } catch(err){
+      console.log(err)
+      this.messageService.add({severity: 'dagger', summary: 'Image(s) Upload Failed', detail: `Failed to upload Images`});
+    }
   }
 }

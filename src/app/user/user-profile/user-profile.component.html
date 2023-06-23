@@ -1,11 +1,12 @@
 <app-topbar></app-topbar>
+<p-toast></p-toast>
 <div class="profile-display">
   <div class="card"></div>
 <div class="formgroup-inline">
   <div class="col-12 md:col-12 lg:col-12">
   <p-panel header="My account" [toggleable]="true">
     <div class="col-12 pb-3 pt-3" >
-      <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="updateForm" (ngSubmit)="onSubmit(user.id)">
         <div class="formgroup-inline mb-5" >
           <div class="col-12 md:col-12 lg:col-6">
             <div class="flex align-items-center justify-content-center">
@@ -16,7 +17,7 @@
                     <img *ngIf="imageSelected" [src]="selectedImage" alt="profile-picture" class="profile-picture mb-5">
                   </div>
                   <div class="flex align-items-center justify-content-center">
-                    <p>Click or drag an image here to update your profile picture</p>
+                    <p formControlName="profileImage">Click or drag an image here to update your profile picture</p>
                   </div>
                 </div>
               </div>
@@ -43,17 +44,28 @@
               <label for="email" class="block text-900 font-medium mb-2">Email</label>
               <input id="email" type="email" formControlName="email" pInputText ><br>
             </div>
+
           <!-- <div class="grid"></div> -->
             <div class="field flex align-items-center justify-content-between ">
               <i [style]="{'font-size':'12px'}">This email has not been verified  <a class="font-xm no-underline ml-2 text-right cursor-pointer" style="color: var(--primary-color)">Verify now</a></i>
             </div>
+            <div class="mb-2 field">
+              <label for="companyUrl" class="block text-900 font-medium mb-2">URL</label>
+              <input id="companyUrl" type="companyUrl" formControlName="companyUrl" pInputText ><br>
+            </div>
+
+            <!-- <div class="mb-2 field">
+              <label for="password" class="block text-900 font-medium text-xl mb-2">Password</label>
+              <p-password id="password" formControlName="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" [toggleMask]="true" styleClass="mb-1"></p-password><br>
+            </div> -->
+
             <div class=" field flex align-items-center justify-content-between mt-3">
               <p>Want to change password  <a class="font-medium no-underline ml-2 text-right cursor-pointer" style="color: var(--primary-color)">Click here</a></p>
             </div>
           </div>
           </div>
         </div>
-        <p-button class="flex justify-content-center" styleClass="p-button-success w-21rem" type="submit">Save</p-button>
+        <p-button class="flex justify-content-center" styleClass="p-button-success w-21rem" type="submit" >Save</p-button>
       </form>
     </div>
   </p-panel>

@@ -57,7 +57,7 @@ value: any;
         this.ds.getVehicle(this.currentVehicleId).subscribe(vehicle => {
           this.vehicle = vehicle;
           console.log("DATA", vehicle.images)
-          console.log(vehicle)
+          console.log(vehicle.userId)
 
           this.images = vehicle.images
         });
