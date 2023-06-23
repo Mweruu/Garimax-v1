@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -13,7 +13,6 @@ if(env === 'production'){
   BASE_URL = LOCAL_BASE_URL;
 }
 console.log("environment", env)
-
 @Injectable({
   providedIn: 'root'
 })
@@ -26,6 +25,9 @@ export class DataStorageService {
   private createVehicleUrl = `${BASE_URL}/api/addVehicle`;
   private getVehicleUrl = `${BASE_URL}/api/getVehicles`;
   private getSingleVehicleUrl = `${BASE_URL}/api/getVehicle`
+  private getSingleUserUrl = `${BASE_URL}/api/user`
+  private updateProfileUrl = `${BASE_URL}/api/user/updateProfile`
+  private getVehicleByUserId = `${BASE_URL}/api/getVendorVehicles`
 
   user:any;
 
@@ -39,6 +41,9 @@ export class DataStorageService {
   }
   getUsers(): Observable<any> {
     return this.http.get<any>(`${this.getUsersUrl}`);
+  }
+  getUser(id:string): Observable<any> {
+    return this.http.get<any>(`${this.getSingleUserUrl}/${id}`);
   }
   createIndividualVendor(vendor:any): Observable<any> {
     return this.http.post<any>(`${this.createindividualVendorUrl}`,vendor);
@@ -55,6 +60,11 @@ export class DataStorageService {
   getVehicle(id:string): Observable<any> {
     return this.http.get<any>(`${this.getSingleVehicleUrl}/${id}`);
   }
-
-
+  updateProfile(id:string, value:any){
+    console.log("yee",id)
+    return this.http.put<any>(`${this.updateProfileUrl}/${id}`,value);
+  }
+  getUserVehicle(userId:string){
+    return this.http.get<any>(`${this.getVehicleByUserId}/${userId}`);
+  }
 }

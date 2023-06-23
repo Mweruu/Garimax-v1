@@ -64,6 +64,12 @@ import { InputSwitchModule } from 'primeng/inputswitch';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { RippleModule } from 'primeng/ripple';
 import { SidebarModule } from 'primeng/sidebar';
+import { SpecificuserVehiclesComponent } from './specificuser-vehicles/specificuser-vehicles.component';
+import { PanelModule } from 'primeng/panel';
+import { ViewvendorprofileComponent } from './homepage/vehicles/viewvendorprofile/viewvendorprofile.component';
+import { UpdateprofileComponent } from './user/updateprofile/updateprofile.component';
+import { ViewuservehiclesComponent } from './homepage/vehicles/viewuservehicles/viewuservehicles.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -86,6 +92,10 @@ import { SidebarModule } from 'primeng/sidebar';
     CardetailsComponent,
     PreviewComponent,
     ViewComponent,
+    SpecificuserVehiclesComponent,
+    ViewvendorprofileComponent,
+    UpdateprofileComponent,
+    ViewuservehiclesComponent,
   ],
   imports: [
     BrowserModule,
@@ -130,7 +140,7 @@ import { SidebarModule } from 'primeng/sidebar';
     RippleModule,
     RouterModule,
     CalendarModule,
-
+    PanelModule
   ],
   providers: [MessageService, AuthService,DataService, ViewComponent],
   bootstrap: [AppComponent]

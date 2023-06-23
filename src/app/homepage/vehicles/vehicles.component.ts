@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { DataStorageService } from '../../datastorage.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 interface PageEvent {
   first: number;
@@ -18,7 +18,7 @@ export class VehiclesComponent implements OnInit {
   value: number | undefined;
   panelSizes = [30,70]
   vendor:any;
-  vehicle!:string;
+  // vehicle!:string;
   vehicles:any;
   search:any;
   searchText:string = '';
@@ -30,6 +30,10 @@ export class VehiclesComponent implements OnInit {
   maxPrice:any;
   dates: string[] = [];
   sortedDates!: string[];
+  currentVehicleId!:string;
+  vehicle:any;
+  userId :any;
+
 
   options = [
     { label: 5, value: 5 },
@@ -46,12 +50,14 @@ export class VehiclesComponent implements OnInit {
   constructor(
     private ds:DataStorageService,
     public router: Router,
+    public activatedRouter:ActivatedRoute
   ) { }
 
   ngOnInit() {
     this.value = 4;
     this._setValues();
-    this.getAllVehicles()
+    this.getAllVehicles();
+    this.getUserId()
   }
 
   _setValues(){
@@ -75,8 +81,10 @@ export class VehiclesComponent implements OnInit {
           return dateB.getTime() - dateA.getTime();
         });
 
-        console.log(this.vehicles);
-
+        // console.log(this.vehicles);
+        //  for (const vehicle of this.vehicles) {
+        //   this.userId = vehicle.user.id
+        //   console.log(this.userId);
         // }
       },
       (error) => {
@@ -100,6 +108,38 @@ export class VehiclesComponent implements OnInit {
     this.router.navigateByUrl(`view/${vehicleId}`);
   }
 
+  getUserId(){
+    this.activatedRouter.params.subscribe(params => {
+      if(params['vehicleId']){
+        this.currentVehicleId = params['vehicleId'];
+        console.log("ID:",this.currentVehicleId)
+        this.ds.getVehicle(this.currentVehicleId).subscribe(vehicle => {
+          this.vehicle = vehicle;
+          console.log("DATA", vehicle.images)
+          console.log(vehicle.userId)
+          this.userId = vehicle.userId
+        });
+      }
+    });
+  }
+
+  getUser(userId: string){
+    this.activatedRouter.params.subscribe(params => {
+      if(params['vehicleId']){
+        this.currentVehicleId = params['vehicleId'];
+        console.log("ID:",this.currentVehicleId)
+        this.ds.getVehicle(this.currentVehicleId).subscribe(vehicle => {
+          this.vehicle = vehicle;
+          console.log("DATA", vehicle.images)
+          console.log(vehicle.userId)
+          this.userId = vehicle.userId
+        });
+      }
+    });
+    console.log('gothere',this.userId)
+    this.router.navigateByUrl(`vendorprofile/${userId}`);
+  }
+
   onSearchTextEntered(searchValue:string){
     this.searchText =searchValue ;
     console.log(1,this.searchText)
@@ -115,7 +155,7 @@ export class VehiclesComponent implements OnInit {
     if (this.searchText === '') {
       return this.searchFilter === '' || vehicle.location.toLowerCase().includes(this.searchFilter) ||
       vehicle.transmission.toLowerCase().includes(this.searchFilter) ||
-      vehicle.vehicleType.toLowerCase().includes(this.searchFilter) ||
+      vehicle.bodyType.toLowerCase().includes(this.searchFilter) ||
       vehicle.model.toLowerCase().includes(this.searchFilter) ||
       vehicle.mileage.toLowerCase().includes(this.searchFilter) ||
       vehicle.make.toLowerCase().includes(this.searchFilter) ||
@@ -129,9 +169,9 @@ export class VehiclesComponent implements OnInit {
       vehicle.engineSize.toLowerCase().includes(this.searchFilter) ||
       vehicle.color.toLowerCase().includes(this.searchFilter)
       // vehicle.seats.toLowerCase().includes(this.searchFilter) ||
-      // vehicle.bootspace.toLowerCase().includes(this.searchFilter) ||
-      // vehicle.fueltype.toLowerCase().includes(this.searchFilter)||
-      // vehicle.fuelconsumption.toLowerCase().includes(this.searchFilter)
+      // vehicle.bootSpace.toLowerCase().includes(this.searchFilter) ||
+      // vehicle.fuelType.toLowerCase().includes(this.searchFilter)||
+      // vehicle.fuelConsumption.toLowerCase().includes(this.searchFilter)
       ;
 
 
@@ -141,11 +181,11 @@ export class VehiclesComponent implements OnInit {
         vehicle.make.toLowerCase().includes(searchText) ||
         vehicle.model.toLowerCase().includes(searchText) ||
         vehicle.price.toLowerCase().includes(searchText) ||
-        vehicle.yearOfManufactor.toLowerCase().includes(searchText)
+        vehicle.yearOfManufacture.toLowerCase().includes(searchText)
       ) && (
         this.searchFilter === '' || vehicle.location.toLowerCase().includes(this.searchFilter)||
         vehicle.make.toLowerCase().includes(this.searchFilter) ||
-        vehicle.vehicleType.toLowerCase().includes(searchText)
+        vehicle.bodyType.toLowerCase().includes(searchText)
 
 
       );

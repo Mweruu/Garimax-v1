@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { ACCELERATION, BODY_TYPE, BOOTSPACE, CAR_MODELS, CAR_OPTIONS, COLOR, DOORS, DRIVETRAIN, ENGINE_POWER, ENGINE_SIZE, FUEL_CONSUMPTION, FUEL_TYPE, KENYA_LOCATION, MILEAGE, PRICE, SEATS, STEERING, TRANSMISSION } from '../const-data/constants';
+import { ACCELERATION, BODY_TYPE, BOOTSPACE, CAR_MODELS, CAR_OPTIONS, COLOR, CONDITION, DOORS, DRIVETRAIN, ENGINE_POWER, ENGINE_SIZE, FUEL_CONSUMPTION, FUEL_TYPE, KENYA_LOCATION, MILEAGE, PRICE, SEATS, STEERING, TRANSMISSION } from '../const-data/constants';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/layout/data.service';
@@ -31,28 +31,28 @@ export class FiltersComponent implements OnInit {
   location:any = KENYA_LOCATION;
   options: any[] = CAR_OPTIONS;
   color: any = COLOR;
-  fueltype:any = FUEL_TYPE;
-  bodytype:any = BODY_TYPE;
+  fuelType:any = FUEL_TYPE;
+  bodyType:any = BODY_TYPE;
   engineSize:any = ENGINE_SIZE;
   steering:any = STEERING;
   gear:any = TRANSMISSION;
-  drivetrain:any = DRIVETRAIN;
+  driveTrain:any = DRIVETRAIN;
   mileage:any = MILEAGE;
   price:any = PRICE
   seats:any = SEATS;
   doors:any = DOORS;
-  bootspace:any = BOOTSPACE;
-  acceleration:any = ACCELERATION
-  fuelconsumption:any = FUEL_CONSUMPTION
-  enginepower:any = ENGINE_POWER
+  bootSpace:any = BOOTSPACE;
+  acceleration:any = ACCELERATION;
+  fuelConsumption:any = FUEL_CONSUMPTION;
+  enginePower:any = ENGINE_POWER;
   showMore: boolean = false;
   searchTextProperty:any;
   date!: Date;
   date1!: Date;
   enteredFilter:any;
-  states = [{condition:"Verified" , key:"v",},{condition:"Not Verified", key:"nv"}]
-  uses = [{use:"Kenyan used", key:"KU"},{use:"Foreign used", key:"FU"}]
-  conditions:any[] = [{state:"Used", key:"U"},{state:"Brand new", key:"BN"}]
+  states = [{condition:"Verified" , key:"v",},{condition:"Not Verified", key:"nv"}];
+  uses = [{use:"Kenyan used", key:"KU"},{use:"Foreign used", key:"FU"}];
+  conditions:any[] = CONDITION;
   vehicles:any;
   checked: boolean = false;
   modelFilter:any;

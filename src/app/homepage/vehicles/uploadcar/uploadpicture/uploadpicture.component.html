@@ -4,7 +4,7 @@
     <div class="card grid p-fluid mt-0 p-5 col-4 md:col-4 lg:col-4">
       <div class="flex mt-2 mb-3 justify-content-center col-12 md:col-12 lg:col-12">
           <p-toast></p-toast>
-          <p-fileUpload name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" (onUpload)="onUpload($event)" [multiple]="true" accept="image/*">
+          <p-fileUpload name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" [maxFileSize]="5000000"  (onUpload)="onUpload($event)" [multiple]="true" accept="image/*">
               <ng-template pTemplate="content">
                   <ul *ngIf="uploadedFiles.length">
                       <li *ngFor="let file of uploadedFiles">{{ file.name }} - {{ file.size }} bytes</li>

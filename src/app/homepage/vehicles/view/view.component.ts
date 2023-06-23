@@ -27,6 +27,7 @@ export class ViewComponent implements OnInit {
   interiors:any = INTERIOR;
   airsystems:any = AIRCONDITIONING_SYSTEM;
   visible: boolean = false;
+  thumbnailUrl!:string;
 
   responsiveOptions: any[] = [
     {
@@ -56,12 +57,12 @@ value: any;
         this.ds.getVehicle(this.currentVehicleId).subscribe(vehicle => {
           this.vehicle = vehicle;
           console.log("DATA", vehicle.images)
-          console.log(vehicle)
+          console.log(vehicle.userId)
 
           this.images = vehicle.images
-        })
+        });
       }
-    })
+    });
      this.items = [
             { label: 'Inspection Cert', icon: 'pi pi-fw pi-check-circle', command: () => this.selectTab('Inspection Cert')},
             { label: 'Engine', icon: 'pi pi-fw pi-check-circle',command: () => this.selectTab('Engine')},
@@ -78,15 +79,15 @@ value: any;
       this.selectTab('Engine')
   }
 
-  async getSingleVehicle(vehicleId: string) {
-    try {
-      const vehicle = await this.ds.getVehicle(vehicleId).toPromise();
-      this.vehicle = vehicle;
-      this.fetched = true;
-    } catch (error) {
-      console.error(error);
-    }
-  }
+  // async getSingleVehicle(vehicleId: string) {
+  //   try {
+  //     const vehicle = await this.ds.getVehicle(vehicleId).toPromise();
+  //     this.vehicle = vehicle;
+  //     this.fetched = true;
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }
 
    selectTab(tab: string) {
     this.selectedTab = tab;
@@ -103,4 +104,6 @@ value: any;
   showDialogs() {
     this.visible = false;
 }
+
+
 }

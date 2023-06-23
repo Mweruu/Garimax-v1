@@ -86,7 +86,7 @@
 <div *ngIf="showMore" class="p-formgrid grid">
     <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
       <p-button  class="flex col-4 md:col-6 mt-0"  label="Body Type" styleClass="p-button-info p-button-text w-11rem"></p-button>
-      <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="bodytype"  optionValue="bodytype" optionLabel="bodytype" placeholder="Select" [(ngModel)]="bodyTypeFilter" (onChange)="onBodyTypeFilterChanged($event.value)"></p-dropdown>
+      <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="bodyType"  optionValue="bodyType" optionLabel="bodyType" placeholder="Select" [(ngModel)]="bodyTypeFilter" (onChange)="onBodyTypeFilterChanged($event.value)"></p-dropdown>
     </div>
     <!-- <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);"> -->
       <!-- <label class="label mb-2">Verified</label> -->
@@ -112,13 +112,13 @@
       <!-- <label class="label mb-2">Condition</label> -->
       <fieldset class="mt-3 mb-3 fieldset">
         <legend> Condition </legend>
-
-      <div class="grid formgrid">
-      <div *ngFor="let condition of conditions" class="field-checkbox col-5 md:col-5 lg:col-5">
-        <p-checkbox name="condition" [value]="condition" [inputId]="condition.key"></p-checkbox>
-        <label [for]="condition.key">{{ condition.state }}</label>
-      </div>
-    </div></fieldset>
+          <div class="grid formgrid">
+              <div *ngFor="let condition of conditions" class="field-checkbox col-5 md:col-5 lg:col-5">
+                <p-checkbox name="condition" [value]="condition" [inputId]="condition.key"></p-checkbox>
+                <label [for]="condition.key">{{ condition.state }}</label>
+              </div>
+          </div>
+      </fieldset>
 </div>
 
     <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
@@ -132,13 +132,13 @@
     <div class="field col-5 md:col-12 lg:col-5 mb-0 p-0">
       <span class="field">
         <label for="dropdown">Min (cc)</label>
-        <p-dropdown inputId="dropdown" [options]="engineSize" optionValue="enginesize" optionLabel="enginesize"></p-dropdown>
+        <p-dropdown inputId="dropdown" [options]="engineSize" optionValue="engineSize" optionLabel="engineSize"></p-dropdown>
       </span>
     </div>
     <div class="field col-5 md:col-12 lg:col-5  mb-0 p-0">
       <span class="field">
         <label for="dropdown">Max (cc)</label>
-        <p-dropdown inputId="dropdown" [options]="engineSize"  optionValue="enginesize" optionLabel="enginesize"></p-dropdown>
+        <p-dropdown inputId="dropdown" [options]="engineSize"  optionValue="engineSize" optionLabel="engineSize"></p-dropdown>
       </span>
     </div>
   </div>
@@ -150,13 +150,13 @@
     <div class="field col-5 md:col-12 lg:col-5 mb-0 p-0">
       <span class="field">
         <label for="dropdown">Min</label>
-        <p-dropdown inputId="dropdown" [options]="enginepower" optionValue="enginepower"  optionLabel="enginepower"></p-dropdown>
+        <p-dropdown inputId="dropdown" [options]="enginePower" optionValue="enginePower"  optionLabel="enginePower"></p-dropdown>
       </span>
     </div>
     <div class="field col-5 md:col-12 lg:col-5  mb-0 p-0">
       <span class="field">
         <label for="dropdown">Max </label>
-        <p-dropdown inputId="dropdown" [options]="enginepower" optionValue="enginepower" optionLabel="enginepower"></p-dropdown>
+        <p-dropdown inputId="dropdown" [options]="enginePower" optionValue="enginePower" optionLabel="enginePower"></p-dropdown>
       </span>
     </div>
   </div>
@@ -171,7 +171,7 @@
 
         <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
           <p-button  class="flex col-4 md:col-6 mt-0"  label="Drive Train" styleClass="p-button-info p-button-text w-11rem"></p-button>
-          <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="drivetrain"  optionValue="drivetrain" optionLabel="drivetrain" placeholder="Select" [(ngModel)]="driveTrainFilter" (onChange)="onDriveTrainFilterChanged($event.value)"></p-dropdown>
+          <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="driveTrain"  optionValue="driveTrain" optionLabel="driveTrain" placeholder="Select" [(ngModel)]="driveTrainFilter" (onChange)="onDriveTrainFilterChanged($event.value)"></p-dropdown>
         </div>
 
 
@@ -194,19 +194,19 @@
 
         <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
           <p-button  class="flex col-4 md:col-6 mt-0"  label="Boot Space" styleClass="p-button-info p-button-text w-11rem"></p-button>
-          <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="bootspace"  optionValue="bootspace" optionLabel="bootspace" placeholder="Select" [(ngModel)]="bootSpaceFilter" (onChange)="onBootSpaceFilterChanged($event.value)"></p-dropdown>
+          <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="bootSpace"  optionValue="bootSpace" optionLabel="bootSpace" placeholder="Select" [(ngModel)]="bootSpaceFilter" (onChange)="onBootSpaceFilterChanged($event.value)"></p-dropdown>
         </div>
 
 
         <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
           <p-button  class="flex col-4 md:col-6 mt-0"  label=" Fuel type" styleClass="p-button-info p-button-text w-11rem"></p-button>
-          <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="fueltype"  optionValue="fueltype" optionLabel="fueltype" placeholder="Select" [(ngModel)]="fuelTypeFilter" (onChange)="onFuelTypeFilterChanged($event.value)"></p-dropdown>
+          <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="fuelType"  optionValue="fuelType" optionLabel="fuelType" placeholder="Select" [(ngModel)]="fuelTypeFilter" (onChange)="onFuelTypeFilterChanged($event.value)"></p-dropdown>
         </div>
 
 
         <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
           <p-button  class="flex col-4 md:col-6 mt-0" label="Fuel Consumption" styleClass="p-button-info p-button-text w-11rem"></p-button>
-          <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="fuelconsumption"  optionValue="fuelconsumption" optionLabel="fuelconsumption" placeholder="Select" [(ngModel)]="fuelConsumptionFilter" (onChange)="onFuelConsumptionFilterChanged($event.value)"></p-dropdown>
+          <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="fuelConsumption"  optionValue="fuelConsumption" optionLabel="fuelConsumption" placeholder="Select" [(ngModel)]="fuelConsumptionFilter" (onChange)="onFuelConsumptionFilterChanged($event.value)"></p-dropdown>
         </div>
 
 

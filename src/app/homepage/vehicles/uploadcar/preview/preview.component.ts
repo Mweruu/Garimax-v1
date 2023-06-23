@@ -20,13 +20,21 @@ export class PreviewComponent implements OnInit {
   price!:string;
   location!:string;
   mileage!:string;
-  fueltype!:string;
-  bodytype!:string;
+  fuelType!:string;
+  bodyType!:string;
+  vinNumber!:string;
   transmission!:string;
   color!:string;
   steering!:string;
-  engine!:string;
-  drivetype!:string;
+  enginePower!:string;
+  engineSize!:string;
+  driveTrain!:string;
+  usage!:string;
+  acceleration!:string;
+  description!:string;
+  duty!:string;
+  condition!:string;
+  accessories:any = [];
   images: string[] =[];
   properties:any[] = [];
 
@@ -68,15 +76,25 @@ export class PreviewComponent implements OnInit {
       this.price =this.carData.basicInfo.price,
       this.location = this.carData.basicInfo.location;
       this.mileage = this.carData.basicInfo.mileage;
+      this.transmission = this.carData.basicInfo.transmission;
+
     }
-    // this.fueltype = this.carData.carDetails.fueltype;
+    // this.fuelType = this.carData.carDetails.fuelType;
     if(this.carData.carDetails){
-      this.bodytype = this.carData.carDetails.bodytype;
-      this.transmission = this.carData.carDetails.transmission;
+      this.bodyType = this.carData.carDetails.bodyType;
+      this.fuelType = this.carData.carDetails.fuelType;
+      this.vinNumber = this.carData.carDetails.vinNumber;
+      this.usage = this.carData.carDetails.usage;
       this.color = this.carData.carDetails.color;
+      this.acceleration = this.carData.carDetails.acceleration;
+      this.engineSize = this.carData.carDetails.engineSize;
+      this.enginePower = this.carData.carDetails.enginePower;
+      this.driveTrain = this.carData.carDetails.driveTrain;
+      this.description = this.carData.carDetails.description;
       this.steering = this.carData.carDetails.steering;
-      this.engine = this.carData.carDetails.engineSize;
-      this.drivetype = this.carData.carDetails.drivetype;
+      this.duty = this.carData.carDetails.duty;
+      this.condition = this.carData.carDetails.condition;
+      // this.accessories = this.carData.carDetails.accessories;
     }
 
   }
@@ -98,22 +116,31 @@ export class PreviewComponent implements OnInit {
     vehicleData.append("make", this.carData.basicInfo.make);
     vehicleData.append("price", this.carData.basicInfo.price);
     vehicleData.append("location", this.carData.basicInfo.location);
-    vehicleData.append("yearOfManufactor", this.carData.basicInfo.yearOfManufacture);
+    vehicleData.append("yearOfManufacture", this.carData.basicInfo.yearOfManufacture);
     vehicleData.append("mileage", this.carData.basicInfo.mileage);
+    vehicleData.append("transmission", this.carData.basicInfo.transmission);
     for (let i = 0; i < images.length; i++) {
       vehicleData.append('images', images[i]);
     }
     // vehicleData.append("images", this.dataServive.getuploadPictureData());
     vehicleData.append("color", this.carData.carDetails.color);
-    vehicleData.append("condition", this.carData.carDetails.steering);
-    vehicleData.append("transmission", this.carData.carDetails.transmission);
+    // vehicleData.append("condition", this.carData.carDetails.steering);
     vehicleData.append("engineSize", this.carData.carDetails.engineSize);
-    vehicleData.append("vehicleType", this.carData.carDetails.vehicleType);
-    vehicleData.append("foreignUsed", true.toString());
-    vehicleData.append("localUsed", false.toString());
-    // vehicleData.append("additionalFeatures", [this.carData.carDetails.drivetype,
+    vehicleData.append("bodyType", this.carData.carDetails.bodyType);
+    vehicleData.append("fuelType", this.carData.carDetails.fuelType);
+    vehicleData.append("enginePower", this.carData.carDetails.enginePower);
+    vehicleData.append("vinNumber", this.carData.carDetails.vinNumber);
+    vehicleData.append("acceleration", this.carData.carDetails.acceleration);
+    vehicleData.append("usage", this.carData.carDetails.usage);
+    vehicleData.append("description", this.carData.carDetails.description);
+    vehicleData.append("steering", this.carData.carDetails.steering);
+    vehicleData.append("duty", this.carData.carDetails.duty);
+    vehicleData.append("condition", this.carData.carDetails.condition);
+    // vehicleData.append("accessories", this.carData.carDetails.accessories);
+
+    // vehicleData.append("additionalFeatures", [this.carData.carDetails.driveTrain,
     //                                   this.carData.carDetails.description,
-    //                                   this.carData.carDetails.fueltype].toString());
+    //                                   this.carData.carDetails.fuelType].toString());
 
     console.log("final -> ", vehicleData)
 

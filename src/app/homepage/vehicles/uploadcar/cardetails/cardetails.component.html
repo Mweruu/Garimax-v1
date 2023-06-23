@@ -10,27 +10,19 @@
           <div class="field col-12 md:col-12 lg:col-5 mb-0 p-0">
             <span class="field">
               <label for="dropdown">Fuel Type</label>
-              <p-dropdown inputId="dropdown" formControlName="fueltype" [options]="fueltype"  optionValue="fueltype" optionLabel="fueltype" placeholder="Diesel"></p-dropdown>
-                <small *ngIf="carDetails['fueltype'].invalid && isSubmitted" class="p-error">Fuel type is required</small>
+              <p-dropdown inputId="dropdown" formControlName="fuelType" [options]="fuelType"  optionValue="fuelType" optionLabel="fuelType" placeholder="Diesel"></p-dropdown>
+                <small *ngIf="carDetails['fuelType'].invalid && isSubmitted" class="p-error">Fuel type is required</small>
             </span>
           </div>
           <div class="field col-12 md:col-12 lg:col-5  mb-0 p-0">
             <span class="field">
               <label for="dropdown">Body Type</label>
-              <p-dropdown inputId="dropdown" formControlName="vehicleType"  [options]="bodytype"  optionValue="bodytype" optionLabel="bodytype" placeholder="Coupe"></p-dropdown>
-                <small *ngIf="carDetails['vehicleType'].invalid && isSubmitted" class="p-error">Body type is required</small>
+              <p-dropdown inputId="dropdown" formControlName="bodyType"  [options]="bodyType"  optionValue="bodyType" optionLabel="bodyType" placeholder="Coupe"></p-dropdown>
+                <small *ngIf="carDetails['bodyType'].invalid && isSubmitted" class="p-error">Body type is required</small>
             </span>
           </div>
         </div>
-
         <div class="formgroup-inline col-12 md:col-12 lg:col-12">
-          <div class="field col-12 md:col-12 lg:col-5 mb-0 p-0">
-            <span class="field">
-              <label for="dropdown">Transmission</label>
-              <p-dropdown inputId="dropdown" formControlName="transmission"   [options]="gear"  optionValue="gear" optionLabel="gear" placeholder="Transmission"></p-dropdown>
-                <small *ngIf="carDetails['transmission'].invalid && isSubmitted" class="p-error">Transmission is required</small>
-            </span>
-          </div>
           <div class="field col-12 md:col-12 lg:col-5 mb-0 p-0">
             <span class="field">
               <label for="dropdown">Color</label>
@@ -38,54 +30,86 @@
                 <small *ngIf="carDetails['color'].invalid && isSubmitted" class="p-error">Color is required</small>
             </span>
           </div>
-        </div>
-<div class="formgroup-inline col-12 md:col-12 lg:col-12">
           <div class="field col-12 md:col-12 lg:col-5 mb-0 p-0">
-              <span class="field">
-                <label for="dropdown">Steering(LHD/RHD)</label>
-                <p-dropdown inputId="dropdown" formControlName="steering" [options]="steering"  optionValue="steering" optionLabel="steering"></p-dropdown>
-                  <small *ngIf="carDetails['steering'].invalid && isSubmitted" class="p-error">Steering is required</small>
-              </span>
+            <span class="field">
+              <label for="dropdown">Vin Number</label>
+              <input type="text" pInputText formControlName="vinNumber"/>
+                <small *ngIf="carDetails['vinNumber'].invalid && isSubmitted" class="p-error">Steering is required</small>
+            </span>
+        </div>
+        </div>
+        <div class="formgroup-inline col-12 md:col-12 lg:col-12">
+          <div class="field col-12 md:col-12 lg:col-5 mb-0 p-0">
+            <span class="field">
+              <label for="dropdown">Engine Size(CC)</label>
+              <p-dropdown inputId="dropdown" formControlName="engineSize" [options]="engineSize"  optionValue="engineSize" optionLabel="engineSize" placeholder="500 CC"></p-dropdown>
+                <small *ngIf="carDetails['engineSize'].invalid && isSubmitted" class="p-error">Engine size is required</small>
+            </span>
           </div>
           <div class="field col-12 md:col-12 lg:col-5 mb-0 p-0">
             <span class="field">
-              <label for="dropdown">Engine Power(CC)</label>
-              <p-dropdown inputId="dropdown" formControlName="engineSize" [options]="engineSize"  optionValue="enginesize" optionLabel="enginesize" placeholder="500 CC"></p-dropdown>
-                <small *ngIf="carDetails['engineSize'].invalid && isSubmitted" class="p-error">Engine power is required</small>
+              <label for="dropdown">Engine Power</label>
+              <p-dropdown inputId="dropdown" formControlName="enginePower"[options]="enginePower" optionValue="enginePower"  optionLabel="enginePower"></p-dropdown>
+              <small *ngIf="carDetails['enginePower'].invalid && isSubmitted" class="p-error">Engine power is required</small>
             </span>
           </div>
+        </div>
+        <div class="formgroup-inline col-12 md:col-12 lg:col-12">
+          <div class="field col-12 md:col-12 lg:col-5 mb-0 p-0">
+              <span class="field">
+                <label for="dropdown">condition</label>
+                <p-dropdown inputId="dropdown" formControlName="condition" [options]="condition"  optionValue="state" optionLabel="state"></p-dropdown>
+                  <small *ngIf="carDetails['condition'].invalid && isSubmitted" class="p-error">Condition is required</small>
+              </span>
+          </div>
+          <!-- <div class="field col-12 md:col-12 lg:col-5 mb-0 p-0">
+            <span class="field">
+              <label for="dropdown">Drive Type</label>
+              <p-dropdown inputId="dropdown" formControlName="driveTrain" [options]="driveTrain"  optionValue="driveTrain" optionLabel="driveTrain"></p-dropdown>
+                <small *ngIf="carDetails['driveTrain'].invalid && isSubmitted" class="p-error">Drive type is required</small>
+            </span>
+        </div> -->
+        </div>
+        <div class="formgroup-inline col-12 md:col-12 lg:col-12">
+          <div class="field col-12 md:col-12 lg:col-5 mb-0 p-0">
+            <span class="field">
+              <label for="dropdown">Steering(LHD/RHD)</label>
+              <p-dropdown inputId="dropdown" formControlName="steering" [options]="steering"  optionValue="steering" optionLabel="steering"></p-dropdown>
+                <small *ngIf="carDetails['steering'].invalid && isSubmitted" class="p-error">Steering is required</small>
+            </span>
+        </div>
+          <div class="field col-12 md:col-12 lg:col-5 mb-0 p-0">
+            <span class="field">
+              <label for="dropdown">Usage</label>
+              <p-dropdown inputId="dropdown" formControlName="usage" [options]="usage"  optionValue="usage" optionLabel="usage"></p-dropdown>
+                <small *ngIf="carDetails['usage'].invalid && isSubmitted" class="p-error">Usage is required</small>
+            </span>
+        </div>
         </div>
         <div class="formgroup-inline col-12 md:col-12 lg:col-12">
             <div class="field col-12 md:col-12 lg:col-5 mb-0 p-0">
                 <span class="field">
-                  <label for="dropdown">Drive Type</label>
-                  <p-dropdown inputId="dropdown" formControlName="drivetype" [options]="drivetrain"  optionValue="drivetrain" optionLabel="drivetrain"></p-dropdown>
-                    <small *ngIf="carDetails['drivetype'].invalid && isSubmitted" class="p-error">Drive type is required</small>
+                  <label for="dropdown">Acceleration</label>
+                  <p-dropdown inputId="dropdown" formControlName="acceleration" [options]="acceleration"  optionValue="acceleration" optionLabel="acceleration"></p-dropdown>
+                  <small *ngIf="carDetails['acceleration'].invalid && isSubmitted" class="p-error">Acceleration is required</small>
                 </span>
             </div>
-            <div class="field col-12 md:col-12 lg:col-5 ">
+            <div class="field col-12 md:col-12 lg:col-5 mb-0 p-0">
+              <span class="field">
+                <label for="dropdown">Duty paid</label>
+                <p-dropdown inputId="dropdown" formControlName="duty" [options]="duty"  optionValue="duty" optionLabel="duty"></p-dropdown>
+                <small *ngIf="carDetails['duty'].invalid && isSubmitted" class="p-error">Duty is required</small>
+              </span>
+          </div>
+
+            <!-- <div class="field col-12 md:col-12 lg:col-5 ">
                 <span class="field">
                     <i class="pi pi-check mr-2" style="color: rgb(230, 137, 32)"></i>
                     <strong><label for="dropdown"  style="color: rgb(230, 137, 32)">Duty Paid</label></strong>
                 </span>
-            </div>
+            </div> -->
         </div>
-        <div class="formgroup-inline col-12 md:col-12 lg:col-12">
-          <div class="field col-12 md:col-12 lg:col-5 mb-0 p-0">
-              <span class="field">
-                <label for="dropdown">Vin Number</label>
-                <input type="text" pInputText formControlName="vinNo"/>
-                  <small *ngIf="carDetails['vinNo'].invalid && isSubmitted" class="p-error">Steering is required</small>
-              </span>
-          </div>
-          <div class="field col-12 md:col-12 lg:col-5 mb-0 p-0">
-            <span class="field">
-              <label for="dropdown">Usage</label>
-              <p-dropdown inputId="dropdown" formControlName="Usage" [options]="usage"  optionValue="usage" optionLabel="usage"></p-dropdown>
-                <small *ngIf="carDetails['Usage'].invalid && isSubmitted" class="p-error">Drive type is required</small>
-            </span>
-        </div>
-        </div>
+
         <div class="p-fluid mb-3">
           <div class="field ml-3">
             <label>Upload inspection certificate</label>
@@ -96,8 +120,10 @@
 
           <div class="field ml-3 mt-4">
             <span class="p-float-label">
-              <textarea id="float-input" rows="4" cols="30" pInputTextarea></textarea>
+              <textarea id="float-input" formControlName="description" rows="4" cols="30" pInputTextarea></textarea>
               <label for="float-input">Description</label>
+              <small *ngIf="carDetails['description'].invalid && isSubmitted" class="p-error">Description is required</small>
+
             </span>
           </div>
         </div>
@@ -129,13 +155,13 @@
       <button pButton pRipple label="Back" routerLink="/uploadpicture" class="w-20rem p-3  ml-5" type="button"></button>
       <p-toast></p-toast>
       <button pButton pRipple label="Finish" class="w-20rem p-3  ml-5" type="submit" ></button>
-      <div class="flex justify-content-center">
+      <!-- <div class="flex justify-content-center">
         <button pButton pRipple label="Preview" (click)="showDialog()" class="w-20rem p-3  ml-5" type="button"></button>
-        <p-dialog header="fgf" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+        <p-dialog header="" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
         <p class="m-0">
           <app-preview></app-preview>
         </p-dialog>
-      </div>
+      </div> -->
       <!-- <div class="flex justify-content-center">
         <p-button (click)="showDialog()" icon="pi pi-external-link" label="Preview"></p-button>
         <p-dialog header="fgf" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
