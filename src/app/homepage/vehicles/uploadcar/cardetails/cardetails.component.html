@@ -122,6 +122,8 @@
             <span class="p-float-label">
               <textarea id="float-input" formControlName="description" rows="4" cols="30" pInputTextarea></textarea>
               <label for="float-input">Description</label>
+              <small *ngIf="carDetails['description'].invalid && isSubmitted" class="p-error">Description is required</small>
+
             </span>
           </div>
         </div>

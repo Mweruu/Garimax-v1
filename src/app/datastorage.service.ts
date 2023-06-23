@@ -28,6 +28,8 @@ export class DataStorageService {
   private getSingleVehicleUrl = `${BASE_URL}/api/getVehicle`
   private getSingleUserUrl = `${BASE_URL}/api/user`
   private updateProfileUrl = `${BASE_URL}/api/user/updateProfile`
+  private getVehicleByUserId = `${BASE_URL}/api/getVendorVehicles`
+
 
   user:any;
 
@@ -63,5 +65,7 @@ export class DataStorageService {
   updateProfile(id:string){
     return this.http.get<any>(`${this.updateProfileUrl}/${id}`);
   }
-
+  getUserVehicle(userId:string){
+    return this.http.get<any>(`${this.getVehicleByUserId}/${userId}`);
+  }
 }

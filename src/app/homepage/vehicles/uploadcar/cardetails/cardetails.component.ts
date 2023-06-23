@@ -55,7 +55,7 @@ export class CardetailsComponent implements OnInit {
         description:['', Validators.required],
         duty:['', Validators.required],
         condition:[''],
-        accessories:[]
+        // accessories:[]
       });
 
     }
@@ -84,7 +84,7 @@ export class CardetailsComponent implements OnInit {
         condition:this.carDetails['condition'].value,
         acceleration:this.carDetails['acceleration'].value,
         description:this.carDetails['description'].value,
-        accessories:this.carDetails['accessories'].value
+        // accessories:this.carDetails['accessories'].value
 
       }
       this.dataService.setcardetailsData(details)

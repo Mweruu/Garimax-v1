@@ -35,7 +35,7 @@ const routes: Routes = [
     path: 'signup', component:SignupComponent
   },
   {
-    path: 'profile', component:UserProfileComponent
+    path: 'profile/:userId', component:UserProfileComponent
   },
   {
     path: 'vendorsignup', component:SignupTabsComponent,

@@ -38,19 +38,25 @@ export class UserProfileComponent implements OnInit {
 
     async ngOnInit(){
     this.activatedRouter.params.subscribe(params => {
-      if(params['UserId']){
-        this.currentUserId = params['UserId'];
+      if(params['userId']){
+        this.currentUserId = params['userId'];
         console.log("ID:",this.currentUserId)
         this.ds.getUser(this.currentUserId).subscribe(user => {
           this.user = user;
           console.log("DATA", user)
-          console.log(user)
+          this.userUpdateForm['firstName'].setValue(user.firstName)
+          this.userUpdateForm['lastName'].setValue(user.lastName)
+          this.userUpdateForm['phoneNumber'].setValue(user.phoneNumber)
+          this.userUpdateForm['email'].setValue(user.email)
 
-          // this.images = vehicle.images
         });
+        this.ds.getUserVehicle(this.currentUserId).subscribe(vehicles =>{
+          this.vehicles = vehicles;
+          console.log(2323,vehicles)
+        })
+
       }
     });
-    this.getauthUser()
     this.updateForm = this.fb.group({
       firstName:['', Validators.required],
       lastName:['', Validators.required],
@@ -98,18 +104,6 @@ export class UserProfileComponent implements OnInit {
 
       reader.readAsDataURL(file);
     }
-  }
-
-  getauthUser(){
-    console.log("gothere")
-    const userid = "1"
-    this.ds.getUser(userid).subscribe(user => {
-      this.user = user;
-      console.log(user)
-      console.log(user.firstName)
-
-    })
-
   }
 
   onSubmit(){
@@ -161,4 +155,9 @@ export class UserProfileComponent implements OnInit {
     return this.updateForm.controls;
   }
 
+  getVehiclebyId(){
+    this.ds.getUserVehicle(this.currentUserId).subscribe(vehicles =>{
+      console.log(vehicles)
+    })
+  }
 }
