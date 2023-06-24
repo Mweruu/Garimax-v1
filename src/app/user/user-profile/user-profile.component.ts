@@ -4,6 +4,7 @@ import { DataStorageService } from 'src/app/datastorage.service';
 import { timer } from 'rxjs';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DataService } from 'src/app/layout/data.service';
 
 interface UploadEvent {
   originalEvent: Event;
@@ -30,19 +31,23 @@ export class UserProfileComponent implements OnInit {
   updatedData :any;
   userId:any;
   imageUploaded = false;
-  uploadedFiles: any[] = [];
+  uploadedFile: any;
   imageForm!:FormGroup;
   file: any
+  userData:any;
+  image:string[] =[];
+
 
   constructor(private messageService:MessageService,
               private ds:DataStorageService,
               private fb: FormBuilder,
               private router: Router,
               private activatedRouter: ActivatedRoute,
+              private dataService: DataService
 
     ) { }
 
-    async ngOnInit(){
+  async ngOnInit(){
     this.activatedRouter.params.subscribe(params => {
       if(params['userId']){
         this.currentUserId = params['userId'];
@@ -60,24 +65,34 @@ export class UserProfileComponent implements OnInit {
           // this.userUpdateForm['password'].setValue(user.password)
 
         });
+
+
         this.ds.getUserVehicle(this.currentUserId).subscribe(vehicles =>{
           this.vehicles = vehicles;
           console.log(2323,vehicles)
         })
 
       }
+      });
+      this.updateForm = this.fb.group({
+        firstName:['', Validators.required],
+        lastName:['', Validators.required],
+        email:['', Validators.required],
+        phoneNumber:['', Validators.required],
+        companyUrl:[''],
+        profileImage:[''],
+        // password: ['']
     });
-    this.updateForm = this.fb.group({
-      firstName:['', Validators.required],
-      lastName:['', Validators.required],
-      email:['', Validators.required],
-      phoneNumber:['', Validators.required],
-      companyUrl:[''],
-      profileImage:new FormControl(),
-      // password: ['']
-  });
-  }
 
+    this.userData = {
+      "profileImage": this.dataService.getuploadPictureData(),
+    }
+
+    if(this.userData.profileImage){
+      this.processImageFiles(this.userData.profileImage)
+      console.log(this.image);
+    }
+}
 
   toggleShowMore() {
     this.showMore = !this.showMore;
@@ -91,41 +106,6 @@ export class UserProfileComponent implements OnInit {
     this.showOnSaleVehicles = !this.showOnSaleVehicles;
   }
 
-  // onUpload(event: UploadEvent) {
-  //   this.clicked=true
-  //   this.messageService.add({ severity: 'info', summary: 'Success', detail: 'File Uploaded with Auto Mode' });
-  // }
-  checked(){
-    console.log(55655667745, this.vehicles);
-
-  }
-
-  onFileSelected(event: any) {
-    // const file = event.target.files[0];
-
-    // Perform further processing with the file, e.g., upload to a server
-    // console.log('Selected file:', file);
-    if (event.target.files && event.target.files.length > 0) {
-      const file = event.target.files[0];
-      const reader = new FileReader();
-
-      reader.onload = (e: any) => {
-        this.selectedImage = e.target.result;
-        this.imageSelected = true;
-      };
-
-      reader.readAsDataURL(file);
-    }
-  }
-
-
-
-  // updateUser(userId: string){
-  //   console.log('gothere',this.user)
-  //   this.router.navigateByUrl(`profile/${userId}/updateprofile/${userId}`);
-  // }
-
-
   getVehiclebyId(){
     this.ds.getUserVehicle(this.currentUserId).subscribe(vehicles =>{
       console.log(vehicles)
@@ -136,12 +116,57 @@ export class UserProfileComponent implements OnInit {
     return this.updateForm.controls;
   }
 
+  onFileSelected(event: any) {
+    if (event.target.files && event.target.files.length > 0) {
+      const file = event.target.files[0];
+      console.log('Selected file:', file.name);
+
+      const reader = new FileReader();
+
+      reader.onload = (e: any) => {
+        this.selectedImage = e.target.result;
+        this.imageSelected = true;
+        this.onUpload(file)
+
+      };
+
+      reader.readAsDataURL(file);
+    }
+  }
+
+  onUpload(file: any) {
+    try{
+      if (!this.uploadedFile) {
+        this.uploadedFile = []; // Initialize uploadedFiles as an empty array
+      }
+      this.uploadedFile.push(file);
+      this.imageUploaded = true;
+      this.messageService.add({severity: 'info', summary: 'File Uploaded', detail: `Image(s) uploaded`});
+    } catch(err){
+      console.log(err)
+      this.messageService.add({severity: 'error', summary: 'Image(s) Upload Failed', detail: `Failed to upload Images`});
+    }
+  }
+
+
+  processImageFiles(files: any[]): void {
+    for (const file of files) {
+      this.image.push(file.objectURL);
+    }
+  }
+
   onSubmit(userId: string){
+    this.dataService.setuploadPictureData(this.uploadedFile);
     this.isSubmitted = true;
     if(this.updateForm.invalid){
       return;
     }
     console.log(this.userUpdateForm['companyUrl'].value)
+    console.log(this.uploadedFile)
+    // this.uploadedFile = this.userUpdateForm['profileImage'].value
+    console.log(this.userUpdateForm['profileImage'].value)
+    const images: File[] = this.dataService.getuploadPictureData();
+
     const user={
         // this.imageSelected
         firstName:this.userUpdateForm['firstName'].value,
@@ -149,55 +174,66 @@ export class UserProfileComponent implements OnInit {
         email:this.userUpdateForm['email'].value,
         companyUrl:this.userUpdateForm['companyUrl'].value,
         phoneNumber:this.userUpdateForm['phoneNumber'].value,
-        profileImage:this.userUpdateForm['profileImage'].value,
-        // password:this.userUpdateForm['password'].value || this.user.p,
+        profileImage:(this.userUpdateForm['profileImage'].value,images),
 
+        // password:this.userUpdateForm['password'].value || this.user.p
     }
-    this.updatedData= user
-    console.log(this.updatedData)
-    this.update(userId)
-  }
+    console.log("final user data",user)
 
-
-  update(userId: string){
-    this.isSubmitted = true;
-    this.ds.updateProfile(userId, this.updatedData).subscribe(
-        response => {
-          console.log('User details updated successfully!', response);
-          // Handle success response here
-          console.log(1123,response)
-          this.messageService.add({
-            severity:'success',
-            summary:'Success',
-            detail:'User details updated successfully'
-          })
-        },
-        error => {
-          console.error('Failed to update user:', error);
-          // Handle error response here
-          this.messageService.add({
-            severity:'error',
-            summary:'Error',
-            detail:'Failed to update user'
-          })
-        }
-      );
-
-  }
-
-  onUpload(event: any) {
-    try{
-      let count = 0;
-      for(let file of event.files) {
-        count = count + 1
-        this.uploadedFiles.push(file);
+    this.ds.updateProfile(userId, user).subscribe(
+      response => {
+        console.log('User details updated successfully!', response);
+        // Handle success response here
+        console.log(1123,response)
+        this.user = response
+        this.messageService.add({
+          severity:'success',
+          summary:'Success',
+          detail:'User details updated successfully'
+        })
+      },
+      error => {
+        console.error('Failed to update user:', error);
+        // Handle error response here
+        this.messageService.add({
+          severity:'error',
+          summary:'Error',
+          detail:'Failed to update user'
+        })
       }
-      this.file = event.files[0];
-      this.imageUploaded = true;
-      this.messageService.add({severity: 'info', summary: 'File Uploaded', detail: `${count} Image(s) uploaded`});
-    } catch(err){
-      console.log(err)
-      this.messageService.add({severity: 'dagger', summary: 'Image(s) Upload Failed', detail: `Failed to upload Images`});
-    }
+    );
+
+    // this.updatedData= user
+    // console.log("final user data",this.updatedData)
+    // this.update(userId)
   }
+
+
+  // update(userId: string){
+  //   this.isSubmitted = true;
+  //   this.ds.updateProfile(userId, this.updatedData).subscribe(
+  //       response => {
+  //         console.log('User details updated successfully!', response);
+  //         // Handle success response here
+  //         console.log(1123,response)
+  //         this.user = response
+  //         this.messageService.add({
+  //           severity:'success',
+  //           summary:'Success',
+  //           detail:'User details updated successfully'
+  //         })
+  //       },
+  //       error => {
+  //         console.error('Failed to update user:', error);
+  //         // Handle error response here
+  //         this.messageService.add({
+  //           severity:'error',
+  //           summary:'Error',
+  //           detail:'Failed to update user'
+  //         })
+  //       }
+  //     );
+
+  // }
+
 }

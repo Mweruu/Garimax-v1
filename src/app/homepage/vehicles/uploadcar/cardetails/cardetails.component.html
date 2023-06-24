@@ -42,14 +42,15 @@
           <div class="field col-12 md:col-12 lg:col-5 mb-0 p-0">
             <span class="field">
               <label for="dropdown">Engine Size(CC)</label>
-              <p-dropdown inputId="dropdown" formControlName="engineSize" [options]="engineSize"  optionValue="engineSize" optionLabel="engineSize" placeholder="500 CC"></p-dropdown>
+              <input type="number" pInputText value="CC" formControlName="engineSize"/>
+              <!-- <p-dropdown inputId="dropdown" formControlName="engineSize" [options]="engineSize"  optionValue="engineSize" optionLabel="engineSize" placeholder="500 CC"></p-dropdown> -->
                 <small *ngIf="carDetails['engineSize'].invalid && isSubmitted" class="p-error">Engine size is required</small>
             </span>
           </div>
           <div class="field col-12 md:col-12 lg:col-5 mb-0 p-0">
             <span class="field">
               <label for="dropdown">Engine Power</label>
-              <p-dropdown inputId="dropdown" formControlName="enginePower"[options]="enginePower" optionValue="enginePower"  optionLabel="enginePower"></p-dropdown>
+              <p-dropdown inputId="dropdown" formControlName="enginePower"[options]="enginePower" optionValue="enginePower"  optionLabel="enginePower" placeholder="0bhp"></p-dropdown>
               <small *ngIf="carDetails['enginePower'].invalid && isSubmitted" class="p-error">Engine power is required</small>
             </span>
           </div>
@@ -58,7 +59,7 @@
           <div class="field col-12 md:col-12 lg:col-5 mb-0 p-0">
               <span class="field">
                 <label for="dropdown">condition</label>
-                <p-dropdown inputId="dropdown" formControlName="condition" [options]="condition"  optionValue="state" optionLabel="state"></p-dropdown>
+                <p-dropdown inputId="dropdown" formControlName="condition" [options]="condition"  optionValue="state" optionLabel="state" placeholder="used"></p-dropdown>
                   <small *ngIf="carDetails['condition'].invalid && isSubmitted" class="p-error">Condition is required</small>
               </span>
           </div>
@@ -74,14 +75,14 @@
           <div class="field col-12 md:col-12 lg:col-5 mb-0 p-0">
             <span class="field">
               <label for="dropdown">Steering(LHD/RHD)</label>
-              <p-dropdown inputId="dropdown" formControlName="steering" [options]="steering"  optionValue="steering" optionLabel="steering"></p-dropdown>
+              <p-dropdown inputId="dropdown" formControlName="steering" [options]="steering"  optionValue="steering" optionLabel="steering" placeholder="Left Hand Drive"></p-dropdown>
                 <small *ngIf="carDetails['steering'].invalid && isSubmitted" class="p-error">Steering is required</small>
             </span>
         </div>
           <div class="field col-12 md:col-12 lg:col-5 mb-0 p-0">
             <span class="field">
               <label for="dropdown">Usage</label>
-              <p-dropdown inputId="dropdown" formControlName="usage" [options]="usage"  optionValue="usage" optionLabel="usage"></p-dropdown>
+              <p-dropdown inputId="dropdown" formControlName="usage" [options]="usage"  optionValue="usage" optionLabel="usage" placeholder="Locally used"></p-dropdown>
                 <small *ngIf="carDetails['usage'].invalid && isSubmitted" class="p-error">Usage is required</small>
             </span>
         </div>
@@ -90,14 +91,14 @@
             <div class="field col-12 md:col-12 lg:col-5 mb-0 p-0">
                 <span class="field">
                   <label for="dropdown">Acceleration</label>
-                  <p-dropdown inputId="dropdown" formControlName="acceleration" [options]="acceleration"  optionValue="acceleration" optionLabel="acceleration"></p-dropdown>
+                  <p-dropdown inputId="dropdown" formControlName="acceleration" [options]="acceleration"  optionValue="acceleration" optionLabel="acceleration" placeholder="0-5s"></p-dropdown>
                   <small *ngIf="carDetails['acceleration'].invalid && isSubmitted" class="p-error">Acceleration is required</small>
                 </span>
             </div>
             <div class="field col-12 md:col-12 lg:col-5 mb-0 p-0">
               <span class="field">
                 <label for="dropdown">Duty paid</label>
-                <p-dropdown inputId="dropdown" formControlName="duty" [options]="duty"  optionValue="duty" optionLabel="duty"></p-dropdown>
+                <p-dropdown inputId="dropdown" formControlName="duty" [options]="duty"  optionValue="duty" optionLabel="duty" placeholder="paid"></p-dropdown>
                 <small *ngIf="carDetails['duty'].invalid && isSubmitted" class="p-error">Duty is required</small>
               </span>
           </div>

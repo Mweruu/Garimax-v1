@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { timer } from 'rxjs';
 import { DataStorageService } from 'src/app/datastorage.service';
+import { DataService } from 'src/app/layout/data.service';
 
 @Component({
   selector: 'app-viewvendorprofile',
@@ -19,7 +20,6 @@ export class ViewvendorprofileComponent implements OnInit {
   imageSelected: boolean = false;
   selectedImage: any;
   updateForm!:FormGroup;
-  // updateForm!:FormGroup;
   rateForm!:FormGroup;
   isSubmitted = false;
   currentUserId!:string;
@@ -27,6 +27,8 @@ export class ViewvendorprofileComponent implements OnInit {
   currentVehicleId!:string;
   vehicle:any;
   userId :any;
+  userData:any;
+  image:string[] =[];
 
 
   constructor(private messageService:MessageService,
@@ -34,9 +36,11 @@ export class ViewvendorprofileComponent implements OnInit {
               private fb: FormBuilder,
               private router: Router,
               private activatedRouter: ActivatedRoute,
+              private dataService:DataService
   ) { }
 
   async ngOnInit(){
+
     this.activatedRouter.params.subscribe(params => {
       if(params['userId']){
         this.currentUserId = params['userId'];
@@ -44,19 +48,23 @@ export class ViewvendorprofileComponent implements OnInit {
         this.ds.getUser(this.currentUserId).subscribe(user => {
           this.user = user;
           console.log("DATA", user)
-          this.userRateForm['value'].setValue(user.firstName)
+          // this.userUpdateForm['value'].setValue(user.firstName)
           // this.userUpdateForm['lastName'].setValue(user.lastName)
           // this.userUpdateForm['phoneNumber'].setValue(user.phoneNumber)
           // this.userUpdateForm['email'].setValue(user.email)
-
+          // this.userUpdateForm['companyUrl'].setValue(user.firstName)
+          // this.userUpdateForm['profileImage'].setValue(user.firstName)
         });
+
         this.ds.getUserVehicle(this.currentUserId).subscribe(vehicles =>{
           this.vehicles = vehicles;
           console.log(2323,vehicles)
         })
       }
     });
-    this.rateForm = this.fb.group({
+
+
+    this.updateForm = this.fb.group({
       value:['', Validators.required],
 
   });
@@ -99,8 +107,8 @@ export class ViewvendorprofileComponent implements OnInit {
     }
   }
 
-  get userRateForm(){
-    return this.rateForm.controls;
+  get userUpdateForm(){
+    return this.updateForm.controls;
   }
 
 }

@@ -27,6 +27,8 @@ export class ViewComponent implements OnInit {
   interiors:any = INTERIOR;
   airsystems:any = AIRCONDITIONING_SYSTEM;
   visible: boolean = false;
+  contactVisible = false;
+  chatVisible =false;
   thumbnailUrl!:string;
 
   responsiveOptions: any[] = [
@@ -102,7 +104,10 @@ value: any;
       this.visible = true;
   }
   showDialogs() {
-    this.visible = false;
+    this.contactVisible = true;
+  }
+  showChatDialog() {
+    this.chatVisible = true;
 }
 
 

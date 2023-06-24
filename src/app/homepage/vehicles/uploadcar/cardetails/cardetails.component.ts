@@ -54,7 +54,7 @@ export class CardetailsComponent implements OnInit {
         usage:['', Validators.required],
         description:['', Validators.required],
         duty:['', Validators.required],
-        condition:[''],
+        condition:['', Validators.required],
         // accessories:[]
       });
 

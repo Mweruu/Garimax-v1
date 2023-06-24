@@ -17,11 +17,11 @@
                     <img *ngIf="imageSelected" [src]="selectedImage" alt="profile-picture" class="profile-picture mb-5">
                   </div>
                   <div class="flex align-items-center justify-content-center">
-                    <p formControlName="profileImage">Click or drag an image here to update your profile picture</p>
+                    <p >Click or drag an image here to update your profile picture</p>
                   </div>
                 </div>
               </div>
-              <input type="file" #fileInput style="display: none;" (change)="onFileSelected($event)">
+              <input type="file" #fileInput style="display: none;" formControlName="profileImage" (change)="onFileSelected($event)" >
             </div>
           </div>
           <div class="col-12 md:col-12 lg:col-6 ">

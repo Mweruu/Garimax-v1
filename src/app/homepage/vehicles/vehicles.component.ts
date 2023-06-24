@@ -167,10 +167,10 @@ export class VehiclesComponent implements OnInit {
       vehicle.condition.toLowerCase().includes(this.searchFilter) ||
       // vehicle.doors.toLowerCase().includes(this.searchFilter) ||
       vehicle.engineSize.toLowerCase().includes(this.searchFilter) ||
-      vehicle.color.toLowerCase().includes(this.searchFilter)
+      vehicle.color.toLowerCase().includes(this.searchFilter) ||
       // vehicle.seats.toLowerCase().includes(this.searchFilter) ||
       // vehicle.bootSpace.toLowerCase().includes(this.searchFilter) ||
-      // vehicle.fuelType.toLowerCase().includes(this.searchFilter)||
+      vehicle.fuelType.toLowerCase().includes(this.searchFilter)
       // vehicle.fuelConsumption.toLowerCase().includes(this.searchFilter)
       ;
 

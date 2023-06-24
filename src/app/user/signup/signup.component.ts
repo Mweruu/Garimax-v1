@@ -22,6 +22,7 @@ export class SignupComponent implements OnInit {
   passwordControl = new FormControl('', [Validators.required, Validators.minLength(6)]);
 
   password!: string;
+f: any;
 
   constructor(public layoutService: LayoutService,
     private ds: DataStorageService,
@@ -37,9 +38,28 @@ export class SignupComponent implements OnInit {
         email:this.emailControl,
         phoneNumber:this.phoneNumberControl,
         password:this.passwordControl,
-        confirmPassword:['', Validators.required]
+        confirmPassword:['', Validators.required, ]
+    },{
+      validators:this.MustMatch('password', 'confirmPassword')
     });
   }
+
+  MustMatch(controlName:string, matchingControlName:string){
+    return(formGroup:FormGroup)=>{
+      const control = formGroup.controls[controlName];
+      const matchingControl = formGroup.controls[matchingControlName];
+      if(matchingControl.errors && !matchingControl.errors['MustMatch']){
+        return;
+      }
+      if(control.value !== matchingControl.value){
+        matchingControl.setErrors({MustMatch:true})
+      }
+      else{
+        matchingControl.setErrors(null);
+
+      }
+  }
+}
 
   onSubmit(){
     this.isSubmitted = true;
