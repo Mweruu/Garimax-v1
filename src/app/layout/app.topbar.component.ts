@@ -54,6 +54,7 @@ export class AppTopBarComponent implements OnInit{
       this.username = userData.name;
       this.userId = userData.userId;
       console.log('User Data:',userData);
+
     }
 
     logOut() {

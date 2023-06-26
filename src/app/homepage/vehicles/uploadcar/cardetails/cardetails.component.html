@@ -143,13 +143,17 @@
       </div> -->
       <div class="col-12 md:col-12 lg:col-12">
         <div class="formgroup-inline">
+          <!-- <div *ngFor="let option of options" class="field-checkbox col-5 md:col-5 lg:col-5">
+            <p-checkbox name="group" [value]="option" [inputId]="option.key" (click)="onCheckboxChange($event)"></p-checkbox>
+            <label [for]="option.key">{{ option.name }}</label>
+          </div> -->
           <div *ngFor="let option of options" class="field-checkbox col-5 md:col-5 lg:col-5">
-            <p-checkbox name="group" [value]="option" [inputId]="option.key" (click)="onCheckboxChange()"></p-checkbox>
+            <p-checkbox name="group" [value]="option" [inputId]="option.key" checked="option.select" [binary]="true"  (onchange)="onCheckboxChange($event)"></p-checkbox>
             <label [for]="option.key">{{ option.name }}</label>
           </div>
+          {{selectedOptions}}
         </div>
       </div>
-
     </div>
     <div class="field grid col-12 md:col-12 lg:col-12 ml-4 justify-content-center">
       <!-- <button pButton pRipple label="Reset" (click)="onReset()" class="w-20rem p-3 text-xl" type="submit"></button> -->

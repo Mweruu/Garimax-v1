@@ -18,6 +18,7 @@ import { ViewComponent } from './homepage/vehicles/view/view.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { ViewvendorprofileComponent } from './homepage/vehicles/viewvendorprofile/viewvendorprofile.component';
 import { UpdateprofileComponent } from './user/updateprofile/updateprofile.component';
+import { SpecificuserVehiclesComponent } from './specificuser-vehicles/specificuser-vehicles.component';
 
 const routes: Routes = [
   {
@@ -43,8 +44,10 @@ const routes: Routes = [
   //   path: 'updateprofile/:userId', component:UpdateprofileComponent
   // },
   {
-    path: 'vendorprofile/:userId', component:ViewvendorprofileComponent
+    path: 'vendorprofile/:userId', component:ViewvendorprofileComponent,
   },
+  {
+    path: 'vehicles/:userId', component:SpecificuserVehiclesComponent},
   {
     path: 'vendorsignup', component:SignupTabsComponent,
     children: [

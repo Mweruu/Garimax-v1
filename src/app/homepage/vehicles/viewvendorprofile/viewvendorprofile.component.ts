@@ -29,7 +29,9 @@ export class ViewvendorprofileComponent implements OnInit {
   userId :any;
   userData:any;
   image:string[] =[];
-
+  visible: boolean = false;
+  contactVisible = false;
+  chatVisible =false;
 
   constructor(private messageService:MessageService,
               private ds:DataStorageService,
@@ -59,6 +61,8 @@ export class ViewvendorprofileComponent implements OnInit {
         this.ds.getUserVehicle(this.currentUserId).subscribe(vehicles =>{
           this.vehicles = vehicles;
           console.log(2323,vehicles)
+          console.log(2323,vehicles.length)
+
         })
       }
     });
@@ -109,6 +113,21 @@ export class ViewvendorprofileComponent implements OnInit {
 
   get userUpdateForm(){
     return this.updateForm.controls;
+  }
+
+  getVehicles(userId: any){
+    this.router.navigateByUrl(`vehicles/${this.currentUserId}`);
+    console.log('gothere')
+  }
+
+  showDialog() {
+    this.visible = true;
+  }
+  showDialogs() {
+    this.contactVisible = true;
+  }
+  showChatDialog() {
+    this.chatVisible = true;
   }
 
 }

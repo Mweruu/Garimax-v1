@@ -69,6 +69,8 @@ import { PanelModule } from 'primeng/panel';
 import { ViewvendorprofileComponent } from './homepage/vehicles/viewvendorprofile/viewvendorprofile.component';
 import { UpdateprofileComponent } from './user/updateprofile/updateprofile.component';
 import { ViewuservehiclesComponent } from './homepage/vehicles/viewuservehicles/viewuservehicles.component';
+import { ThumbnailsDirective } from './thumbnails.directive';
+import { CarouselModule } from 'primeng/carousel';
 
 @NgModule({
   declarations: [
@@ -96,6 +98,7 @@ import { ViewuservehiclesComponent } from './homepage/vehicles/viewuservehicles/
     ViewvendorprofileComponent,
     UpdateprofileComponent,
     ViewuservehiclesComponent,
+    ThumbnailsDirective,
   ],
   imports: [
     BrowserModule,
@@ -140,7 +143,8 @@ import { ViewuservehiclesComponent } from './homepage/vehicles/viewuservehicles/
     RippleModule,
     RouterModule,
     CalendarModule,
-    PanelModule
+    PanelModule,
+    CarouselModule
   ],
   providers: [MessageService, AuthService,DataService, ViewComponent],
   bootstrap: [AppComponent]

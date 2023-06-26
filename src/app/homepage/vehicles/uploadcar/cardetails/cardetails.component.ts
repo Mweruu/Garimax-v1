@@ -13,7 +13,7 @@ import { MessageService } from 'primeng/api';
   styleUrls: ['./cardetails.component.scss']
 })
 export class CardetailsComponent implements OnInit {
-    selectedOptions: any[] = [];
+    selectedOptions:boolean = false;
     options: any[] = CAR_OPTIONS;
     color: any = COLOR;
     fuelType:any = FUEL_TYPE;
@@ -105,14 +105,30 @@ export class CardetailsComponent implements OnInit {
     }
 
 
-    onCheckboxChange() {
-      const options = document.querySelectorAll('input[type="checkbox"]');
-      const selectedOptions = Array.from(options).filter(checkbox => (checkbox as HTMLInputElement).checked);
-      this.selectedOptions = this.accessories
-      console.log(selectedOptions);
-      // const selectedOptions = this.options.filter((option: any) => option.selected);
-      // console.log(selectedOptions);
-    }
+    // onCheckboxChange() {
+    //   const options = document.querySelectorAll('input[type="checkbox"]');
+    //   const selectedOptions = Array.from(options).filter(checkbox => (checkbox as HTMLInputElement).checked);
+    //   this.selectedOptions = this.accessories
+    //   console.log(selectedOptions);
+    //   // const selectedOptions = this.options.filter((option: any) => option.selected);
+    //   // console.log(selectedOptions);
+    // }
 
+    onCheckboxChange($event: any) {
+      const id= $event.target.id;
+      const isChecked = $event?.target.checked;
+      console.log(5454,id, 546,isChecked)
+
+      this.options = this.options.map((d)=>{
+        if(d.id === id){
+          d.select = isChecked;
+          return d;
+        }
+        return d;
+      });
+      // console.log(this.options)
+      console.log(event)
+
+    }
 
 }

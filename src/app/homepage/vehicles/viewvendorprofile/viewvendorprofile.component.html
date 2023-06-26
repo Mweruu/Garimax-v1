@@ -3,72 +3,116 @@
 <div class="profile-display">
   <div class="card"></div>
 <div class="formgroup-inline">
-  <div class="col-12 md:col-12 lg:col-12">
+  <div class="col-10 md:col-10 lg:col-10">
   <p-panel header="My account" [toggleable]="true">
     <div class="col-12 pb-3 pt-3" >
-      <form [formGroup]="rateForm">
         <div class="formgroup-inline mb-5" >
           <div class="col-12 md:col-12 lg:col-6">
             <div class="card flex align-items-center justify-content-center">
-              <p-galleria [value]="user.profileImage" [containerStyle]="{ 'max-width': '640px' }">
-                <ng-template pTemplate="item" let-item>
-                <img [src]="item" style="width: 100%; display: block;" />
-              </ng-template>
-            </p-galleria>
-              <!-- <div class="card" style="background-color: rgb(207, 205, 205);" (click)="fileInput.click()"> -->
-                <!-- <div class="card-body">
-                  <div class="flex align-items-center justify-content-center">
-                    <i *ngIf="!imageSelected" class="pi pi-user field " style="font-size: 12.5rem"></i>
-                    <img *ngIf="imageSelected" [src]="selectedImage" alt="profile-picture" class="profile-picture mb-5">
-                  </div>
-                  <div class="flex align-items-center justify-content-center">
-                    <p></p>
-                  </div>
-                </div> -->
-                <!-- <div class="p-fluid">
-                  <p-image src="{{user.profileImage}}" alt="Image" width="100%" [preview]="true"></p-image>
-                </div>
-              </div> -->
-              <!-- <input type="file" #fileInput style="display: none;" (change)="onFileSelected($event)"> -->
+              <p-image src="{{user.profileImage}}" alt="Image" width="100%" [preview]="true"></p-image>
             </div>
           </div>
           <div class="card col-12 md:col-12 lg:col-6 ">
             <div class=" justify-content-center align-items-center">
-            <!-- <div class="p-formgrid grid"> -->
               <div class="mb-0 field col">
                 <h5><strong>{{user?.firstName}}</strong></h5>
-                <!-- <p>{{user?.phoneNumber}}</p>
-                <p>{{user?.email}}</p>
-                <p>{{user?.companyUrl}}</p> -->
+              </div>
+            </div>
+            <p-divider></p-divider>
+            <!-- <p class="ml-2">Leave a rating</p> -->
+            <p-rating formControlName="value"></p-rating>
+            <p-divider></p-divider>
+            <p-button routerLink="/vehicles" styleClass="p-button-info" (click)="getVehicles(userId)">View {{vehicles.length}} cars</p-button>
+            <div class="formgroup-inline m-5 gap-5">
+              <p-button (click)="showDialogs()"  icon="pi pi-fw pi-phone" label="Contact Seller" styleClass="p-button-outlined p-button-info"></p-button>
+                <p-dialog header="Seller details" [(visible)]="contactVisible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+                  <div class="p-fluid">
+                    <div class="field">
+                      <label>Seller name</label>
+                      <span class="p-input-icon-left">
+                        <i class="pi pi-user"></i>
+                        <input type="text" pInputText />
+                      </span>
+                    </div>
+                    <div class="field">
+                      <label>Email</label>
+                      <span class="p-input-icon-left">
+                        <i class="pi pi-envelope"></i>
+                        <input type="email" pInputText />
+                      </span>
+                    </div>
+                    <div class="field">
+                      <label>Mobile number</label>
+                      <span class="p-input-icon-left">
+                        <i class="pi pi-phone"></i>
+                        <input type="number" pInputText />
+                      </span>
+                    </div>
+                    <div class="field">
+                      <label>Address</label>
+                      <span class="p-input-icon-left">
+                        <i class="pi pi-location"></i>
+                        <input type="text" pInputText />
+                      </span>
+                    </div>
 
-              </div>
-            <!-- </div> -->
-            <!-- <div class="p-formgrid grid"> -->
-              <div class="mb-0 field col">
-                <label for="phoneNumber" class="block text-900 font-medium mb-2">Contact</label>
-                <p>{{user?.phoneNumber}}</p>
-              </div>
-              <div class="mb-0 field col">
-                <label for="email" class="block text-900 font-medium mb-2">Email</label>
-                <p>{{user?.email}}</p>
-              </div>
-            <!-- </div> -->
-            <div class="mb-2 field ml-2">
-              <label for="url" class="block text-900 font-medium mb-2">Url:</label>
-              <p>{{user?.companyUrl}}</p>
+                    <p-button icon="pi pi-fw pi-phone" label="Call Seller Now" styleClass="p-button-warning w-21rem"></p-button>
+
+                  </div>
+                </p-dialog>
+
+              <p-button (click)="showChatDialog()" icon="pi pi-fw pi-envelope" label="Start Chat" styleClass="p-button-outlined p-button-info"></p-button>
+                <p-dialog header="Chat" [(visible)]="chatVisible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+                  <h5>SEND INQUIRY FOR THIS CAR</h5>
+                  <p-divider></p-divider>
+                  <div class="p-fluid">
+                    <div class="field">
+                      <label>Your name</label>
+                      <span class="p-input-icon-left">
+                        <i class="pi pi-user"></i>
+                        <input type="text" pInputText />
+                      </span>
+                    </div>
+                    <div class="field">
+                      <label>Email</label>
+                      <span class="p-input-icon-left">
+                        <i class="pi pi-envelope"></i>
+                        <input type="email" pInputText />
+                      </span>
+                    </div>
+                    <div class="field">
+                      <label>Mobile number</label>
+                      <span class="p-input-icon-left">
+                        <i class="pi pi-phone"></i>
+                        <input type="number" pInputText />
+                      </span>
+                    </div>
+                    <div class="field">
+                      <label>Address</label>
+                      <span class="p-input-icon-left">
+                        <i class="pi pi-location"></i>
+                        <input type="text" pInputText />
+                      </span>
+                    </div>
+                    <div class="field">
+                      <label>Your message (optional)</label>
+                      <span class="p-input-icon-left">
+                        <textarea rows="5" cols="30" pInputTextarea ></textarea>
+                      </span>
+                    </div>
+                    <p-button icon="pi pi-fw pi-envelope" label="Inquire Now" styleClass="p-button-warning w-21rem"></p-button>
+
+                  </div>
+                </p-dialog>
             </div>
           </div>
-          <p class="ml-2">Leave a rating</p>
-            <p-rating formControlName="value"></p-rating>
-          </div>
         </div>
-      </form>
     </div>
   </p-panel>
 </div>
 </div>
 <div class="formgroup-inline mb-5">
-<div class="col-12 md:col-12 lg:col-6">
+<div class="col-10 md:col-10 lg:col-5 justify-content-center align-items-center">
   <p-panel header="Your vehicles" [toggleable]="true">
     <div  class="col-12 formgroup-inline" *ngFor="let vehicle of vehicles">
       <div class="col-4">
@@ -82,10 +126,25 @@
     </div>
   </p-panel>
 </div>
-<div class="col-6 md:col-12 lg:col-6">
+<div class="col-10 md:col-10 lg:col-5">
   <p-panel header="Your sold vehicles" [toggleable]="true">
     <!-- <div  class="col-12"></div> -->
 </p-panel>
+</div>
+</div>
+<div>
+  <div class="mb-0 field col">
+    <label for="phoneNumber" class="block text-900 font-medium mb-2">Contact</label>
+    <p>{{user?.phoneNumber}}</p>
+  </div>
+  <div class="mb-0 field col">
+    <label for="email" class="block text-900 font-medium mb-2">Email</label>
+    <p>{{user?.email}}</p>
+  </div>
+<!-- </div> -->
+<div class="mb-2 field ml-2">
+  <label for="url" class="block text-900 font-medium mb-2">Url:</label>
+  <p>{{user?.companyUrl}}</p>
 </div>
 </div>
 <app-footer></app-footer>
