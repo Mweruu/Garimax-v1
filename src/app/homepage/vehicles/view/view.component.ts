@@ -11,7 +11,7 @@ import { AIRCONDITIONING_SYSTEM, ELECTRICALS, ENGINE, EXTERIOR, INTERIOR, SUSPEN
 })
 export class ViewComponent implements OnInit {
   items!: MenuItem[];
-  vehicle:any;
+  vehicle:any = {};
   activeItem!: MenuItem;
   currentVehicleId!:string;
   fetched = false;
@@ -58,7 +58,7 @@ value: any;
         console.log("ID:",this.currentVehicleId)
         this.ds.getVehicle(this.currentVehicleId).subscribe(vehicle => {
           this.vehicle = vehicle;
-          console.log("DATA", vehicle.images)
+          console.log("DATA", vehicle)
           console.log(vehicle.userId)
 
           this.images = vehicle.images

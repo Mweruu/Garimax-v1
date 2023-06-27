@@ -69,7 +69,7 @@ export class ViewvendorprofileComponent implements OnInit {
 
 
     this.updateForm = this.fb.group({
-      value:['', Validators.required],
+      value:['4', Validators.required],
 
   });
   }

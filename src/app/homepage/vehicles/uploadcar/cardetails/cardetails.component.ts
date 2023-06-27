@@ -40,25 +40,28 @@ export class CardetailsComponent implements OnInit {
                 private messageService:MessageService,
       ) { }
 
-    ngOnInit(){
-      this.carDetsForm = this.fb.group({
-        fuelType:['', Validators.required],
-        bodyType:['', Validators.required],
-        color:['', Validators.required],
-        steering:['', Validators.required],
-        engineSize:['', Validators.required],
-        enginePower:['', Validators.required],
-        acceleration:[''],
-        // driveTrain:['',Validators.required],
-        vinNumber:[''],
-        usage:['', Validators.required],
-        description:['', Validators.required],
-        duty:['', Validators.required],
-        condition:['', Validators.required],
-        selectedOptions:[[]]
-      });
+  ngOnInit(){
+    this.carDetsForm = this.fb.group({
+      fuelType:['', Validators.required],
+      bodyType:['', Validators.required],
+      color:['', Validators.required],
+      steering:['', Validators.required],
+      engineSize:['', Validators.required],
+      enginePower:['', Validators.required],
+      acceleration:[''],
+      // driveTrain:['',Validators.required],
+      vinNumber:[''],
+      usage:['', Validators.required],
+      description:['', Validators.required],
+      duty:['', Validators.required],
+      condition:['', Validators.required],
+      selectedOptions:[[]]
+    });
 
-
+    const formData = localStorage.getItem('formData');
+    if (formData !== null) {
+      this.carDetsForm.patchValue(JSON.parse(formData));
+    }
 
     }
     onBasicUploadAuto(event: any) {
@@ -91,6 +94,7 @@ export class CardetailsComponent implements OnInit {
       }
       this.dataService.setcardetailsData(details)
       console.log('Details Data!',details)
+      localStorage.setItem('formData', JSON.stringify(this.carDetsForm.value));
 
     }
 

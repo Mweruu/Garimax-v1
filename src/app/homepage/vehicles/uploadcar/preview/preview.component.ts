@@ -97,6 +97,11 @@ export class PreviewComponent implements OnInit {
       // this.accessories = this.carData.carDetails.accessories;
     }
 
+    const formData = localStorage.getItem('formData');
+    if (formData !== null) {
+      this.carData.patchValue(JSON.parse(formData));
+    }
+
   }
 
   processImageFiles(files: any[]): void {
@@ -154,6 +159,8 @@ export class PreviewComponent implements OnInit {
         detail:'Please wait for our team to verify your vehicle'
       })
       timer(2500).toPromise().then(()=>{
+        localStorage.removeItem('formData');
+
         this.router.navigate(['/'])
       })
     },
@@ -168,5 +175,6 @@ export class PreviewComponent implements OnInit {
       }
     );
   }
+
 
 }

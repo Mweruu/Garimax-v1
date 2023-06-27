@@ -36,8 +36,14 @@ export class BasicinfoComponent implements OnInit {
       location:['',Validators.required],
       mileage:['',Validators.required],
       transmission:['', Validators.required],
-    })
+    });
+
+    const formData = localStorage.getItem('formData');
+    if (formData !== null) {
+      this.basicInfoForm.patchValue(JSON.parse(formData));
+    }
   }
+
 
   onMakeChange(): void {
     const make = this.basicInfoForm.value.make;
@@ -64,6 +70,8 @@ export class BasicinfoComponent implements OnInit {
     }
     this.dataServive.setbasicInfoData(basicInformation);
     console.log('Basic data' ,basicInformation)
+    localStorage.setItem('formData', JSON.stringify(this.basicInfoForm.value));
+
   }
 
   get informationForm(){

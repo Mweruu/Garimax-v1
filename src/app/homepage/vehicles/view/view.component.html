@@ -2,7 +2,7 @@
 <div class="card"> </div>
 <div class="view">
 <div class="card grid p-fluid" >
-  <div class="col-5 md:col-5 lg:col-5">
+  <div class="col-12 md:col-12 lg:col-5">
     <div class="card">
       <section class="gallery">
         <div class="container">
@@ -38,7 +38,7 @@
       <p>{{vehicle.description}}</p>
     </div>
   </div>
-  <div class="col-7 md:col-7 lg:col-7">
+  <div class="col-12 md:col-12 lg:col-7">
     <div class="card">
       <div class="grid formgrid">
         <div><h2>{{vehicle.yearOfManufacture.split('-')[0]}} {{vehicle.make}} {{vehicle.model}}</h2></div>
@@ -194,7 +194,7 @@
 
     </div>
     <p-divider></p-divider>
-    <h5>{{vehicle.user}}</h5>
+    <a *ngIf="vehicle.user?.companyUrl" href="{{vehicle.user.companyUrl}}">{{vehicle.user.firstName}}</a>
 
   </div>
 
