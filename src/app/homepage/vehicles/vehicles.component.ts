@@ -161,16 +161,16 @@ export class VehiclesComponent implements OnInit {
       vehicle.make.toLowerCase().includes(this.searchFilter) ||
       (vehicle.price >= this.minPrice &&
         vehicle.price <= this.maxPrice) ||
-      // vehicle.localUsed.toLowerCase().includes(this.searchFilter) ||
+      vehicle.usage.toLowerCase().includes(this.searchFilter) ||
       // vehicle.foreignUsed.toLowerCase().includes(this.searchFilter) ||
       // vehicle.acceleration.toLowerCase().includes(this.searchFilter) ||
       vehicle.condition.toLowerCase().includes(this.searchFilter) ||
       // vehicle.doors.toLowerCase().includes(this.searchFilter) ||
       vehicle.engineSize.toLowerCase().includes(this.searchFilter) ||
-      vehicle.color.toLowerCase().includes(this.searchFilter)
+      vehicle.color.toLowerCase().includes(this.searchFilter) ||
       // vehicle.seats.toLowerCase().includes(this.searchFilter) ||
       // vehicle.bootSpace.toLowerCase().includes(this.searchFilter) ||
-      // vehicle.fuelType.toLowerCase().includes(this.searchFilter)||
+      vehicle.fuelType.toLowerCase().includes(this.searchFilter)
       // vehicle.fuelConsumption.toLowerCase().includes(this.searchFilter)
       ;
 

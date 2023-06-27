@@ -101,17 +101,17 @@ export const KENYA_LOCATION = [
 export const COLOR = [
   {"color":"Black"},
   {"color":"White"},
-  {"color": "Gray"},
-  {"color":" Silver"},
-  {"color":" Blue"},
-  {"color":" Red"},
-  {"color":" Brown"},
-  {"color":" Green"},
-  {"color":" Orange"},
-  {"color":" Beige"},
-  {"color":" Purple"},
-  {"color":" Gold"},
-  {"color":" Yellow"},
+  {"color":"Gray"},
+  {"color":"Silver"},
+  {"color":"Blue"},
+  {"color":"Red"},
+  {"color":"Brown"},
+  {"color":"Green"},
+  {"color":"Orange"},
+  {"color":"Beige"},
+  {"color":"Purple"},
+  {"color":"Gold"},
+  {"color":"Yellow"},
 ]
 export const BODY_TYPE = [
   {"bodyType":"Coupe"},
@@ -123,6 +123,8 @@ export const BODY_TYPE = [
   {"bodyType":"Convertible"},
   {"bodyType":"Wagon"},
   {"bodyType":"Van"},
+  {"bodyType":"MiniVan"},
+  {"bodyType":"Pickup"},
 
 ]
 export const ENGINE_SIZE = [
@@ -174,6 +176,10 @@ export const TRANSMISSION = [
 export const USAGE = [
  {"usage":"Locally Used"},
  {"usage":"Foreign Used"}
+]
+export const VERIFIED =[
+{"condition":"Verified"},
+{"condition":"Not Verified"}
 ]
 
 export const GENDER = [
@@ -301,6 +307,42 @@ export const CAR_MODELS:CarModels = {
   Subaru:["BRZ","Impreza","Forester","Impreza","Legacy","Outback","Solterra","Ascent","Crosstrek"],
   Toyota:["Crown","Camry","C-HR","bZ4X","Avalon","Model Y", "Model X","Prius","RAv4","Sienna","Venza",],
   Volvo:["S90","V90","V60","S60","EX90","EX30","XC40","XC60","XC90"],
+  Acura:[""],
+  // Alfa-Romeo:[],
+  // AstonMartin:[],
+  // Audi:[],
+  // BMW:[],
+  // Bentley:[],
+  // Buick:[],
+  // Cadilac:[],
+  // Chevrolet:[],
+  // Chrysler:[],
+  // Daewoo:[],
+  // Daihatsu:[],
+  // Dodge:[],
+  // Eagle:[],
+  // Ferrari:[],
+  // Fiat:[],
+  // Fisker:[],
+  // Ford:[],
+  // Freighliner:[],
+  // GMC:[],
+  // Genesis:[],
+  // Geo:[],
+  // Honda:[],
+  // Hummer:[],
+  // Hyundai:[],
+  // Infinity:[],
+  // Isuzu:[],
+  // Jaguar:[],
+  // Jeep:[],
+  // Kla:[],
+  // Lamborghini:[],
+  // LandRover:[],
+  // Lexus:[],
+  // Lincoln:[],
+  // Lotus:[],
+  // Mazda:[],
 };
 
 export const ENGINE = [

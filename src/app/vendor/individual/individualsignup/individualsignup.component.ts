@@ -6,6 +6,7 @@ import { timer } from 'rxjs';
 import { DataStorageService } from 'src/app/datastorage.service';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
 import { GENDER} from '../../../homepage/const-data/constants';
+import { PasswordValidator } from 'src/app/password-match.validator';
 
 @Component({
   selector: 'app-individualsignup',
@@ -47,6 +48,9 @@ export class IndividualsignupComponent implements OnInit {
       passportNo:['', Validators.required],
       password:this.passwordControl,
       confirmPassword:[this.password, Validators.required]
+    },
+    {
+      validator:PasswordValidator('password', 'confirmPassword')
     });
   }
 

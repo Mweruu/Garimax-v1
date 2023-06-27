@@ -1,7 +1,6 @@
 <div class="mid-display grid p-fluid">
   <div class="col-5 md:col-5 lg:col-5">
     <div class="card">
-      <h5>Image</h5>
 			<div class="grid formgrid">
 				<div class="col-12 mb-2 lg:col-12 lg:mb-0">
           <div class="card">
@@ -42,8 +41,8 @@
             </div>
           </p-divider>
           <div class="formgroup-inline mb-2">
-            <label for="make" class="col-5 md:col-5 lg:col-5" style="white-space: pre-line;">Make <strong>{{make}}</strong></label>
-            <label for="model" class="col-5 md:col-5 lg:col-5">Model  <strong>{{model}}</strong></label>
+            <label for="make" class="col-5 md:col-5 lg:col-5" style="white-space: pre-line;">Make - <strong>{{make}}</strong></label>
+            <label for="model" class="col-5 md:col-5 lg:col-5">Model - <strong>{{model}}</strong></label>
           </div>
 
           <div class="formgroup-inline  mb-2">
@@ -68,7 +67,7 @@
 
           <div class="formgroup-inline mb-2">
             <label for="steering" class="col-5 md:col-5 lg:col-5">Engine power - <strong>{{enginePower}}</strong></label>
-            <label for="engineSize" class="col-5 md:col-5 lg:col-5">Engine size - <strong>{{engineSize}}</strong></label>
+            <label for="engineSize" class="col-5 md:col-5 lg:col-5">Engine size - <strong>{{engineSize}} CC</strong></label>
           </div>
 
           <div class="formgroup-inline mb-2">
@@ -78,10 +77,10 @@
 
           <div class="formgroup-inline mb-2">
             <label for="steering" class="col-5 md:col-5 lg:col-5">Steering - <strong>{{steering}}</strong></label>
-            <label for="description" class="col-5 md:col-5 lg:col-5">duty <strong>{{duty}}</strong></label>
+            <label for="description" class="col-5 md:col-5 lg:col-5">duty - <strong>{{duty}}</strong></label>
           </div>
           <div class="formgroup-inline mb-2">
-            <label for="description" class="col-5 md:col-5 lg:col-5">Condition <strong>{{condition}}</strong></label>
+            <label for="description" class="col-5 md:col-5 lg:col-5">Condition - <strong>{{condition}}</strong></label>
             <label for="description" class="col-5 md:col-5 lg:col-5">Description <strong>{{description}}</strong></label>
           </div>
         </div>
@@ -89,5 +88,7 @@
     </div>
   </div>
 </div>
-<button pButton pRipple label="Submit" class="w-20rem p-3 text-xl ml-5 mb-5" type="submit" (click)="onSubmit()"></button>
-
+  <div class="field grid col-12 md:col-12 lg:col-12 ml-4 justify-content-center">
+    <button pButton pRipple label="Back" routerLink="/cardetails" class="w-20rem p-3 text-xl ml-5 mb-5" type="button"></button>
+    <button pButton pRipple label="Submit" class="w-20rem p-3 text-xl ml-5 mb-5" type="submit" (click)="onSubmit()"></button>
+  </div>

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { ACCELERATION, BODY_TYPE, BOOTSPACE, CAR_MODELS, CAR_OPTIONS, COLOR, CONDITION, DOORS, DRIVETRAIN, ENGINE_POWER, ENGINE_SIZE, FUEL_CONSUMPTION, FUEL_TYPE, KENYA_LOCATION, MILEAGE, PRICE, SEATS, STEERING, TRANSMISSION } from '../const-data/constants';
+import { ACCELERATION, BODY_TYPE, BOOTSPACE, CAR_MODELS, CAR_OPTIONS, COLOR, CONDITION, DOORS, DRIVETRAIN, ENGINE_POWER, ENGINE_SIZE, FUEL_CONSUMPTION, FUEL_TYPE, KENYA_LOCATION, MILEAGE, PRICE, SEATS, STEERING, TRANSMISSION, USAGE, VERIFIED } from '../const-data/constants';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/layout/data.service';
@@ -45,14 +45,14 @@ export class FiltersComponent implements OnInit {
   acceleration:any = ACCELERATION;
   fuelConsumption:any = FUEL_CONSUMPTION;
   enginePower:any = ENGINE_POWER;
+  condition:any[]=VERIFIED;
+  state:any[] = CONDITION;
+  usage:any[]= USAGE;
   showMore: boolean = false;
   searchTextProperty:any;
   date!: Date;
   date1!: Date;
   enteredFilter:any;
-  states = [{condition:"Verified" , key:"v",},{condition:"Not Verified", key:"nv"}];
-  uses = [{use:"Kenyan used", key:"KU"},{use:"Foreign used", key:"FU"}];
-  conditions:any[] = CONDITION;
   vehicles:any;
   checked: boolean = false;
   modelFilter:any;
@@ -72,6 +72,9 @@ export class FiltersComponent implements OnInit {
   seatsFilter:any;
   accelerationFilter:any;
   driveTrainFilter:any;
+  usageFilter:any;
+  stateFilter:any;
+  conditionFilter:any;
   filteredNumbers!: number[];
 
   @Output()
@@ -159,6 +162,18 @@ export class FiltersComponent implements OnInit {
   // }
   onMaxPriceFilterChanged(selectedFilter:string){
     this.searchFilterChanged.emit(selectedFilter)
+    return function(items:any, attr:any,min:any, max:any) {
+      var range = []
+          // min=parseFloat(minimum),
+          // max=parseFloat(maximum);
+      for (var i=0, l=items.length; i<l; ++i){
+          var item = items[i];
+          if(item[attr]<=max && item[attr]>=min){
+              range.push(item);
+          }
+      }
+      return range;
+  };
     console.log("ef",selectedFilter)
   }
   onPriceFilterChanged(selectedFilter:string){
@@ -217,8 +232,21 @@ export class FiltersComponent implements OnInit {
       this.searchFilterChanged.emit(selectedFilter)
       console.log("ef",selectedFilter)
     }
+  onUsageFilterChanged(selectedFilter:string){
+    this.searchFilterChanged.emit(selectedFilter)
+    console.log("ef",selectedFilter)
+  }
+  onStateFilterChanged(selectedFilter:string){
+    this.searchFilterChanged.emit(selectedFilter)
+    console.log("ef",selectedFilter)
+  }
+  onConditionFilterChanged(selectedFilter:string){
+    this.searchFilterChanged.emit(selectedFilter)
+    console.log("ef",selectedFilter)
+  }
 
   clear(){
     window.location.reload();
   }
+
 }

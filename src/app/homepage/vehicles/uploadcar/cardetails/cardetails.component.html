@@ -1,7 +1,8 @@
 <p-toast></p-toast>
 <form [formGroup]="carDetsForm" (ngSubmit)="onSubmit()">
   <div class="formgroup-inline  justify-content-center">
-    <div class="card grid p-fluid mt-0 p-5 col-4 md:col-4 lg:col-4 ">
+    <!-- <form [formGroup]="carDetsForm" (ngSubmit)="onSubmit()"> -->
+      <div class="card grid p-fluid mt-0 p-5 col-4 md:col-4 lg:col-4 ">
         <!-- <div class="field col-10 md:col-10 lg:col-10  m-2">
           <input pInputText id="name" value="basicinfor.informationForm['make'] basicinfor.informationForm['model'] basicinfor.informationForm['yearOfManufacture']" rows="4" />
         </div> -->
@@ -42,14 +43,15 @@
           <div class="field col-12 md:col-12 lg:col-5 mb-0 p-0">
             <span class="field">
               <label for="dropdown">Engine Size(CC)</label>
-              <p-dropdown inputId="dropdown" formControlName="engineSize" [options]="engineSize"  optionValue="engineSize" optionLabel="engineSize" placeholder="500 CC"></p-dropdown>
+              <input type="number" pInputText value="CC" formControlName="engineSize"/>
+              <!-- <p-dropdown inputId="dropdown" formControlName="engineSize" [options]="engineSize"  optionValue="engineSize" optionLabel="engineSize" placeholder="500 CC"></p-dropdown> -->
                 <small *ngIf="carDetails['engineSize'].invalid && isSubmitted" class="p-error">Engine size is required</small>
             </span>
           </div>
           <div class="field col-12 md:col-12 lg:col-5 mb-0 p-0">
             <span class="field">
               <label for="dropdown">Engine Power</label>
-              <p-dropdown inputId="dropdown" formControlName="enginePower"[options]="enginePower" optionValue="enginePower"  optionLabel="enginePower"></p-dropdown>
+              <p-dropdown inputId="dropdown" formControlName="enginePower"[options]="enginePower" optionValue="enginePower"  optionLabel="enginePower" placeholder="0bhp"></p-dropdown>
               <small *ngIf="carDetails['enginePower'].invalid && isSubmitted" class="p-error">Engine power is required</small>
             </span>
           </div>
@@ -58,7 +60,7 @@
           <div class="field col-12 md:col-12 lg:col-5 mb-0 p-0">
               <span class="field">
                 <label for="dropdown">condition</label>
-                <p-dropdown inputId="dropdown" formControlName="condition" [options]="condition"  optionValue="state" optionLabel="state"></p-dropdown>
+                <p-dropdown inputId="dropdown" formControlName="condition" [options]="condition"  optionValue="state" optionLabel="state" placeholder="used"></p-dropdown>
                   <small *ngIf="carDetails['condition'].invalid && isSubmitted" class="p-error">Condition is required</small>
               </span>
           </div>
@@ -74,14 +76,14 @@
           <div class="field col-12 md:col-12 lg:col-5 mb-0 p-0">
             <span class="field">
               <label for="dropdown">Steering(LHD/RHD)</label>
-              <p-dropdown inputId="dropdown" formControlName="steering" [options]="steering"  optionValue="steering" optionLabel="steering"></p-dropdown>
+              <p-dropdown inputId="dropdown" formControlName="steering" [options]="steering"  optionValue="steering" optionLabel="steering" placeholder="Left Hand Drive"></p-dropdown>
                 <small *ngIf="carDetails['steering'].invalid && isSubmitted" class="p-error">Steering is required</small>
             </span>
         </div>
           <div class="field col-12 md:col-12 lg:col-5 mb-0 p-0">
             <span class="field">
               <label for="dropdown">Usage</label>
-              <p-dropdown inputId="dropdown" formControlName="usage" [options]="usage"  optionValue="usage" optionLabel="usage"></p-dropdown>
+              <p-dropdown inputId="dropdown" formControlName="usage" [options]="usage"  optionValue="usage" optionLabel="usage" placeholder="Locally used"></p-dropdown>
                 <small *ngIf="carDetails['usage'].invalid && isSubmitted" class="p-error">Usage is required</small>
             </span>
         </div>
@@ -90,14 +92,14 @@
             <div class="field col-12 md:col-12 lg:col-5 mb-0 p-0">
                 <span class="field">
                   <label for="dropdown">Acceleration</label>
-                  <p-dropdown inputId="dropdown" formControlName="acceleration" [options]="acceleration"  optionValue="acceleration" optionLabel="acceleration"></p-dropdown>
+                  <p-dropdown inputId="dropdown" formControlName="acceleration" [options]="acceleration"  optionValue="acceleration" optionLabel="acceleration" placeholder="0-5s"></p-dropdown>
                   <small *ngIf="carDetails['acceleration'].invalid && isSubmitted" class="p-error">Acceleration is required</small>
                 </span>
             </div>
             <div class="field col-12 md:col-12 lg:col-5 mb-0 p-0">
               <span class="field">
                 <label for="dropdown">Duty paid</label>
-                <p-dropdown inputId="dropdown" formControlName="duty" [options]="duty"  optionValue="duty" optionLabel="duty"></p-dropdown>
+                <p-dropdown inputId="dropdown" formControlName="duty" [options]="duty"  optionValue="duty" optionLabel="duty" placeholder="paid"></p-dropdown>
                 <small *ngIf="carDetails['duty'].invalid && isSubmitted" class="p-error">Duty is required</small>
               </span>
           </div>
@@ -128,6 +130,7 @@
           </div>
         </div>
     </div>
+  <!-- </form> -->
     <div class="card grid p-fluid m-5 mt-0 col-5 md:col-5 lg:col-5 ">
       <h4 class="m-5">
         Car Options and Accesories
@@ -142,13 +145,16 @@
       </div> -->
       <div class="col-12 md:col-12 lg:col-12">
         <div class="formgroup-inline">
+          <!-- <div *ngFor="let option of options" class="field-checkbox col-5 md:col-5 lg:col-5">
+            <p-checkbox name="group" [value]="option" [inputId]="option.key" (click)="onCheckboxChange($event)"></p-checkbox>
+            <label [for]="option.key">{{ option.name }}</label>
+          </div> -->
           <div *ngFor="let option of options" class="field-checkbox col-5 md:col-5 lg:col-5">
-            <p-checkbox name="group" [value]="option" [inputId]="option.key" (click)="onCheckboxChange()"></p-checkbox>
+            <p-checkbox name="group" [value]="option" formControlName="selectedOptions" [inputId]="option.key" [binary]="true"  (click)="onCheckboxChange($event)"></p-checkbox>
             <label [for]="option.key">{{ option.name }}</label>
           </div>
         </div>
       </div>
-
     </div>
     <div class="field grid col-12 md:col-12 lg:col-12 ml-4 justify-content-center">
       <!-- <button pButton pRipple label="Reset" (click)="onReset()" class="w-20rem p-3 text-xl" type="submit"></button> -->

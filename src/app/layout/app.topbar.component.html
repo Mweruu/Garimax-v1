@@ -3,31 +3,35 @@
         <img src="assets/layout/images/garimax-logo2.png" alt="logo">
         <span routerLink="/">GARIMAX</span>
     </a>
-    <button class="p-link m">
-      <span class="span-toolbar">Used cars</span>
-    </button>
-    <button class="p-link m">
-      <span class="span-toolbar">New cars</span>
-    </button>
-    <button class="p-link m">
-        <span class="span-toolbar" [routerLink]="username? '/basicinfo' : '/vendorsignup'">Sell car</span>
-    </button>
-    <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
-      <button class="p-link m">
-        <span class="span-toolbar" routerLink="/profile" (click)="getUser(userId)">{{ username ? username: '' }}</span>
-      </button>
-      <button class="p-link m m-2">
-        <span class="span-toolbar" (click)="logOut()">{{ username ? 'logout': '' }}</span>
-      </button>
-      <button class="p-link layout-topbar-button" routerLink="/sociallogin">
-          <i class="pi pi-user"></i>
-          <span>Sign In</span>
-      </button>
-      <button class="p-link layout-topbar-button">
-          <i class="pi pi-cog"></i>
-          <span>Settings</span>
-      </button>
-    </div>
+    <!-- <div class="menu"> -->
+      <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
+        <button class="p-link m">
+          <span class="span-toolbar">Used cars</span>
+        </button>
+        <button class="p-link m">
+          <span class="span-toolbar">New cars</span>
+        </button>
+        <button class="p-link m">
+            <span class="span-toolbar" [routerLink]="username? '/basicinfo' : '/vendorsignup'">Sell car</span>
+        </button>
+      </div>
+      <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
+        <button class="p-link m">
+          <span class="span-toolbar" routerLink="/profile" (click)="getUser(userId)">{{ username ? username: '' }}</span>
+        </button>
+        <button class="p-link m m-2">
+          <span class="span-toolbar" (click)="logOut()">{{ username ? 'logout': '' }}</span>
+        </button>
+        <button class="p-link layout-topbar-button" routerLink="/sociallogin">
+            <i class="pi pi-user"></i>
+            <span>Sign In</span>
+        </button>
+        <button class="p-link layout-topbar-button mr-6">
+            <i class="pi pi-cog"></i>
+            <span>Settings</span>
+        </button>
+      </div>
+    <!-- </div> -->
     <!-- <div *ngIf="loggedin">
       <button class="p-link m">
         <span class="span-toolbar" routerLink="/uploadcar">Sell car</span>

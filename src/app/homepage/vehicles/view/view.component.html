@@ -4,20 +4,21 @@
 <div class="card grid p-fluid" >
   <div class="col-5 md:col-5 lg:col-5">
     <div class="card">
-          <p-galleria [value]="images" [thumbnailsPosition]="position" [responsiveOptions]="responsiveOptions"
-           [numVisible]="5" [circular]="true" [containerStyle]="{ 'max-width': '640px' }">
-            <ng-template pTemplate="item" let-item>
-            <img [src]="item" style="width: 100%; display: block;" />
-          </ng-template>
-          <ng-template pTemplate="thumbnail" let-item>
-            <div class="grid grid-nogutter justify-content-center">
-              <span class="text-2xl font-semibold">
-                <img [src]="item" alt="logo" height="30" class="mb-3">
-               </span>
-                <!-- <img [src]="item" class="logo" style="width: 100%; display: block;" /> -->
+      <section class="gallery">
+        <div class="container">
+          <!-- <p-carousel [value]="images" [numVisible]="3" [numScroll]="1" [responsiveOptions]="responsiveOptions"> -->
+
+          <div class="img-container">
+            <img src="{{vehicle.image}}" alt="Image" width="100%" id="preview">
+            <div class="img-prev">
+              <div class="img-slide" *ngFor="let image of vehicle.images">
+                <img src="{{image}}" alt="Image" width="100%" appThumbnails>
+              </div>
             </div>
-        </ng-template>
-        </p-galleria>
+          </div>
+          <!-- </p-carousel> -->
+        </div>
+      </section>
       <div class="grid formgrid">
         <p-divider align="left">
           <div class="inline-flex align-items-center">
@@ -61,7 +62,7 @@
             </div>
           </p-divider>
           <div class="formgroup-inline">
-            <dl class="col-6 md:col-12 lg:col-6">
+            <dl class="col-12 md:col-12 lg:col-6">
               <dt>Make</dt>
               <dd><strong>  {{vehicle.make}}</strong></dd>
               <dt>Model</dt>
@@ -75,17 +76,17 @@
               <dt>Body type</dt>
               <dd><strong>{{vehicle.bodyType}}</strong></dd>
             </dl>
-            <dl class="col-6 md:col-12 lg:col-6">
+            <dl class="col-12 md:col-12 lg:col-6">
               <dt>Fuel type </dt>
               <dd><strong>{{vehicle.fuelType}}{{vehicle.driveTrain}}</strong></dd>
               <dt>Transmission </dt>
               <dd><strong>{{vehicle.transmission}}</strong></dd>
-              <dt>Color</dt>
-              <dd><strong>{{vehicle.color}}</strong></dd>
+              <!-- <dt>Color</dt>
+              <dd><strong>{{vehicle.color}}</strong></dd> -->
               <dt>Engine power </dt>
               <dd><strong>{{vehicle.engineSize}}</strong></dd>
-              <dt>Condition</dt>
-              <dd><strong>{{vehicle.condition}}</strong></dd>
+              <!-- <dt>Condition</dt>
+              <dd><strong>{{vehicle.condition}}</strong></dd> -->
               <dt>VIN number</dt>
               <dd><strong>{{vehicle.vinNumber}}</strong> </dd>
             </dl>
@@ -109,19 +110,91 @@
                 <li>Check all documentation and only pay if you're satisfied</li>
             </ul>
             <p-button  (click)="showDialogs()" class="align-items-center justify-content-center" label="Continue" styleClass="p-button-info w-21rem"></p-button>
+            <p-dialog header="Seller details" [(visible)]="contactVisible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+              <div class="formgrid">
+                <div class="field">
+                  <label>Seller name</label>
+                  <span class="p-input-icon-left">
+                    <i class="pi pi-user"></i>
+                    <input type="text" pInputText />
+                  </span>
+                </div>
+                <div class="field">
+                  <label>Email</label>
+                  <span class="p-input-icon-left">
+                    <i class="pi pi-envelope"></i>
+                    <input type="email" pInputText />
+                  </span>
+                </div>
+                <div class="field">
+                  <label>Mobile number</label>
+                  <span class="p-input-icon-left">
+                    <i class="pi pi-phone"></i>
+                    <input type="number" pInputText />
+                  </span>
+                </div>
+                <div class="field">
+                  <label>Address</label>
+                  <span class="p-input-icon-left">
+                    <i class="pi pi-location"></i>
+                    <input type="text" pInputText />
+                  </span>
+                </div>
+
+                <p-button icon="pi pi-fw pi-phone" label="Call Seller Now" styleClass="p-button-warning w-21rem"></p-button>
+
+              </div>
+            </p-dialog>
         </p-dialog>
-    </div>
-      <p-inplace>
-        <ng-template pTemplate="display">
-          <p-button icon="pi pi-fw pi-envelope" label="Start Chat" styleClass="p-button-success w-21rem"></p-button>
-        </ng-template>
-        <ng-template pTemplate="content">
-            <input type="text" value="Message" pInputText />
-        </ng-template>
-    </p-inplace>
+      </div>
+
+        <p-button (click)="showChatDialog()" icon="pi pi-fw pi-envelope" label="Start Chat" styleClass="p-button-success w-21rem"></p-button>
+        <p-dialog header="Chat" [(visible)]="chatVisible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+          <h5>SEND INQUIRY FOR THIS CAR</h5>
+          <p-divider></p-divider>
+          <div class="formgrid">
+            <div class="field">
+              <label>Your name</label>
+              <span class="p-input-icon-left">
+                <i class="pi pi-user"></i>
+                <input type="text" pInputText />
+              </span>
+            </div>
+            <div class="field">
+              <label>Email</label>
+              <span class="p-input-icon-left">
+                <i class="pi pi-envelope"></i>
+                <input type="email" pInputText />
+              </span>
+            </div>
+            <div class="field">
+              <label>Mobile number</label>
+              <span class="p-input-icon-left">
+                <i class="pi pi-phone"></i>
+                <input type="number" pInputText />
+              </span>
+            </div>
+            <div class="field">
+              <label>Address</label>
+              <span class="p-input-icon-left">
+                <i class="pi pi-location"></i>
+                <input type="text" pInputText />
+              </span>
+            </div>
+            <div class="field">
+              <label>Your message (optional)</label>
+              <span class="p-input-icon-left">
+                <textarea rows="5" cols="30" pInputTextarea ></textarea>
+              </span>
+            </div>
+            <p-button icon="pi pi-fw pi-envelope" label="Inquire Now" styleClass="p-button-warning w-21rem"></p-button>
+
+          </div>
+        </p-dialog>
+
     </div>
     <p-divider></p-divider>
-    <h5><a href="https://www.instagram.com/charliesmotors.ke/"> Charlie Motors{{vehicle.user}} </a></h5>
+    <h5>{{vehicle.user}}</h5>
 
   </div>
 

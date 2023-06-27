@@ -53,7 +53,7 @@ export class PreviewComponent implements OnInit {
     }
 ];
   constructor(
-              private dataServive: DataService,
+              private dataService: DataService,
               private messageService: MessageService,
               private router: Router,
               private ds: DataStorageService,
@@ -61,9 +61,9 @@ export class PreviewComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.carData = {
-      "basicInfo": this.dataServive.getbasicInfoData(),
-      "images": this.dataServive.getuploadPictureData(),
-      "carDetails": this.dataServive.getcardetailsData()
+      "basicInfo": this.dataService.getbasicInfoData(),
+      "images": this.dataService.getuploadPictureData(),
+      "carDetails": this.dataService.getcardetailsData()
     }
     if(this.carData.images){
       this.processImageFiles(this.carData.images)
@@ -108,7 +108,7 @@ export class PreviewComponent implements OnInit {
 
   onSubmit(){
     let userId = localStorage.getItem('userId');
-    const images: File[] = this.dataServive.getuploadPictureData();
+    const images: File[] = this.dataService.getuploadPictureData();
 
     const vehicleData = new FormData();
     vehicleData.append("userId", userId || '1');
