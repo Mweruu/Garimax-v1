@@ -162,6 +162,18 @@ export class FiltersComponent implements OnInit {
   // }
   onMaxPriceFilterChanged(selectedFilter:string){
     this.searchFilterChanged.emit(selectedFilter)
+    return function(items:any, attr:any,min:any, max:any) {
+      var range = []
+          // min=parseFloat(minimum),
+          // max=parseFloat(maximum);
+      for (var i=0, l=items.length; i<l; ++i){
+          var item = items[i];
+          if(item[attr]<=max && item[attr]>=min){
+              range.push(item);
+          }
+      }
+      return range;
+  };
     console.log("ef",selectedFilter)
   }
   onPriceFilterChanged(selectedFilter:string){
@@ -236,4 +248,5 @@ export class FiltersComponent implements OnInit {
   clear(){
     window.location.reload();
   }
+
 }

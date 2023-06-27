@@ -1,7 +1,8 @@
 <p-toast></p-toast>
 <form [formGroup]="carDetsForm" (ngSubmit)="onSubmit()">
   <div class="formgroup-inline  justify-content-center">
-    <div class="card grid p-fluid mt-0 p-5 col-4 md:col-4 lg:col-4 ">
+    <!-- <form [formGroup]="carDetsForm" (ngSubmit)="onSubmit()"> -->
+      <div class="card grid p-fluid mt-0 p-5 col-4 md:col-4 lg:col-4 ">
         <!-- <div class="field col-10 md:col-10 lg:col-10  m-2">
           <input pInputText id="name" value="basicinfor.informationForm['make'] basicinfor.informationForm['model'] basicinfor.informationForm['yearOfManufacture']" rows="4" />
         </div> -->
@@ -129,6 +130,7 @@
           </div>
         </div>
     </div>
+  <!-- </form> -->
     <div class="card grid p-fluid m-5 mt-0 col-5 md:col-5 lg:col-5 ">
       <h4 class="m-5">
         Car Options and Accesories
@@ -148,10 +150,9 @@
             <label [for]="option.key">{{ option.name }}</label>
           </div> -->
           <div *ngFor="let option of options" class="field-checkbox col-5 md:col-5 lg:col-5">
-            <p-checkbox name="group" [value]="option" [inputId]="option.key" checked="option.select" [binary]="true"  (onchange)="onCheckboxChange($event)"></p-checkbox>
+            <p-checkbox name="group" [value]="option" formControlName="selectedOptions" [inputId]="option.key" [binary]="true"  (click)="onCheckboxChange($event)"></p-checkbox>
             <label [for]="option.key">{{ option.name }}</label>
           </div>
-          {{selectedOptions}}
         </div>
       </div>
     </div>

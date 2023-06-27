@@ -68,14 +68,14 @@
       <span class="field">
         <label for="dropdown">Min</label>
         <p-dropdown inputId="dropdown" [options]="price" optionValue="price"  optionLabel="price" placeholder="Select"
-        [(ngModel)]="priceFilter" (onChange)="applyFilter()"></p-dropdown>
+        [(ngModel)]="priceFilter" (onChange)="onMaxPriceFilterChanged($event.value)"></p-dropdown>
       </span>
     </div>
     <div class="field col-5 md:col-12 lg:col-5  m-2 p-0">
       <span class="field">
         <label for="dropdown">Max</label>
         <p-dropdown inputId="dropdown" [options]="price" optionValue="maxPrice"  optionLabel="maxPrice" placeholder="Select"
-        [(ngModel)]="maxPriceFilter" (onChange)="applyFilter()"></p-dropdown>
+        [(ngModel)]="maxPriceFilter" (onChange)="onMaxPriceFilterChanged($event.value)"></p-dropdown>
       </span>
     </div>
   </div>

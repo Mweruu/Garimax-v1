@@ -1,12 +1,16 @@
-// import { FormGroup, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 
-// export const passwordMatchValidator: ValidatorFn = (control: FormGroup): ValidationErrors | null => {
-//   const password = control.get('password');
-//   const confirmPassword = control.get('confirmPassword');
-
-//   if (password.value !== confirmPassword.value) {
-//     return { passwordMatch: true };
-//   }
-
-//   return null;
-// };
+export function PasswordValidator(controlName: string, matchingControlName: string){
+    return (formGroup: FormGroup) => {
+        const control = formGroup.controls[controlName];
+        const matchingControl = formGroup.controls[matchingControlName];
+        if (matchingControl.errors && !matchingControl.errors['passwordValidator']) {
+            return;
+        }
+        if (control.value !== matchingControl.value) {
+            matchingControl.setErrors({ passwordValidator: true });
+        } else {
+            matchingControl.setErrors(null);
+        }
+    }
+}

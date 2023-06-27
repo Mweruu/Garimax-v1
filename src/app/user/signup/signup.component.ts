@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { timer } from 'rxjs';
+import { PasswordValidator } from 'src/app/password-match.validator';
 
 @Component({
   selector: 'app-signup',
@@ -16,7 +17,7 @@ export class SignupComponent implements OnInit {
   isSubmitted = false;
   user = {firstName:'', lastName:'',email:'',phoneNumber:'', password:'',confirmPassword:''};
   signin = false;
-  signupForm! :FormGroup;
+  signupForm :FormGroup = new FormGroup({});
   emailControl = new FormControl('', [Validators.required, Validators.email]);
   phoneNumberControl = new FormControl('', [Validators.required, Validators.minLength(9)]);
   passwordControl = new FormControl('', [Validators.required, Validators.minLength(6)]);
@@ -31,6 +32,18 @@ f: any;
     private messageService:MessageService
     ) { }
 
+    // function PasswordValidator(passwordKey: string, confirmPasswordKey: string) {
+    //   return (formGroup: FormGroup) => {
+    //     const passwordControl = formGroup.controls[passwordKey];
+    //     const confirmPasswordControl = formGroup.controls[confirmPasswordKey];
+
+    //     if (passwordControl.value !== confirmPasswordControl.value) {
+    //       confirmPasswordControl.setErrors({ passwordMismatch: true });
+    //     } else {
+    //       confirmPasswordControl.setErrors(null);
+    //     }
+    //   };
+    // }
   ngOnInit() {
     this.signupForm = this.fb.group({
         firstName:['', Validators.required],
@@ -39,10 +52,12 @@ f: any;
         phoneNumber:this.phoneNumberControl,
         password:this.passwordControl,
         confirmPassword:['', Validators.required, ]
-    },{
-      validators:this.MustMatch('password', 'confirmPassword')
+    },
+    {
+      validator:PasswordValidator('password', 'confirmPassword')
     });
   }
+
 
   MustMatch(controlName:string, matchingControlName:string){
     return(formGroup:FormGroup)=>{

@@ -13,7 +13,7 @@ import { MessageService } from 'primeng/api';
   styleUrls: ['./cardetails.component.scss']
 })
 export class CardetailsComponent implements OnInit {
-    selectedOptions:boolean = false;
+    // selectedOptions: string[] = [];;
     options: any[] = CAR_OPTIONS;
     color: any = COLOR;
     fuelType:any = FUEL_TYPE;
@@ -55,8 +55,10 @@ export class CardetailsComponent implements OnInit {
         description:['', Validators.required],
         duty:['', Validators.required],
         condition:['', Validators.required],
-        // accessories:[]
+        selectedOptions:[[]]
       });
+
+
 
     }
     onBasicUploadAuto(event: any) {
@@ -84,7 +86,7 @@ export class CardetailsComponent implements OnInit {
         condition:this.carDetails['condition'].value,
         acceleration:this.carDetails['acceleration'].value,
         description:this.carDetails['description'].value,
-        // accessories:this.carDetails['accessories'].value
+        accessories:this.carDetails['selectedOptions'].value
 
       }
       this.dataService.setcardetailsData(details)
@@ -105,29 +107,30 @@ export class CardetailsComponent implements OnInit {
     }
 
 
-    // onCheckboxChange() {
-    //   const options = document.querySelectorAll('input[type="checkbox"]');
-    //   const selectedOptions = Array.from(options).filter(checkbox => (checkbox as HTMLInputElement).checked);
-    //   this.selectedOptions = this.accessories
-    //   console.log(selectedOptions);
+    // onCheckboxChange(event:any) {
+    //   const options = this.options;
+    //   console.log(45546565,options);
+    //   options.forEach(option => {
+    //     console.log(option.name)
+    //   });
+    //   const selectedOptions = Array.from(options).filter(checkbox =>(checkbox as HTMLInputElement).value);
+    //   // this.selectedOptions = this.accessories
+    //     console.log(4554,selectedOptions);
     //   // const selectedOptions = this.options.filter((option: any) => option.selected);
-    //   // console.log(selectedOptions);
     // }
 
-    onCheckboxChange($event: any) {
-      const id= $event.target.id;
-      const isChecked = $event?.target.checked;
-      console.log(5454,id, 546,isChecked)
-
-      this.options = this.options.map((d)=>{
-        if(d.id === id){
-          d.select = isChecked;
-          return d;
-        }
-        return d;
-      });
-      // console.log(this.options)
-      console.log(event)
+    onCheckboxChange(event:any) {
+      // const selectedOptions = this.carDetsForm.get('selectedOptions')?.value;
+      // const options = this.options;
+      // const selectedOption = Array.from(options).filter(checkbox =>(checkbox as HTMLInputElement).value);
+      // console.log('Selected Options:', selectedOptions);
+      // if(selectedOptions){
+      //   console.log('checkbox', selectedOption, 'is checked');
+      // }
+      // else{
+      //   console.log('checkbox is unchecked');
+      // }
+      console.log(event.target.checked)
 
     }
 

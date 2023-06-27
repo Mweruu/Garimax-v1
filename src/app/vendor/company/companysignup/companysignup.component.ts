@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { timer } from 'rxjs';
 import { DataStorageService } from 'src/app/datastorage.service';
+import { PasswordValidator } from 'src/app/password-match.validator';
 
 @Component({
   selector: 'app-companysignup',
@@ -45,6 +46,9 @@ export class CompanysignupComponent implements OnInit {
       confirmPassword:['', Validators.required],
       dealerLicense:false,
 
+    },
+    {
+      validator:PasswordValidator('password', 'confirmPassword')
     });
 
   }
