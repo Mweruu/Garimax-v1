@@ -26,7 +26,13 @@
           </div>
       </p-divider>
       </div>
-      <p>{{vehicle.accessories}}</p>
+      <div class="col-12 md:col-12 lg:col-12">
+      <div class="formgroup-inline" >
+        <div *ngFor="let accessory of vehicle.accessories[0]" class="field-checkbox col-5 md:col-5 lg:col-5">
+            <p>{{accessory}} </p>
+        </div>
+      </div></div>
+      <!-- <p>{{vehicle.accessories[0]}}</p> -->
 
       <div class="grid formgrid">
         <p-divider align="left">

@@ -1,11 +1,11 @@
 <app-topbar></app-topbar>
 <p>Got here!</p>
 <div class="card"></div>
-<a routerLink="/vendorprofile">Back to retailer</a>
-<h4>All cars from {{user.firstName}}</h4>
+<a routerLink="/vendorprofile" (click)="getUser(user.id)">Back to retailer</a>
+<h4>All cars from {{user?.firstName}}</h4>
 <div class="formgroup-inline mb-5 mt-10">
   <div class="col-12 md:col-12 lg:col-4">
-    <p>{{vehicles.length}} Cars found</p>
+    <p>{{vehicles?.length}} Cars found</p>
     <app-filters (searchFilterChanged)="onSearchFilterEntered($event)"></app-filters>
   </div>
   <div class="col-12 md:col-12 lg:col-8">
@@ -16,8 +16,11 @@
         </div>
         <div class="col-8" routerLink="/view" (click)="getVehicle(vehicle.id)">
           <h6>{{vehicle.make}} {{vehicle.model}} {{vehicle.yearOfManufacture.split('-')[0]}}</h6>
-          <div class="m-2 text-red-500 font-bold ">{{vehicle.price | currency:'Ksh. ':'symbol':'1.0-0'}}</div>
-          <p>{{vehicle.bodyType}} | {{vehicle.mileage}} | {{vehicle.engineSize}} | {{vehicle.enginePower}} | {{vehicle.transmission}} | {{vehicle.fuelType}} | {{vehicle.doors}} | {{vehicle.seats}} </p>
+          <div class="text-red-500 font-bold ">{{vehicle.price | currency:'Ksh. ':'symbol':'1.0-0'}}</div>
+          <p>{{vehicle.bodyType}} | {{vehicle.mileage}} | {{vehicle.engineSize}} | {{vehicle.enginePower}} |
+            {{vehicle.transmission}} | {{vehicle.fuelType}}
+            <!-- | {{vehicle.doors}} | {{vehicle.seats}} -->
+           </p>
           <div>{{vehicle.description}}</div>
         </div>
       </div>

@@ -84,7 +84,7 @@ export class VehiclesComponent implements OnInit {
         // console.log(this.vehicles);
         //  for (const vehicle of this.vehicles) {
         //   this.userId = vehicle.user.id
-        //   console.log(this.userId);
+        //   console.log(this.userId, vehicle.accessories);
         // }
       },
       (error) => {

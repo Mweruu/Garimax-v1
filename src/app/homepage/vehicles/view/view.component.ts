@@ -47,6 +47,7 @@ export class ViewComponent implements OnInit {
 ];
 value: any;
 
+
   constructor(private ds:DataStorageService,
               private router: ActivatedRoute,
              ) { }
