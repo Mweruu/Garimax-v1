@@ -29,10 +29,10 @@
             <div class="col-12 md:col-12 lg:col-12 ">
               <div routerLink="/view" (click)="getVehicle(vehicle.id)">
               <div class="mt-2">
-                <p-tag severity="info" value={{vehicle.condition}} class="m-2"></p-tag>
-                <!-- <p-tag severity="danger" value={{vehicle.usage}} class="m-2"></p-tag> -->
-                <p-tag [severity]="vehicle.usage === 'Foreign Used' ? 'info':'danger'" value= "Foreign Used" [icon]="vehicle.usage === 'Foreign Used' ? 'pi pi-check': 'pi pi-times'"  class="ml-1"></p-tag>
-                <p-tag [severity]="vehicle.usage === 'Locally Used' ? 'info':'danger'" value= "Locally Used" [icon]="vehicle.usage === 'Locally Used' ? 'pi pi-check': 'pi pi-times'" class="ml-2"></p-tag>
+                <p-tag [severity]="vehicle.condition === 'Used' ? 'info':'danger'" value={{vehicle.condition}} class="m-2"></p-tag>
+                <p-tag [severity]="vehicle.usage === 'Foreign Used' ? 'info':'danger'" value= {{vehicle.usage}} class="ml-1"></p-tag>
+                <!-- <p-tag [severity]="vehicle.usage === 'Foreign Used' ? 'info':'danger'" value= "Foreign Used" [icon]="vehicle.usage === 'Foreign Used' ? 'pi pi-check': 'pi pi-times'"  class="ml-1"></p-tag> -->
+                <!-- <p-tag [severity]="vehicle.usage === 'Locally Used' ? 'info':'danger'" value= "Locally Used" [icon]="vehicle.usage === 'Locally Used' ? 'pi pi-check': 'pi pi-times'" class="ml-2"></p-tag> -->
               </div>
             <div class="m-2 text-red-500 hover:text-red-700  font-bold ">{{vehicle.price | currency:'Ksh. ':'symbol':'1.0-0' }}</div>
               <h6 class="m-2">
@@ -43,6 +43,7 @@
                   {{vehicle.fuelType}} | {{vehicle.transmission}} | {{vehicle.engineSize}} | {{vehicle.mileage| number: '1.0-0' }} KM | {{vehicle.color}} | {{vehicle.bodyType}}
                 </strong>
               </p>
+              <p class="m-2">{{vehicle.description}}...</p>
 
               <p-divider></p-divider>
               </div>
