@@ -28,7 +28,7 @@ export class DataStorageService {
   private getSingleUserUrl = `${BASE_URL}/api/user`
   private updateProfileUrl = `${BASE_URL}/api/user/updateProfile`
   private getVehicleByUserId = `${BASE_URL}/api/getVendorVehicles`
-
+  private updateVehicleUrl = `${BASE_URL}/user/updateVehicle`
   user:any;
 
   constructor(private http: HttpClient) { }
@@ -66,5 +66,9 @@ export class DataStorageService {
   }
   getUserVehicle(userId:string){
     return this.http.get<any>(`${this.getVehicleByUserId}/${userId}`);
+  }
+  updateVehicle(id:string, value:any){
+    console.log("yee",id)
+    return this.http.put<any>(`${this.updateVehicleUrl}/${id}`,value);
   }
 }

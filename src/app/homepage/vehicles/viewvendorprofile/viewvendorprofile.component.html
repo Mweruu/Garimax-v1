@@ -3,13 +3,13 @@
 <div class="profile-display">
   <div class="card"></div>
 <div class="formgroup-inline">
-  <div class="col-10 md:col-10 lg:col-10">
+  <div class="col-12 md:col-12 lg:col-12">
   <p-panel header="My account" [toggleable]="true">
     <div class="col-12 pb-3 pt-3" >
         <div class="formgroup-inline mb-5" >
           <div class="col-12 md:col-12 lg:col-7">
             <div class="card flex align-items-center justify-content-center">
-              <p-image src="{{user.profileImage}}" alt="Image" width="100%" [preview]="true"></p-image>
+              <p-image src="{{user?.profileImage}}" alt="Image" width="120%" [preview]="true"></p-image>
             </div>
           </div>
           <div class="card col-12 md:col-12 lg:col-5 ">
@@ -23,9 +23,10 @@
             <p-rating formControlName="value"></p-rating>
             <a>View reviews</a>
             <p-divider></p-divider>
-            <p-button routerLink="/vehicles" styleClass="p-button-info" styleClass="w-full" (click)="getVehicles(userId)">View {{vehicles.length}} cars</p-button>
+            <p-button routerLink="/vehicles" styleClass="p-button-info" styleClass="w-full" (click)="getVehicles(userId)">View {{vehicles?.length}} cars</p-button>
             <div class="formgroup-inline m-5 gap-3">
-              <p-button (click)="showDialogs()"  icon="pi pi-fw pi-phone" label="Contact Seller" styleClass="p-button-outlined p-button-info"></p-button>
+              <div class="col-12 md:col-5 lg:col-5 ">
+                <p-button (click)="showDialogs()"  icon="pi pi-fw pi-phone" label="Contact Seller" styleClass="p-button-outlined p-button-info"></p-button>
                 <p-dialog header="Seller details" [(visible)]="contactVisible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
                   <div class="p-fluid">
                     <div class="field">
@@ -61,8 +62,9 @@
 
                   </div>
                 </p-dialog>
-
-              <p-button (click)="showChatDialog()" icon="pi pi-fw pi-envelope" label="Start Chat" styleClass="p-button-outlined p-button-info"></p-button>
+              </div>
+              <div class="col-12 md:col-5 lg:col-5 ">
+                <p-button (click)="showChatDialog()" icon="pi pi-fw pi-envelope" label="Start Chat" styleClass="p-button-outlined p-button-info"></p-button>
                 <p-dialog header="Chat" [(visible)]="chatVisible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
                   <h5>SEND INQUIRY FOR THIS CAR</h5>
                   <p-divider></p-divider>
@@ -105,6 +107,7 @@
 
                   </div>
                 </p-dialog>
+              </div>
             </div>
           </div>
         </div>
@@ -113,13 +116,13 @@
 </div>
 </div>
 <div class="formgroup-inline mb-5">
-<div class="col-10 md:col-10 lg:col-5 justify-content-center align-items-center">
+<div class="col-12 md:col-12 lg:col-6 justify-content-center align-items-center">
   <p-panel header="Your vehicles" [toggleable]="true">
     <div  class="col-12 formgroup-inline" *ngFor="let vehicle of vehicles">
-      <div class="col-4">
+      <div class="col-5">
       <p-image src="{{vehicle.image}}" alt="Image" width="100%" [preview]="true"></p-image>
     </div>
-    <div class="col-8">
+    <div class="col-7">
       <h6>{{vehicle.make}} {{vehicle.model}} {{vehicle.yearOfManufacture.split('-')[0]}}</h6>
       <div class="m-2 text-red-500 font-bold ">{{vehicle.price | currency:'Ksh. ':'symbol':'1.0-0'}}</div>
       <p-divider></p-divider>
@@ -127,14 +130,14 @@
     </div>
   </p-panel>
 </div>
-<div class="col-10 md:col-10 lg:col-5">
+<div class="col-12 md:col-12 lg:col-6">
   <p-panel header="Your sold vehicles" [toggleable]="true">
     <!-- <div  class="col-12"></div> -->
 </p-panel>
 </div>
 </div>
-<div class="card formgroup-inline col-10 md:col-10 lg:col-10">
-<div class="col-10 md:col-10 lg:col-5 p-fluid">
+<div class="card formgroup-inline col-12 md:col-12 lg:col-12">
+<div class="col-12 md:col-12 lg:col-5 p-fluid">
   <div class="field">
     <h5>Get in touch</h5>
   </div>
@@ -143,7 +146,7 @@
     <p>{{user?.address}}</p>
   </div>
   </div>
-  <div class="col-10 md:col-10 lg:col-5 p-fluid">
+  <div class="col-12 md:col-12 lg:col-5 p-fluid">
     <div class="field">
       <label for="url" class="block text-900 font-medium mb-2">Website</label>
       <a href="{{user?.companyUrl}}">{{user?.companyUrl}}</a>

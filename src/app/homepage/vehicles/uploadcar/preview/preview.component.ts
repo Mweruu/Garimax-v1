@@ -94,7 +94,12 @@ export class PreviewComponent implements OnInit {
       this.steering = this.carData.carDetails.steering;
       this.duty = this.carData.carDetails.duty;
       this.condition = this.carData.carDetails.condition;
-      // this.accessories = this.carData.carDetails.accessories;
+      this.accessories = this.carData.carDetails.accessories;
+    }
+
+    const formData = localStorage.getItem('formData');
+    if (formData !== null) {
+      this.carData.patchValue(JSON.parse(formData));
     }
 
   }
@@ -136,7 +141,7 @@ export class PreviewComponent implements OnInit {
     vehicleData.append("steering", this.carData.carDetails.steering);
     vehicleData.append("duty", this.carData.carDetails.duty);
     vehicleData.append("condition", this.carData.carDetails.condition);
-    // vehicleData.append("accessories", this.carData.carDetails.accessories);
+    vehicleData.append("accessories", this.carData.carDetails.accessories);
 
     // vehicleData.append("additionalFeatures", [this.carData.carDetails.driveTrain,
     //                                   this.carData.carDetails.description,
@@ -154,6 +159,8 @@ export class PreviewComponent implements OnInit {
         detail:'Please wait for our team to verify your vehicle'
       })
       timer(2500).toPromise().then(()=>{
+        localStorage.removeItem('formData');
+
         this.router.navigate(['/'])
       })
     },
@@ -168,5 +175,6 @@ export class PreviewComponent implements OnInit {
       }
     );
   }
+
 
 }

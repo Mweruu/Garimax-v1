@@ -5,7 +5,7 @@
     left: 0;
     top: 0;
     width: 100%;
-    padding: 0px 90px 0px 130px;
+    padding: 0px 141px 0px 140px;
     background-color: var(--primary-color);
     transition: left $transitionDuration;
     display: flex;
@@ -86,7 +86,7 @@
 
     .layout-topbar-menu {
         margin: 0 0 0 auto;
-        padding: 0;
+        padding-right: 100;
         list-style: none;
         display: flex;
 

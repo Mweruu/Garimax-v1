@@ -15,6 +15,7 @@ export class SpecificuserVehiclesComponent implements OnInit {
   userId:any;
   searchFilter:string = '';
   searchText:string = '';
+  currentVehicleId!:string;
 
   constructor( private ds:DataStorageService,
     private activatedRouter: ActivatedRoute,
@@ -24,8 +25,8 @@ export class SpecificuserVehiclesComponent implements OnInit {
   async ngOnInit() {
       this.activatedRouter.params.subscribe(params => {
         if(params['userId']){
-          // this.currentUserId = params['userId'];
-          this.currentUserId = '1';
+          this.currentUserId = params['userId'];
+          // this.currentUserId = '1';
           console.log("ID:",this.currentUserId)
           this.ds.getUser(this.currentUserId).subscribe(user => {
             this.user = user;
@@ -92,5 +93,22 @@ isMatched(vehicle: any): boolean {
     );
   }
 }
+
+  getUser(userId: string){
+    this.activatedRouter.params.subscribe(params => {
+      if(params['vehicleId']){
+        this.currentVehicleId = params['vehicleId'];
+        console.log("ID:",this.currentVehicleId)
+        this.ds.getVehicle(this.currentVehicleId).subscribe(vehicle => {
+          this.vehicle = vehicle;
+          console.log("DATA", vehicle.images)
+          console.log(vehicle.userId)
+          this.userId = vehicle.userId
+        });
+      }
+    });
+    console.log('gothere',this.userId)
+    this.router.navigateByUrl(`vendorprofile/${userId}`);
+  }
 
 }

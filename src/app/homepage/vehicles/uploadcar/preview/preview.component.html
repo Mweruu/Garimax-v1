@@ -17,7 +17,12 @@
           <div class="inline-flex align-items-center">
               <b>Car features and options</b>
           </div>
-      </p-divider>
+        </p-divider>
+        <div class="formgroup-inline">
+          <div *ngFor="let accessory of accessories" class="col-5 md:col-5 lg:col-5">
+              <p>{{accessory}} </p>
+          </div>
+        </div>
       </div>
     </div>
   </div>

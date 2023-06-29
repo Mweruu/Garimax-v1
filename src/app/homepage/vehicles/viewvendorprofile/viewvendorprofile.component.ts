@@ -23,7 +23,7 @@ export class ViewvendorprofileComponent implements OnInit {
   rateForm!:FormGroup;
   isSubmitted = false;
   currentUserId!:string;
-  user:any
+  user:any;
   currentVehicleId!:string;
   vehicle:any;
   userId :any;
@@ -69,7 +69,7 @@ export class ViewvendorprofileComponent implements OnInit {
 
 
     this.updateForm = this.fb.group({
-      value:['', Validators.required],
+      value:['4', Validators.required],
 
   });
   }
@@ -129,6 +129,5 @@ export class ViewvendorprofileComponent implements OnInit {
   showChatDialog() {
     this.chatVisible = true;
   }
-
 }
 

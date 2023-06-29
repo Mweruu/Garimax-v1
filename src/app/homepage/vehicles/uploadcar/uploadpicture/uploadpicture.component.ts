@@ -27,6 +27,7 @@ export class UploadpictureComponent implements OnInit {
     this.imageForm= this.fb.group({
       images: new FormControl(),
     })
+
   }
 
 
@@ -54,6 +55,9 @@ export class UploadpictureComponent implements OnInit {
     }else{
       this.router.navigate(['/cardetails'])
     }
+    const imageData = localStorage.getItem('imageData');
+
+
   }
 
   get imageUpload(){

@@ -18,7 +18,7 @@ export class VehiclesComponent implements OnInit {
   value: number | undefined;
   panelSizes = [30,70]
   vendor:any;
-  // vehicle!:string;
+  vehicles2:any;
   vehicles:any;
   search:any;
   searchText:string = '';
@@ -33,7 +33,8 @@ export class VehiclesComponent implements OnInit {
   currentVehicleId!:string;
   vehicle:any;
   userId :any;
-
+  currentUserId!:string;
+  user:any;
 
   options = [
     { label: 5, value: 5 },
@@ -57,7 +58,8 @@ export class VehiclesComponent implements OnInit {
     this.value = 4;
     this._setValues();
     this.getAllVehicles();
-    this.getUserId()
+    this.getUserId();
+
   }
 
   _setValues(){
@@ -84,7 +86,7 @@ export class VehiclesComponent implements OnInit {
         // console.log(this.vehicles);
         //  for (const vehicle of this.vehicles) {
         //   this.userId = vehicle.user.id
-        //   console.log(this.userId);
+        //   console.log(this.userId, vehicle.accessories);
         // }
       },
       (error) => {
@@ -140,6 +142,11 @@ export class VehiclesComponent implements OnInit {
     this.router.navigateByUrl(`vendorprofile/${userId}`);
   }
 
+  getVehicles(userId: any){
+    this.router.navigateByUrl(`vehicles/${userId}`);
+    console.log('gothere')
+  }
+
   onSearchTextEntered(searchValue:string){
     this.searchText =searchValue ;
     console.log(1,this.searchText)
@@ -159,11 +166,12 @@ export class VehiclesComponent implements OnInit {
       vehicle.model.toLowerCase().includes(this.searchFilter) ||
       vehicle.mileage.toLowerCase().includes(this.searchFilter) ||
       vehicle.make.toLowerCase().includes(this.searchFilter) ||
-      (vehicle.price >= this.minPrice &&
-        vehicle.price <= this.maxPrice) ||
+      // vehicle.price.toLowerCase().includes(this.searchFilter) ||
+      // (vehicle.price >= this.minPrice &&
+      //   vehicle.price <= this.maxPrice) ||
       vehicle.usage.toLowerCase().includes(this.searchFilter) ||
       // vehicle.foreignUsed.toLowerCase().includes(this.searchFilter) ||
-      // vehicle.acceleration.toLowerCase().includes(this.searchFilter) ||
+      vehicle.acceleration.toLowerCase().includes(this.searchFilter) ||
       vehicle.condition.toLowerCase().includes(this.searchFilter) ||
       // vehicle.doors.toLowerCase().includes(this.searchFilter) ||
       vehicle.engineSize.toLowerCase().includes(this.searchFilter) ||

@@ -86,7 +86,7 @@
             <p-checkbox id="sold" [binary]="true" styleClass="mr-2"></p-checkbox>
             <label for="sold">Sold</label>
         </div>
-        <a class="font-medium no-underline ml-2  cursor-pointer" style="color: var(--primary-color)"routerLink="/basicinfo">Edit</a>
+        <a class="font-medium no-underline ml-2  cursor-pointer" style="color: var(--primary-color)"routerLink="/basicinfo" (click)="getVehicle(vehicle.id)">Edit</a>
       </div>
       <p-divider></p-divider>
     </div>

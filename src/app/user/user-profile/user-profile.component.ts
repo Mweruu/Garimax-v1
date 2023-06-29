@@ -208,32 +208,13 @@ export class UserProfileComponent implements OnInit {
     // this.update(userId)
   }
 
+  updateVehicle(id: string){
+    const vehicle={}
+    this.ds.updateVehicle(id ,vehicle)
+  }
 
-  // update(userId: string){
-  //   this.isSubmitted = true;
-  //   this.ds.updateProfile(userId, this.updatedData).subscribe(
-  //       response => {
-  //         console.log('User details updated successfully!', response);
-  //         // Handle success response here
-  //         console.log(1123,response)
-  //         this.user = response
-  //         this.messageService.add({
-  //           severity:'success',
-  //           summary:'Success',
-  //           detail:'User details updated successfully'
-  //         })
-  //       },
-  //       error => {
-  //         console.error('Failed to update user:', error);
-  //         // Handle error response here
-  //         this.messageService.add({
-  //           severity:'error',
-  //           summary:'Error',
-  //           detail:'Failed to update user'
-  //         })
-  //       }
-  //     );
-
-  // }
+  getVehicle(id: string){
+    this.router.navigateByUrl(`basicinfo/${id}`);
+  }
 
 }
