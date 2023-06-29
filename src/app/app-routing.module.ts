@@ -1,14 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppLayoutComponent } from './layout/app.layout.component';
-import { VehiclesComponent } from './homepage/vehicles/vehicles.component';
 import { LoginComponent } from './user/login/login.component';
 import { SignupComponent } from './user/signup/signup.component';
 import { CompanysignupComponent } from './vendor/company/companysignup/companysignup.component';
 import { IndividualsignupComponent } from './vendor/individual/individualsignup/individualsignup.component';
 import { SignupTabsComponent } from './vendor/signuptabs/signuptabs.component';
 import { SocialLoginComponent } from './user/social-login/social-login.component';
-import { FiltersComponent } from './homepage/filters/filters.component';
 import { UploadcarComponent } from './homepage/vehicles/uploadcar/uploadcar.component';
 import { BasicinfoComponent } from './homepage/vehicles/uploadcar/basicinfo/basicinfo.component';
 import { UploadpictureComponent } from './homepage/vehicles/uploadcar/uploadpicture/uploadpicture.component';
@@ -17,7 +15,6 @@ import { PreviewComponent } from './homepage/vehicles/uploadcar/preview/preview.
 import { ViewComponent } from './homepage/vehicles/view/view.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { ViewvendorprofileComponent } from './homepage/vehicles/viewvendorprofile/viewvendorprofile.component';
-import { UpdateprofileComponent } from './user/updateprofile/updateprofile.component';
 import { SpecificuserVehiclesComponent } from './specificuser-vehicles/specificuser-vehicles.component';
 
 const routes: Routes = [

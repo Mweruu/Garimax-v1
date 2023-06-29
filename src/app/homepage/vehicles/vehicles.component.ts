@@ -161,25 +161,15 @@ export class VehiclesComponent implements OnInit {
     // console.log(vehicle)
     if (this.searchText === '') {
       return this.searchFilter === '' || vehicle.location.toLowerCase().includes(this.searchFilter) ||
-      vehicle.transmission.toLowerCase().includes(this.searchFilter) ||
-      vehicle.bodyType.toLowerCase().includes(this.searchFilter) ||
       vehicle.model.toLowerCase().includes(this.searchFilter) ||
-      vehicle.mileage.toLowerCase().includes(this.searchFilter) ||
-      vehicle.make.toLowerCase().includes(this.searchFilter) ||
-      // vehicle.price.toLowerCase().includes(this.searchFilter) ||
-      // (vehicle.price >= this.minPrice &&
-      //   vehicle.price <= this.maxPrice) ||
+      vehicle.make.toLowerCase().includes(this.searchFilter)||
+      vehicle.location.toLowerCase().includes(this.searchFilter) ||
+      vehicle.bodyType.toLowerCase().includes(this.searchFilter) ||
       vehicle.usage.toLowerCase().includes(this.searchFilter) ||
-      // vehicle.foreignUsed.toLowerCase().includes(this.searchFilter) ||
-      vehicle.acceleration.toLowerCase().includes(this.searchFilter) ||
       vehicle.condition.toLowerCase().includes(this.searchFilter) ||
-      // vehicle.doors.toLowerCase().includes(this.searchFilter) ||
-      vehicle.engineSize.toLowerCase().includes(this.searchFilter) ||
+      vehicle.transmission.toLowerCase().includes(this.searchFilter) ||
       vehicle.color.toLowerCase().includes(this.searchFilter) ||
-      // vehicle.seats.toLowerCase().includes(this.searchFilter) ||
-      // vehicle.bootSpace.toLowerCase().includes(this.searchFilter) ||
       vehicle.fuelType.toLowerCase().includes(this.searchFilter)
-      // vehicle.fuelConsumption.toLowerCase().includes(this.searchFilter)
       ;
 
 
