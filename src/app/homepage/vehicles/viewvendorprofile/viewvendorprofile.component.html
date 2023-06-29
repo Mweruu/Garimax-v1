@@ -25,7 +25,8 @@
             <p-divider></p-divider>
             <p-button routerLink="/vehicles" styleClass="p-button-info" styleClass="w-full" (click)="getVehicles(userId)">View {{vehicles?.length}} cars</p-button>
             <div class="formgroup-inline m-5 gap-3">
-              <p-button (click)="showDialogs()"  icon="pi pi-fw pi-phone" label="Contact Seller" styleClass="p-button-outlined p-button-info"></p-button>
+              <div class="col-12 md:col-5 lg:col-5 ">
+                <p-button (click)="showDialogs()"  icon="pi pi-fw pi-phone" label="Contact Seller" styleClass="p-button-outlined p-button-info"></p-button>
                 <p-dialog header="Seller details" [(visible)]="contactVisible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
                   <div class="p-fluid">
                     <div class="field">
@@ -61,8 +62,9 @@
 
                   </div>
                 </p-dialog>
-
-              <p-button (click)="showChatDialog()" icon="pi pi-fw pi-envelope" label="Start Chat" styleClass="p-button-outlined p-button-info"></p-button>
+              </div>
+              <div class="col-12 md:col-5 lg:col-5 ">
+                <p-button (click)="showChatDialog()" icon="pi pi-fw pi-envelope" label="Start Chat" styleClass="p-button-outlined p-button-info"></p-button>
                 <p-dialog header="Chat" [(visible)]="chatVisible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
                   <h5>SEND INQUIRY FOR THIS CAR</h5>
                   <p-divider></p-divider>
@@ -105,6 +107,7 @@
 
                   </div>
                 </p-dialog>
+              </div>
             </div>
           </div>
         </div>

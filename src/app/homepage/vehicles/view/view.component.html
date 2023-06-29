@@ -9,7 +9,7 @@
           <!-- <p-carousel [value]="images" [numVisible]="3" [numScroll]="1" [responsiveOptions]="responsiveOptions"> -->
 
           <div class="img-container">
-            <img src="{{vehicle.image}}" alt="Image" width="100%" id="preview">
+            <img src="{{vehicle?.image}}" alt="Image" width="100%" id="preview">
             <div class="img-prev">
               <div class="img-slide" *ngFor="let image of vehicle.images">
                 <img src="{{image}}" alt="Image" width="100%" appThumbnails>

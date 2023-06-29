@@ -23,7 +23,7 @@ export class ViewvendorprofileComponent implements OnInit {
   rateForm!:FormGroup;
   isSubmitted = false;
   currentUserId!:string;
-  user:any
+  user:any;
   currentVehicleId!:string;
   vehicle:any;
   userId :any;
@@ -129,6 +129,5 @@ export class ViewvendorprofileComponent implements OnInit {
   showChatDialog() {
     this.chatVisible = true;
   }
-
 }
 
