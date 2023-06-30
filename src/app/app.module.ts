@@ -4,36 +4,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AppLayoutModule } from './layout/app.layout.module';
-import { CardModule } from 'primeng/card';
-import { DropdownModule } from 'primeng/dropdown';
 import { LoginComponent } from './user/login/login.component';
-import { InputTextModule } from 'primeng/inputtext';
-import { PasswordModule } from 'primeng/password';
-import { CheckboxModule } from 'primeng/checkbox';
-import { ButtonModule } from 'primeng/button';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { SignupComponent } from './user/signup/signup.component';
 import { SocialLoginComponent } from './user/social-login/social-login.component';
-import { TabMenuModule } from 'primeng/tabmenu';
 import { CompanysignupComponent } from './vendor/company/companysignup/companysignup.component';
 import { IndividualsignupComponent } from './vendor/individual/individualsignup/individualsignup.component';
-import { TabViewModule } from 'primeng/tabview';
-import { SplitterModule } from 'primeng/splitter';
 import { SignupTabsComponent } from './vendor/signuptabs/signuptabs.component';
-import { ImageModule } from 'primeng/image';
-import { DividerModule } from 'primeng/divider';
-import { DataViewModule, DataViewLayoutOptions } from 'primeng/dataview';
-import { RatingModule } from 'primeng/rating';
-import { OverlayModule } from 'primeng/overlay';
-import { ReactiveFormsModule } from '@angular/forms';
-import { ToastModule } from 'primeng/toast';
-import { MessageService } from 'primeng/api';
-import { StepsModule } from 'primeng/steps';
-import { FieldsetModule } from 'primeng/fieldset';
-import { FileUploadModule } from 'primeng/fileupload';
-import { ChipModule } from 'primeng/chip';
 import { AuthService } from './auth.service';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { FiltersComponent } from './homepage/filters/filters.component';
@@ -48,6 +24,37 @@ import { AppFooterComponent } from './layout/app.footer.component';
 import { AppLayoutComponent } from './layout/app.layout.component';
 import { AppSidebarComponent } from './layout/app.sidebar.component';
 import { AppTopBarComponent } from './layout/app.topbar.component';
+import { SpecificuserVehiclesComponent } from './homepage/vehicles/specificuser-vehicles/specificuser-vehicles.component';
+import { ViewvendorprofileComponent } from './homepage/vehicles/viewvendorprofile/viewvendorprofile.component';
+import { UpdateprofileComponent } from './user/updateprofile/updateprofile.component';
+import { ViewuservehiclesComponent } from './homepage/vehicles/viewuservehicles/viewuservehicles.component';
+import { RangePipe } from './range.pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
+
+
+import { CardModule } from 'primeng/card';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputTextModule } from 'primeng/inputtext';
+import { PasswordModule } from 'primeng/password';
+import { CheckboxModule } from 'primeng/checkbox';
+import { ButtonModule } from 'primeng/button';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { TabMenuModule } from 'primeng/tabmenu';
+import { TabViewModule } from 'primeng/tabview';
+import { SplitterModule } from 'primeng/splitter';
+import { ImageModule } from 'primeng/image';
+import { DividerModule } from 'primeng/divider';
+import { DataViewModule } from 'primeng/dataview';
+import { RatingModule } from 'primeng/rating';
+import { OverlayModule } from 'primeng/overlay';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { StepsModule } from 'primeng/steps';
+import { FieldsetModule } from 'primeng/fieldset';
+import { FileUploadModule } from 'primeng/fileupload';
+import { ChipModule } from 'primeng/chip';
 import { DataService } from './layout/data.service';
 import { GalleriaModule } from 'primeng/galleria';
 import { InplaceModule } from 'primeng/inplace';
@@ -64,11 +71,7 @@ import { InputSwitchModule } from 'primeng/inputswitch';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { RippleModule } from 'primeng/ripple';
 import { SidebarModule } from 'primeng/sidebar';
-import { SpecificuserVehiclesComponent } from './specificuser-vehicles/specificuser-vehicles.component';
 import { PanelModule } from 'primeng/panel';
-import { ViewvendorprofileComponent } from './homepage/vehicles/viewvendorprofile/viewvendorprofile.component';
-import { UpdateprofileComponent } from './user/updateprofile/updateprofile.component';
-import { ViewuservehiclesComponent } from './homepage/vehicles/viewuservehicles/viewuservehicles.component';
 import { ThumbnailsDirective } from './thumbnails.directive';
 import { CarouselModule } from 'primeng/carousel';
 
@@ -99,12 +102,14 @@ import { CarouselModule } from 'primeng/carousel';
     UpdateprofileComponent,
     ViewuservehiclesComponent,
     ThumbnailsDirective,
+    RangePipe,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     // AppLayoutModule,
+    NgxPaginationModule,
     CardModule,
     DropdownModule,
     CommonModule,
@@ -146,7 +151,7 @@ import { CarouselModule } from 'primeng/carousel';
     PanelModule,
     CarouselModule
   ],
-  providers: [MessageService, AuthService,DataService, ViewComponent],
+  providers: [MessageService, AuthService,DataService, ViewComponent,RangePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

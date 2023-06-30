@@ -15,7 +15,7 @@ import { PreviewComponent } from './homepage/vehicles/uploadcar/preview/preview.
 import { ViewComponent } from './homepage/vehicles/view/view.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { ViewvendorprofileComponent } from './homepage/vehicles/viewvendorprofile/viewvendorprofile.component';
-import { SpecificuserVehiclesComponent } from './specificuser-vehicles/specificuser-vehicles.component';
+import { SpecificuserVehiclesComponent } from './homepage/vehicles/specificuser-vehicles/specificuser-vehicles.component';
 
 const routes: Routes = [
   {

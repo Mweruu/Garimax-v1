@@ -23,8 +23,8 @@ export class CompanysignupComponent implements OnInit {
   passwordControl = new FormControl('', [Validators.required, Validators.minLength(6)]);
   emailControl = new FormControl('', [Validators.required, Validators.email]);
   showContent =false;
-
-
+  dealerLicense:any;
+  isChecked: boolean =false ;
 
   constructor(
     // public layoutService: LayoutService,
@@ -104,5 +104,12 @@ export class CompanysignupComponent implements OnInit {
     return this.signupForm.controls;
   }
 
+
+  onCheckboxChange(event:any) {
+    console.log(event)
+    if(event.checked){
+    this.isChecked = true;}
+    console.log(this.isChecked);
+  }
 
 }

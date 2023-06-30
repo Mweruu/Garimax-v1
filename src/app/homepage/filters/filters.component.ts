@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { DataService } from 'src/app/layout/data.service';
 import { DataStorageService } from 'src/app/datastorage.service';
 import {FilterService} from 'primeng/api';
+import { RangePipe } from 'src/app/range.pipe';
 
 
 interface City {
@@ -38,7 +39,7 @@ export class FiltersComponent implements OnInit {
   gear:any = TRANSMISSION;
   driveTrain:any = DRIVETRAIN;
   mileage:any = MILEAGE;
-  price:any = PRICE
+  prices:any = PRICE;
   seats:any = SEATS;
   doors:any = DOORS;
   bootSpace:any = BOOTSPACE;

@@ -12,7 +12,7 @@
           <span class="span-toolbar">New cars</span>
         </button>
         <button class="p-link m">
-            <span class="span-toolbar" [routerLink]="username? '/basicinfo' : '/vendorsignup'">Sell car</span>
+            <span class="span-toolbar" [routerLink]="isVendor? '/basicinfo' : '/vendorsignup'">Sell car</span>
         </button>
       </div>
       <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">

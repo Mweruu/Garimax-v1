@@ -1,6 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { DataStorageService } from '../../datastorage.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { RangePipe } from 'src/app/range.pipe';
+import { PRICE } from '../const-data/constants';
 
 interface PageEvent {
   first: number;
@@ -18,16 +20,16 @@ export class VehiclesComponent implements OnInit {
   value: number | undefined;
   panelSizes = [30,70]
   vendor:any;
-  vehicles2:any;
   vehicles:any;
   search:any;
   searchText:string = '';
   searchFilter:string = '';
   first: number = 0;
-  rows: number = 2;
+  rows: number = 5;
   totalRecords:number = 0;
   minPrice:any;
   maxPrice:any;
+  prices:any[] = PRICE
   dates: string[] = [];
   sortedDates!: string[];
   currentVehicleId!:string;
@@ -51,7 +53,8 @@ export class VehiclesComponent implements OnInit {
   constructor(
     private ds:DataStorageService,
     public router: Router,
-    public activatedRouter:ActivatedRoute
+    public activatedRouter:ActivatedRoute,
+    private rangePipe: RangePipe
   ) { }
 
   ngOnInit() {
@@ -73,7 +76,6 @@ export class VehiclesComponent implements OnInit {
         console.log(vehicles.vehicles);
         this.vehicles = vehicles.vehicles;
         this.totalRecords = this.vehicles.length;
-        console.log(this.vehicles.length)
         console.log(this.totalRecords)
         // for (const vehicle of this.vehicles) {
         //   this.dates=vehicle.updatedAt
@@ -96,16 +98,16 @@ export class VehiclesComponent implements OnInit {
 
   }
 
-  sortDates() {
-    console.log(33233,this.dates);
-    this.sortedDates= this.dates
-    .map(dateString => new Date(dateString))
-    .sort((a, b) => b.getTime() - a.getTime())
-    .map(date => date.toISOString());
-    console.log(3444,this.sortedDates)
-    // return this.dates.sort((a, b) => b.getTime() - a.getTime());
+  // sortDates() {
+  //   console.log(33233,this.dates);
+  //   this.sortedDates= this.dates
+  //   .map(dateString => new Date(dateString))
+  //   .sort((a, b) => b.getTime() - a.getTime())
+  //   .map(date => date.toISOString());
+  //   console.log(3444,this.sortedDates)
+  //   // return this.dates.sort((a, b) => b.getTime() - a.getTime());
 
-  }
+  // }
   getVehicle(vehicleId: string){
     this.router.navigateByUrl(`view/${vehicleId}`);
   }
@@ -169,8 +171,9 @@ export class VehiclesComponent implements OnInit {
       vehicle.condition.toLowerCase().includes(this.searchFilter) ||
       vehicle.transmission.toLowerCase().includes(this.searchFilter) ||
       vehicle.color.toLowerCase().includes(this.searchFilter) ||
-      vehicle.fuelType.toLowerCase().includes(this.searchFilter)
-      ;
+      vehicle.fuelType.toLowerCase().includes(this.searchFilter);
+      // this.rangePipe.transform(this.prices, this.minPrice, this.maxPrice);
+
 
 
     } else {
