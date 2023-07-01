@@ -20,10 +20,6 @@ import { SpecificuserVehiclesComponent } from './homepage/vehicles/specificuser-
 const routes: Routes = [
   {
     path: '', component:AppLayoutComponent,
-    children: [
-      // {path: '', component:FiltersComponent},
-      // {path: '', component:VehiclesComponent}
-  ]
   },
   {
     path: 'sociallogin', component:SocialLoginComponent
@@ -64,7 +60,6 @@ const routes: Routes = [
   },
   {
     path: 'view/:vehicleId', component:ViewComponent,
-    // children:[{},{},{}, {},{},{},{},{},]
   }
 
 

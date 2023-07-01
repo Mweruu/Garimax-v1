@@ -43,18 +43,18 @@
                     <small *ngIf="userSignupForm['confirmPassword'].errors?.['passwordValidator']" class="p-error">Passwords do not match</small>
                   </div>
                 </div>
-                  <div class="flex align-items-center justify-content-between mb-5 gap-5">
-                      <div class="flex align-items-center">
-                          <p-checkbox id="rememberme1" [binary]="true" styleClass="mr-2"></p-checkbox>
-                          <label for="rememberme1">Remember me</label>
-                      </div>
-                      <a class="font-medium no-underline ml-2 text-right cursor-pointer" style="color: var(--primary-color)">Forgot password?</a>
-                    </div>
-                    <p-toast></p-toast>
-                    <button pButton pRipple label="Create account" class="w-full p-3 text-xl" type="submit" [disabled]="signupForm.invalid"></button>
-                  <div class="flex align-items-center justify-content-between mt-5 gap-5">
-                    <p>Already have an account? <a class="font-medium no-underline ml-2 text-right cursor-pointer" style="color: var(--primary-color)" [routerLink]="['/login']">Login</a></p>
+                <div class="flex align-items-center justify-content-between mb-5 gap-5">
+                  <div class="flex align-items-center">
+                    <p-checkbox id="rememberme1" [binary]="true" styleClass="mr-2"></p-checkbox>
+                    <label for="rememberme1">Remember me</label>
                   </div>
+                  <a class="font-medium no-underline ml-2 text-right cursor-pointer" style="color: var(--primary-color)">Forgot password?</a>
+                </div>
+                <p-toast></p-toast>
+                <button pButton pRipple label="Create account" class="w-full p-3 text-xl" type="submit" [disabled]="signupForm.invalid"></button>
+                <div class="flex align-items-center justify-content-between mt-5 gap-5">
+                  <p>Already have an account? <a class="font-medium no-underline ml-2 text-right cursor-pointer" style="color: var(--primary-color)" [routerLink]="['/login']">Login</a></p>
+                </div>
               </form>
           </div>
       </div>
