@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataStorageService } from '../datastorage.service';
+import { DataStorageService } from '../../../datastorage.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -8,7 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./specificuser-vehicles.component.scss']
 })
 export class SpecificuserVehiclesComponent implements OnInit {
-  vehicle!:string;
+  // vehicle!:string;
   vehicles:any;
   currentUserId!:string;
   user:any;
@@ -16,6 +16,9 @@ export class SpecificuserVehiclesComponent implements OnInit {
   searchFilter:string = '';
   searchText:string = '';
   currentVehicleId!:string;
+  rows: number = 3;
+  p: Number = 1;
+  vehicle:any;
 
   constructor( private ds:DataStorageService,
     private activatedRouter: ActivatedRoute,

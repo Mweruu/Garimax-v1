@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class AppTopBarComponent implements OnInit{
     username:any;
+    isVendor!:boolean;
     items!: MenuItem[];
     overlayVisible: boolean = false;
     loggedin = false;
@@ -53,6 +54,7 @@ export class AppTopBarComponent implements OnInit{
       const userData = this.authService.getUserCredentials()
       this.username = userData.name;
       this.userId = userData.userId;
+      this.isVendor = userData.isVendor
       console.log('User Data:',userData);
 
     }
@@ -61,6 +63,7 @@ export class AppTopBarComponent implements OnInit{
       localStorage.removeItem('userName');
       localStorage.removeItem('userId');
       localStorage.removeItem('userToken');
+      localStorage.removeItem('isVendor');
       window.location.reload();
     }
 

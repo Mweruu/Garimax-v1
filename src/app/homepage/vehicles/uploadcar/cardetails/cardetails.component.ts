@@ -114,6 +114,6 @@ export class CardetailsComponent implements OnInit {
 
     onCheckboxChange() {
       const names = this.selectedOptions.map(option => option.name);
-      console.log(names);
+      console.log("names",names);
     }
 }
