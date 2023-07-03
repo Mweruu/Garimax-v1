@@ -35,7 +35,7 @@
   // margin-left: 10px;
   // transform: translateY(1%);
   margin-bottom: 2rem;
-  width: 400px;
+  width: 500px;
   background: var(--blue-200);
   clip-path: polygon(
     0% 0%,
@@ -80,9 +80,9 @@ dl {
   border: 1px solid #bdc8ca;
   white-space: normal;
 
-  // display: grid;
-  // grid-gap: 0px;
-  // grid-template-columns:auto;
+  display: grid;
+  grid-gap: 0px;
+  grid-template-columns:auto;
   /* background-color: #f7fafa; */
 }
 dt, dd {
@@ -90,7 +90,9 @@ dt, dd {
   padding: 10px;
   font-size: 16px;
   white-space: normal;
-
+  // display: grid;
+  // grid-gap: 0px;
+  // grid-template-columns:auto;
 }
 dd ~ dt,
 dd ~ dd {
@@ -110,9 +112,6 @@ dd:after {
   clear: both;
 }
 
-// .filters-bar{
-//   position: relative;
-// }
 
 .vehicles-card{
   border: 1px solid #e4e2e2;
@@ -143,7 +142,7 @@ dd:after {
 }
 
 .active{
-  border: 2px solid #929191;
+  // border: 2px solid #929191;
   opacity: 1;
 }
 

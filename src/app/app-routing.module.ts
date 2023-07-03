@@ -16,6 +16,11 @@ import { ViewComponent } from './homepage/vehicles/view/view.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { ViewvendorprofileComponent } from './homepage/vehicles/viewvendorprofile/viewvendorprofile.component';
 import { SpecificuserVehiclesComponent } from './homepage/vehicles/specificuser-vehicles/specificuser-vehicles.component';
+import { UpdatepreviewComponent } from './update-vehicle/updatecar/updatepreview/updatepreview.component';
+import { UpdatecardetailsComponent } from './update-vehicle/updatecar/updatecardetails/updatecardetails.component';
+import { UploadpictureupdateComponent } from './update-vehicle/updatecar/uploadpictureupdate/uploadpictureupdate.component';
+import { UpdatebasicinfoComponent } from './update-vehicle/updatecar/updatebasicinfo/updatebasicinfo.component';
+import { UpdatecarComponent } from './update-vehicle/updatecar/updatecar.component';
 
 const routes: Routes = [
   {
@@ -55,6 +60,16 @@ const routes: Routes = [
       {path: 'uploadpicture', component:UploadpictureComponent},
       {path: 'cardetails', component:CardetailsComponent},
       {path: 'preview', component:PreviewComponent}
+
+    ]
+  },
+  {
+    path: '', component:UpdatecarComponent,
+    children :[
+      {path: 'basicinfoupdate/:vehicleId', component:UpdatebasicinfoComponent},
+      {path: 'uploadpictureupdate/:vehicleId', component:UploadpictureupdateComponent},
+      {path: 'cardetailsupdate/:vehicleId', component:UpdatecardetailsComponent},
+      {path: 'previewupdate/:vehicleId', component:UpdatepreviewComponent}
 
     ]
   },

@@ -1,17 +1,17 @@
-<form [formGroup]="basicInfoForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="basicInfoForm" (ngSubmit)="onSubmit(vehicle.id)">
   <div class="formgroup-inline justify-content-center">
     <div class="card grid p-fluid mt-0 p-5 col-4 md:col-4 lg:col-4">
         <div class="col-12 md:col-12 mb-3">
           <div class="p-inputgroup">
             <button class="flex" type="button" [style]="{ width: '150px' }" pButton pRipple label="Make"></button>
-            <p-dropdown class="flex" [options]="makes" formControlName="make" inputId="dropdown" (onChange)="onMakeChange()" placeholder="Select"></p-dropdown>
+            <p-dropdown class="flex" [options]="makes" formControlName="make" inputId="dropdown" (onChange)="onMakeChange()" placeholder="{{vehicle?.make}}"></p-dropdown>
           </div>
           <small *ngIf="informationForm['make'].invalid && informationForm['make'].touched" class="p-error">Make is required</small>
         </div>
         <div class="col-12 md:col-12 mb-3">
           <div class="p-inputgroup">
             <button class="flex" type="button" [style]="{ width: '150px' }" pButton pRipple label="Model"></button>
-            <p-dropdown class="flex" [options]="models" formControlName="model" inputId="dropdown" placeholder="Select"></p-dropdown>
+            <p-dropdown class="flex" [options]="models" formControlName="model" inputId="dropdown" placeholder="{{vehicle?.model}}"></p-dropdown>
           </div>
           <small *ngIf="informationForm['model'].invalid && informationForm['model'].touched" class="p-error">Model is required</small>
         </div>
@@ -21,7 +21,7 @@
           <div class="p-inputgroup">
             <button class="flex" type="button"  [style]="{width:'150px'}" pButton pRipple label="Year of Manufacture"></button>
             <!-- <p-calendar  dateFormat="yy"></p-calendar> -->
-            <p-calendar view="year" formControlName="yearOfManufacture" dateFormat="yy" inputId="yearpicker" placeholder="Select" [maxDate]="maxDate" [minDate]="minDate"></p-calendar><br>
+            <p-calendar view="year" formControlName="yearOfManufacture" dateFormat="yy" inputId="yearpicker" placeholder="{{vehicle?.yearOfManufacture.split('-')[0]}}" [maxDate]="maxDate" [minDate]="minDate"></p-calendar><br>
           </div>
           <small *ngIf="informationForm['yearOfManufacture'].invalid && isSubmitted" class="p-error">Year of Manufacture is required</small>
         </div>
@@ -29,28 +29,31 @@
           <div class="p-inputgroup">
             <button class="flex" type="button"  [style]="{width:'150px'}" pButton pRipple label="Price"></button>
             <!-- <input type="number" inputId="integeronly" formControlName="price" pInputText placeholder="Kshs"><br> -->
-            <p-inputNumber  formControlName="price" placeholder="Kshs"></p-inputNumber>
+            <!-- <p-inputNumber  formControlName="price" placeholder="{{vehicle?.price}}"></p-inputNumber> -->
+            <input type="number" formControlName="price" pInputText value="{{vehicle?.price}}"><br>
+
           </div>
           <small *ngIf="informationForm['price'].invalid && isSubmitted" class="p-error">Price is required</small>
         </div>
         <div class="col-12 md:col-12 mb-3">
           <div class="p-inputgroup">
             <button class="flex" type="button"  [style]="{width:'150px'}" pButton pRipple label="Location"></button>
-            <p-dropdown class="flex" inputId="dropdown" formControlName="location" [options]="location"  optionValue="location"  optionLabel="location" placeholder="Select"></p-dropdown><br>
+            <p-dropdown class="flex" inputId="dropdown" formControlName="location" [options]="location"  optionValue="location"  optionLabel="location" placeholder="{{vehicle?.location}}"></p-dropdown><br>
           </div>
           <small *ngIf="informationForm['location'].invalid && isSubmitted" class="p-error">Location is required</small>
         </div>
         <div class="col-12 md:col-12 mb-3">
           <div class="p-inputgroup">
             <button class="flex" type="button"  [style]="{width:'150px'}" pButton pRipple label="Mileage"></button>
-            <input type="number" formControlName="mileage" pInputText placeholder="Mileage"><br>
+            <!-- <p-inputNumber  formControlName="mileage" placeholder="{{vehicle?.mileage}}"></p-inputNumber> -->
+            <input type="number" formControlName="mileage" pInputText value="{{vehicle?.mileage}}"><br>
           </div>
           <small *ngIf="informationForm['mileage'].invalid && isSubmitted" class="p-error">Mileage is required</small>
         </div>
         <div class="col-12 md:col-12 mb-3">
           <div class="p-inputgroup">
             <button class="flex" type="button"  [style]="{width:'150px'}" pButton pRipple label="Transmission"></button>
-            <p-dropdown class="flex" inputId="dropdown" formControlName="transmission"   [options]="gear"  optionValue="gear" optionLabel="gear" placeholder="Transmission"></p-dropdown>
+            <p-dropdown class="flex" inputId="dropdown" formControlName="transmission"   [options]="gear"  optionValue="gear" optionLabel="gear" placeholder="{{vehicle?.transmission}}"></p-dropdown>
           </div>
           <small *ngIf="informationForm['transmission'].invalid && isSubmitted" class="p-error">Transmission is required</small>
         </div>
@@ -66,7 +69,7 @@
     <div class="field grid col-12 md:col-12 lg:col-12 ml-4 justify-content-center">
         <!-- <p-button style Class="p-button-text" >Next</p-button> -->
         <p-toast></p-toast>
-        <button pButton pRipple label="Next" class="w-30rem p-3 text-xl" type="submit"></button>
+        <button pButton pRipple label="Next" class="w-30rem p-3 text-xl" type="submit" ></button>
     </div>
   </div>
 </form>

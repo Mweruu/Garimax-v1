@@ -8,11 +8,16 @@
           <div class="container">
             <div class="img-container">
               <img src="{{vehicle?.image}}" alt="Image" width="100%" id="preview">
-              <div class="img-prev">
+              <!-- <div class="img-prev">
                 <div class="img-slide" *ngFor="let image of vehicle.images">
                   <img src="{{image}}" alt="Image" width="100%" appThumbnails>
                 </div>
-              </div>
+              </div> -->
+              <p-carousel [value]="vehicle.images" [numVisible]="5" [numScroll]="1">
+                <ng-template let-image pTemplate="item" class="img-slide">
+                  <img src="{{image}}" alt="Image" width="80px" height="50px" appThumbnails>
+                </ng-template>
+              </p-carousel>
             </div>
           </div>
         </section>
@@ -25,13 +30,12 @@
         </div>
         <div class="col-12 md:col-12 lg:col-12">
           <div class="formgroup-inline" >
-            <div *ngFor="let accessory of vehicle.accessories" class="field-checkbox col-5 md:col-5 lg:col-5">
-                <p>{{accessory}} </p>
+            <div *ngFor="let accessory of vehicle.accessories" class="col-12 md:col-12 lg:col-12">
+              <!-- <p-button icon="pi pi-check" styleClass="p-button-rounded p-button-success p-button-text"></p-button> -->
+                <div>{{ accessory }}</div>
             </div>
           </div>
         </div>
-        <!-- <p>{{vehicle.accessories[0]}}</p> -->
-
         <div class="grid formgrid">
           <p-divider align="left">
             <div class="inline-flex align-items-center">
@@ -83,8 +87,8 @@
                 <dd><strong>{{vehicle.fuelType}}{{vehicle.driveTrain}}</strong></dd>
                 <dt>Transmission </dt>
                 <dd><strong>{{vehicle.transmission}}</strong></dd>
-                <dt>Engine power </dt>
-                <dd><strong>{{vehicle.engineSize}}</strong></dd>
+                <dt>Engine Size </dt>
+                <dd><strong>{{vehicle.engineSize}} CC</strong></dd>
                 <dt>VIN number</dt>
                 <dd><strong>{{vehicle.vinNumber}}</strong> </dd>
               </dl>
@@ -92,17 +96,17 @@
           </div>
         </div>
       <p-divider></p-divider>
-      <div class="formgroup-inline gap-5 align-items-center justify-content-center">
+      <div class="col-12 formgroup-inline gap-5 align-items-center justify-content-center">
         <div class="flex justify-content-center">
-          <p-button (click)="showDialog()"  icon="pi pi-fw pi-phone" label="Contact Seller" styleClass="p-button-success w-21rem"></p-button>
-          <p-dialog header="Safety Tips" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
-              <ul class="m-0 mb-5">
+          <p-button (click)="showDialog()"  icon="pi pi-fw pi-phone" label="Contact Seller" styleClass="p-button-success w-full"></p-button>
+          <p-dialog header="Safety Tips" [(visible)]="visible" [modal]="true" [style]="{ width: '30vw',height:'25vw' }" [draggable]="false" [resizable]="false">
+              <ul class="m-0 mb-5 text-xl">
                 <li>Remember, don't send any pre-payments</li>
                 <li>Meet the seller at a safe public place</li>
                 <li>Inspect the goods to make sure they meet your needs</li>
                 <li>Check all documentation and only pay if you're satisfied</li>
               </ul>
-              <p-button  (click)="showDialogs()" class="align-items-center justify-content-center" label="Continue" styleClass="p-button-info w-21rem"></p-button>
+              <p-button  (click)="showDialogs()" class="align-items-center justify-content-center" label="Continue" styleClass="p-button-info w-full  text-xl"></p-button>
               <p-dialog header="Seller details" [(visible)]="contactVisible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
                 <div class="formgrid">
                   <div class="field">
@@ -139,8 +143,8 @@
           </p-dialog>
         </div>
 
-          <p-button (click)="showChatDialog()" icon="pi pi-fw pi-envelope" label="Start Chat" styleClass="p-button-success w-21rem"></p-button>
-          <p-dialog header="Chat" [(visible)]="chatVisible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+          <p-button (click)="showChatDialog()" icon="pi pi-fw pi-envelope" label="Start Chat" styleClass="p-button-success  w-full text-xl"></p-button>
+          <p-dialog header="Chat" [(visible)]="chatVisible" [modal]="true" [style]="{ width: '50vw'}" [draggable]="false" [resizable]="false">
             <h5>SEND INQUIRY FOR THIS CAR</h5>
             <p-divider></p-divider>
             <div class="formgrid">
@@ -183,7 +187,7 @@
           </p-dialog>
       </div>
       <p-divider></p-divider>
-      <a *ngIf="vehicle.user?.companyUrl" href="{{vehicle.user.companyUrl}}"><p>{{vehicle.user.firstName}}</p></a>
+      <a href="{{vehicle.user.companyUrl}}"><p>{{vehicle.user.firstName}}</p></a>
       </div>
     </div>
 

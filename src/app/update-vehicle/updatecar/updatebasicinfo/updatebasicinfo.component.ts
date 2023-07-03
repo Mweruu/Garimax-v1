@@ -7,11 +7,11 @@ import { DataService } from 'src/app/layout/data.service';
 
 
 @Component({
-  selector: 'app-basicinfo',
-  templateUrl: './basicinfo.component.html',
-  styleUrls: ['./basicinfo.component.scss']
+  selector: 'app-updatebasicinfo',
+  templateUrl: './updatebasicinfo.component.html',
+  styleUrls: ['./updatebasicinfo.component.scss']
 })
-export class BasicinfoComponent implements OnInit {
+export class UpdatebasicinfoComponent implements OnInit {
   make: any = VEHICLE_DATA;
   location:any = KENYA_LOCATION;
   gear:any = TRANSMISSION;
@@ -44,9 +44,19 @@ export class BasicinfoComponent implements OnInit {
         console.log("ID:",this.currentVehicleId)
         this.ds.getVehicle(this.currentVehicleId).subscribe(vehicle => {
           this.vehicle = vehicle;
-          // console.log("DATA", vehicle.images)
+          console.log("DATA", vehicle.yearOfManufacture)
           console.log(vehicle.id)
           this.id = vehicle.id
+
+          this.basicInfoForm.patchValue({
+            make: vehicle.make,
+            model:vehicle.model,
+            yearOfManufacture:vehicle.yearofManufacture,
+            price:vehicle.price,
+            location:vehicle.location,
+            mileage:vehicle.mileage,
+            transmission:vehicle.transmission,
+          });
         });
       }
     });
@@ -68,13 +78,14 @@ export class BasicinfoComponent implements OnInit {
     this.basicInfoForm.patchValue({ model: '' });
   }
 
-  onSubmit(){
-    console.log('gothere!')
+  onSubmit(id: string){
+    console.log(5346436747843,this.id)
+
     this.isSubmitted = true;
     if(this.basicInfoForm.invalid){
       return;
     }else{
-      this.router.navigate(['/uploadpicture'])
+      this.router.navigateByUrl(`uploadpictureupdate/${id}`);
     }
     const basicInformation = {
       make:this.informationForm['make'].value,
@@ -87,6 +98,7 @@ export class BasicinfoComponent implements OnInit {
     }
     this.dataServive.setbasicInfoData(basicInformation);
     console.log('Basic data' ,basicInformation)
+
     // this.ds.updateVehicle(id ,basicInformation)
 
   }
@@ -100,5 +112,9 @@ export class BasicinfoComponent implements OnInit {
     this.ds.updateVehicle(id ,vehicle)
   }
 
+  getVehicle(id: string){
+    console.log(5346436747843,this.id)
+    this.router.navigateByUrl(`uploadpictureupdate/${id}`);
+  }
 
 }

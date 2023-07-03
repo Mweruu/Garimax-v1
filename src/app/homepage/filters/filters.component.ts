@@ -77,6 +77,9 @@ export class FiltersComponent implements OnInit {
   stateFilter:any;
   conditionFilter:any;
   filteredNumbers!: number[];
+  maxDate= new Date();
+  minDate= new Date("1973");
+
 
   @Output()
   searchFilterChanged:EventEmitter<string>=new EventEmitter<string>();

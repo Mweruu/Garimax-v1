@@ -46,13 +46,13 @@
   <div class="field col-5 md:col-12 lg:col-5 mb-2 p-0">
     <span class="field">
       <label for="dropdown" class="">Min </label>
-      <p-calendar [(ngModel)]="date" view="year" [showIcon]="true" dateFormat="yy"></p-calendar>
+      <p-calendar [(ngModel)]="date" view="year" [showIcon]="true" dateFormat="yy" [maxDate]="maxDate" [minDate]="minDate"></p-calendar>
     </span>
   </div>
   <div class="field col-5 md:col-12 lg:col-5  mb-2 p-0">
     <span class="field">
       <label for="dropdown"> Max</label>
-      <p-calendar [(ngModel)]="date1" view="year" [showIcon]="true" dateFormat="yy" ></p-calendar>
+      <p-calendar [(ngModel)]="date1" view="year" [showIcon]="true" dateFormat="yy" [maxDate]="maxDate" [minDate]="minDate" ></p-calendar>
     </span>
   </div>
 </div>

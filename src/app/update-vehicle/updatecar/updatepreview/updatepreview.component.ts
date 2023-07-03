@@ -1,16 +1,16 @@
 import { Component, OnInit, Inject, LOCALE_ID } from '@angular/core';
 import { MessageService } from 'primeng/api';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from 'src/app/layout/data.service';
 import { DataStorageService } from 'src/app/datastorage.service';
 import { timer } from 'rxjs';
 
 @Component({
-  selector: 'app-preview',
-  templateUrl: './preview.component.html',
-  styleUrls: ['./preview.component.scss']
+  selector: 'app-updatepreview',
+  templateUrl: './updatepreview.component.html',
+  styleUrls: ['./updatepreview.component.scss']
 })
-export class PreviewComponent implements OnInit {
+export class UpdatepreviewComponent implements OnInit {
   sidebarVisible3!: boolean;
   carData: any;
   vehicle:any;
@@ -37,6 +37,8 @@ export class PreviewComponent implements OnInit {
   accessories:any = [];
   images: string[] =[];
   properties:any[] = [];
+  currentVehicleId!:string;
+  id:any;
 
   responsiveOptions: any[] = [
     {
@@ -57,9 +59,23 @@ export class PreviewComponent implements OnInit {
               private messageService: MessageService,
               private router: Router,
               private ds: DataStorageService,
+              private activatedRouter:ActivatedRoute
               ) { }
 
   async ngOnInit(): Promise<void> {
+    this.activatedRouter.params.subscribe(params => {
+      if(params['vehicleId']){
+        this.currentVehicleId = params['vehicleId'];
+        console.log("ID:",this.currentVehicleId)
+        this.ds.getVehicle(this.currentVehicleId).subscribe(vehicle => {
+          this.vehicle = vehicle;
+          // console.log("DATA", vehicle.images)
+          console.log(vehicle.id)
+          this.id = vehicle.id
+        });
+      }
+    });
+
     this.carData = {
       "basicInfo": this.dataService.getbasicInfoData(),
       "images": this.dataService.getuploadPictureData(),
@@ -106,7 +122,7 @@ export class PreviewComponent implements OnInit {
   }
 
 
-  onSubmit(){
+  onSubmit(id: string){
     let userId = localStorage.getItem('userId');
     const images: File[] = this.dataService.getuploadPictureData();
 
@@ -144,8 +160,8 @@ export class PreviewComponent implements OnInit {
 
     console.log("final -> ", vehicleData)
 
-    this.ds.createVehicle(vehicleData).subscribe(response => {
-      console.log('Vehicle Uploaded successfully!', response);
+    this.ds.updateVehicle(id,vehicleData).subscribe(response => {
+      console.log('Vehicle Updated successfully!', response);
       this.vehicle = response
 
       this.messageService.add({
@@ -154,21 +170,24 @@ export class PreviewComponent implements OnInit {
         detail:'Please wait for our team to verify your vehicle'
       })
       timer(2500).toPromise().then(()=>{
-        localStorage.removeItem('formData');
-
         this.router.navigate(['/'])
       })
     },
     error => {
-      console.error('Failed to upload vehicle:', error);
+      console.error('Failed to update vehicle:', error);
       // Handle error response here
       this.messageService.add({
         severity:'error',
         summary:'Error',
-        detail:'Failed to upload vehicle'
+        detail:'Failed to update vehicle'
       })
       }
     );
+  }
+
+
+  back(id: string){
+    this.router.navigateByUrl(`cardetailsupdate/${id}`);
   }
 
 
