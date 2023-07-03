@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DataStorageService } from 'src/app/datastorage.service';
-import { ACCELERATION, BODY_TYPE, CAR_OPTIONS, COLOR, CONDITION, DRIVETRAIN, ENGINE_POWER, ENGINE_SIZE, FUEL_TYPE, STEERING, TRANSMISSION, USAGE } from '../../../const-data/constants'
-import { Router } from '@angular/router';
+import { ACCELERATION, BODY_TYPE, CAR_OPTIONS, COLOR, CONDITION, DRIVETRAIN, ENGINE_POWER, ENGINE_SIZE, FUEL_TYPE, STEERING, TRANSMISSION, USAGE } from '../../../homepage/const-data/constants'
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from 'src/app/layout/data.service';
 import { MessageService } from 'primeng/api';
 
 
 @Component({
-  selector: 'app-cardetails',
-  templateUrl: './cardetails.component.html',
-  styleUrls: ['./cardetails.component.scss']
+  selector: 'app-updatecardetails',
+  templateUrl: './updatecardetails.component.html',
+  styleUrls: ['./updatecardetails.component.scss']
 })
-export class CardetailsComponent implements OnInit {
+export class UpdatecardetailsComponent implements OnInit {
     selectedOptions: { name: string, key: string }[] = [];;
     options = CAR_OPTIONS;
     color: any = COLOR;
@@ -32,15 +32,32 @@ export class CardetailsComponent implements OnInit {
     duty = [{"duty":"paid"},{"duty":"not paid"}]
     condition:any = CONDITION;
     accessories:any =[];
+    vehicle:any;
+    currentVehicleId!:string;
+    id:any;
+
 
     constructor( private ds:DataStorageService,
                 private fb:FormBuilder,
                 private router:Router,
                 private dataService: DataService,
                 private messageService:MessageService,
+                private activatedRouter: ActivatedRoute
       ) { }
 
   ngOnInit(){
+    this.activatedRouter.params.subscribe(params => {
+      if(params['vehicleId']){
+        this.currentVehicleId = params['vehicleId'];
+        console.log("ID:",this.currentVehicleId)
+        this.ds.getVehicle(this.currentVehicleId).subscribe(vehicle => {
+          this.vehicle = vehicle;
+          // console.log("DATA", vehicle.images)
+          console.log(vehicle.id)
+          this.id = vehicle.id
+        });
+      }
+    });
     this.carDetsForm = this.fb.group({
       fuelType:['', Validators.required],
       bodyType:['', Validators.required],
@@ -58,18 +75,19 @@ export class CardetailsComponent implements OnInit {
       // selectedOptions:[this.accessories]
     });
 
+
     }
 
     onBasicUploadAuto(event: any) {
       this.messageService.add({ severity: 'info', summary: 'Success', detail: 'File Uploaded Successfully' });
     }
 
-    onSubmit(){
+    onSubmit(id: string){
       this.isSubmitted = true;
       if(this.carDetsForm.invalid){
         return;
       }else{
-        this.router.navigate(['/preview'])
+        this.router.navigateByUrl(`previewupdate/${id}`);
       }
 
       const details = {
@@ -109,5 +127,14 @@ export class CardetailsComponent implements OnInit {
     onCheckboxChange() {
       const names = this.selectedOptions.map(option => option.name);
       console.log("names",names);
+    }
+
+    getVehicle(id: string){
+      console.log(536747843,this.id)
+      this.router.navigateByUrl(`previewupdate/${id}`);
+    }
+
+    back(id: string){
+      this.router.navigateByUrl(`uploadpictureupdate/${id}`);
     }
 }

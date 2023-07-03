@@ -1,11 +1,11 @@
 <p>viewvendorprofile works!</p>
 <app-topbar></app-topbar>
-<div class="profile-display">
+<div class="profile-display"></div>
   <div class="card"></div>
 <div class="formgroup-inline">
   <div class="col-10 md:col-10 lg:col-10">
-  <p-panel header="My account" [toggleable]="true">
-    <div class="col-12 pb-3 pt-3" >
+    <p-panel header="{{user?.firstName}} account" [toggleable]="true">
+      <div class="col-12 pb-3 pt-3" >
         <div class="formgroup-inline mb-5" >
           <div class="col-12 md:col-12 lg:col-7">
             <div class="card flex align-items-center justify-content-center">
@@ -106,58 +106,55 @@
 
                   </div>
                 </p-dialog>
-            </div>
+              </div>
           </div>
         </div>
-    </div>
-  </p-panel>
-</div>
+      </div>
+    </p-panel>
+  </div>
 </div>
 <div class="formgroup-inline mb-5">
-<div class="col-12 md:col-12 lg:col-5 justify-content-center align-items-center">
-  <p-panel header="Your vehicles" [toggleable]="true">
-    <div  class="col-12 formgroup-inline" *ngFor="let vehicle of vehicles">
-      <div class="col-5">
-      <p-image src="{{vehicle.image}}" alt="Image" width="100%" [preview]="true"></p-image>
-    </div>
-    <div class="col-7">
-      <h6>{{vehicle.make}} {{vehicle.model}} {{vehicle.yearOfManufacture.split('-')[0]}}</h6>
-      <div class="m-2 text-red-500 font-bold ">{{vehicle.price | currency:'Ksh. ':'symbol':'1.0-0'}}</div>
-      <p-divider></p-divider>
-    </div>
-    </div>
-  </p-panel>
-</div>
-<div class="col-12 md:col-12 lg:col-5">
-  <p-panel header="Your sold vehicles" [toggleable]="true">
-    <!-- <div  class="col-12"></div> -->
-</p-panel>
-</div>
+  <div class="col-12 md:col-12 lg:col-5 justify-content-center align-items-center">
+    <p-panel header="{{user?.firstName}} vehicles" [toggleable]="true">
+      <div  class="col-12 formgroup-inline" *ngFor="let vehicle of vehicles">
+        <div class="col-5">
+          <p-image src="{{vehicle.image}}" alt="Image" width="100%" [preview]="true"></p-image>
+        </div>
+        <div class="col-7">
+          <h6>{{vehicle.make}} {{vehicle.model}} {{vehicle.yearOfManufacture.split('-')[0]}}</h6>
+          <div class="m-2 text-red-500 font-bold ">{{vehicle.price | currency:'Ksh. ':'symbol':'1.0-0'}}</div>
+          <p-divider></p-divider>
+        </div>
+      </div>
+    </p-panel>
+  </div>
+  <div class="col-12 md:col-12 lg:col-5">
+    <p-panel header="{{user?.firstName}} sold vehicles" [toggleable]="true"></p-panel>
+  </div>
 </div>
 <div class="card formgroup-inline col-12 md:col-12 lg:col-12">
-<div class="col-12 md:col-12 lg:col-5 p-fluid">
-  <div class="field">
-    <h5>Get in touch</h5>
-  </div>
-  <div class="field">
-    <label for="phoneNumber" class="block text-900 font-medium mb-2">Address</label>
-    <p>{{user?.address}}</p>
-  </div>
+  <div class="col-12 md:col-12 lg:col-5 p-fluid">
+    <div class="field">
+      <h5>Get in touch</h5>
+    </div>
+    <div class="field">
+      <label for="phoneNumber" class="block text-900 font-medium mb-2">Address</label>
+      <p>{{user?.address}}</p>
+    </div>
   </div>
   <div class="col-12 md:col-12 lg:col-5 p-fluid">
     <div class="field">
       <label for="url" class="block text-900 font-medium mb-2">Website</label>
       <a href="{{user?.companyUrl}}">{{user?.companyUrl}}</a>
     </div>
-  <div class="field">
-    <label for="phoneNumber" class="block text-900 font-medium mb-2">Contact</label>
-    <p>{{user?.phoneNumber}}</p>
+    <div class="field">
+      <label for="phoneNumber" class="block text-900 font-medium mb-2">Contact</label>
+      <p>{{user?.phoneNumber}}</p>
+    </div>
+    <div class="field">
+      <label for="email" class="block text-900 font-medium mb-2">Email</label>
+      <p>{{user?.email}}</p>
+    </div>
   </div>
-  <div class="field">
-    <label for="email" class="block text-900 font-medium mb-2">Email</label>
-    <p>{{user?.email}}</p>
-  </div>
-<!-- </div> -->
-</div>
 </div>
 <app-footer></app-footer>

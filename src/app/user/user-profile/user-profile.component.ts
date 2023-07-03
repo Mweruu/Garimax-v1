@@ -208,13 +208,9 @@ export class UserProfileComponent implements OnInit {
     // this.update(userId)
   }
 
-  updateVehicle(id: string){
-    const vehicle={}
-    this.ds.updateVehicle(id ,vehicle)
-  }
 
   getVehicle(id: string){
-    this.router.navigateByUrl(`basicinfo/${id}`);
+    this.router.navigateByUrl(`basicinfoupdate/${id}`);
   }
 
 }

@@ -1,6 +1,6 @@
 <app-topbar></app-topbar>
 <p-toast></p-toast>
-<div class="profile-display">
+<div class="profile-display"></div>
   <div class="card"></div>
 <div class="formgroup-inline">
   <div class="col-10 md:col-10 lg:col-10">
@@ -72,31 +72,29 @@
   </div>
 </div>
 <div class="formgroup-inline mb-5">
-<div class="col-10 md:col-10 lg:col-5">
-  <p-panel header="Your vehicles for sale" [toggleable]="true">
-    <div  class="col-12 formgroup-inline" *ngFor="let vehicle of vehicles">
-      <div class="col-4">
-      <p-image src="{{vehicle.image}}" alt="Image" width="100%" [preview]="true"></p-image>
-    </div>
-    <div class="col-8">
-      <h6>{{vehicle.make}} {{vehicle.model}} {{vehicle.yearOfManufacture.split('-')[0]}}</h6>
-      <div class="m-2 text-red-500 font-bold ">{{vehicle.price | currency:'Ksh. ':'symbol':'1.0-0'}}</div>
-      <div class="flex align-items-center justify-content-between mb-5">
-        <div class="flex align-items-center">
-            <p-checkbox id="sold" [binary]="true" styleClass="mr-2"></p-checkbox>
-            <label for="sold">Sold</label>
+  <div class="col-10 md:col-10 lg:col-5">
+    <p-panel header="Your vehicles for sale" [toggleable]="true">
+      <div  class="col-12 formgroup-inline" *ngFor="let vehicle of vehicles">
+        <div class="col-4">
+          <p-image src="{{vehicle.image}}" alt="Image" width="100%" [preview]="true"></p-image>
         </div>
-        <a class="font-medium no-underline ml-2  cursor-pointer" style="color: var(--primary-color)"routerLink="/basicinfo" (click)="getVehicle(vehicle.id)">Edit</a>
+        <div class="col-8">
+          <h6>{{vehicle.make}} {{vehicle.model}} {{vehicle.yearOfManufacture.split('-')[0]}}</h6>
+          <div class="m-2 text-red-500 font-bold ">{{vehicle.price | currency:'Ksh. ':'symbol':'1.0-0'}}</div>
+          <div class="flex align-items-center justify-content-between mb-5">
+            <div class="flex align-items-center">
+                <p-checkbox id="sold" [binary]="true" styleClass="mr-2"></p-checkbox>
+                <label for="sold">Sold</label>
+            </div>
+            <a class="font-medium no-underline ml-2  cursor-pointer" style="color: var(--primary-color)" routerLink="/basicinfoupdate" (click)="getVehicle(vehicle.id)">Edit</a>
+          </div>
+          <p-divider></p-divider>
+        </div>
       </div>
-      <p-divider></p-divider>
-    </div>
-    </div>
-  </p-panel>
-</div>
-<div class="col-10 md:col-10 lg:col-5">
-  <p-panel header="Your sold vehicles" [toggleable]="true">
-    <!-- <div  class="col-12"></div> -->
-</p-panel>
-</div>
+    </p-panel>
+  </div>
+  <div class="col-10 md:col-10 lg:col-5">
+    <p-panel header="Your sold vehicles" [toggleable]="true"></p-panel>
+  </div>
 </div>
 <app-footer></app-footer>

@@ -6,8 +6,6 @@
             <label for="email" class="block text-900 text-xl font-medium mb-1">Email</label>
             <input id="companyemail" formControlName="email"  type="text" placeholder="Email address" pInputText class="w-full md:w-30rem mb-3" style="padding:1rem"><br>
             <small *ngIf="companyForm['email'].invalid && isSubmitted" class="p-error">Email is required</small>
-            <!-- <small *ngIf="companyForm['email']" class="p-error">Email is required</small> -->
-
           </div>
 
           <div class="mb-3">
@@ -65,8 +63,8 @@
               </div>
               <a class="font-medium no-underline ml-2 text-right cursor-pointer" style="color: var(--primary-color)"></a>
           </div>
-            <p-toast></p-toast>
-            <button pButton pRipple label="Create account" class="w-full p-3 text-xl"></button>
+          <p-toast></p-toast>
+          <button pButton pRipple label="Create account" class="w-full p-3 text-xl"></button>
           <div class="flex align-items-center justify-content-between mt-5 gap-5">
             <p>Already have an account? <a class="font-medium no-underline ml-2 text-right cursor-pointer" style="color: var(--primary-color)" [routerLink]="['/login']">Login</a></p>
           </div>

@@ -1,29 +1,47 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { DataStorageService } from 'src/app/datastorage.service';
 import { DataService } from 'src/app/layout/data.service';
 
 @Component({
-  selector: 'app-uploadpicture',
-  templateUrl: './uploadpicture.component.html',
-  styleUrls: ['./uploadpicture.component.scss']
+  selector: 'app-uploadpictureupdate',
+  templateUrl: './uploadpictureupdate.component.html',
+  styleUrls: ['./uploadpictureupdate.component.scss']
 })
-export class UploadpictureComponent implements OnInit {
+export class UploadpictureupdateComponent implements OnInit {
   uploadedFiles: any[] = [];
   imageForm!:FormGroup;
   file: any
   imageUploaded = false;
   isSubmitted = false;
   vendor:any;
+  vehicle:any;
+  currentVehicleId!:string;
+  id:any;
 
   constructor(private messageService: MessageService,
               private fb:FormBuilder,
               private router:Router,
-              private dataService: DataService
+              private dataService: DataService,
+              private ds: DataStorageService,
+              private activatedRouter:ActivatedRoute
               ) { }
 
   ngOnInit(){
+    this.activatedRouter.params.subscribe(params => {
+      if(params['vehicleId']){
+        this.currentVehicleId = params['vehicleId'];
+        console.log("ID:",this.currentVehicleId)
+        this.ds.getVehicle(this.currentVehicleId).subscribe(vehicle => {
+          this.vehicle = vehicle;
+          // console.log("DATA", vehicle.images)
+          console.log(vehicle.id)
+          this.id = vehicle.id
+        });
+      }
+    });
     this.imageForm= this.fb.group({
       images: new FormControl(),
     })
@@ -47,13 +65,13 @@ export class UploadpictureComponent implements OnInit {
     }
   }
 
-  onSubmit(){
+  onSubmit(id:string){
     this.dataService.setuploadPictureData(this.uploadedFiles);
     this.isSubmitted = true
     if(!this.imageUploaded){
       return;
     }else{
-      this.router.navigate(['/cardetails'])
+      this.router.navigateByUrl(`cardetailsupdate/${id}`);
     }
     const imageData = localStorage.getItem('imageData');
 
@@ -62,5 +80,13 @@ export class UploadpictureComponent implements OnInit {
 
   get imageUpload(){
     return this.imageForm.controls;
+  }
+
+  getVehicle(id: string){
+    this.router.navigateByUrl(`cardetailsupdate/${id}`);
+  }
+
+  back(id: string){
+    this.router.navigateByUrl(`basicinfoupdate/${id}`);
   }
 }

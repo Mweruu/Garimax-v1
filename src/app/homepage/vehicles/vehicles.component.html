@@ -1,6 +1,6 @@
-<!-- <div>
+<div>
   <app-topbar (searchTextChanged)="onSearchTextEntered($event)"></app-topbar>
-</div> -->
+</div>
 <div class="formgroup-inline layout-dashboard">
   <div  class=" card-w-title col-12 md:col-3 lg:col-3 p-5">
     <app-filters class="try" (searchFilterChanged)="onSearchFilterEntered($event)"></app-filters>
@@ -40,7 +40,7 @@
               </h6>
               <p class="m-2">
                 <strong>
-                  {{vehicle.fuelType}} | {{vehicle.transmission}} | {{vehicle.engineSize}} | {{vehicle.mileage| number: '1.0-0' }} KM | {{vehicle.color}} | {{vehicle.bodyType}}
+                  {{vehicle.fuelType}} | {{vehicle.transmission}} | {{vehicle.engineSize}} CC | {{vehicle.mileage| number: '1.0-0' }} KM | {{vehicle.color}} | {{vehicle.bodyType}}
                 </strong>
               </p>
               <p class="m-2">{{vehicle.description}}...</p>

@@ -1,5 +1,5 @@
 <p-toast></p-toast>
-<form [formGroup]="imageForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="imageForm" (ngSubmit)="onSubmit(vehicle.id)">
   <div class="formgroup-inline justify-content-center">
     <div class="card grid p-fluid mt-0 p-5 col-4 md:col-4 lg:col-4">
       <div class="flex mt-2 mb-3 justify-content-center col-12 md:col-12 lg:col-12">
@@ -8,6 +8,7 @@
               <ng-template pTemplate="content">
                   <ul *ngIf="uploadedFiles.length">
                       <li *ngFor="let file of uploadedFiles">{{ file.name }} - {{ file.size }} bytes</li>
+                      <li>{{vehicle.images}}</li>
                   </ul>
               </ng-template>
           </p-fileUpload>
@@ -30,7 +31,7 @@
       </ul>
     </div>
     <div class="field grid col-12 md:col-12 lg:col-12 ml-4 justify-content-center">
-      <button pButton pRipple label="Back" routerLink="/basicinfo" class=" col-5 md:col-5 lg:col-5 p-3 text-xl" type="button"></button>
+      <button pButton pRipple label="Back" (click)="back(vehicle.id)" class=" col-5 md:col-5 lg:col-5 p-3 text-xl" type="button"></button>
       <button pButton pRipple label="Next" class=" col-5 md:col-5 lg:col-5  p-3 text-xl ml-5" type="submit"></button>
     </div>
   </div>

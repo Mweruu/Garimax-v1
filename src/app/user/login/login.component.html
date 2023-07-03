@@ -20,22 +20,22 @@
                   <p-password id="password1" formControlName="password"  placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" [toggleMask]="true" styleClass="mb-2" inputStyleClass="w-full p-3 md:w-30rem"></p-password><br>
                   <small *ngIf="userForm['password'].invalid && isSubmitted" class="p-error">Password is required</small>
                 </div>
-                  <div class="flex align-items-center justify-content-between mb-5 gap-5">
-                      <div class="flex align-items-center">
-                          <p-checkbox id="rememberme1" [binary]="true" styleClass="mr-2"></p-checkbox>
-                          <label for="rememberme1">Remember me</label>
-                      </div>
-                      <a class="font-medium no-underline ml-2 text-right cursor-pointer" style="color: var(--primary-color)">Forgot password?</a>
-                  </div>
-                    <p-toast></p-toast>
-                      <button pButton pRipple label="Sign In" class="w-full p-3 text-xl" ></button>
-                  <div class="flex align-items-center justify-content-between mt-5 gap-5">
-                  <p>Don't have an account?
-                    <a class="font-medium no-underline ml-8 text-right cursor-pointer" style="color: var(--primary-color)" [routerLink]="['/signup']">Buyer account</a>
-                    <a class="font-medium no-underline ml-3 text-right cursor-pointer" style="color: var(--primary-color)" [routerLink]="['/vendorsignup']">Vendor account</a>
-                  </p>
-                  </div>
-                </form>
+                <div class="flex align-items-center justify-content-between mb-5 gap-5">
+                    <div class="flex align-items-center">
+                        <p-checkbox id="rememberme1" [binary]="true" styleClass="mr-2"></p-checkbox>
+                        <label for="rememberme1">Remember me</label>
+                    </div>
+                    <a class="font-medium no-underline ml-2 text-right cursor-pointer" style="color: var(--primary-color)">Forgot password?</a>
+                </div>
+                <p-toast></p-toast>
+                <button pButton pRipple label="Sign In" class="w-full p-3 text-xl" ></button>
+                <div class="flex align-items-center justify-content-between mt-5 gap-5">
+                <p>Don't have an account?
+                  <a class="font-medium no-underline ml-8 text-right cursor-pointer" style="color: var(--primary-color)" [routerLink]="['/signup']">Buyer account</a>
+                  <a class="font-medium no-underline ml-3 text-right cursor-pointer" style="color: var(--primary-color)" [routerLink]="['/vendorsignup']">Vendor account</a>
+                </p>
+                </div>
+              </form>
           </div>
       </div>
   </div>

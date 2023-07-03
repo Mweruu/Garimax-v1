@@ -1,0 +1,99 @@
+<div class="mid-display grid p-fluid">
+  <div class="col-5 md:col-5 lg:col-5">
+    <div class="card">
+			<div class="grid formgrid">
+				<div class="col-12 mb-2 lg:col-12 lg:mb-0">
+          <div class="card">
+              <p-galleria [value]="images" [numVisible]="5" [circular]="true" [showItemNavigators]="true" [showThumbnails]="false" [responsiveOptions]="responsiveOptions" [containerStyle]="{ 'max-width': '640px' }">
+                <ng-template pTemplate="item" let-item>
+                <img [src]="item" style="width: 100%; display: block;" />
+              </ng-template>
+            </p-galleria>
+          </div>
+				</div>
+			</div>
+      <div class="grid formgrid">
+        <p-divider align="left">
+          <div class="inline-flex align-items-center">
+              <b>Car features and options</b>
+          </div>
+        </p-divider>
+        <div class="formgroup-inline">
+          <div *ngFor="let accessory of accessories" class="col-5 md:col-5 lg:col-5">
+              <p>{{accessory}} </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-7 md:col-7 lg:col-7">
+    <div class="card">
+      <div class="grid formgrid">
+        <div><h2>{{year}} {{make}} {{model}} </h2></div>
+        </div>
+      <div class="grid formgrid">
+          <p-tag severity="info" value={{location}} class="m-2"></p-tag>
+          <p-tag severity="info" value={{usage}} class="m-2"></p-tag>
+          <p-tag severity="info" value={{mileage}} class="m-2"></p-tag>
+          <p-tag severity="info" value={{color}} class="m-2"></p-tag>
+
+      </div>
+      <div class="grid formgrid">
+        <div class="p-fluid col-12 md:col-12 lg:col-12">
+          <p-divider align="left">
+            <div class="inline-flex align-items-center">
+                <b>Car Specifications</b>
+            </div>
+          </p-divider>
+          <div class="formgroup-inline mb-2">
+            <label for="make" class="col-5 md:col-5 lg:col-5" style="white-space: pre-line;">Make - <strong>{{make}}</strong></label>
+            <label for="model" class="col-5 md:col-5 lg:col-5">Model - <strong>{{model}}</strong></label>
+          </div>
+
+          <div class="formgroup-inline  mb-2">
+            <label for="yearOfManufacture" class="col-5 md:col-5 lg:col-5">Year - <strong>{{year}}</strong></label>
+            <label for="location" class="col-5 md:col-5 lg:col-5">Location - <strong>{{location}}</strong></label>
+          </div>
+
+          <div class="formgroup-inline mb-2">
+            <label for="price" class="col-5 md:col-5 lg:col-5">Price - <strong>{{price | currency:'Ksh. ':'symbol':'1.0-0'}}</strong></label>
+            <label for="mileage" class="col-5 md:col-5 lg:col-5">Mileage - <strong>{{mileage}}</strong></label>
+          </div>
+
+          <div class="formgroup-inline mb-2">
+            <label for="fuelType" class="col-5 md:col-5 lg:col-5">Fuel type - <strong>{{fuelType}}</strong></label>
+            <label for="bodyType" class="col-5 md:col-5 lg:col-5">Body type - <strong>{{bodyType}}</strong></label>
+          </div>
+
+          <div class="formgroup-inline mb-2">
+            <label for="transmission" class="col-5 md:col-5 lg:col-5">Transmission - <strong>{{transmission}}</strong></label>
+            <label for="color" class="col-5 md:col-5 lg:col-5">Color - <strong>{{color}}</strong></label>
+          </div>
+
+          <div class="formgroup-inline mb-2">
+            <label for="steering" class="col-5 md:col-5 lg:col-5">Engine power - <strong>{{enginePower}}</strong></label>
+            <label for="engineSize" class="col-5 md:col-5 lg:col-5">Engine size - <strong>{{engineSize}} CC</strong></label>
+          </div>
+
+          <div class="formgroup-inline mb-2">
+            <label for="steering" class="col-5 md:col-5 lg:col-5">Vin Number - <strong>{{vinNumber}}</strong></label>
+            <label for="engineSize" class="col-5 md:col-5 lg:col-5">Acceleration - <strong>{{acceleration}}</strong></label>
+          </div>
+
+          <div class="formgroup-inline mb-2">
+            <label for="steering" class="col-5 md:col-5 lg:col-5">Steering - <strong>{{steering}}</strong></label>
+            <label for="description" class="col-5 md:col-5 lg:col-5">duty - <strong>{{duty}}</strong></label>
+          </div>
+          <div class="formgroup-inline mb-2">
+            <label for="description" class="col-5 md:col-5 lg:col-5">Condition - <strong>{{condition}}</strong></label>
+            <label for="description" class="col-5 md:col-5 lg:col-5">Description <strong>{{description}}</strong></label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="field grid col-12 md:col-12 lg:col-12 ml-4 justify-content-center">
+    <button pButton pRipple label="Back" (click)="back(id)" class="w-20rem p-3 text-xl ml-5 mb-5" type="button"></button>
+    <button pButton pRipple label="Submit" class="w-20rem p-3 text-xl ml-5 mb-5" type="submit" (click)="onSubmit(vehicle.id)"></button>
+  </div>
