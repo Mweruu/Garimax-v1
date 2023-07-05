@@ -98,8 +98,8 @@
       <p-divider></p-divider>
       <div class="col-12 formgroup-inline gap-5 align-items-center justify-content-center">
         <div class="flex justify-content-center">
-          <p-button (click)="showDialog()"  icon="pi pi-fw pi-phone" label="Contact Seller" styleClass="p-button-success w-full"></p-button>
-          <p-dialog header="Safety Tips" [(visible)]="visible" [modal]="true" [style]="{ width: '30vw',height:'25vw' }" [draggable]="false" [resizable]="false">
+          <p-button (click)="showDialog()"  icon="pi pi-fw pi-phone" label="Contact Seller" styleClass="p-button-success w-full text-xl"></p-button>
+          <p-dialog header="Safety Tips" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw'}" [draggable]="false" [resizable]="false">
               <ul class="m-0 mb-5 text-xl">
                 <li>Remember, don't send any pre-payments</li>
                 <li>Meet the seller at a safe public place</li>
@@ -113,28 +113,28 @@
                     <label>Seller name</label>
                     <span class="p-input-icon-left">
                       <i class="pi pi-user"></i>
-                      <input type="text" pInputText />
+                      <input type="text" pInputText value="{{vehicle.user.firstName}}" />
                     </span>
                   </div>
                   <div class="field">
                     <label>Email</label>
                     <span class="p-input-icon-left">
                       <i class="pi pi-envelope"></i>
-                      <input type="email" pInputText />
+                      <input type="email" pInputText value="{{vehicle.user.email}}"/>
                     </span>
                   </div>
                   <div class="field">
                     <label>Mobile number</label>
                     <span class="p-input-icon-left">
                       <i class="pi pi-phone"></i>
-                      <input type="number" pInputText />
+                      <input type="number" pInputText value="{{vehicle.user.phoneNumber}}"/>
                     </span>
                   </div>
                   <div class="field">
                     <label>Address</label>
                     <span class="p-input-icon-left">
                       <i class="pi pi-location"></i>
-                      <input type="text" pInputText />
+                      <input type="text" pInputText value="{{vehicle.user.firstName}}"/>
                     </span>
                   </div>
                   <p-button icon="pi pi-fw pi-phone" label="Call Seller Now" styleClass="p-button-warning w-21rem"></p-button>
@@ -152,21 +152,21 @@
                 <label>Your name</label>
                 <span class="p-input-icon-left">
                   <i class="pi pi-user"></i>
-                  <input type="text" pInputText />
+                  <input type="text" pInputText value="{{firstName}}"/>
                 </span>
               </div>
               <div class="field">
                 <label>Email</label>
                 <span class="p-input-icon-left">
                   <i class="pi pi-envelope"></i>
-                  <input type="email" pInputText />
+                  <input type="email" pInputText value="{{email}}"/>
                 </span>
               </div>
               <div class="field">
                 <label>Mobile number</label>
                 <span class="p-input-icon-left">
                   <i class="pi pi-phone"></i>
-                  <input type="number" pInputText />
+                  <input type="number" pInputText value="{{phoneNumber}}" />
                 </span>
               </div>
               <div class="field">

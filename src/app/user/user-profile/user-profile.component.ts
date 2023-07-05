@@ -55,7 +55,7 @@ export class UserProfileComponent implements OnInit {
         this.ds.getUser(this.currentUserId).subscribe(user => {
           this.user = user;
           this.userId= user.id
-          console.log("DATA", this.userId)
+          console.log("DATA", this.userId, user.isVendor)
           this.userUpdateForm['firstName'].setValue(user.firstName)
           this.userUpdateForm['lastName'].setValue(user.lastName)
           this.userUpdateForm['phoneNumber'].setValue(user.phoneNumber)

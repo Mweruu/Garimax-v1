@@ -3,6 +3,7 @@ import { MenuItem } from 'primeng/api';
 import { DataStorageService } from 'src/app/datastorage.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AIRCONDITIONING_SYSTEM, ELECTRICALS, ENGINE, EXTERIOR, INTERIOR, SUSPENSION_STEERING, TESTDRIVE, TRANSMISSION_AND_CLUTCH } from '../../const-data/constants';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-view',
@@ -30,6 +31,13 @@ export class ViewComponent implements OnInit {
   contactVisible = false;
   chatVisible =false;
   thumbnailUrl!:string;
+  currentUserId!:string;
+  user:any;
+  userId:any;
+  email:any;
+  firstName:any;
+  phoneNumber:any;
+
 
   responsiveOptions: any[] = [
     {
@@ -49,11 +57,19 @@ value: any;
 
 
   constructor(private ds:DataStorageService,
-              private router: ActivatedRoute,
+              private activatedRouter: ActivatedRoute,
+              private authService:AuthService
              ) { }
 
   async ngOnInit() {
-    this.router.params.subscribe(params => {
+    const userData=this.authService.getUserCredentials();
+    this.email=userData.email
+    this.firstName=userData.name
+    this.phoneNumber=userData.phoneNumber
+
+    console.log('User Data:',userData);
+
+    this.activatedRouter.params.subscribe(params => {
       if(params['vehicleId']){
         this.currentVehicleId = params['vehicleId'];
         console.log("ID:",this.currentVehicleId)
@@ -110,6 +126,5 @@ value: any;
   showChatDialog() {
     this.chatVisible = true;
 }
-
 
 }
