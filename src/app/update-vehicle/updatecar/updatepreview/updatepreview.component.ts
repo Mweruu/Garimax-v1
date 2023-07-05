@@ -59,11 +59,11 @@ export class UpdatepreviewComponent implements OnInit {
               private messageService: MessageService,
               private router: Router,
               private ds: DataStorageService,
-              private activatedRouter:ActivatedRoute
+              private activatedRoute:ActivatedRoute
               ) { }
 
   async ngOnInit(): Promise<void> {
-    this.activatedRouter.params.subscribe(params => {
+    this.activatedRoute.params.subscribe(params => {
       if(params['vehicleId']){
         this.currentVehicleId = params['vehicleId'];
         console.log("ID:",this.currentVehicleId)

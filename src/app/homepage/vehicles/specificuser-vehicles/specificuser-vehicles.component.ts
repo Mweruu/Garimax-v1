@@ -21,12 +21,12 @@ export class SpecificuserVehiclesComponent implements OnInit {
   vehicle:any;
 
   constructor( private ds:DataStorageService,
-    private activatedRouter: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
     private router:Router
     ) { }
 
   async ngOnInit() {
-      this.activatedRouter.params.subscribe(params => {
+      this.activatedRoute.params.subscribe(params => {
         if(params['userId']){
           this.currentUserId = params['userId'];
           // this.currentUserId = '1';
@@ -98,7 +98,7 @@ isMatched(vehicle: any): boolean {
 }
 
   getUser(userId: string){
-    this.activatedRouter.params.subscribe(params => {
+    this.activatedRoute.params.subscribe(params => {
       if(params['vehicleId']){
         this.currentVehicleId = params['vehicleId'];
         console.log("ID:",this.currentVehicleId)

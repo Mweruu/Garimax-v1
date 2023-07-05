@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { timer } from 'rxjs';
+import { AuthService } from 'src/app/auth.service';
 import { DataStorageService } from 'src/app/datastorage.service';
 import { DataService } from 'src/app/layout/data.service';
 
@@ -32,18 +33,26 @@ export class ViewvendorprofileComponent implements OnInit {
   visible: boolean = false;
   contactVisible = false;
   chatVisible =false;
+  email:any;
+  firstName:any;
+  phoneNumber:any;
+
 
   constructor(private messageService:MessageService,
               private ds:DataStorageService,
               private fb: FormBuilder,
               private router: Router,
-              private activatedRouter: ActivatedRoute,
-              private dataService:DataService
+              private activatedRoute: ActivatedRoute,
+              private authService:AuthService
   ) { }
 
   async ngOnInit(){
+    const userData=this.authService.getUserCredentials();
+    this.email=userData.email
+    this.firstName=userData.name
+    this.phoneNumber=userData.phoneNumber
 
-    this.activatedRouter.params.subscribe(params => {
+    this.activatedRoute.params.subscribe(params => {
       if(params['userId']){
         this.currentUserId = params['userId'];
         console.log("ID:",this.currentUserId)

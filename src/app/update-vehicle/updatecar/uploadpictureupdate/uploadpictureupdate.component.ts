@@ -26,11 +26,11 @@ export class UploadpictureupdateComponent implements OnInit {
               private router:Router,
               private dataService: DataService,
               private ds: DataStorageService,
-              private activatedRouter:ActivatedRoute
+              private activatedRoute:ActivatedRoute
               ) { }
 
   ngOnInit(){
-    this.activatedRouter.params.subscribe(params => {
+    this.activatedRoute.params.subscribe(params => {
       if(params['vehicleId']){
         this.currentVehicleId = params['vehicleId'];
         console.log("ID:",this.currentVehicleId)

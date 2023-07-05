@@ -42,11 +42,11 @@ export class UpdatecardetailsComponent implements OnInit {
                 private router:Router,
                 private dataService: DataService,
                 private messageService:MessageService,
-                private activatedRouter: ActivatedRoute
+                private activatedRoute: ActivatedRoute
       ) { }
 
   ngOnInit(){
-    this.activatedRouter.params.subscribe(params => {
+    this.activatedRoute.params.subscribe(params => {
       if(params['vehicleId']){
         this.currentVehicleId = params['vehicleId'];
         console.log("ID:",this.currentVehicleId)

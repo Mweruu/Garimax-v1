@@ -42,13 +42,13 @@ export class UserProfileComponent implements OnInit {
               private ds:DataStorageService,
               private fb: FormBuilder,
               private router: Router,
-              private activatedRouter: ActivatedRoute,
+              private activatedRoute: ActivatedRoute,
               private dataService: DataService
 
     ) { }
 
   async ngOnInit(){
-    this.activatedRouter.params.subscribe(params => {
+    this.activatedRoute.params.subscribe(params => {
       if(params['userId']){
         this.currentUserId = params['userId'];
         console.log("ID:",this.currentUserId)
@@ -213,7 +213,7 @@ export class UserProfileComponent implements OnInit {
 
 
   getVehicle(id: string){
-    this.router.navigateByUrl(`basicinfoupdate/${id}`);
+    this.router.navigateByUrl(`basicinfo/${id}`);
   }
 
 }

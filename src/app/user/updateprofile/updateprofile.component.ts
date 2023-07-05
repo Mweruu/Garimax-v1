@@ -18,7 +18,7 @@ export class UpdateprofileComponent implements OnInit {
     private ds:DataStorageService,
     private fb: FormBuilder,
     private router: Router,
-    private activatedRouter: ActivatedRoute,) { }
+    private activatedRoute: ActivatedRoute,) { }
 
   ngOnInit(): void {
     this.updateForm = this.fb.group({

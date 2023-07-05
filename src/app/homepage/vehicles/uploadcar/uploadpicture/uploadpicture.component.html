@@ -1,5 +1,5 @@
 <p-toast></p-toast>
-<form [formGroup]="imageForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="imageForm" (ngSubmit)="onSubmit()"  (ngSubmit)="updateVehicle(vehicle.id)">
   <div class="formgroup-inline justify-content-center">
     <div class="card grid p-fluid mt-0 p-5 col-4 md:col-4 lg:col-4">
       <div class="flex mt-2 mb-3 justify-content-center col-12 md:col-12 lg:col-12">

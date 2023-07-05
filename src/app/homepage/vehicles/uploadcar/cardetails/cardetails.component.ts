@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DataStorageService } from 'src/app/datastorage.service';
 import { ACCELERATION, BODY_TYPE, CAR_OPTIONS, COLOR, CONDITION, DRIVETRAIN, ENGINE_POWER, ENGINE_SIZE, FUEL_TYPE, STEERING, TRANSMISSION, USAGE } from '../../../const-data/constants'
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from 'src/app/layout/data.service';
 import { MessageService } from 'primeng/api';
 
@@ -32,15 +32,23 @@ export class CardetailsComponent implements OnInit {
     duty = [{"duty":"paid"},{"duty":"not paid"}]
     condition:any = CONDITION;
     accessories:any =[];
+    vehicle:any;
+    currentVehicleId!:string;
+    id:any;
+    updateMode = false;
+
 
     constructor( private ds:DataStorageService,
                 private fb:FormBuilder,
                 private router:Router,
                 private dataService: DataService,
                 private messageService:MessageService,
+                private activatedRoute: ActivatedRoute
       ) { }
 
   ngOnInit(){
+    this._checkUpdateMode()
+
     this.carDetsForm = this.fb.group({
       fuelType:['', Validators.required],
       bodyType:['', Validators.required],
@@ -53,7 +61,7 @@ export class CardetailsComponent implements OnInit {
       vinNumber:[''],
       usage:['', Validators.required],
       description:['', Validators.required],
-      duty:['', Validators.required],
+      duty:[''],
       condition:['', Validators.required],
       // selectedOptions:[this.accessories]
     });
@@ -101,13 +109,42 @@ export class CardetailsComponent implements OnInit {
         // this.firstIndex = 0;
     }
 
-    get carDetails(){
-      return this.carDetsForm.controls;
-    }
-
 
     onCheckboxChange() {
       const names = this.selectedOptions.map(option => option.name);
       console.log("names",names);
+    }
+    private _checkUpdateMode(){
+      this.activatedRoute.params.subscribe(params => {
+        if(params['vehicleId']){
+          this.updateMode = true
+          this.currentVehicleId = params['vehicleId'];
+          console.log("ID:",this.currentVehicleId)
+          this.ds.getVehicle(this.currentVehicleId).subscribe(vehicle => {
+            this.vehicle = vehicle;
+            // console.log("DATA", vehicle.images)
+            console.log(vehicle.id, vehicle)
+            this.id = vehicle.id
+
+            this.carDetails['fuelType'].setValue(vehicle.fuelType)
+            this.carDetails['bodyType'].setValue(vehicle.bodyType)
+            this.carDetails['color'].setValue(vehicle.color)
+            this.carDetails['steering'].setValue(vehicle.steering)
+            this.carDetails['engineSize'].setValue(vehicle.engineSize)
+            this.carDetails['enginePower'].setValue(vehicle.enginePower)
+            this.carDetails['vinNumber'].setValue(vehicle.vinNumber)
+            this.carDetails['usage'].setValue(vehicle.usage)
+            this.carDetails['duty'].setValue(vehicle.duty)
+            this.carDetails['condition'].setValue(vehicle.condition)
+            this.carDetails['acceleration'].setValue(vehicle.acceleration)
+            this.carDetails['description'].setValue(vehicle.description)
+            this.carDetails['accessories'].setValue(vehicle.accessories)
+          });
+        }
+      });
+    }
+
+    get carDetails(){
+      return this.carDetsForm.controls;
     }
 }

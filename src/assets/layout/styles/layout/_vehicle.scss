@@ -80,9 +80,9 @@ dl {
   border: 1px solid #bdc8ca;
   white-space: normal;
 
-  display: grid;
-  grid-gap: 0px;
-  grid-template-columns:auto;
+  // display: grid;
+  // grid-gap: 0px;
+  // grid-template-columns:auto;
   /* background-color: #f7fafa; */
 }
 dt, dd {
@@ -100,7 +100,7 @@ dd ~ dd {
 }
 dt {
   float: left;
-  width: 35%;
+  width: 70%;
   padding-bottom: 0;
   white-space: nowrap;
 
