@@ -54,8 +54,11 @@ export class UserProfileComponent implements OnInit {
         console.log("ID:",this.currentUserId)
         this.ds.getUser(this.currentUserId).subscribe(user => {
           this.user = user;
-          this.userId= user.id
-          console.log("DATA", this.userId, user.isVendor)
+          this.userId= user.id;
+          this.image = user.profileImage;
+          console.log("DATA", this.user, "isVendor",user.isVendor)
+          console.log("profileimageDATA", this.user.profileImage)
+
           this.userUpdateForm['firstName'].setValue(user.firstName)
           this.userUpdateForm['lastName'].setValue(user.lastName)
           this.userUpdateForm['phoneNumber'].setValue(user.phoneNumber)
@@ -84,14 +87,14 @@ export class UserProfileComponent implements OnInit {
         // password: ['']
     });
 
-    this.userData = {
-      "profileImage": this.dataService.getuploadPictureData(),
-    }
+    // this.userData = {
+    //   "profileImage": this.dataService.getuploadPictureData(),
+    // }
 
-    if(this.userData.profileImage){
-      this.processImageFiles(this.userData.profileImage)
-      console.log(this.image);
-    }
+    // if(this.userData.profileImage){
+    //   this.processImageFiles(this.userData.profileImage)
+    //   console.log(this.image);
+    // }
 }
 
   toggleShowMore() {
@@ -149,11 +152,11 @@ export class UserProfileComponent implements OnInit {
   }
 
 
-  processImageFiles(files: any[]): void {
-    for (const file of files) {
-      this.image.push(file.objectURL);
-    }
-  }
+  // processImageFiles(files: any[]): void {
+  //   for (const file of files) {
+  //     this.image.push(file.objectURL);
+  //   }
+  // }
 
   onSubmit(userId: string){
     this.dataService.setuploadPictureData(this.uploadedFile);
@@ -161,11 +164,11 @@ export class UserProfileComponent implements OnInit {
     if(this.updateForm.invalid){
       return;
     }
-    console.log(this.userUpdateForm['companyUrl'].value)
-    console.log(this.uploadedFile)
-    // this.uploadedFile = this.userUpdateForm['profileImage'].value
-    console.log(this.userUpdateForm['profileImage'].value)
-    const images: File[] = this.dataService.getuploadPictureData();
+    console.log(4554444,this.uploadedFile)
+    const formData = new FormData();
+    formData.append('profileImage',this.uploadedFile)
+    const cc =    formData.append('profileImage',this.uploadedFile)
+    console.log(cc)
 
     const user={
         // this.imageSelected
@@ -174,7 +177,7 @@ export class UserProfileComponent implements OnInit {
         email:this.userUpdateForm['email'].value,
         companyUrl:this.userUpdateForm['companyUrl'].value,
         phoneNumber:this.userUpdateForm['phoneNumber'].value,
-        profileImage:(this.userUpdateForm['profileImage'].value,images),
+        profileImage:formData,
 
         // password:this.userUpdateForm['password'].value || this.user.p
     }

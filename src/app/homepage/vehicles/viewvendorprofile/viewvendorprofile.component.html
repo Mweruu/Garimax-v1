@@ -9,7 +9,7 @@
         <div class="formgroup-inline mb-5" >
           <div class="col-12 md:col-12 lg:col-7">
             <div class="card flex align-items-center justify-content-center">
-              <p-image src="{{user?.profileImage}}" alt="Image" width="120%" [preview]="true"></p-image>
+              <p-image src="{{user?.profileImage}}" alt="Image" width="100%" [preview]="true"></p-image>
             </div>
           </div>
           <div class="card col-12 md:col-12 lg:col-5 ">
@@ -20,7 +20,7 @@
             </div>
             <p-divider></p-divider>
             <!-- <p class="ml-2">Leave a rating</p> -->
-            <p-rating formControlName="value"></p-rating>
+            <p-rating></p-rating>
             <a>View reviews</a>
             <p-divider></p-divider>
             <p-button routerLink="/vehicles" styleClass="p-button-info" styleClass="w-full" (click)="getVehicles(userId)">View {{vehicles?.length}} cars</p-button>
@@ -114,7 +114,7 @@
   </div>
 </div>
 <div class="formgroup-inline mb-5">
-  <div class="col-12 md:col-12 lg:col-5 justify-content-center align-items-center">
+  <div class="col-10 md:col-10 lg:col-5 justify-content-center align-items-center">
     <p-panel header="{{user?.firstName}} vehicles" [toggleable]="true">
       <div  class="col-12 formgroup-inline" *ngFor="let vehicle of vehicles">
         <div class="col-5">
@@ -128,11 +128,11 @@
       </div>
     </p-panel>
   </div>
-  <div class="col-12 md:col-12 lg:col-5">
+  <div class="col-10 md:col-10 lg:col-5">
     <p-panel header="{{user?.firstName}} sold vehicles" [toggleable]="true"></p-panel>
   </div>
 </div>
-<div class="card formgroup-inline col-12 md:col-12 lg:col-12">
+<div class="card formgroup-inline col-10 md:col-10 lg:col-10">
   <div class="col-12 md:col-12 lg:col-5 p-fluid">
     <div class="field">
       <h5>Get in touch</h5>

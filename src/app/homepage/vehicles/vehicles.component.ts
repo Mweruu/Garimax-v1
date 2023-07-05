@@ -98,16 +98,6 @@ export class VehiclesComponent implements OnInit {
 
   }
 
-  // sortDates() {
-  //   console.log(33233,this.dates);
-  //   this.sortedDates= this.dates
-  //   .map(dateString => new Date(dateString))
-  //   .sort((a, b) => b.getTime() - a.getTime())
-  //   .map(date => date.toISOString());
-  //   console.log(3444,this.sortedDates)
-  //   // return this.dates.sort((a, b) => b.getTime() - a.getTime());
-
-  // }
   getVehicle(vehicleId: string){
     this.router.navigateByUrl(`view/${vehicleId}`);
   }
@@ -199,4 +189,5 @@ export class VehiclesComponent implements OnInit {
         this.rows = event.rows;
         console.log(this.rows)
     }
+
 }

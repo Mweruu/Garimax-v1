@@ -200,7 +200,7 @@ export const DRIVETRAIN = [
 ]
 
 export const MILEAGE = [
-  {"mileage":"10,000 km"},
+  {"mileage":"10,000 km","maxmileage":"10,000 km"},
   {"mileage":"20,000 km"},
   {"mileage":"30,000 km"},
   {"mileage":"40,000 km"},

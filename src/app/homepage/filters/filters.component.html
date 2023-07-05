@@ -35,7 +35,7 @@
       <span class="field">
         <label for="dropdown"> Max</label>
         <p-dropdown class="flex" inputId="dropdown"  [options]="mileage"  optionValue="mileage"  optionLabel="mileage"
-        placeholder="Select" [(ngModel)]="mileageFilter" (onChange)="onMileageFilterChanged($event.value)"></p-dropdown><br>
+        placeholder="Select" [(ngModel)]="maxmileageFilter" (onChange)="onMileageFilterChanged($event.value)"></p-dropdown><br>
       </span>
     </div>
   </div>
@@ -71,7 +71,7 @@
     <div class="field col-5 md:col-12 lg:col-5 p-0">
       <span class="field">
         <label for="dropdown">Max</label>
-        <p-dropdown inputId="dropdown" [options]="prices" optionValue="maxPrice"  optionLabel="maxPrice" placeholder="Select"
+        <p-dropdown inputId="dropdown" [options]="prices" optionValue="price"  optionLabel="price" placeholder="Select"
         [(ngModel)]="maxPriceFilter" (onChange)="onPriceFilterChanged($event.value)"></p-dropdown>
       </span>
     </div>
