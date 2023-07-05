@@ -28,7 +28,7 @@ export class DataStorageService {
   private getSingleUserUrl = `${BASE_URL}/api/user`
   private updateProfileUrl = `${BASE_URL}/api/user/updateProfile`
   private getVehicleByUserId = `${BASE_URL}/api/getVendorVehicles`
-  private updateVehicleUrl = `${BASE_URL}/user/updateVehicle`
+  private updateVehicleUrl = `${BASE_URL}/api/user/updateVehicle`
   user:any;
 
   constructor(private http: HttpClient) { }
