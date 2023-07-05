@@ -12,10 +12,13 @@
         <span class="p-inputgroup-addon">
           <i class="pi pi-search"></i>
         </span>
-        <input pInputText type="text" class="p-inputtext-sm" placeholder="Search" [(ngModel)]="searchText" />
+        <input pInputText type="text" class="p-inputtext-sm" placeholder="Search" [(ngModel)]="searchText"  />
       </div>
     </div>
-    <div *ngFor="let vehicle of vehicles | paginate:{itemsPerPage:rows, currentPage: vehicle}">
+    <div class="text-right">
+      <pagination-controls (pageChange)="$event"></pagination-controls>
+    </div>
+    <div *ngFor="let vehicle of vehicles| paginate:{itemsPerPage:rows, currentPage: vehicle}">
       <div class="vehicles-card flex mb-3 mt-3" *ngIf="isMatched(vehicle)">
       <!-- <div class="card flex mb-3 mt-3" *ngIf="searchText === '' || vehicle.make.toLowerCase().includes(searchText) || vehicle.model.toLowerCase().includes(searchText) || vehicle.price.toLowerCase().includes(searchText) || vehicle.yearOfManufacture.toLowerCase().includes(searchText)">
       <div class="flex mb-3 mt-3" *ngIf="searchFilter === '' || vehicle.location.toLowerCase().includes(searchFilter)"> -->
@@ -78,9 +81,9 @@
     <!-- <div class=" flex justify-content-center">
       <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="totalRecords" [rowsPerPageOptions]="[5, 10, 20, 30]" [showFirstLastIcon]="false"></p-paginator>
     </div> -->
-    <div class="text-right">
+    <!-- <div class="text-right">
       <pagination-controls (pageChange)="vehicle = $event"></pagination-controls>
-    </div>
+    </div> -->
   </div>
 </div>
 

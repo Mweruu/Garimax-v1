@@ -17,7 +17,7 @@
         <div class="col-8" routerLink="/view" (click)="getVehicle(vehicle.id)">
           <h6>{{vehicle.make}} {{vehicle.model}} {{vehicle.yearOfManufacture.split('-')[0]}}</h6>
           <div class="text-red-500 font-bold ">{{vehicle.price | currency:'Ksh. ':'symbol':'1.0-0'}}</div>
-          <p>{{vehicle.bodyType}} | {{vehicle.mileage}}KM | {{vehicle.engineSize}}CC | {{vehicle.enginePower}} |
+          <p>{{vehicle.bodyType}} | {{vehicle.mileage| number: '1.0-0'}}KM | {{vehicle.engineSize| number: '1.0-0'}} CC | {{vehicle.enginePower}} |
             {{vehicle.transmission}} | {{vehicle.fuelType}}
             <!-- | {{vehicle.doors}} | {{vehicle.seats}} -->
            </p>

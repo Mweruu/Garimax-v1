@@ -79,17 +79,14 @@ export class FiltersComponent implements OnInit {
   filteredNumbers!: number[];
   maxDate= new Date();
   minDate= new Date("1973");
-
+  maxmileageFilter:any;
 
   @Output()
   searchFilterChanged:EventEmitter<string>=new EventEmitter<string>();
 
 
   constructor( private fb:FormBuilder,
-               private router: Router,
-               private dataServive: DataService,
                private ds:DataStorageService,
-               private filterService: FilterService,
                ) { }
 
   ngOnInit(){

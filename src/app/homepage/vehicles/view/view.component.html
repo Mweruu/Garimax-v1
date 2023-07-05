@@ -50,7 +50,7 @@
       <div class="card">
         <div class="grid formgrid">
           <div>
-            <h2>{{vehicle.yearOfManufacture.split('-')[0]}} {{vehicle.make}} {{vehicle.model}}</h2>
+            <h2>{{vehicle.yearOfManufacture?.split('-')[0]}} {{vehicle.make}} {{vehicle.model}}</h2>
           </div>
         </div>
           <!-- <p-rating [(ngModel)]="value" [readonly]="true" [cancel]="false"></p-rating> -->
@@ -113,28 +113,28 @@
                     <label>Seller name</label>
                     <span class="p-input-icon-left">
                       <i class="pi pi-user"></i>
-                      <input type="text" pInputText value="{{vehicle.user.firstName}}" />
+                      <input type="text" pInputText value="{{vehicle.user?.firstName}}" />
                     </span>
                   </div>
                   <div class="field">
                     <label>Email</label>
                     <span class="p-input-icon-left">
                       <i class="pi pi-envelope"></i>
-                      <input type="email" pInputText value="{{vehicle.user.email}}"/>
+                      <input type="email" pInputText value="{{vehicle.user?.email}}"/>
                     </span>
                   </div>
                   <div class="field">
                     <label>Mobile number</label>
                     <span class="p-input-icon-left">
                       <i class="pi pi-phone"></i>
-                      <input type="number" pInputText value="{{vehicle.user.phoneNumber}}"/>
+                      <input type="number" pInputText value="{{vehicle.user?.phoneNumber}}"/>
                     </span>
                   </div>
                   <div class="field">
                     <label>Address</label>
                     <span class="p-input-icon-left">
                       <i class="pi pi-location"></i>
-                      <input type="text" pInputText value="{{vehicle.user.firstName}}"/>
+                      <input type="text" pInputText value="{{vehicle.user?.firstName}}"/>
                     </span>
                   </div>
                   <p-button icon="pi pi-fw pi-phone" label="Call Seller Now" styleClass="p-button-warning w-21rem"></p-button>
@@ -187,7 +187,12 @@
           </p-dialog>
       </div>
       <p-divider></p-divider>
-      <a href="{{vehicle.user.companyUrl}}"><p>{{vehicle.user.firstName}}</p></a>
+      <div class="flex align-items-center justify-content-between mb-5 gap-5">
+        <div class="flex align-items-center">
+          <a href="{{vehicle.user?.companyUrl}}"><p>{{vehicle.user?.firstName}}</p></a>
+        </div>
+        <p-rating [(ngModel)]="value" [readonly]="true" [cancel]="false"></p-rating>
+      </div>
       </div>
     </div>
 

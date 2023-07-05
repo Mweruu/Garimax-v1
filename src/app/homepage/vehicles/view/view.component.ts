@@ -37,7 +37,8 @@ export class ViewComponent implements OnInit {
   email:any;
   firstName:any;
   phoneNumber:any;
-
+  rating:any;
+  value: number = 4;
 
   responsiveOptions: any[] = [
     {
@@ -53,7 +54,6 @@ export class ViewComponent implements OnInit {
         numVisible: 1
     }
 ];
-value: any;
 
 
   constructor(private ds:DataStorageService,
