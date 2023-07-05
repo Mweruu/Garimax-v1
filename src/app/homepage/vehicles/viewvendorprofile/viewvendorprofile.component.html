@@ -32,28 +32,28 @@
                       <label>Seller name</label>
                       <span class="p-input-icon-left">
                         <i class="pi pi-user"></i>
-                        <input type="text" pInputText />
+                        <input type="text" pInputText value="{{user?.firstName}}"/>
                       </span>
                     </div>
                     <div class="field">
                       <label>Email</label>
                       <span class="p-input-icon-left">
                         <i class="pi pi-envelope"></i>
-                        <input type="email" pInputText />
+                        <input type="email" pInputText value="{{user?.email}}"/>
                       </span>
                     </div>
                     <div class="field">
                       <label>Mobile number</label>
                       <span class="p-input-icon-left">
                         <i class="pi pi-phone"></i>
-                        <input type="number" pInputText />
+                        <input type="number" pInputText value="{{user?.phoneNumber}}"/>
                       </span>
                     </div>
                     <div class="field">
                       <label>Address</label>
                       <span class="p-input-icon-left">
                         <i class="pi pi-location"></i>
-                        <input type="text" pInputText />
+                        <input type="text" pInputText value="{{user?.firstName}}"/>
                       </span>
                     </div>
 
@@ -72,34 +72,34 @@
                       <label>Your name</label>
                       <span class="p-input-icon-left">
                         <i class="pi pi-user"></i>
-                        <input type="text" pInputText />
+                        <input type="text" pInputText value="{{firstName}}" />
                       </span>
                     </div>
                     <div class="field">
                       <label>Email</label>
                       <span class="p-input-icon-left">
                         <i class="pi pi-envelope"></i>
-                        <input type="email" pInputText />
+                        <input type="email" pInputText value="{{email}}" />
                       </span>
                     </div>
                     <div class="field">
                       <label>Mobile number</label>
                       <span class="p-input-icon-left">
                         <i class="pi pi-phone"></i>
-                        <input type="number" pInputText />
+                        <input type="number" pInputText value="{{phoneNumber}}" />
                       </span>
                     </div>
                     <div class="field">
                       <label>Address</label>
                       <span class="p-input-icon-left">
                         <i class="pi pi-location"></i>
-                        <input type="text" pInputText />
+                        <input type="text" pInputText value="{{firstName}}" />
                       </span>
                     </div>
                     <div class="field">
                       <label>Your message (optional)</label>
                       <span class="p-input-icon-left">
-                        <textarea rows="5" cols="30" pInputTextarea ></textarea>
+                        <textarea rows="5" cols="30" pInputTextarea  class="w-full"></textarea>
                       </span>
                     </div>
                     <p-button icon="pi pi-fw pi-envelope" label="Inquire Now" styleClass="p-button-warning w-21rem"></p-button>

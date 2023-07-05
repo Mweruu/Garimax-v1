@@ -33,12 +33,12 @@ export class UpdatebasicinfoComponent implements OnInit {
                private router: Router,
                private ds:DataStorageService,
                private dataServive: DataService,
-               private activatedRouter: ActivatedRoute) {
+               private activatedRoute: ActivatedRoute) {
     }
 
   ngOnInit(){
     console.log(this.minDate, this.maxDate)
-    this.activatedRouter.params.subscribe(params => {
+    this.activatedRoute.params.subscribe(params => {
       if(params['vehicleId']){
         this.currentVehicleId = params['vehicleId'];
         console.log("ID:",this.currentVehicleId)

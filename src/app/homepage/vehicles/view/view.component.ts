@@ -57,7 +57,7 @@ export class ViewComponent implements OnInit {
 
 
   constructor(private ds:DataStorageService,
-              private activatedRouter: ActivatedRoute,
+              private activatedRoute: ActivatedRoute,
               private authService:AuthService
              ) { }
 
@@ -69,7 +69,7 @@ export class ViewComponent implements OnInit {
 
     console.log('User Data:',userData);
 
-    this.activatedRouter.params.subscribe(params => {
+    this.activatedRoute.params.subscribe(params => {
       if(params['vehicleId']){
         this.currentVehicleId = params['vehicleId'];
         console.log("ID:",this.currentVehicleId)

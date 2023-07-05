@@ -53,7 +53,7 @@ export class VehiclesComponent implements OnInit {
   constructor(
     private ds:DataStorageService,
     public router: Router,
-    public activatedRouter:ActivatedRoute,
+    public activatedRoute:ActivatedRoute,
     private rangePipe: RangePipe
   ) { }
 
@@ -103,7 +103,7 @@ export class VehiclesComponent implements OnInit {
   }
 
   getUserId(){
-    this.activatedRouter.params.subscribe(params => {
+    this.activatedRoute.params.subscribe(params => {
       if(params['vehicleId']){
         this.currentVehicleId = params['vehicleId'];
         console.log("ID:",this.currentVehicleId)
@@ -118,7 +118,7 @@ export class VehiclesComponent implements OnInit {
   }
 
   getUser(userId: string){
-    this.activatedRouter.params.subscribe(params => {
+    this.activatedRoute.params.subscribe(params => {
       if(params['vehicleId']){
         this.currentVehicleId = params['vehicleId'];
         console.log("ID:",this.currentVehicleId)

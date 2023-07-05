@@ -28,28 +28,20 @@ export class BasicinfoComponent implements OnInit {
   id:any;
   maxDate= new Date();
   minDate= new Date("1973");
+  updateMode = false;
 
   constructor( private fb:FormBuilder,
                private router: Router,
                private ds:DataStorageService,
                private dataServive: DataService,
-               private activatedRouter: ActivatedRoute) {
+               private activatedRoute: ActivatedRoute) {
     }
 
   ngOnInit(){
+    this._checkUpdateMode()
+
     console.log(this.minDate, this.maxDate)
-    this.activatedRouter.params.subscribe(params => {
-      if(params['vehicleId']){
-        this.currentVehicleId = params['vehicleId'];
-        console.log("ID:",this.currentVehicleId)
-        this.ds.getVehicle(this.currentVehicleId).subscribe(vehicle => {
-          this.vehicle = vehicle;
-          // console.log("DATA", vehicle.images)
-          console.log(vehicle.id)
-          this.id = vehicle.id
-        });
-      }
-    });
+
     this.basicInfoForm= this.fb.group({
       make:['',Validators.required],
       model:['',Validators.required],
@@ -74,7 +66,7 @@ export class BasicinfoComponent implements OnInit {
     if(this.basicInfoForm.invalid){
       return;
     }else{
-      this.router.navigate(['/uploadpicture'])
+      this.router.navigate([`/uploadpicture`])
     }
     const basicInformation = {
       make:this.informationForm['make'].value,
@@ -91,14 +83,39 @@ export class BasicinfoComponent implements OnInit {
 
   }
 
+
+
+  updateVehicle(id: string){
+    this.router.navigateByUrl(`uploadpicture/${id}`)
+  }
+
+  private _checkUpdateMode(){
+    this.activatedRoute.params.subscribe(params => {
+      if(params['vehicleId']){
+        this.updateMode = true
+        this.currentVehicleId = params['vehicleId'];
+        console.log("ID:",this.currentVehicleId)
+        this.ds.getVehicle(this.currentVehicleId).subscribe(vehicle => {
+          this.vehicle = vehicle;
+          // console.log("DATA", vehicle.images)
+          console.log(vehicle.id, vehicle)
+          this.id = vehicle.id
+
+          this.informationForm['make'].setValue(vehicle?.make)
+          this.informationForm['model'].setValue(vehicle?.model)
+          this.informationForm['yearOfManufacture'].setValue(vehicle?.yearOfManufacture)
+          this.informationForm['price'].setValue(vehicle.price)
+          this.informationForm['location'].setValue(vehicle.location)
+          this.informationForm['mileage'].setValue(vehicle.mileage)
+          this.informationForm['transmission'].setValue(vehicle.transmission)
+
+        });
+      }
+    });
+  }
+
+
   get informationForm(){
     return this.basicInfoForm.controls;
   }
-
-  updateVehicle(id: string){
-    const vehicle={}
-    this.ds.updateVehicle(id ,vehicle)
-  }
-
-
 }

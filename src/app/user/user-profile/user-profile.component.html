@@ -71,7 +71,9 @@
     </p-panel>
   </div>
 </div>
-<div class="formgroup-inline mb-5" *ngIf="user?.isVendor">
+<!-- <div class="formgroup-inline mb-5" *ngIf="user?.isVendor"> -->
+  <div class="formgroup-inline mb-5">
+
   <div class="col-10 md:col-10 lg:col-5">
     <p-panel header="Your vehicles for sale" [toggleable]="true">
       <div  class="col-12 formgroup-inline" *ngFor="let vehicle of vehicles">
@@ -86,7 +88,7 @@
                 <p-checkbox id="sold" [binary]="true" styleClass="mr-2"></p-checkbox>
                 <label for="sold">Sold</label>
             </div>
-            <a class="font-medium no-underline ml-2  cursor-pointer" style="color: var(--primary-color)" routerLink="/basicinfoupdate" (click)="getVehicle(vehicle.id)">Edit</a>
+            <a class="font-medium no-underline ml-2  cursor-pointer" style="color: var(--primary-color)" (click)="getVehicle(vehicle.id)">Edit</a>
           </div>
           <p-divider></p-divider>
         </div>

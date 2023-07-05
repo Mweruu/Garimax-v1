@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { DataStorageService } from 'src/app/datastorage.service';
 import { DataService } from 'src/app/layout/data.service';
 
 @Component({
@@ -16,18 +17,35 @@ export class UploadpictureComponent implements OnInit {
   imageUploaded = false;
   isSubmitted = false;
   vendor:any;
+  currentVehicleId!:string;
+  vehicle:any;
+  id:any;
 
   constructor(private messageService: MessageService,
               private fb:FormBuilder,
               private router:Router,
-              private dataService: DataService
+              private dataService: DataService,
+              private activatedRoute:ActivatedRoute,
+              private ds: DataStorageService
               ) { }
 
   ngOnInit(){
     this.imageForm= this.fb.group({
       images: new FormControl(),
     })
-
+    this.activatedRoute.params.subscribe(params => {
+      if(params['vehicleId']){
+        this.currentVehicleId = params['vehicleId'];
+        console.log("ID:",this.currentVehicleId)
+        this.ds.getVehicle(this.currentVehicleId).subscribe(vehicle => {
+          this.vehicle = vehicle;
+          console.log("DATA", vehicle.images)
+          console.log(vehicle.id, vehicle)
+          this.id = vehicle.id
+          this.imageUpload['images'].setValue(vehicle.images)
+        });
+      }
+    });
   }
 
 
@@ -56,6 +74,10 @@ export class UploadpictureComponent implements OnInit {
       this.router.navigate(['/cardetails'])
     }
 
+  }
+
+  updateVehicle(id: string){
+    this.router.navigateByUrl(`cardetails/${id}`)
   }
 
   get imageUpload(){
