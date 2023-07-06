@@ -8,6 +8,7 @@ export class DataService {
   uploadPictureData: any;
   cardetailsData: any;
   constructor() { }
+
   //assign basicInfoData
   setbasicInfoData(data: any){
     this.basicInfoData = data;

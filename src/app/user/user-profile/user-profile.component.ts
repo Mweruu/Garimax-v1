@@ -6,11 +6,6 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from 'src/app/layout/data.service';
 
-interface UploadEvent {
-  originalEvent: Event;
-  files: File[];
-}
-
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -35,7 +30,7 @@ export class UserProfileComponent implements OnInit {
   imageForm!:FormGroup;
   file: any
   userData:any;
-  image:string[] =[];
+  profileImage:any;
 
 
   constructor(private messageService:MessageService,
@@ -48,6 +43,14 @@ export class UserProfileComponent implements OnInit {
     ) { }
 
   async ngOnInit(){
+
+    this.userData = {
+      "profileImage": this.dataService.getuploadPictureData(),
+    }
+    if(this.userData.profileImage){
+      this.processImageFiles(this.userData.profileImage)
+      console.log(this.profileImage);
+    }
     this.activatedRoute.params.subscribe(params => {
       if(params['userId']){
         this.currentUserId = params['userId'];
@@ -55,7 +58,7 @@ export class UserProfileComponent implements OnInit {
         this.ds.getUser(this.currentUserId).subscribe(user => {
           this.user = user;
           this.userId= user.id;
-          this.image = user.profileImage;
+          this.profileImage = user.profileImage;
           console.log("DATA", this.user, "isVendor",user.isVendor)
           console.log("profileimageDATA", this.user.profileImage)
 
@@ -87,14 +90,6 @@ export class UserProfileComponent implements OnInit {
         // password: ['']
     });
 
-    // this.userData = {
-    //   "profileImage": this.dataService.getuploadPictureData(),
-    // }
-
-    // if(this.userData.profileImage){
-    //   this.processImageFiles(this.userData.profileImage)
-    //   console.log(this.image);
-    // }
 }
 
   toggleShowMore() {
@@ -123,7 +118,8 @@ export class UserProfileComponent implements OnInit {
     if (event.target.files && event.target.files.length > 0) {
       const file = event.target.files[0];
       console.log('Selected file:', file.name);
-
+      // const uploim=this.dataService.setuploadPictureData(file.name);
+      this.profileImage = file
       const reader = new FileReader();
 
       reader.onload = (e: any) => {
@@ -149,26 +145,28 @@ export class UserProfileComponent implements OnInit {
       console.log(err)
       this.messageService.add({severity: 'error', summary: 'Image(s) Upload Failed', detail: `Failed to upload Images`});
     }
+
   }
 
+  processImageFiles(file: any): void {
+      this.profileImage.push(file.objectURL);
 
-  // processImageFiles(files: any[]): void {
-  //   for (const file of files) {
-  //     this.image.push(file.objectURL);
-  //   }
-  // }
+  }
 
   onSubmit(userId: string){
-    this.dataService.setuploadPictureData(this.uploadedFile);
+    console.log("got here")
+    const image = this.dataService.getuploadPictureData();
+    console.log("got here", image)
+
     this.isSubmitted = true;
     if(this.updateForm.invalid){
       return;
     }
     console.log(4554444,this.uploadedFile)
     const formData = new FormData();
-    formData.append('profileImage',this.uploadedFile)
-    const cc =    formData.append('profileImage',this.uploadedFile)
-    console.log(cc)
+    formData.append('profileImage',this.profileImage)
+    // const cc = formData.append('profileImage',this.uploadedFile)
+
 
     const user={
         // this.imageSelected
@@ -181,13 +179,12 @@ export class UserProfileComponent implements OnInit {
 
         // password:this.userUpdateForm['password'].value || this.user.p
     }
-    console.log("final user data",user)
+    console.log("final user data",user.profileImage,user)
 
     this.ds.updateProfile(userId, user).subscribe(
       response => {
         console.log('User details updated successfully!', response);
         // Handle success response here
-        console.log(1123,response)
         this.user = response
         this.messageService.add({
           severity:'success',

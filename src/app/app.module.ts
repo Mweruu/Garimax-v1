@@ -29,10 +29,6 @@ import { ViewvendorprofileComponent } from './homepage/vehicles/viewvendorprofil
 import { UpdateprofileComponent } from './user/updateprofile/updateprofile.component';
 import { ViewuservehiclesComponent } from './homepage/vehicles/viewuservehicles/viewuservehicles.component';
 import { RangePipe } from './range.pipe';
-import { UpdatecarComponent } from './update-vehicle/updatecar/updatecar.component';
-import { UpdatebasicinfoComponent } from './update-vehicle/updatecar/updatebasicinfo/updatebasicinfo.component';
-import { UploadpictureupdateComponent } from './update-vehicle/updatecar/uploadpictureupdate/uploadpictureupdate.component';
-import { UpdatecardetailsComponent } from './update-vehicle/updatecar/updatecardetails/updatecardetails.component';
 
 
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -80,7 +76,7 @@ import { SidebarModule } from 'primeng/sidebar';
 import { PanelModule } from 'primeng/panel';
 import { ThumbnailsDirective } from './thumbnails.directive';
 import { CarouselModule } from 'primeng/carousel';
-import { UpdatepreviewComponent } from './update-vehicle/updatecar/updatepreview/updatepreview.component';
+import { AutoCompleteModule } from 'primeng/autocomplete';
 
 @NgModule({
   declarations: [
@@ -110,11 +106,7 @@ import { UpdatepreviewComponent } from './update-vehicle/updatecar/updatepreview
     ViewuservehiclesComponent,
     ThumbnailsDirective,
     RangePipe,
-    UpdatebasicinfoComponent,
-    UpdatecarComponent,
-    UpdatecardetailsComponent,
-    UploadpictureupdateComponent,
-    UpdatepreviewComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -161,7 +153,8 @@ import { UpdatepreviewComponent } from './update-vehicle/updatecar/updatepreview
     RouterModule,
     CalendarModule,
     PanelModule,
-    CarouselModule
+    CarouselModule,
+    AutoCompleteModule
   ],
   providers: [MessageService, AuthService,DataService, ViewComponent,RangePipe],
   bootstrap: [AppComponent]

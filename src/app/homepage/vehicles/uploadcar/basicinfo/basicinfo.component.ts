@@ -61,12 +61,11 @@ export class BasicinfoComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log('gothere!')
     this.isSubmitted = true;
     if(this.basicInfoForm.invalid){
       return;
     }else{
-      this.router.navigate([`/uploadpicture`])
+      // this.router.navigate([`/uploadpicture`])
     }
     const basicInformation = {
       make:this.informationForm['make'].value,
@@ -77,28 +76,40 @@ export class BasicinfoComponent implements OnInit {
       mileage: this.informationForm['mileage'].value,
       transmission:this.informationForm['transmission'].value,
     }
+    if(this.updateMode){
+      this._updateInfo(this.id,basicInformation)
+    }else{
+      this._createInfo(basicInformation)
+    }
+  }
+
+  private _updateInfo(id: string,basicInformation:any){
     this.dataServive.setbasicInfoData(basicInformation);
-    console.log('Basic data' ,basicInformation)
-    // this.ds.updateVehicle(id ,basicInformation)
+    console.log('Basic data updated' ,basicInformation);
+    this.router.navigate([`/uploadpicture/${id}`])
 
   }
 
+  private _createInfo(basicInformation:any){
+    this.dataServive.setbasicInfoData(basicInformation);
+    console.log('Basic data' ,basicInformation);
+    this.router.navigate([`/uploadpicture`])
 
-
-  updateVehicle(id: string){
-    this.router.navigateByUrl(`uploadpicture/${id}`)
   }
+
+  // updateVehicle(id: string){
+  //   this.router.navigateByUrl(`uploadpicture/${id}`)
+  // }
 
   private _checkUpdateMode(){
     this.activatedRoute.params.subscribe(params => {
       if(params['vehicleId']){
         this.updateMode = true
         this.currentVehicleId = params['vehicleId'];
-        console.log("ID:",this.currentVehicleId)
         this.ds.getVehicle(this.currentVehicleId).subscribe(vehicle => {
           this.vehicle = vehicle;
           // console.log("DATA", vehicle.images)
-          console.log(vehicle.id, vehicle)
+          console.log(vehicle.id, this.currentVehicleId,vehicle)
           this.id = vehicle.id
 
           this.informationForm['make'].setValue(vehicle?.make)

@@ -20,6 +20,7 @@ export class UploadpictureComponent implements OnInit {
   currentVehicleId!:string;
   vehicle:any;
   id:any;
+  updateMode=false;
 
   constructor(private messageService: MessageService,
               private fb:FormBuilder,
@@ -35,6 +36,7 @@ export class UploadpictureComponent implements OnInit {
     })
     this.activatedRoute.params.subscribe(params => {
       if(params['vehicleId']){
+        this.updateMode = true;
         this.currentVehicleId = params['vehicleId'];
         console.log("ID:",this.currentVehicleId)
         this.ds.getVehicle(this.currentVehicleId).subscribe(vehicle => {
@@ -71,14 +73,37 @@ export class UploadpictureComponent implements OnInit {
     if(!this.imageUploaded){
       return;
     }else{
-      this.router.navigate(['/cardetails'])
+      // this.router.navigate(['/cardetails'])
+    }
+    if(this.updateMode){
+      this._updateInfo(this.id,this.uploadedFiles)
+    }else{
+      this._createInfo(this.uploadedFiles)
     }
 
   }
 
-  updateVehicle(id: string){
-    this.router.navigateByUrl(`cardetails/${id}`)
+
+
+  private _updateInfo(id: string,uploadedFiles:any){
+    this.dataService.setuploadPictureData(uploadedFiles);
+    const images=this.dataService.setuploadPictureData(uploadedFiles);
+
+    console.log(8888888,images)
+
+    console.log('Details Data updated' ,uploadedFiles);
+    this.router.navigate([`/cardetails/${id}`])
+
   }
+
+  private _createInfo(uploadedFiles:any){
+    this.dataService.setuploadPictureData(uploadedFiles);
+    // console.log('Details Data!',details)
+    this.router.navigate([`/cardetails`])
+
+  }
+
+
 
   get imageUpload(){
     return this.imageForm.controls;
