@@ -77,7 +77,7 @@ export class CardetailsComponent implements OnInit {
       if(this.carDetsForm.invalid){
         return;
       }else{
-        this.router.navigate(['/preview'])
+        // this.router.navigate(['/preview'])
       }
 
       const details = {
@@ -96,24 +96,39 @@ export class CardetailsComponent implements OnInit {
         accessories:this.selectedOptions.map(option => option.name)
 
       }
+
+      if(this.updateMode){
+        this._updateInfo(this.id,details)
+      }else{
+        this._createInfo(details)
+      }
+
+
+    }
+
+    private _updateInfo(id: string,details:any){
+      this.dataService.setcardetailsData(details)
+      console.log('Details Data updated' ,details);
+      this.router.navigate([`/preview/${id}`])
+
+    }
+
+    private _createInfo(details:any){
       this.dataService.setcardetailsData(details)
       console.log('Details Data!',details)
+      this.router.navigate([`/preview`])
 
     }
 
     showDialog() {
         this.visible = true;
     }
-    onReset(){
-        //Set first index to 0
-        // this.firstIndex = 0;
-    }
-
 
     onCheckboxChange() {
       const names = this.selectedOptions.map(option => option.name);
       console.log("names",names);
     }
+
     private _checkUpdateMode(){
       this.activatedRoute.params.subscribe(params => {
         if(params['vehicleId']){
@@ -138,7 +153,7 @@ export class CardetailsComponent implements OnInit {
             this.carDetails['condition'].setValue(vehicle.condition)
             this.carDetails['acceleration'].setValue(vehicle.acceleration)
             this.carDetails['description'].setValue(vehicle.description)
-            this.carDetails['accessories'].setValue(vehicle.accessories)
+            // this.carDetails['accessories'].setValue(vehicle.accessories)
           });
         }
       });

@@ -69,8 +69,7 @@ export class ViewvendorprofileComponent implements OnInit {
 
         this.ds.getUserVehicle(this.currentUserId).subscribe(vehicles =>{
           this.vehicles = vehicles;
-          console.log(2323,vehicles)
-          console.log(2323,vehicles.length)
+          console.log(2323,vehicles.length,vehicles)
 
         })
       }

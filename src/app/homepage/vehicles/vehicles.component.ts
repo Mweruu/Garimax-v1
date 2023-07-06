@@ -72,11 +72,9 @@ export class VehiclesComponent implements OnInit {
   getAllVehicles(){
     this.ds.getVehicles().subscribe(
       (vehicles) => {
-        console.log(vehicles);
         console.log(vehicles.vehicles);
         this.vehicles = vehicles.vehicles;
         this.totalRecords = this.vehicles.length;
-        console.log(this.totalRecords)
         // for (const vehicle of this.vehicles) {
         //   this.dates=vehicle.updatedAt
         this.vehicles.sort((a: { updatedAt: string | number | Date; }, b: { updatedAt: string | number | Date; }) => {

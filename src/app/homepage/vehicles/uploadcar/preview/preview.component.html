@@ -1,3 +1,4 @@
+<p-toast></p-toast>
 <div class="mid-display grid p-fluid">
   <div class="col-5 md:col-5 lg:col-5">
     <div class="card">
@@ -94,6 +95,6 @@
   </div>
 </div>
   <div class="field grid col-12 md:col-12 lg:col-12 ml-4 justify-content-center">
-    <button pButton pRipple label="Back" routerLink="/cardetails" class="w-20rem p-3 text-xl ml-5 mb-5" type="button"></button>
-    <button pButton pRipple label="Submit" class="w-20rem p-3 text-xl ml-5 mb-5" type="submit" (click)="onSubmit()"></button>
+    <button pButton pRipple label="Back" (click)="back(id)" class="w-20rem p-3 text-xl ml-5 mb-5" type="button"></button>
+    <button pButton pRipple [label]="updateMode? 'Update':'Submit'" class="w-20rem p-3 text-xl ml-5 mb-5" type="submit" (click)="onSubmit()"></button>
   </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, LOCALE_ID } from '@angular/core';
 import { MessageService } from 'primeng/api';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from 'src/app/layout/data.service';
 import { DataStorageService } from 'src/app/datastorage.service';
 import { timer } from 'rxjs';
@@ -37,6 +37,10 @@ export class PreviewComponent implements OnInit {
   accessories:any = [];
   images: string[] =[];
   properties:any[] = [];
+  updateMode = false;
+  currentVehicleId!:string;
+  id:any;
+
 
   responsiveOptions: any[] = [
     {
@@ -57,9 +61,24 @@ export class PreviewComponent implements OnInit {
               private messageService: MessageService,
               private router: Router,
               private ds: DataStorageService,
+              private activatedRoute:ActivatedRoute
               ) { }
 
   async ngOnInit(): Promise<void> {
+    this.activatedRoute.params.subscribe(params => {
+      if(params['vehicleId']){
+        this.updateMode = true
+        this.currentVehicleId = params['vehicleId'];
+        console.log("ID:",this.currentVehicleId)
+        this.ds.getVehicle(this.currentVehicleId).subscribe(vehicle => {
+          this.vehicle = vehicle;
+          // console.log("DATA", vehicle.images)
+          console.log(vehicle.id, vehicle)
+          this.id = vehicle.id
+
+        });
+      }
+      });
     this.carData = {
       "basicInfo": this.dataService.getbasicInfoData(),
       "images": this.dataService.getuploadPictureData(),
@@ -109,7 +128,7 @@ export class PreviewComponent implements OnInit {
   onSubmit(){
     let userId = localStorage.getItem('userId');
     const images: File[] = this.dataService.getuploadPictureData();
-
+    console.log(8888888,images)
     const vehicleData = new FormData();
     vehicleData.append("userId", userId || '1');
     vehicleData.append("model", this.carData.basicInfo.model);
@@ -143,7 +162,45 @@ export class PreviewComponent implements OnInit {
     //                                   this.carData.carDetails.fuelType].toString());
 
     console.log("final -> ", vehicleData)
+    if(this.updateMode){
+      console.log(this.id)
+      this._updateInfo(this.id,vehicleData)
+    }else{
+      this._createInfo(vehicleData)
+    }
 
+  }
+
+  private _updateInfo(id: string,vehicleData:any){
+    console.log("Gothere5678")
+    this.ds.updateVehicle(id,vehicleData).subscribe(response => {
+      console.log('Vehicle Updated successfully!', response);
+      this.vehicle = response
+
+      this.messageService.add({
+        severity:'success',
+        summary:'Success',
+        detail:'Please wait for our team to verify your updated vehicle'
+      })
+      timer(2500).toPromise().then(()=>{
+        this.router.navigate(['/'])
+      })
+    },
+    error => {
+      console.error('Failed to update vehicle:', error);
+      // Handle error response here
+      this.messageService.add({
+        severity:'error',
+        summary:'Error',
+        detail:'Failed to update vehicle'
+      })
+      }
+    );
+    this.router.navigate(['/'])
+
+  }
+
+  private _createInfo(vehicleData:any){
     this.ds.createVehicle(vehicleData).subscribe(response => {
       console.log('Vehicle Uploaded successfully!', response);
       this.vehicle = response
@@ -169,7 +226,16 @@ export class PreviewComponent implements OnInit {
       })
       }
     );
+    this.router.navigate([`/cardetails`])
+
   }
 
+  back(id: string){
+    if(this.updateMode){
+    this.router.navigateByUrl(`cardetails/${id}`);
+    }else{
+      this.router.navigateByUrl(`/cardetails`);
 
+    }
+  }
 }
