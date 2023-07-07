@@ -226,6 +226,7 @@ export const MILEAGE = [
 
 export const PRICE = [
   {"price":"100,000 Ksh.","maxPrice":"100,000 Ksh."},
+  {"price":"200,000 Ksh.", "maxPrice":"200,000 Ksh."},
   {"price":"300,000 Ksh.", "maxPrice":"300,000 Ksh."},
   {"price":"500,000 Ksh.", "maxPrice":"500,000 Ksh."},
   {"price":"700,000 Ksh.", "maxPrice":"700,000 Ksh."},

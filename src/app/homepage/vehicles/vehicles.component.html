@@ -16,7 +16,7 @@
       </div>
     </div>
 
-    <div *ngFor="let vehicle of vehicles| paginate:{itemsPerPage:rows, currentPage: vehicle}">
+    <div *ngFor="let vehicle of vehicles| paginate:{itemsPerPage:rows, currentPage: vehicle} ">
       <div class="vehicles-card flex mb-3 mt-3" *ngIf="isMatched(vehicle)">
       <!-- <div class="card flex mb-3 mt-3" *ngIf="searchText === '' || vehicle.make.toLowerCase().includes(searchText) || vehicle.model.toLowerCase().includes(searchText) || vehicle.price.toLowerCase().includes(searchText) || vehicle.yearOfManufacture.toLowerCase().includes(searchText)">
       <div class="flex mb-3 mt-3" *ngIf="searchFilter === '' || vehicle.location.toLowerCase().includes(searchFilter)"> -->

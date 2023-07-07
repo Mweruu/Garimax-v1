@@ -4,12 +4,12 @@
       <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);" >
         <p-button class="flex col-4 md:col-6 mt-0" label="Make"  styleClass="p-button-info p-button-text" ></p-button>
         <p-dropdown class="flex col-8 md:col-6 mb-0" formControlName="make" [options]="makes" inputId="dropdown" inputId="dropdown"
-         (onChange)="onMakeChange()" placeholder="Select" [(ngModel)]="makeFilter" (onChange)="onMakeFilterChanged($event.value)" ></p-dropdown>
+         (onChange)="onMakeChange()" placeholder="Select" [(ngModel)]="makeFilter" (onChange)="onSearchFilterChanged($event.value)" ></p-dropdown>
       </div>
       <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
         <p-button class="flex col-4 md:col-6 mb-0" label="Model" styleClass="p-button-info p-button-text" ></p-button>
         <p-dropdown class="flex col-8 md:col-6 mb-0" formControlName="model" [options]="models"  inputId="dropdown" placeholder="Select"
-         [(ngModel)]="modelFilter" (onChange)="onModelFilterChanged($event.value)"></p-dropdown>
+         [(ngModel)]="modelFilter" (onChange)="onSearchFilterChanged($event.value)"></p-dropdown>
       </div>
     </div>
   </form>
@@ -41,22 +41,21 @@
   </div>
 </fieldset>
 <fieldset class="mt-3 fieldset">
-<legend class="ml-2">Year</legend>
-<div class="formgroup-inline col-12 md:col-12 lg:col-12 m-0">
-  <div class="field col-5 md:col-12 lg:col-5 mb-2 p-0">
-    <span class="field">
-      <label for="dropdown" class="">Min </label>
-      <p-calendar [(ngModel)]="date" view="year" [showIcon]="true" dateFormat="yy" [maxDate]="maxDate" [minDate]="minDate"></p-calendar>
-    </span>
+  <legend class="ml-2">Year</legend>
+  <div class="formgroup-inline col-12 md:col-12 lg:col-12 m-0">
+    <div class="field col-5 md:col-12 lg:col-5 mb-2 p-0">
+      <span class="field">
+        <label for="dropdown" class="">Min </label>
+        <p-calendar [(ngModel)]="date" view="year" [showIcon]="true" dateFormat="yy" [maxDate]="maxDate" [minDate]="minDate"></p-calendar>
+      </span>
+    </div>
+    <div class="field col-5 md:col-12 lg:col-5  mb-2 p-0">
+      <span class="field">
+        <label for="dropdown"> Max</label>
+        <p-calendar [(ngModel)]="date1" view="year" [showIcon]="true" dateFormat="yy" [maxDate]="maxDate" [minDate]="minDate" ></p-calendar>
+      </span>
+    </div>
   </div>
-  <div class="field col-5 md:col-12 lg:col-5  mb-2 p-0">
-    <span class="field">
-      <label for="dropdown"> Max</label>
-      <p-calendar [(ngModel)]="date1" view="year" [showIcon]="true" dateFormat="yy" [maxDate]="maxDate" [minDate]="minDate" ></p-calendar>
-    </span>
-  </div>
-</div>
-
 </fieldset>
 <fieldset class="mt-3 fieldset">
   <legend class="ml-2">Price</legend>
@@ -68,13 +67,13 @@
         [(ngModel)]="minPriceFilter" (onChange)="onPriceFilterChanged($event.value)"></p-dropdown>
       </span>
     </div>
-    <div class="field col-5 md:col-12 lg:col-5 p-0">
+    <!-- <div class="field col-5 md:col-12 lg:col-5 p-0">
       <span class="field">
         <label for="dropdown">Max</label>
         <p-dropdown inputId="dropdown" [options]="prices" optionValue="price"  optionLabel="price" placeholder="Select"
         [(ngModel)]="maxPriceFilter" (onChange)="onPriceFilterChanged($event.value)"></p-dropdown>
       </span>
-    </div>
+    </div> -->
   </div>
 </fieldset>
 
@@ -90,7 +89,7 @@
     <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
       <p-button  class="flex col-4 md:col-6 mt-0"  label="Body Type" styleClass="p-button-info p-button-text w-11rem"></p-button>
       <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="bodyType"  optionValue="bodyType" optionLabel="bodyType"
-      placeholder="Select" [(ngModel)]="bodyTypeFilter" (onChange)="onBodyTypeFilterChanged($event.value)"></p-dropdown>
+      placeholder="Select" [(ngModel)]="bodyTypeFilter" (onChange)="onSearchFilterChanged($event.value)"></p-dropdown>
     </div>
     <!-- <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);"> -->
       <!-- <label class="label mb-2">Verified</label> -->

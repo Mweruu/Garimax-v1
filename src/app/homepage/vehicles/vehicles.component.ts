@@ -83,11 +83,11 @@ export class VehiclesComponent implements OnInit {
           return dateB.getTime() - dateA.getTime();
         });
 
-        // console.log(this.vehicles);
-        //  for (const vehicle of this.vehicles) {
-        //   this.userId = vehicle.user.id
-        //   console.log(this.userId, vehicle.accessories);
-        // }
+        console.log(this.vehicles);
+         for (const vehicle of this.vehicles) {
+          this.userId = vehicle.user.id
+          console.log(this.userId, vehicle.price, vehicle.mileage, vehicle.yearOfManufacture);
+        }
       },
       (error) => {
         console.error(error);
@@ -138,22 +138,26 @@ export class VehiclesComponent implements OnInit {
   }
 
   onSearchTextEntered(searchValue:string){
-    this.searchText =searchValue ;
+    this.searchText =searchValue;
     console.log(1,this.searchText)
   }
 
   onSearchFilterEntered(filterValue:string){
       this.searchFilter = filterValue.toLowerCase();
-      console.log(2,this.searchFilter)
+      console.log("sf",this.searchFilter)
+
   }
 
-  isMatched(vehicle: any): boolean {
+  isMatched(vehicle: any) {
     // console.log(vehicle)
     if (this.searchText === '') {
-      return this.searchFilter === '' || vehicle.location.toLowerCase().includes(this.searchFilter) ||
+      return this.searchFilter === '' ||
+      vehicle.location.toLowerCase().includes(this.searchFilter) ||
       vehicle.model.toLowerCase().includes(this.searchFilter) ||
       vehicle.make.toLowerCase().includes(this.searchFilter)||
       vehicle.location.toLowerCase().includes(this.searchFilter) ||
+      vehicle.mileage.toLowerCase().includes(this.searchFilter) ||
+      vehicle.price.toLowerCase().includes(this.searchFilter) ||
       vehicle.bodyType.toLowerCase().includes(this.searchFilter) ||
       vehicle.usage.toLowerCase().includes(this.searchFilter) ||
       vehicle.condition.toLowerCase().includes(this.searchFilter) ||
@@ -161,8 +165,6 @@ export class VehiclesComponent implements OnInit {
       vehicle.color.toLowerCase().includes(this.searchFilter) ||
       vehicle.fuelType.toLowerCase().includes(this.searchFilter);
       // this.rangePipe.transform(this.prices, this.minPrice, this.maxPrice);
-
-
 
     } else {
       const searchText = this.searchText.toLowerCase();
@@ -181,11 +183,11 @@ export class VehiclesComponent implements OnInit {
     }
   }
 
-    onPageChange(event: PageEvent) {
-      console.log('got here')
-        this.first = event.first;
-        this.rows = event.rows;
-        console.log(this.rows)
-    }
+  onPageChange(event: PageEvent) {
+    console.log('got here')
+      this.first = event.first;
+      this.rows = event.rows;
+      console.log(this.rows)
+  }
 
 }
