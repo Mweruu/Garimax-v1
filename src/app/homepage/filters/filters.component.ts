@@ -6,6 +6,7 @@ import { DataService } from 'src/app/layout/data.service';
 import { DataStorageService } from 'src/app/datastorage.service';
 import {FilterService} from 'primeng/api';
 import { RangePipe } from 'src/app/range.pipe';
+import { range } from 'rxjs';
 
 
 interface City {
@@ -145,46 +146,84 @@ export class FiltersComponent implements OnInit {
     this.searchFilterChanged.emit(selectedFilter)
     console.log("ef",selectedFilter)
   }
-  onModelFilterChanged(selectedFilter:string){
+
+  onLocationFilterChanged(selectedFilter:string){
     this.searchFilterChanged.emit(selectedFilter)
     console.log("ef",selectedFilter)
   }
+
+  onModelFilterChanged(selectedFilter:string){
+    this.searchFilterChanged.emit(selectedFilter)
+    console.log("ef",selectedFilter)
+    const convertedString = selectedFilter.replace(/[^0-9]/g, '');
+    console.log(888,convertedString);
+  }
+
   onMakeFilterChanged(selectedFilter:string){
     this.searchFilterChanged.emit(selectedFilter)
     console.log("ef",selectedFilter)
   }
+
   onMileageFilterChanged(selectedFilter:string){
-    this.searchFilterChanged.emit(selectedFilter)
-    console.log("ef",selectedFilter)
+    if(this.mileageFilter && this.maxmileageFilter){
+      let range = `${this.mileageFilter.replace(/[^0-9]/g, '')}-${this.maxmileageFilter.replace(/[^0-9]/g, '')}`;
+      console.log("ef33",range)
+      // range = selectedFilter
+      this.searchFilterChanged.emit(selectedFilter)
+      return range;
+
+    }
+    // this.searchFilterChanged.emit(selectedFilter);
+    return selectedFilter;
+
   }
+
   // onMinPriceFilterChanged(selectedFilter:string){
   //   this.searchFilterChanged.emit(selectedFilter)
   //   console.log("ef",selectedFilter)
   // }
-  onMaxPriceFilterChanged(selectedFilter:string){
-    this.searchFilterChanged.emit(selectedFilter)
-    return function(items:any, attr:any,min:any, max:any) {
-      var range = []
-          // min=parseFloat(minimum),
-          // max=parseFloat(maximum);
-      for (var i=0, l=items.length; i<l; ++i){
-          var item = items[i];
-          if(item[attr]<=max && item[attr]>=min){
-              range.push(item);
-          }
-      }
-      return range;
-  };
-    console.log("ef",selectedFilter)
-  }
-  onPriceFilterChanged(selectedFilter:string){
-    this.searchFilterChanged.emit(selectedFilter)
-    console.log("ef",selectedFilter)
-  }
-  // onYearFilterChanged(selectedFilter:string){
-  //   this.searchFilterChanged.emit(selectedFilter)
-  //   console.log("ef",selectedFilter)
+
+  // onMileageFilterChanged(selectedFilter:string){
+  //   const convertedString = selectedFilter.replace(/[^0-9]/g, '');
+  //   this.searchFilterChanged.emit(convertedString)
+  //   console.log("ef1=",this.mileageFilter)
+  //   console.log("ef1=1",this.maxmileageFilter)
+  //   return function(items:any, attr:any,mileageFilter:any, maxmileageFilter:any) {
+  //     var range = []
+  //         mileageFilter=parseFloat(mileageFilter),
+  //         maxmileageFilter=parseFloat(maxmileageFilter);
+  //         console.log("gothere")
+
+  //     for (var i=0, l=items.length; i<l; ++i){
+  //         var item = items[i];
+  //         if(item[attr]<=maxmileageFilter && item[attr]>=mileageFilter){
+  //             range.push(item);
+  //         }
+  //     }
+  //     console.log("ef",range)
+  //     return range;
+  // };
   // }
+
+  // onPriceFilterChanged(selectedFilter:string){
+  //   const convertedString = selectedFilter.replace(/[^0-9]/g, '');
+  //   this.searchFilterChanged.emit(convertedString)
+  //   console.log("ef",convertedString);
+  // }
+
+  onPriceFilterChanged(selectedFilter: string) {
+    const convertedString = selectedFilter.replace(/[^0-9]/g, '');
+    this.searchFilterChanged.emit(convertedString);
+    console.log("ef", convertedString);
+    console.log("ef1",selectedFilter)
+
+  }
+
+  onYearFilterChanged(selectedFilter:string){
+    this.searchFilterChanged.emit(selectedFilter)
+    console.log("ef",selectedFilter)
+  }
+
   onBodyTypeFilterChanged(selectedFilter:string){
     this.searchFilterChanged.emit(selectedFilter)
     console.log("ef",selectedFilter)
@@ -199,40 +238,42 @@ export class FiltersComponent implements OnInit {
     this.searchFilterChanged.emit(selectedFilter)
     console.log("ef",selectedFilter)
   }
+
   onFuelTypeFilterChanged(selectedFilter:string){
       this.searchFilterChanged.emit(selectedFilter)
       console.log("ef",selectedFilter)
-    }
+  }
 
   onFuelConsumptionFilterChanged(selectedFilter:string){
       this.searchFilterChanged.emit(selectedFilter)
       console.log("ef",selectedFilter)
-    }
+  }
 
   onColorFilterChanged(selectedFilter:string){
       this.searchFilterChanged.emit(selectedFilter)
       console.log("ef",selectedFilter)
-    }
+  }
 
   onBootSpaceFilterChanged(selectedFilter:string){
       this.searchFilterChanged.emit(selectedFilter)
       console.log("ef",selectedFilter)
-    }
+  }
 
   onDoorsFilterChanged(selectedFilter:string){
       this.searchFilterChanged.emit(selectedFilter)
       console.log("ef",selectedFilter)
-    }
+  }
 
   onSeatsFilterChanged(selectedFilter:string){
       this.searchFilterChanged.emit(selectedFilter)
       console.log("ef",selectedFilter)
-    }
+  }
 
   onDriveTrainFilterChanged(selectedFilter:string){
       this.searchFilterChanged.emit(selectedFilter)
       console.log("ef",selectedFilter)
-    }
+  }
+
   onUsageFilterChanged(selectedFilter:string){
     this.searchFilterChanged.emit(selectedFilter)
     console.log("ef",selectedFilter)
@@ -241,6 +282,7 @@ export class FiltersComponent implements OnInit {
     this.searchFilterChanged.emit(selectedFilter)
     console.log("ef",selectedFilter)
   }
+
   onConditionFilterChanged(selectedFilter:string){
     this.searchFilterChanged.emit(selectedFilter)
     console.log("ef",selectedFilter)
