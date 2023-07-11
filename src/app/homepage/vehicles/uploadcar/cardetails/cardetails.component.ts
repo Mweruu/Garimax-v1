@@ -13,7 +13,7 @@ import { MessageService } from 'primeng/api';
   styleUrls: ['./cardetails.component.scss']
 })
 export class CardetailsComponent implements OnInit {
-    selectedOptions: { name: string, key: string }[] = [];;
+    selectedOptions: { name: string, key: string }[] = [];
     options = CAR_OPTIONS;
     color: any = COLOR;
     fuelType:any = FUEL_TYPE;
