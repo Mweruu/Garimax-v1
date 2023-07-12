@@ -34,6 +34,7 @@ export class PreviewComponent implements OnInit {
   description!:string;
   duty!:string;
   condition!:string;
+  isVerified!:boolean;
   accessories:any = [];
   images: string[] =[];
   properties:any[] = [];
@@ -114,6 +115,7 @@ export class PreviewComponent implements OnInit {
       this.duty = this.carData.carDetails.duty;
       this.condition = this.carData.carDetails.condition;
       this.accessories = this.carData.carDetails.accessories;
+      this.isVerified = false
     }
 
   }
@@ -164,6 +166,7 @@ export class PreviewComponent implements OnInit {
     console.log("final -> ", vehicleData)
     if(this.updateMode){
       console.log(this.id)
+      this.vehicle.isVerified = false
       this._updateInfo(this.id,vehicleData)
     }else{
       this._createInfo(vehicleData)

@@ -2,10 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MessageService } from 'primeng/api';
-import { timer } from 'rxjs';
 import { AuthService } from 'src/app/auth.service';
 import { DataStorageService } from 'src/app/datastorage.service';
-import { DataService } from 'src/app/layout/data.service';
 
 @Component({
   selector: 'app-viewvendorprofile',
@@ -38,8 +36,7 @@ export class ViewvendorprofileComponent implements OnInit {
   phoneNumber:any;
 
 
-  constructor(private messageService:MessageService,
-              private ds:DataStorageService,
+  constructor(private ds:DataStorageService,
               private fb: FormBuilder,
               private router: Router,
               private activatedRoute: ActivatedRoute,

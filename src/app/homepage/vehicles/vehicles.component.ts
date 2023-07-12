@@ -3,6 +3,7 @@ import { DataStorageService } from '../../datastorage.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RangePipe } from 'src/app/range.pipe';
 import { PRICE } from '../const-data/constants';
+import { FormGroup, FormControl } from '@angular/forms';
 
 interface PageEvent {
   first: number;
@@ -37,6 +38,10 @@ export class VehiclesComponent implements OnInit {
   userId :any;
   currentUserId!:string;
   user:any;
+
+  viewForm = new FormGroup({
+    assessment:new FormControl(),
+  })
 
   options = [
     { label: 5, value: 5 },
@@ -73,6 +78,7 @@ export class VehiclesComponent implements OnInit {
     this.ds.getVehicles().subscribe(
       (vehicles) => {
         console.log(vehicles.vehicles);
+
         this.vehicles = vehicles.vehicles;
         this.totalRecords = this.vehicles.length;
         // for (const vehicle of this.vehicles) {
@@ -83,10 +89,10 @@ export class VehiclesComponent implements OnInit {
           return dateB.getTime() - dateA.getTime();
         });
 
-        console.log(this.vehicles);
-         for (const vehicle of this.vehicles) {
-          this.userId = vehicle.user.id
-          console.log(vehicle.yearOfManufacture);
+        for (const vehicle of this.vehicles) {
+          this.vehicle = vehicle;
+          this.userId = vehicle.user.id;
+          console.log(vehicle.assessment);
         }
       },
       (error) => {
@@ -98,6 +104,18 @@ export class VehiclesComponent implements OnInit {
 
   getVehicle(vehicleId: string){
     this.router.navigateByUrl(`view/${vehicleId}`);
+    console.log(this.vehicles)
+    for (const vehicle of this.vehicles) {
+      this.vehicle = vehicle;
+      this.userId = vehicle.user.id;
+      console.log(vehicle.assessment);
+    }
+    console.log(this.vehicle.accessories)
+    console.log("assessment",this.vehicle.assessment)
+
+    let assessment = this.vehicle.assessment
+    this.viewForm.patchValue(assessment)
+
   }
 
   getUserId(){
@@ -108,7 +126,8 @@ export class VehiclesComponent implements OnInit {
         this.ds.getVehicle(this.currentVehicleId).subscribe(vehicle => {
           this.vehicle = vehicle;
           console.log("DATA", vehicle.images)
-          console.log(vehicle.userId)
+          console.log(vehicle.userId);
+          console.log(vehicle.assessment);
           this.userId = vehicle.userId
         });
       }
@@ -145,7 +164,6 @@ export class VehiclesComponent implements OnInit {
   onSearchFilterEntered(filterValue:string){
       this.searchFilter = filterValue.toLowerCase();
       console.log("sf",this.searchFilter)
-
   }
 
   isMatched(vehicle: any) {

@@ -1,34 +1,35 @@
 <app-topbar></app-topbar>
-<p>Got here!</p>
-<div class="card pt-5"></div>
-<a routerLink="/vendorprofile" (click)="getUser(user.id)">Back to retailer</a>
-<h4>All cars from {{user?.firstName}}</h4>
-<div class="formgroup-inline mb-5 mt-10">
-  <div class="col-5 md:col-4 lg:col-4">
-    <p>{{vehicles?.length}} Cars found</p>
-    <app-filters (searchFilterChanged)="onSearchFilterEntered($event)"></app-filters>
-  </div>
-  <div class="card-w-title col-12 md:col-6 lg:col-6">
-    <div class="m-4" *ngFor="let vehicle of vehicles  | paginate:{itemsPerPage:rows, currentPage: vehicle}">
-      <div class="card col-12 formgroup-inline" *ngIf="isMatched(vehicle)">
-        <div class="col-4">
-          <p-image src="{{vehicle.image}}" alt="Image" width="100%" [preview]="true"></p-image>
-        </div>
-        <div class="col-8" routerLink="/view" (click)="getVehicle(vehicle.id)">
-          <h6>{{vehicle.make}} {{vehicle.model}} {{vehicle.yearOfManufacture.split('-')[0]}}</h6>
-          <div class="text-red-500 font-bold ">{{vehicle.price | currency:'Ksh. ':'symbol':'1.0-0'}}</div>
-          <p>{{vehicle.bodyType}} | {{vehicle.mileage| number: '1.0-0'}}KM | {{vehicle.engineSize| number: '1.0-0'}} CC | {{vehicle.enginePower}} |
-            {{vehicle.transmission}} | {{vehicle.fuelType}}
-            <!-- | {{vehicle.doors}} | {{vehicle.seats}} -->
-           </p>
-          <div>{{vehicle.description}}</div>
+<div class="pt-5 mt-8">
+  <a routerLink="/vendorprofile" (click)="getUser(user.id)">Back to retailer</a>
+  <h4>All cars from {{user?.firstName}}</h4>
+  <div class="formgroup-inline mb-5 mt-10">
+    <div class="col-5 md:col-4 lg:col-4">
+      <p>{{vehicles?.length}} Cars found</p>
+      <app-filters (searchFilterChanged)="onSearchFilterEntered($event)"></app-filters>
+    </div>
+    <div class="card-w-title col-12 md:col-6 lg:col-6">
+      <div class="m-4" *ngFor="let vehicle of vehicles  | paginate:{itemsPerPage:rows, currentPage: vehicle}">
+        <div *ngIf="vehicle.isVerified">
+          <div class="card col-12 formgroup-inline" *ngIf="isMatched(vehicle)">
+            <div class="col-4">
+              <p-image src="{{vehicle.image}}" alt="Image" width="100%" [preview]="true"></p-image>
+            </div>
+            <div class="col-8" routerLink="/view" (click)="getVehicle(vehicle.id)">
+              <h6>{{vehicle.make}} {{vehicle.model}} {{vehicle.yearOfManufacture.split('-')[0]}}</h6>
+              <div class="text-red-500 font-bold ">{{vehicle.price | currency:'Ksh. ':'symbol':'1.0-0'}}</div>
+              <p>{{vehicle.bodyType}} | {{vehicle.mileage| number: '1.0-0'}}KM | {{vehicle.engineSize| number: '1.0-0'}} CC | {{vehicle.enginePower}} |
+                {{vehicle.transmission}} | {{vehicle.fuelType}}
+                <!-- | {{vehicle.doors}} | {{vehicle.seats}} -->
+              </p>
+              <div>{{vehicle.description}}</div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="text-right">
-      <pagination-controls (pageChange)="vehicle=$event"></pagination-controls>
+      <div class="text-right">
+        <pagination-controls (pageChange)="vehicle=$event"></pagination-controls>
+      </div>
     </div>
   </div>
 </div>
-
 <app-footer></app-footer>
