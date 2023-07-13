@@ -77,6 +77,7 @@ import { PanelModule } from 'primeng/panel';
 import { ThumbnailsDirective } from './thumbnails.directive';
 import { CarouselModule } from 'primeng/carousel';
 import { AutoCompleteModule } from 'primeng/autocomplete';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [
@@ -154,7 +155,8 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
     CalendarModule,
     PanelModule,
     CarouselModule,
-    AutoCompleteModule
+    AutoCompleteModule,
+    TableModule
   ],
   providers: [MessageService, AuthService,DataService, ViewComponent,RangePipe],
   bootstrap: [AppComponent]

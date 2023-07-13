@@ -38,6 +38,7 @@ export class VehiclesComponent implements OnInit {
   userId :any;
   currentUserId!:string;
   user:any;
+  layout: string = 'list';
 
   viewForm = new FormGroup({
     assessment:new FormControl(),
@@ -81,8 +82,6 @@ export class VehiclesComponent implements OnInit {
 
         this.vehicles = vehicles.vehicles;
         this.totalRecords = this.vehicles.length;
-        // for (const vehicle of this.vehicles) {
-        //   this.dates=vehicle.updatedAt
         this.vehicles.sort((a: { updatedAt: string | number | Date; }, b: { updatedAt: string | number | Date; }) => {
           const dateA = new Date(a.updatedAt);
           const dateB = new Date(b.updatedAt);
@@ -104,7 +103,6 @@ export class VehiclesComponent implements OnInit {
 
   getVehicle(vehicleId: string){
     this.router.navigateByUrl(`view/${vehicleId}`);
-    console.log(this.vehicles)
     for (const vehicle of this.vehicles) {
       this.vehicle = vehicle;
       this.userId = vehicle.user.id;

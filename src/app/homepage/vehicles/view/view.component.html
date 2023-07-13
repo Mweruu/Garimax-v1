@@ -205,6 +205,7 @@
     <div class="card col-12 md:col-12 lg:col-12">
       <p-tabMenu [scrollable]="true" [model]="items"  [activeItem]="activeItem"  (onTabChange)="onTabChange($event)"></p-tabMenu>
     </div>
+    <div *ngFor="let assessment of assessments">
         <div class=" col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Inspection Cert'"></div>
         <div class="card col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Engine'">
           <div class="formgroup-inline">
@@ -272,11 +273,12 @@
         <div class="card col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Airconditioning System'">
           <div class="formgroup-inline">
             <div *ngFor="let airsystem of airsystems" class="field-checkbox col-5 md:col-5 lg:col-5">
-              <p-checkbox name="group" [value]="airsystem" [inputId]="airsystem.key" [readonly]="true" checked = "isChecked(airsystem)"></p-checkbox>
+              <p-checkbox name="group" [value]="airsystem" [inputId]="airsystem.key" [readonly]="true" [(ngModel)]="assessment.checked"></p-checkbox>
               <label [for]="airsystem.key">{{ airsystem.name }}</label>
             </div>
           </div>
         </div>
+    </div>
     </div>
   </div>
 </div>

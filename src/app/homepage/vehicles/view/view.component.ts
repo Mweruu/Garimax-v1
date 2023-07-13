@@ -40,6 +40,7 @@ export class ViewComponent implements OnInit {
   phoneNumber:any;
   rating:any;
   value: number = 4;
+  assessments:any;
 
   viewForm = new FormGroup({
     assessment:new FormControl(),
@@ -82,6 +83,9 @@ export class ViewComponent implements OnInit {
           this.vehicle = vehicle;
           console.log("DATA", vehicle)
           console.log(vehicle.assessment)
+          this.assessments = vehicle.assessment.map((assessment: any) => {
+            return { value: assessment, checked: true };
+          });
           this.viewForm.patchValue(vehicle?.assessment)
 
           this.images = vehicle.images
@@ -105,20 +109,6 @@ export class ViewComponent implements OnInit {
       this.selectTab('Engine')
   }
 
-  // async getSingleVehicle(vehicleId: string) {
-  //   try {
-  //     const vehicle = await this.ds.getVehicle(vehicleId).toPromise();
-  //     this.vehicle = vehicle;
-  //     this.fetched = true;
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }
-  isChecked(airsystem: any): boolean {
-    const selectedAssessment = this.viewForm.get('assessment')?.value;
-    return selectedAssessment && selectedAssessment.includes(airsystem);
-  }
-
   selectTab(tab: string) {
     this.selectedTab = tab;
   }
@@ -128,6 +118,7 @@ export class ViewComponent implements OnInit {
   }
 
   showDialog() {
+    console.log(this.assessments)
     this.visible = true;
   }
 

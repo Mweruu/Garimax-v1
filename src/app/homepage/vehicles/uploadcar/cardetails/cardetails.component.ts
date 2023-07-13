@@ -48,6 +48,7 @@ export class CardetailsComponent implements OnInit {
 
   ngOnInit(){
     this._checkUpdateMode()
+    // this.onCheckboxChange()
 
     this.carDetsForm = this.fb.group({
       fuelType:['', Validators.required],
@@ -124,11 +125,6 @@ export class CardetailsComponent implements OnInit {
         this.visible = true;
     }
 
-    onCheckboxChange() {
-      const names = this.selectedOptions.map(option => option.name);
-      console.log("names",names);
-    }
-
     private _checkUpdateMode(){
       this.activatedRoute.params.subscribe(params => {
         if(params['vehicleId']){
@@ -139,6 +135,9 @@ export class CardetailsComponent implements OnInit {
             this.vehicle = vehicle;
             // console.log("DATA", vehicle.images)
             console.log(vehicle.id, vehicle)
+            this.selectedOptions = vehicle.accessories
+            console.log(this.selectedOptions)
+
             this.id = vehicle.id
 
             this.carDetails['fuelType'].setValue(vehicle.fuelType)
@@ -157,6 +156,39 @@ export class CardetailsComponent implements OnInit {
           });
         }
       });
+    }
+
+    onCheckboxChange() {
+      this.activatedRoute.params.subscribe(params => {
+        if(params['vehicleId']){
+          this.updateMode = true
+          this.currentVehicleId = params['vehicleId'];
+          console.log("ID:",this.currentVehicleId)
+          this.ds.getVehicle(this.currentVehicleId).subscribe(vehicle => {
+            this.vehicle = vehicle;
+            // console.log("DATA", vehicle.images)
+            console.log(vehicle.id, vehicle)
+            const previouslyCheckedValues = vehicle.accessories
+            console.log(previouslyCheckedValues)
+            const names =[ ...previouslyCheckedValues.flat(),
+                           ...this.selectedOptions.map(option => option.name) ];
+            console.log("names",names);
+
+            const checkboxes = document.querySelectorAll<HTMLInputElement>('input[type="checkbox"]');
+
+            checkboxes.forEach((checkbox) => {
+              const checkboxValue = checkbox.value;
+              if (previouslyCheckedValues.flat().includes(checkboxValue)) {
+                checkbox.checked = true;
+              }
+            });
+          })
+        }
+      });
+
+      // console.log(this.selectedOptions)
+      // const names = this.selectedOptions.map(option => option.name);
+      // console.log("names",names);
     }
 
     get carDetails(){
