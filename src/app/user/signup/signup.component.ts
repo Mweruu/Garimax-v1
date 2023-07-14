@@ -21,9 +21,7 @@ export class SignupComponent implements OnInit {
   emailControl = new FormControl('', [Validators.required, Validators.email]);
   phoneNumberControl = new FormControl('', [Validators.required, Validators.minLength(9)]);
   passwordControl = new FormControl('', [Validators.required, Validators.minLength(6)]);
-
   password!: string;
-f: any;
 
   constructor(public layoutService: LayoutService,
     private ds: DataStorageService,
