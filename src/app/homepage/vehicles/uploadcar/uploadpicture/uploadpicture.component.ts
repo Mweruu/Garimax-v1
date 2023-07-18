@@ -88,18 +88,17 @@ export class UploadpictureComponent implements OnInit {
   private _updateInfo(id: string,uploadedFiles:any){
     this.dataService.setuploadPictureData(uploadedFiles);
     const images=this.dataService.setuploadPictureData(uploadedFiles);
-
     console.log(8888888,images)
 
     console.log('Details Data updated' ,uploadedFiles);
-    this.router.navigate([`/cardetails/${id}`])
+    this.router.navigate([`/uploadcar/cardetails/${id}`])
 
   }
 
   private _createInfo(uploadedFiles:any){
     this.dataService.setuploadPictureData(uploadedFiles);
     // console.log('Details Data!',details)
-    this.router.navigate([`/cardetails`])
+    this.router.navigate([`/uploadcar/cardetails`])
 
   }
 

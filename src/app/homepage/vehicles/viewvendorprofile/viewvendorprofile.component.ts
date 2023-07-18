@@ -34,6 +34,7 @@ export class ViewvendorprofileComponent implements OnInit {
   email:any;
   firstName:any;
   phoneNumber:any;
+  totalRecords:number = 0;
 
 
   constructor(private ds:DataStorageService,
@@ -66,7 +67,10 @@ export class ViewvendorprofileComponent implements OnInit {
 
         this.ds.getUserVehicle(this.currentUserId).subscribe(vehicles =>{
           this.vehicles = vehicles;
-          console.log(2323,vehicles.length,vehicles)
+          const verifiedObjects = this.vehicles.filter((obj: { isVerified: any; }) => obj.isVerified);
+            this.totalRecords = verifiedObjects.length;
+            // this.totalRecords = this.vehicles.length;
+            console.log(2323556,this.totalRecords)
 
         })
       }

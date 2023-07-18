@@ -41,6 +41,7 @@ export class ViewComponent implements OnInit {
   rating:any;
   value: number = 4;
   assessments:any;
+  selectedOptions: {select:boolean, name: string,}[] = [];
 
   viewForm = new FormGroup({
     assessment:new FormControl(),
@@ -82,12 +83,20 @@ export class ViewComponent implements OnInit {
         this.ds.getVehicle(this.currentVehicleId).subscribe(vehicle => {
           this.vehicle = vehicle;
           console.log("DATA", vehicle)
-          console.log(vehicle.assessment)
-          this.assessments = vehicle.assessment.map((assessment: any) => {
-            return { value: assessment, checked: true };
-          });
-          this.viewForm.patchValue(vehicle?.assessment)
-
+          console.log("assessment",vehicle.assessment)
+          // this.assessments = vehicle.assessment.map((assessment: any) => {
+          //   return { value: assessment, checked: true };
+          // });
+          // this.viewForm.patchValue(vehicle?.assessment)
+          const selectedAccessories = vehicle.assessment[0].map((accessory: any, index: number) => {
+            if (index === 0) {
+              return null; // Skip the empty string at the beginning of the array
+            }
+            return { select: true, name: accessory };
+          }).filter((accessory: null) => accessory !== null);
+          this.selectedOptions =selectedAccessories
+          console.log("options",this.selectedOptions)
+          console.log("accessory",selectedAccessories,);
           this.images = vehicle.images
         });
       }

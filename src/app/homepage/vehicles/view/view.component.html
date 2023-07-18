@@ -1,285 +1,284 @@
-<app-topbar></app-topbar>
-<div class="mt-8 pt-5">
-  <div class="view mb-5">
-    <div class="card grid p-fluid" >
-      <div class="col-12 md:col-12 lg:col-5">
-        <div class="card">
-          <section class="gallery">
-            <div class="container">
-              <div class="img-container">
-                <img src="{{vehicle?.image}}" alt="Image" width="100%" id="preview">
-                <!-- <div class="img-prev">
-                  <div class="img-slide" *ngFor="let image of vehicle.images">
-                    <img src="{{image}}" alt="Image" width="100%" appThumbnails>
-                  </div>
-                </div> -->
-                <p-carousel [value]="vehicle.images" [numVisible]="5" [numScroll]="1">
-                  <ng-template let-image pTemplate="item" class="img-slide">
-                    <img src="{{image}}" alt="Image" width="69px" height="38px" appThumbnails>
-                  </ng-template>
-                </p-carousel>
-              </div>
+<div class="view mb-5">
+  <div class="card grid p-fluid" >
+    <div class="col-12 md:col-12 lg:col-4">
+      <div class="card">
+        <section class="gallery">
+          <div class="container">
+            <div class="img-container">
+              <img src="{{vehicle?.image}}" alt="Image" width="100%" id="preview">
+              <!-- <div class="img-prev">
+                <div class="img-slide" *ngFor="let image of vehicle.images">
+                  <img src="{{image}}" alt="Image" width="100%" appThumbnails>
+                </div>
+              </div> -->
+              <p-carousel [value]="vehicle.images" [numVisible]="5" [numScroll]="1">
+                <ng-template let-image pTemplate="item" class="img-slide">
+                  <img src="{{image}}" alt="Image" width="69px" height="38px" appThumbnails>
+                </ng-template>
+              </p-carousel>
             </div>
-          </section>
-          <div class="grid formgrid">
+          </div>
+        </section>
+        <div class="grid formgrid">
+          <p-divider align="left">
+            <div class="inline-flex align-items-center">
+                <b>Car features and options</b>
+            </div>
+          </p-divider>
+        </div>
+        <div class="col-12 md:col-12 lg:col-12">
+          <div class="formgroup-inline" >
+            <div *ngIf="vehicle && vehicle.accessories && vehicle.accessories.length > 0">
+              <div>{{ vehicle.accessories[0] }}</div>
+            </div>
+            <!-- <div *ngFor="let accessory of vehicle.accessories" class="col-12 md:col-12 lg:col-12"> -->
+              <!-- <p-button icon="pi pi-check" styleClass="p-button-rounded p-button-success p-button-text"></p-button> -->
+                <!-- <div>{{ accessory }}</div> -->
+            <!-- </div> -->
+          </div>
+        </div>
+        <div class="grid formgrid">
+          <p-divider align="left">
+            <div class="inline-flex align-items-center">
+                <b>Description</b>
+            </div>
+          </p-divider>
+        </div>
+        <p>{{vehicle.description}}</p>
+      </div>
+    </div>
+    <div class="col-12 md:col-12 lg:col-7">
+      <div class="card">
+        <div class="grid formgrid">
+          <div>
+            <h2>{{vehicle.yearOfManufacture?.split('-')[0]}} {{vehicle.make}} {{vehicle.model}}</h2>
+          </div>
+        </div>
+          <!-- <p-rating [(ngModel)]="value" [readonly]="true" [cancel]="false"></p-rating> -->
+        <div class=" mt-2 text-red-500 hover:text-red-700  font-bold text-xl">{{vehicle.price | currency:'Ksh. ':'symbol':'1.0-0'}}</div>
+        <div class="grid formgrid">
+            <p-tag severity="info" value={{vehicle.steering}} class="m-2"></p-tag>
+            <p-tag severity="info" value={{vehicle.color}} class="m-2"></p-tag>
+            <p-tag severity="info" value={{vehicle.condition}} class="m-2"></p-tag>
+            <p-tag severity="info" value={{vehicle.enginePower}} class="m-2"></p-tag>
+            <p-tag severity="info" value={{vehicle.usage}} class="m-2"></p-tag>
+            <!-- <p-tag severity="info" value={{vehicle.isVerified}} class="m-2"></p-tag> -->
+        </div>
+        <div class="grid formgrid">
+          <div class="p-fluid col-12 md:col-12 lg:col-12">
             <p-divider align="left">
               <div class="inline-flex align-items-center">
-                  <b>Car features and options</b>
+                  <b>Car Specifications</b>
               </div>
             </p-divider>
-          </div>
-          <div class="col-12 md:col-12 lg:col-12">
-            <div class="formgroup-inline" >
-              <div *ngFor="let accessory of vehicle.accessories" class="col-12 md:col-12 lg:col-12">
-                <!-- <p-button icon="pi pi-check" styleClass="p-button-rounded p-button-success p-button-text"></p-button> -->
-                  <div>{{ accessory }}</div>
-              </div>
+            <div class="formgroup-inline">
+              <dl class="col-12 md:col-12 lg:col-6">
+                <dt>Make</dt>
+                <dd><strong>  {{vehicle.make}}</strong></dd>
+                <dt>Model</dt>
+                <dd> <strong>{{vehicle.model}}</strong></dd>
+                <dt>Location</dt>
+                <dd><strong>{{vehicle.location}}</strong></dd>
+                <dt>Mileage</dt>
+                <dd><strong>{{vehicle.mileage| number: '1.0-0' }} KM</strong></dd>
+                <dt>Body type</dt>
+                <dd><strong>{{vehicle.bodyType}}</strong></dd>
+              </dl>
+              <dl class="col-12 md:col-12 lg:col-6">
+                <dt>Fuel type </dt>
+                <dd><strong>{{vehicle.fuelType}}{{vehicle.driveTrain}}</strong></dd>
+                <dt>Transmission </dt>
+                <dd><strong>{{vehicle.transmission}}</strong></dd>
+                <dt>Engine Size </dt>
+                <dd><strong>{{vehicle.engineSize}} CC</strong></dd>
+                <dt>VIN number</dt>
+                <dd><strong>{{vehicle.vinNumber}}</strong> </dd>
+                <!-- <dt>Verified</dt>
+                <dd><strong>{{vehicle.isVerified}}</strong> </dd> -->
+              </dl>
             </div>
           </div>
-          <div class="grid formgrid">
-            <p-divider align="left">
-              <div class="inline-flex align-items-center">
-                  <b>Description</b>
-              </div>
-            </p-divider>
-          </div>
-          <p>{{vehicle.description}}</p>
         </div>
-      </div>
-      <div class="col-12 md:col-12 lg:col-7">
-        <div class="card">
-          <div class="grid formgrid">
-            <div>
-              <h2>{{vehicle.yearOfManufacture?.split('-')[0]}} {{vehicle.make}} {{vehicle.model}}</h2>
-            </div>
-          </div>
-            <!-- <p-rating [(ngModel)]="value" [readonly]="true" [cancel]="false"></p-rating> -->
-          <div class=" mt-2 text-red-500 hover:text-red-700  font-bold text-xl">{{vehicle.price | currency:'Ksh. ':'symbol':'1.0-0'}}</div>
-          <div class="grid formgrid">
-              <p-tag severity="info" value={{vehicle.steering}} class="m-2"></p-tag>
-              <p-tag severity="info" value={{vehicle.color}} class="m-2"></p-tag>
-              <p-tag severity="info" value={{vehicle.condition}} class="m-2"></p-tag>
-              <p-tag severity="info" value={{vehicle.enginePower}} class="m-2"></p-tag>
-              <p-tag severity="info" value={{vehicle.usage}} class="m-2"></p-tag>
-              <!-- <p-tag severity="info" value={{vehicle.isVerified}} class="m-2"></p-tag> -->
-          </div>
-          <div class="grid formgrid">
-            <div class="p-fluid col-12 md:col-12 lg:col-12">
-              <p-divider align="left">
-                <div class="inline-flex align-items-center">
-                    <b>Car Specifications</b>
-                </div>
-              </p-divider>
-              <div class="formgroup-inline">
-                <dl class="col-12 md:col-12 lg:col-6">
-                  <dt>Make</dt>
-                  <dd><strong>  {{vehicle.make}}</strong></dd>
-                  <dt>Model</dt>
-                  <dd> <strong>{{vehicle.model}}</strong></dd>
-                  <dt>Location</dt>
-                  <dd><strong>{{vehicle.location}}</strong></dd>
-                  <dt>Mileage</dt>
-                  <dd><strong>{{vehicle.mileage| number: '1.0-0' }} KM</strong></dd>
-                  <dt>Body type</dt>
-                  <dd><strong>{{vehicle.bodyType}}</strong></dd>
-                </dl>
-                <dl class="col-12 md:col-12 lg:col-6">
-                  <dt>Fuel type </dt>
-                  <dd><strong>{{vehicle.fuelType}}{{vehicle.driveTrain}}</strong></dd>
-                  <dt>Transmission </dt>
-                  <dd><strong>{{vehicle.transmission}}</strong></dd>
-                  <dt>Engine Size </dt>
-                  <dd><strong>{{vehicle.engineSize}} CC</strong></dd>
-                  <dt>VIN number</dt>
-                  <dd><strong>{{vehicle.vinNumber}}</strong> </dd>
-                  <!-- <dt>Verified</dt>
-                  <dd><strong>{{vehicle.isVerified}}</strong> </dd> -->
-                </dl>
-              </div>
-            </div>
-          </div>
-        <p-divider></p-divider>
-        <div class="col-12 formgroup-inline gap-5 align-items-center justify-content-center">
-          <div class="flex justify-content-center">
-            <p-button (click)="showDialog()"  icon="pi pi-fw pi-phone" label="Contact Seller" styleClass="p-button-success w-full text-xl"></p-button>
-            <p-dialog header="Safety Tips" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw'}" [draggable]="false" [resizable]="false">
-                <ul class="m-0 mb-5 text-xl">
-                  <li>Remember, don't send any pre-payments</li>
-                  <li>Meet the seller at a safe public place</li>
-                  <li>Inspect the goods to make sure they meet your needs</li>
-                  <li>Check all documentation and only pay if you're satisfied</li>
-                </ul>
-                <p-button  (click)="showDialogs()" class="align-items-center justify-content-center" label="Continue" styleClass="p-button-info w-full  text-xl"></p-button>
-                <p-dialog header="Seller details" [(visible)]="contactVisible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
-                  <div class="formgrid">
-                    <div class="field">
-                      <label>Seller name</label>
-                      <span class="p-input-icon-left">
-                        <i class="pi pi-user"></i>
-                        <input type="text" pInputText value="{{vehicle.user?.firstName}}" />
-                      </span>
-                    </div>
-                    <div class="field">
-                      <label>Email</label>
-                      <span class="p-input-icon-left">
-                        <i class="pi pi-envelope"></i>
-                        <input type="email" pInputText value="{{vehicle.user?.email}}"/>
-                      </span>
-                    </div>
-                    <div class="field">
-                      <label>Mobile number</label>
-                      <span class="p-input-icon-left">
-                        <i class="pi pi-phone"></i>
-                        <input type="number" pInputText value="{{vehicle.user?.phoneNumber}}"/>
-                      </span>
-                    </div>
-                    <div class="field">
-                      <label>Address</label>
-                      <span class="p-input-icon-left">
-                        <i class="pi pi-location"></i>
-                        <input type="text" pInputText value="{{vehicle.user?.firstName}}"/>
-                      </span>
-                    </div>
-                    <p-button icon="pi pi-fw pi-phone" label="Call Seller Now" styleClass="p-button-warning w-21rem"></p-button>
+      <p-divider></p-divider>
+      <div class="col-12 formgroup-inline gap-5 align-items-center justify-content-center">
+        <div class="flex justify-content-center">
+          <p-button (click)="showDialog()"  icon="pi pi-fw pi-phone" label="Contact Seller" styleClass="p-button-success w-full text-xl"></p-button>
+          <p-dialog header="Safety Tips" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw'}" [draggable]="false" [resizable]="false">
+              <ul class="m-0 mb-5 text-xl">
+                <li>Remember, don't send any pre-payments</li>
+                <li>Meet the seller at a safe public place</li>
+                <li>Inspect the goods to make sure they meet your needs</li>
+                <li>Check all documentation and only pay if you're satisfied</li>
+              </ul>
+              <p-button  (click)="showDialogs()" class="align-items-center justify-content-center" label="Continue" styleClass="p-button-info w-full  text-xl"></p-button>
+              <p-dialog header="Seller details" [(visible)]="contactVisible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+                <div class="formgrid">
+                  <div class="field">
+                    <label>Seller name</label>
+                    <span class="p-input-icon-left">
+                      <i class="pi pi-user"></i>
+                      <input type="text" pInputText value="{{vehicle.user?.firstName}}" />
+                    </span>
                   </div>
-                </p-dialog>
-            </p-dialog>
-          </div>
+                  <div class="field">
+                    <label>Email</label>
+                    <span class="p-input-icon-left">
+                      <i class="pi pi-envelope"></i>
+                      <input type="email" pInputText value="{{vehicle.user?.email}}"/>
+                    </span>
+                  </div>
+                  <div class="field">
+                    <label>Mobile number</label>
+                    <span class="p-input-icon-left">
+                      <i class="pi pi-phone"></i>
+                      <input type="number" pInputText value="{{vehicle.user?.phoneNumber}}"/>
+                    </span>
+                  </div>
+                  <div class="field">
+                    <label>Address</label>
+                    <span class="p-input-icon-left">
+                      <i class="pi pi-location"></i>
+                      <input type="text" pInputText value="{{vehicle.user?.firstName}}"/>
+                    </span>
+                  </div>
+                  <p-button icon="pi pi-fw pi-phone" label="Call Seller Now" styleClass="p-button-warning w-21rem"></p-button>
+                </div>
+              </p-dialog>
+          </p-dialog>
+        </div>
 
-            <p-button (click)="showChatDialog()" icon="pi pi-fw pi-envelope" label="Start Chat" styleClass="p-button-success  w-full text-xl"></p-button>
-            <p-dialog header="Chat" [(visible)]="chatVisible" [modal]="true" [style]="{ width: '50vw'}" [draggable]="false" [resizable]="false">
-              <h5>SEND INQUIRY FOR THIS CAR</h5>
-              <p-divider></p-divider>
-              <div class="formgrid">
-                <div class="field">
-                  <label>Your name</label>
-                  <span class="p-input-icon-left">
-                    <i class="pi pi-user"></i>
-                    <input type="text" pInputText value="{{firstName}}"/>
-                  </span>
-                </div>
-                <div class="field">
-                  <label>Email</label>
-                  <span class="p-input-icon-left">
-                    <i class="pi pi-envelope"></i>
-                    <input type="email" pInputText value="{{email}}"/>
-                  </span>
-                </div>
-                <div class="field">
-                  <label>Mobile number</label>
-                  <span class="p-input-icon-left">
-                    <i class="pi pi-phone"></i>
-                    <input type="number" pInputText value="{{phoneNumber}}" />
-                  </span>
-                </div>
-                <div class="field">
-                  <label>Address</label>
-                  <span class="p-input-icon-left">
-                    <i class="pi pi-location"></i>
-                    <input type="text" pInputText />
-                  </span>
-                </div>
-                <div class="field">
-                  <label>Your message (optional)</label>
-                  <span class="p-input-icon-left">
-                    <textarea rows="5" cols="30" pInputTextarea class="w-full"></textarea>
-                  </span>
-                </div>
-                <p-button icon="pi pi-fw pi-envelope" label="Inquire Now" styleClass="p-button-warning w-21rem"></p-button>
+          <p-button (click)="showChatDialog()" icon="pi pi-fw pi-envelope" label="Start Chat" styleClass="p-button-success  w-full text-xl"></p-button>
+          <p-dialog header="Chat" [(visible)]="chatVisible" [modal]="true" [style]="{ width: '50vw'}" [draggable]="false" [resizable]="false">
+            <h5>SEND INQUIRY FOR THIS CAR</h5>
+            <p-divider></p-divider>
+            <div class="formgrid">
+              <div class="field">
+                <label>Your name</label>
+                <span class="p-input-icon-left">
+                  <i class="pi pi-user"></i>
+                  <input type="text" pInputText value="{{firstName}}"/>
+                </span>
               </div>
-            </p-dialog>
+              <div class="field">
+                <label>Email</label>
+                <span class="p-input-icon-left">
+                  <i class="pi pi-envelope"></i>
+                  <input type="email" pInputText value="{{email}}"/>
+                </span>
+              </div>
+              <div class="field">
+                <label>Mobile number</label>
+                <span class="p-input-icon-left">
+                  <i class="pi pi-phone"></i>
+                  <input type="number" pInputText value="{{phoneNumber}}" />
+                </span>
+              </div>
+              <div class="field">
+                <label>Address</label>
+                <span class="p-input-icon-left">
+                  <i class="pi pi-location"></i>
+                  <input type="text" pInputText />
+                </span>
+              </div>
+              <div class="field">
+                <label>Your message (optional)</label>
+                <span class="p-input-icon-left">
+                  <textarea rows="5" cols="30" pInputTextarea class="w-full"></textarea>
+                </span>
+              </div>
+              <p-button icon="pi pi-fw pi-envelope" label="Inquire Now" styleClass="p-button-warning w-21rem"></p-button>
+            </div>
+          </p-dialog>
+      </div>
+      <p-divider></p-divider>
+      <div class="flex align-items-center justify-content-between mb-5 gap-5">
+        <div class="flex align-items-center">
+          <a href="{{vehicle.user?.companyUrl}}"><p>{{vehicle.user?.firstName}}</p></a>
         </div>
-        <p-divider></p-divider>
-        <div class="flex align-items-center justify-content-between mb-5 gap-5">
-          <div class="flex align-items-center">
-            <a href="{{vehicle.user?.companyUrl}}"><p>{{vehicle.user?.firstName}}</p></a>
+        <p-rating [(ngModel)]="value" [readonly]="true" [cancel]="false"></p-rating>
+      </div>
+      </div>
+    </div>
+
+  <div class="col-12 md:col-12 lg:col-12 mt-2" style="text-align: center;">
+    <u class="font-bold"><h5>Conditional Assessment</h5></u>
+  </div>
+  <div class="card col-12 md:col-12 lg:col-12">
+    <p-tabMenu [scrollable]="true" [model]="items"  [activeItem]="activeItem"  (onTabChange)="onTabChange($event)"></p-tabMenu>
+  </div>
+  <!-- <div *ngFor="let assessment of selectedOptions"> -->
+      <div class=" col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Inspection Cert'"></div>
+      <div class=" col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Engine'">
+        <div class="formgroup-inline">
+          <div *ngFor="let engine of engines" class="field-checkbox col-5 md:col-5 lg:col-5">
+            <p-checkbox name="group" [value]="engine" [inputId]="engine.key" [readonly]="true" checkboxIcon="assessment.select"></p-checkbox>
+            <label [for]="engine.key">{{ engine.name }}</label>
           </div>
-          <p-rating [(ngModel)]="value" [readonly]="true" [cancel]="false"></p-rating>
-        </div>
         </div>
       </div>
 
-    <div class="col-12 md:col-12 lg:col-12 mt-2" style="text-align: center;">
-      <u class="font-bold"><h5>Conditional Assessment</h5></u>
-    </div>
-    <div class="card col-12 md:col-12 lg:col-12">
-      <p-tabMenu [scrollable]="true" [model]="items"  [activeItem]="activeItem"  (onTabChange)="onTabChange($event)"></p-tabMenu>
-    </div>
-    <div *ngFor="let assessment of assessments">
-        <div class=" col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Inspection Cert'"></div>
-        <div class="card col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Engine'">
-          <div class="formgroup-inline">
-            <div *ngFor="let engine of engines" class="field-checkbox col-5 md:col-5 lg:col-5">
-              <p-checkbox name="group" [value]="engine" [inputId]="engine.key" [readonly]="true"></p-checkbox>
-              <label [for]="engine.key">{{ engine.name }}</label>
-            </div>
+      <div class="col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Electricals'">
+        <div class="formgroup-inline">
+          <div *ngFor="let electrical of electricals" class="field-checkbox col-5 md:col-5 lg:col-5">
+            <p-checkbox name="group" [value]="electrical" [inputId]="electrical.key" [readonly]="true"></p-checkbox>
+            <label [for]="electrical.key">{{ electrical.name }}</label>
           </div>
         </div>
+      </div>
 
-        <div class="card col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Electricals'">
-          <div class="formgroup-inline">
-            <div *ngFor="let electrical of electricals" class="field-checkbox col-5 md:col-5 lg:col-5">
-              <p-checkbox name="group" [value]="electrical" [inputId]="electrical.key" [readonly]="true"></p-checkbox>
-              <label [for]="electrical.key">{{ electrical.name }}</label>
-            </div>
+      <div class="col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Transmissson & Clutch'">
+        <!-- <div class="formgroup-inline"> -->
+          <div *ngFor="let clutch of clutches" class="field-checkbox col-5 md:col-5 lg:col-5">
+            <p-checkbox name="group" [value]="clutch" [inputId]="clutch.key" [readonly]="true"></p-checkbox>
+            <label [for]="clutch.key">{{ clutch.name }}</label>
           </div>
-        </div>
+        <!-- </div> -->
+      </div>
 
-        <div class="card col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Transmissson & Clutch'">
-          <div class="formgroup-inline">
-            <div *ngFor="let clutch of clutches" class="field-checkbox col-5 md:col-5 lg:col-5">
-              <p-checkbox name="group" [value]="clutch" [inputId]="clutch.key" [readonly]="true"></p-checkbox>
-              <label [for]="clutch.key">{{ clutch.name }}</label>
-            </div>
+      <div class="col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Suspension & Steering'">
+        <div class="formgroup-inline">
+          <div *ngFor="let suspension of suspensions" class="field-checkbox col-5 md:col-5 lg:col-5">
+            <p-checkbox name="group" [value]="suspension" [inputId]="suspension.key" [readonly]="true"></p-checkbox>
+            <label [for]="suspension.key">{{ suspension.name }}</label>
           </div>
         </div>
+      </div>
 
-        <div class="card col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Suspension & Steering'">
-          <div class="formgroup-inline">
-            <div *ngFor="let suspension of suspensions" class="field-checkbox col-5 md:col-5 lg:col-5">
-              <p-checkbox name="group" [value]="suspension" [inputId]="suspension.key" [readonly]="true"></p-checkbox>
-              <label [for]="suspension.key">{{ suspension.name }}</label>
-            </div>
+      <div class="col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Test Drive'">
+        <div class="formgroup-inline">
+          <div *ngFor="let testdrive of testdrives" class="field-checkbox col-5 md:col-5 lg:col-5">
+            <p-checkbox name="group" [value]="testdrive" [inputId]="testdrive.key" [readonly]="true"></p-checkbox>
+            <label [for]="testdrive.key">{{ testdrive.name }}</label>
           </div>
         </div>
+      </div>
 
-        <div class="card col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Test Drive'">
-          <div class="formgroup-inline">
-            <div *ngFor="let testdrive of testdrives" class="field-checkbox col-5 md:col-5 lg:col-5">
-              <p-checkbox name="group" [value]="testdrive" [inputId]="testdrive.key" [readonly]="true"></p-checkbox>
-              <label [for]="testdrive.key">{{ testdrive.name }}</label>
-            </div>
+      <div class="col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Exterior'">
+        <div class="formgroup-inline">
+          <div *ngFor="let exterior of exteriors" class="field-checkbox col-5 md:col-5 lg:col-5">
+            <p-checkbox name="group" [value]="exterior" [inputId]="exterior.key" [readonly]="true"></p-checkbox>
+            <label [for]="exterior.key">{{ exterior.name }}</label>
           </div>
         </div>
+      </div>
 
-        <div class="card col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Exterior'">
-          <div class="formgroup-inline">
-            <div *ngFor="let exterior of exteriors" class="field-checkbox col-5 md:col-5 lg:col-5">
-              <p-checkbox name="group" [value]="exterior" [inputId]="exterior.key" [readonly]="true"></p-checkbox>
-              <label [for]="exterior.key">{{ exterior.name }}</label>
-            </div>
+      <div class="col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Interior'">
+        <div class="formgroup-inline">
+          <div *ngFor="let interior of interiors" class="field-checkbox col-5 md:col-5 lg:col-5">
+            <p-checkbox name="group" [value]="interior" [inputId]="interior.key" [readonly]="true"></p-checkbox>
+            <label [for]="interior.key">{{ interior.name }}</label>
           </div>
         </div>
+      </div>
 
-        <div class="card col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Interior'">
-          <div class="formgroup-inline">
-            <div *ngFor="let interior of interiors" class="field-checkbox col-5 md:col-5 lg:col-5">
-              <p-checkbox name="group" [value]="interior" [inputId]="interior.key" [readonly]="true"></p-checkbox>
-              <label [for]="interior.key">{{ interior.name }}</label>
-            </div>
+      <div class="col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Airconditioning System'">
+        <!-- <div class="formgroup-inline"> -->
+          <div *ngFor="let airsystem of airsystems" class="field-checkbox col-5 md:col-5 lg:col-5">
+            <p-checkbox name="group" [value]="airsystem" [inputId]="airsystem.key" [readonly]="true"></p-checkbox>
+            <label [for]="airsystem.key">{{ airsystem.name }}</label>
           </div>
-        </div>
-
-        <div class="card col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Airconditioning System'">
-          <div class="formgroup-inline">
-            <div *ngFor="let airsystem of airsystems" class="field-checkbox col-5 md:col-5 lg:col-5">
-              <p-checkbox name="group" [value]="airsystem" [inputId]="airsystem.key" [readonly]="true" [(ngModel)]="assessment.checked"></p-checkbox>
-              <label [for]="airsystem.key">{{ airsystem.name }}</label>
-            </div>
-          </div>
-        </div>
-    </div>
-    </div>
+        <!-- </div> -->
+      </div>
+  <!-- </div> -->
   </div>
 </div>
-<app-footer></app-footer>

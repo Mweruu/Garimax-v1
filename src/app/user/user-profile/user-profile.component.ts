@@ -44,13 +44,6 @@ export class UserProfileComponent implements OnInit {
 
   async ngOnInit(){
 
-    this.userData = {
-      "profileImage": this.dataService.getuploadPictureData(),
-    }
-    if(this.userData.profileImage){
-      this.processImageFiles(this.userData.profileImage)
-      console.log(this.profileImage);
-    }
     this.activatedRoute.params.subscribe(params => {
       if(params['userId']){
         this.currentUserId = params['userId'];
@@ -60,7 +53,6 @@ export class UserProfileComponent implements OnInit {
           this.userId= user.id;
           this.profileImage = user.profileImage;
           console.log("DATA", this.user, "isVendor",user.isVendor)
-          console.log("profileimageDATA", this.user.profileImage)
 
           this.userUpdateForm['firstName'].setValue(user.firstName)
           this.userUpdateForm['lastName'].setValue(user.lastName)
@@ -75,11 +67,13 @@ export class UserProfileComponent implements OnInit {
 
         this.ds.getUserVehicle(this.currentUserId).subscribe(vehicles =>{
           this.vehicles = vehicles;
-          console.log(2323,vehicles)
         })
 
       }
       });
+
+
+
       this.updateForm = this.fb.group({
         firstName:['', Validators.required],
         lastName:['', Validators.required],
@@ -110,22 +104,20 @@ export class UserProfileComponent implements OnInit {
     })
   }
 
-  get userUpdateForm(){
-    return this.updateForm.controls;
-  }
 
   onFileSelected(event: any) {
     if (event.target.files && event.target.files.length > 0) {
       const file = event.target.files[0];
       console.log('Selected file:', file.name);
       // const uploim=this.dataService.setuploadPictureData(file.name);
-      this.profileImage = file
+      this.profileImage = [];
       const reader = new FileReader();
 
       reader.onload = (e: any) => {
         this.selectedImage = e.target.result;
         this.imageSelected = true;
         this.onUpload(file)
+        console.log("profileimageDATA", this.user.profileImage)
 
       };
 
@@ -145,16 +137,23 @@ export class UserProfileComponent implements OnInit {
       console.log(err)
       this.messageService.add({severity: 'error', summary: 'Image(s) Upload Failed', detail: `Failed to upload Images`});
     }
+    this.dataService.setuploadPictureData(this.uploadedFile);
+
+
+    this.userData = {
+      profileImage: file,
+    }
+      this.processImageFiles(this.userData.profileImage)
+      console.log(3440000034,this.profileImage);
 
   }
 
   processImageFiles(file: any): void {
-      this.profileImage.push(file.objectURL);
-
-  }
+    const imageUrl = URL.createObjectURL(file);
+    this.profileImage.push(imageUrl);
+    }
 
   onSubmit(userId: string){
-    console.log("got here")
     const image = this.dataService.getuploadPictureData();
     console.log("got here", image)
 
@@ -164,7 +163,7 @@ export class UserProfileComponent implements OnInit {
     }
     console.log(4554444,this.uploadedFile)
     const formData = new FormData();
-    formData.append('profileImage',this.profileImage)
+    formData.append('profileImage',image[0]);
     // const cc = formData.append('profileImage',this.uploadedFile)
 
 
@@ -175,13 +174,18 @@ export class UserProfileComponent implements OnInit {
         email:this.userUpdateForm['email'].value,
         companyUrl:this.userUpdateForm['companyUrl'].value,
         phoneNumber:this.userUpdateForm['phoneNumber'].value,
-        profileImage:formData,
 
         // password:this.userUpdateForm['password'].value || this.user.p
     }
-    console.log("final user data",user.profileImage,user)
+    formData.append('firstName', user.firstName);
+    formData.append('lastName', user.lastName);
+    formData.append('email', user.email);
+    formData.append('companyUrl', user.companyUrl);
+    formData.append('phoneNumber', user.phoneNumber);
 
-    this.ds.updateProfile(userId, user).subscribe(
+    console.log("final user data",user)
+
+    this.ds.updateProfile(userId, formData).subscribe(
       response => {
         console.log('User details updated successfully!', response);
         // Handle success response here
@@ -202,15 +206,13 @@ export class UserProfileComponent implements OnInit {
         })
       }
     );
-
-    // this.updatedData= user
-    // console.log("final user data",this.updatedData)
-    // this.update(userId)
   }
-
 
   getVehicle(id: string){
-    this.router.navigateByUrl(`basicinfo/${id}`);
+    this.router.navigateByUrl(`uploadcar/basicinfo/${id}`);
   }
 
+  get userUpdateForm(){
+    return this.updateForm.controls;
+  }
 }

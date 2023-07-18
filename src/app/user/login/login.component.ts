@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit {
           detail:'User authenticated'
         })
         timer(2500).toPromise().then(()=>{
-          this.router.navigate(['/'])
+          this.router.navigate(['/vehicles'])
 
         })
 
@@ -76,7 +76,7 @@ export class LoginComponent implements OnInit {
         }
         else{
           // this.showAlert(" User Authenticated ")
-          // this.router.navigate(['/']);
+          // this.router.navigate(['/vehicles']);
         }
       },
       error => {

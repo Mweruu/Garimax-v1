@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from 'src/app/layout/data.service';
 import { DataStorageService } from 'src/app/datastorage.service';
 import { timer } from 'rxjs';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-preview',
@@ -41,7 +42,7 @@ export class PreviewComponent implements OnInit {
   updateMode = false;
   currentVehicleId!:string;
   id:any;
-
+  allCarsData!:FormGroup
 
   responsiveOptions: any[] = [
     {
@@ -76,6 +77,25 @@ export class PreviewComponent implements OnInit {
           // console.log("DATA", vehicle.images)
           console.log(vehicle.id, vehicle)
           this.id = vehicle.id
+          // this.carDataForm['make'].setValue(vehicle?.make)
+          // this.carDataForm['model'].setValue(vehicle?.model)
+          // this.carDataForm['yearOfManufacture'].setValue(vehicle?.yearOfManufacture)
+          // this.carDataForm['price'].setValue(vehicle.price)
+          // this.carDataForm['location'].setValue(vehicle.location)
+          // this.carDataForm['mileage'].setValue(vehicle.mileage)
+          // this.carDataForm['transmission'].setValue(vehicle.transmission)
+          // this.carDataForm['fuelType'].setValue(vehicle.fuelType)
+          // this.carDataForm['bodyType'].setValue(vehicle.bodyType)
+          // this.carDataForm['color'].setValue(vehicle.color)
+          // this.carDataForm['steering'].setValue(vehicle.steering)
+          // this.carDataForm['engineSize'].setValue(vehicle.engineSize)
+          // this.carDataForm['enginePower'].setValue(vehicle.enginePower)
+          // this.carDataForm['vinNumber'].setValue(vehicle.vinNumber)
+          // this.carDataForm['usage'].setValue(vehicle.usage)
+          // this.carDataForm['duty'].setValue(vehicle.duty)
+          // this.carDataForm['condition'].setValue(vehicle.condition)
+          // this.carDataForm['acceleration'].setValue(vehicle.acceleration)
+          // this.carDataForm['description'].setValue(vehicle.description)
 
         });
       }
@@ -117,6 +137,7 @@ export class PreviewComponent implements OnInit {
       this.accessories = this.carData.carDetails.accessories;
       this.isVerified = false
     }
+
 
   }
 
@@ -186,7 +207,7 @@ export class PreviewComponent implements OnInit {
         detail:'Please wait for our team to verify your updated vehicle'
       })
       timer(2500).toPromise().then(()=>{
-        this.router.navigate(['/'])
+        this.router.navigate(['/vehicles'])
       })
     },
     error => {
@@ -199,7 +220,7 @@ export class PreviewComponent implements OnInit {
       })
       }
     );
-    this.router.navigate(['/'])
+    this.router.navigate(['/vehicles'])
 
   }
 
@@ -216,7 +237,7 @@ export class PreviewComponent implements OnInit {
       timer(2500).toPromise().then(()=>{
         localStorage.removeItem('formData');
 
-        this.router.navigate(['/'])
+        this.router.navigate(['/vehicles'])
       })
     },
     error => {
@@ -229,16 +250,20 @@ export class PreviewComponent implements OnInit {
       })
       }
     );
-    this.router.navigate([`/cardetails`])
+    this.router.navigate([`/vehicles`])
 
   }
 
   back(id: string){
     if(this.updateMode){
-    this.router.navigateByUrl(`cardetails/${id}`);
+    this.router.navigateByUrl(`uploadcar/cardetails/${id}`);
     }else{
-      this.router.navigateByUrl(`/cardetails`);
+      this.router.navigateByUrl(`/uploadcar/cardetails`);
 
     }
+  }
+
+  get carDataForm(){
+    return this.allCarsData.controls;
   }
 }

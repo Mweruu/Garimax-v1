@@ -39,6 +39,7 @@ export class VehiclesComponent implements OnInit {
   currentUserId!:string;
   user:any;
   layout: string = 'list';
+  isChecked = true;
 
   viewForm = new FormGroup({
     assessment:new FormControl(),
@@ -67,7 +68,6 @@ export class VehiclesComponent implements OnInit {
     this.value = 4;
     this._setValues();
     this.getAllVehicles();
-    this.getUserId();
 
   }
 
@@ -91,7 +91,20 @@ export class VehiclesComponent implements OnInit {
         for (const vehicle of this.vehicles) {
           this.vehicle = vehicle;
           this.userId = vehicle.user.id;
-          console.log(vehicle.assessment);
+          // console.log(vehicle.assessment);
+          // console.log(this.vehicle.id,this.vehicle.accessories)
+          // console.log("assessment",this.vehicle.assessment)
+          const selectedAccessories = vehicle.accessories.map((accessory: any, index: number) => {
+            if (index === 0) {
+              return null; // Skip the empty string at the beginning of the array
+            }
+            return { select: true, name: accessory };
+          }).filter((accessory: null) => accessory !== null);
+
+          // console.log("accessory",selectedAccessories,);
+
+          let assessment = this.vehicle.assessment
+          this.viewForm.patchValue(assessment)
         }
       },
       (error) => {
@@ -103,53 +116,14 @@ export class VehiclesComponent implements OnInit {
 
   getVehicle(vehicleId: string){
     this.router.navigateByUrl(`view/${vehicleId}`);
-    for (const vehicle of this.vehicles) {
-      this.vehicle = vehicle;
-      this.userId = vehicle.user.id;
-      console.log(vehicle.assessment);
-    }
-    console.log(this.vehicle.accessories)
-    console.log("assessment",this.vehicle.assessment)
 
-    let assessment = this.vehicle.assessment
-    this.viewForm.patchValue(assessment)
-
-  }
-
-  getUserId(){
-    this.activatedRoute.params.subscribe(params => {
-      if(params['vehicleId']){
-        this.currentVehicleId = params['vehicleId'];
-        console.log("ID:",this.currentVehicleId)
-        this.ds.getVehicle(this.currentVehicleId).subscribe(vehicle => {
-          this.vehicle = vehicle;
-          console.log("DATA", vehicle.images)
-          console.log(vehicle.userId);
-          console.log(vehicle.assessment);
-          this.userId = vehicle.userId
-        });
-      }
-    });
   }
 
   getUser(userId: string){
-    this.activatedRoute.params.subscribe(params => {
-      if(params['vehicleId']){
-        this.currentVehicleId = params['vehicleId'];
-        console.log("ID:",this.currentVehicleId)
-        this.ds.getVehicle(this.currentVehicleId).subscribe(vehicle => {
-          this.vehicle = vehicle;
-          console.log("DATA", vehicle.images)
-          console.log(vehicle.userId)
-          this.userId = vehicle.userId
-        });
-      }
-    });
-    console.log('gothere',this.userId)
     this.router.navigateByUrl(`vendorprofile/${userId}`);
   }
 
-  getVehicles(userId: any){
+  getUserVehicles(userId: any){
     this.router.navigateByUrl(`vehicles/${userId}`);
     console.log('gothere')
   }

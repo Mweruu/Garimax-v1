@@ -16,12 +16,46 @@ import { ViewComponent } from './homepage/vehicles/view/view.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { ViewvendorprofileComponent } from './homepage/vehicles/viewvendorprofile/viewvendorprofile.component';
 import { SpecificuserVehiclesComponent } from './homepage/vehicles/specificuser-vehicles/specificuser-vehicles.component';
+import { VehiclesComponent } from './homepage/vehicles/vehicles.component';
 
 
 const routes: Routes = [
   {
     path: '', component:AppLayoutComponent,
+    children :[
+      {path: 'vehicles', component:VehiclesComponent},
+      {path: 'vendorprofile/:userId', component:ViewvendorprofileComponent,},
+      {path: 'profile/:userId', component:UserProfileComponent,},
+      {path: 'vehicles/:userId', component:SpecificuserVehiclesComponent},
+      {path: 'view/:vehicleId', component:ViewComponent,},
+      {
+        path: 'uploadcar', component:UploadcarComponent,
+        children :[
+          {path: 'basicinfo', component:BasicinfoComponent},
+          {path: 'uploadpicture', component:UploadpictureComponent},
+          {path: 'cardetails', component:CardetailsComponent},
+          {path: 'preview', component:PreviewComponent},
+          {path: 'basicinfo/:vehicleId', component:BasicinfoComponent},
+          {path: 'uploadpicture/:vehicleId', component:UploadpictureComponent},
+          {path: 'cardetails/:vehicleId', component:CardetailsComponent},
+          {path: 'preview/:vehicleId', component:PreviewComponent},
+        ]
+      },
+    ]
   },
+  // {
+  //   path: '', component:UploadcarComponent,
+  //   children :[
+  //     {path: 'basicinfo', component:BasicinfoComponent},
+  //     {path: 'uploadpicture', component:UploadpictureComponent},
+  //     {path: 'cardetails', component:CardetailsComponent},
+  //     {path: 'preview', component:PreviewComponent},
+  //     {path: 'basicinfo/:vehicleId', component:BasicinfoComponent},
+  //     {path: 'uploadpicture/:vehicleId', component:UploadpictureComponent},
+  //     {path: 'cardetails/:vehicleId', component:CardetailsComponent},
+  //     {path: 'preview/:vehicleId', component:PreviewComponent},
+  //   ]
+  // },
   {
     path: 'sociallogin', component:SocialLoginComponent
   },
@@ -31,17 +65,7 @@ const routes: Routes = [
   {
     path: 'signup', component:SignupComponent
   },
-  {
-    path: 'profile/:userId', component:UserProfileComponent,
-  },
-  // {
-  //   path: 'updateprofile/:userId', component:UpdateprofileComponent
-  // },
-  {
-    path: 'vendorprofile/:userId', component:ViewvendorprofileComponent,
-  },
-  {
-    path: 'vehicles/:userId', component:SpecificuserVehiclesComponent},
+
   {
     path: 'vendorsignup', component:SignupTabsComponent,
     children: [
@@ -49,22 +73,6 @@ const routes: Routes = [
       {path: '', component:IndividualsignupComponent,}
     ]
   },
-  {
-    path: '', component:UploadcarComponent,
-    children :[
-      {path: 'basicinfo', component:BasicinfoComponent},
-      {path: 'uploadpicture', component:UploadpictureComponent},
-      {path: 'cardetails', component:CardetailsComponent},
-      {path: 'preview', component:PreviewComponent},
-      {path: 'basicinfo/:vehicleId', component:BasicinfoComponent},
-      {path: 'uploadpicture/:vehicleId', component:UploadpictureComponent},
-      {path: 'cardetails/:vehicleId', component:CardetailsComponent},
-      {path: 'preview/:vehicleId', component:PreviewComponent},
-    ]
-  },
-  {
-    path: 'view/:vehicleId', component:ViewComponent,
-  }
 
 
 ];
