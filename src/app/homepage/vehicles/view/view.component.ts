@@ -95,8 +95,7 @@ export class ViewComponent implements OnInit {
             return { select: true, name: accessory };
           }).filter((accessory: null) => accessory !== null);
           this.selectedOptions =selectedAccessories
-          console.log("options",this.selectedOptions)
-          console.log("accessory",selectedAccessories,);
+          console.log("selectedoptions",this.selectedOptions)
           this.images = vehicle.images
         });
       }

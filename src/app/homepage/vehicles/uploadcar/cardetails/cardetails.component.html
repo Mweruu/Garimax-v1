@@ -115,10 +115,11 @@
         Car Options and Accessories
       </h4>
       <div class="col-12 md:col-12 lg:col-12">
+        
           <!-- <div *ngIf="!updateMode"> -->
             <div class="formgroup-inline">
               <div *ngFor="let option of options" class="field-checkbox col-5 md:col-5 lg:col-5">
-                  <p-checkbox [value]="option" [(ngModel)]="selectedOptions" ></p-checkbox>
+                  <p-checkbox [value]="option" [(ngModel)]="selectedOptions" (onChange)="onCheckboxChange($event,option)"></p-checkbox>
               <label>{{ option.name }}</label>
               </div>
             <!-- </div> -->
@@ -126,11 +127,17 @@
           <div *ngIf="updateMode">
             <div class="formgroup-inline">
               <div *ngFor="let option of selectedOptions" class="field-checkbox col-5 md:col-5 lg:col-5">
-              <!-- <p-checkbox [value]="option" [(ngModel)]="selectedOptions" [binary]="option.select"></p-checkbox> -->
+                <p-checkbox [binary]="true" [(ngModel)]="option.select"></p-checkbox>
+                <label>{{ option.name }}</label>
+              </div>
+            </div>
+
+            <!-- <div class="formgroup-inline">
+              <div *ngFor="let option of selectedOptions" class="field-checkbox col-5 md:col-5 lg:col-5">
               <input type="checkbox" [checked]="option.select" class="form-check-input">
               <label>{{ option.name }}</label>
               </div>
-            </div>
+            </div> -->
           </div>
       </div>
   </div>

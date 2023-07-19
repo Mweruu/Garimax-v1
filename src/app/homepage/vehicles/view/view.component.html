@@ -211,7 +211,7 @@
       <div class=" col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Engine'">
         <div class="formgroup-inline">
           <div *ngFor="let engine of engines" class="field-checkbox col-5 md:col-5 lg:col-5">
-            <p-checkbox name="group" [value]="engine" [inputId]="engine.key" [readonly]="true" checkboxIcon="assessment.select"></p-checkbox>
+            <p-checkbox name="group" [value]="engine" [inputId]="engine.key" [(ngModel)]="selectedOptions" [readonly]="true" checkboxIcon="assessment.select"></p-checkbox>
             <label [for]="engine.key">{{ engine.name }}</label>
           </div>
         </div>
@@ -220,7 +220,7 @@
       <div class="col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Electricals'">
         <div class="formgroup-inline">
           <div *ngFor="let electrical of electricals" class="field-checkbox col-5 md:col-5 lg:col-5">
-            <p-checkbox name="group" [value]="electrical" [inputId]="electrical.key" [readonly]="true"></p-checkbox>
+            <p-checkbox name="group" [value]="electrical" [inputId]="electrical.key" [(ngModel)]="selectedOptions"  [readonly]="true"></p-checkbox>
             <label [for]="electrical.key">{{ electrical.name }}</label>
           </div>
         </div>
@@ -229,7 +229,7 @@
       <div class="col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Transmissson & Clutch'">
         <!-- <div class="formgroup-inline"> -->
           <div *ngFor="let clutch of clutches" class="field-checkbox col-5 md:col-5 lg:col-5">
-            <p-checkbox name="group" [value]="clutch" [inputId]="clutch.key" [readonly]="true"></p-checkbox>
+            <p-checkbox name="group" [value]="clutch" [inputId]="clutch.key" [(ngModel)]="selectedOptions"  [readonly]="true"></p-checkbox>
             <label [for]="clutch.key">{{ clutch.name }}</label>
           </div>
         <!-- </div> -->
@@ -238,7 +238,7 @@
       <div class="col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Suspension & Steering'">
         <div class="formgroup-inline">
           <div *ngFor="let suspension of suspensions" class="field-checkbox col-5 md:col-5 lg:col-5">
-            <p-checkbox name="group" [value]="suspension" [inputId]="suspension.key" [readonly]="true"></p-checkbox>
+            <p-checkbox name="group" [value]="suspension" [inputId]="suspension.key" [(ngModel)]="selectedOptions"  [readonly]="true"></p-checkbox>
             <label [for]="suspension.key">{{ suspension.name }}</label>
           </div>
         </div>
@@ -247,7 +247,7 @@
       <div class="col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Test Drive'">
         <div class="formgroup-inline">
           <div *ngFor="let testdrive of testdrives" class="field-checkbox col-5 md:col-5 lg:col-5">
-            <p-checkbox name="group" [value]="testdrive" [inputId]="testdrive.key" [readonly]="true"></p-checkbox>
+            <p-checkbox name="group" [value]="testdrive" [inputId]="testdrive.key" [(ngModel)]="selectedOptions" [readonly]="true"></p-checkbox>
             <label [for]="testdrive.key">{{ testdrive.name }}</label>
           </div>
         </div>
@@ -256,7 +256,7 @@
       <div class="col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Exterior'">
         <div class="formgroup-inline">
           <div *ngFor="let exterior of exteriors" class="field-checkbox col-5 md:col-5 lg:col-5">
-            <p-checkbox name="group" [value]="exterior" [inputId]="exterior.key" [readonly]="true"></p-checkbox>
+            <p-checkbox name="group" [value]="exterior" [inputId]="exterior.key" [(ngModel)]="selectedOptions" [readonly]="true"></p-checkbox>
             <label [for]="exterior.key">{{ exterior.name }}</label>
           </div>
         </div>
@@ -265,7 +265,7 @@
       <div class="col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Interior'">
         <div class="formgroup-inline">
           <div *ngFor="let interior of interiors" class="field-checkbox col-5 md:col-5 lg:col-5">
-            <p-checkbox name="group" [value]="interior" [inputId]="interior.key" [readonly]="true"></p-checkbox>
+            <p-checkbox name="group" [value]="interior" [inputId]="interior.key" [(ngModel)]="selectedOptions" [readonly]="true"></p-checkbox>
             <label [for]="interior.key">{{ interior.name }}</label>
           </div>
         </div>
@@ -274,7 +274,7 @@
       <div class="col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Airconditioning System'">
         <!-- <div class="formgroup-inline"> -->
           <div *ngFor="let airsystem of airsystems" class="field-checkbox col-5 md:col-5 lg:col-5">
-            <p-checkbox name="group" [value]="airsystem" [inputId]="airsystem.key" [readonly]="true"></p-checkbox>
+            <p-checkbox name="group" [value]="airsystem" [inputId]="airsystem.key" [(ngModel)]="selectedOptions" [readonly]="true"></p-checkbox>
             <label [for]="airsystem.key">{{ airsystem.name }}</label>
           </div>
         <!-- </div> -->

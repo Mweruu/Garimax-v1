@@ -18,6 +18,8 @@ console.log("environment", env)
 })
 export class DataStorageService {
   private getUsersUrl= `${BASE_URL}/api/users`;
+  private getCoVendorsUrl= `${BASE_URL}/api/coVendors`;
+  private getIndivualUrl= `${BASE_URL}/api/singleVendors`;
   private userLoginUrl = `${BASE_URL}/api/users/login`;
   private createUserUrl = `${BASE_URL}/api/users/register`;
   private createindividualVendorUrl = `${BASE_URL}/api/singleVendor/register`;
@@ -71,4 +73,12 @@ export class DataStorageService {
     console.log("yee",id)
     return this.http.put<any>(`${this.updateVehicleUrl}/${id}`,value);
   }
+  getCompanyVendors(): Observable<any> {
+    return this.http.get<any>(`${this.getCoVendorsUrl}`);
+  }
+  getIndividualVendors(): Observable<any> {
+    return this.http.get<any>(`${this.getIndivualUrl}`);
+  }
+
+
 }

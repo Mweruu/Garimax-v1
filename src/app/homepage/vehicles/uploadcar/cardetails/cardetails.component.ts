@@ -153,7 +153,6 @@ export class CardetailsComponent implements OnInit {
             }).filter((accessory: null) => accessory !== null);
             this.selectedOptions =selectedAccessories
             console.log("options",this.selectedOptions)
-            console.log("accessory",selectedAccessories,);
             this.id = vehicle.id
 
             this.carDetails['fuelType'].setValue(vehicle.fuelType)
@@ -174,37 +173,20 @@ export class CardetailsComponent implements OnInit {
       });
     }
 
-    onCheckboxChange() {
-      this.activatedRoute.params.subscribe(params => {
-        if(params['vehicleId']){
-          this.updateMode = true
-          this.currentVehicleId = params['vehicleId'];
-          console.log("ID:",this.currentVehicleId)
-          this.ds.getVehicle(this.currentVehicleId).subscribe(vehicle => {
-            this.vehicle = vehicle;
-            // console.log("DATA", vehicle.images)
-            console.log(vehicle.id, vehicle)
-            const previouslyCheckedValues = vehicle.accessories
-            console.log(previouslyCheckedValues)
-            const names =[ ...previouslyCheckedValues.flat(),
-                           ...this.selectedOptions.map(option => option.name) ];
-            console.log("names",names);
+    isSelected(option: any): boolean {
+      return this.selectedOptions.some((selectedOption) => selectedOption.name === option.name);
+    }
 
-            const checkboxes = document.querySelectorAll<HTMLInputElement>('input[type="checkbox"]');
-
-            checkboxes.forEach((checkbox) => {
-              const checkboxValue = checkbox.value;
-              if (previouslyCheckedValues.flat().includes(checkboxValue)) {
-                checkbox.checked = true;
-              }
-            });
-          })
-        }
-      });
-
-      // console.log(this.selectedOptions)
-      // const names = this.selectedOptions.map(option => option.name);
-      // console.log("names",names);
+    onCheckboxChange(event: any, option: any): void {
+      if (event) {
+        // If the checkbox is checked, add the option to selectedOptions.
+        console.log(this.selectedOptions)
+        const names = this.selectedOptions.map(option => option.name);
+        console.log("names",names);
+      } else {
+        // If the checkbox is unchecked, remove the option from selectedOptions.
+        this.selectedOptions = this.selectedOptions.filter((selectedOption) => selectedOption.name !== option.name);
+      }
     }
 
     get carDetails(){
