@@ -41,9 +41,9 @@ export class VehiclesComponent implements OnInit {
   layout: string = 'list';
   isChecked = true;
 
-  viewForm = new FormGroup({
-    assessment:new FormControl(),
-  })
+  // viewForm = new FormGroup({
+  //   assessment:new FormControl(),
+  // })
 
   options = [
     { label: 5, value: 5 },
@@ -97,8 +97,8 @@ export class VehiclesComponent implements OnInit {
 
           // console.log("accessory",selectedAccessories,);
 
-          let assessment = this.vehicle.assessment
-          this.viewForm.patchValue(assessment)
+          // let assessment = this.vehicle.assessment
+          // this.viewForm.patchValue(assessment)
         }
       },
       (error) => {
