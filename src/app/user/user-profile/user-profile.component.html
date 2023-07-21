@@ -1,7 +1,5 @@
-<app-topbar></app-topbar>
 <p-toast></p-toast>
 <div class="profile-display"></div>
-  <div class="card"></div>
 <div class="formgroup-inline mb-5">
   <div class="col-10 md:col-10 lg:col-10">
     <p-panel header="My account" [toggleable]="true">
@@ -12,8 +10,13 @@
               <div class="flex align-items-center justify-content-center">
                 <div class="card" style="background-color: rgb(207, 205, 205);" (click)="fileInput.click()">
                   <div class="card-body">
-                    <div class="flex align-items-center justify-content-center">
-                      <i *ngIf="!imageSelected" class="pi pi-user field " style="font-size: 12.5rem"></i>
+                     <div class="flex align-items-center justify-content-center">
+                      <div *ngIf="user?.profileImage">
+                        <p-image *ngIf="!imageSelected" src="{{user?.profileImage}}" alt="Image" width="100%"></p-image>
+                      </div>
+                      <div *ngIf="!user?.profileImage">
+                        <i *ngIf="!imageSelected" class="pi pi-user field " style="font-size: 12.5rem"></i>
+                      </div>
                       <img *ngIf="imageSelected" [src]="selectedImage" alt="profile-picture" class="profile-picture mb-5">
                     </div>
                     <div class="flex align-items-center justify-content-center">
@@ -60,7 +63,8 @@
               </div> -->
 
               <div class=" field flex align-items-center justify-content-between mt-3">
-                <p>Want to change password  <a class="font-medium no-underline ml-2 text-right cursor-pointer" style="color: var(--primary-color)">Click here</a></p>
+                <p>Want to change password  <a class="font-medium no-underline ml-2 text-right cursor-pointer" style="color: var(--primary-color)" >Click here</a></p>
+                <!-- (click)="getUser(userId) -->
               </div>
             </div>
             </div>
@@ -74,27 +78,30 @@
 <div class="formgroup-inline mb-5" *ngIf="user?.isVendor">
   <div class="col-10 md:col-10 lg:col-5">
     <p-panel header="Your vehicles for sale" [toggleable]="true">
-      <div  class="col-12 formgroup-inline" *ngFor="let vehicle of vehicles">
-        <div class="col-4">
-          <p-image src="{{vehicle.image}}" alt="Image" width="100%" [preview]="true"></p-image>
-        </div>
-        <div class="col-8">
-          <h6>{{vehicle.make}} {{vehicle.model}} {{vehicle.yearOfManufacture.split('-')[0]}}</h6>
-          <div class="m-2 text-red-500 font-bold ">{{vehicle.price | currency:'Ksh. ':'symbol':'1.0-0'}}</div>
-          <div class="flex align-items-center justify-content-between mb-5">
-            <div class="flex align-items-center">
-                <p-checkbox id="sold" [binary]="true" styleClass="mr-2"></p-checkbox>
-                <label for="sold">Sold</label>
-            </div>
-            <a class="font-medium no-underline ml-2  cursor-pointer" style="color: var(--primary-color)" (click)="getVehicle(vehicle.id)">Edit</a>
+      <p-dataView [value]="vehicles" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[5,10,20]" [totalRecords]="totalRecords">
+        <ng-template let-vehicle pTemplate="listItem">
+      <!-- <div  class="col-12 formgroup-inline" *ngFor="let vehicle of vehicles"> -->
+          <div class="col-4">
+            <p-image src="{{vehicle.image}}" alt="Image" width="135px" height="105px" [preview]="true"></p-image>
           </div>
+          <div class="col-8">
+            <h6>{{vehicle.make}} {{vehicle.model}} {{vehicle.yearOfManufacture.split('-')[0]}}</h6>
+            <div class="m-2 text-red-500 font-bold ">{{vehicle.price | currency:'Ksh. ':'symbol':'1.0-0'}}</div>
+            <div class="flex align-items-center justify-content-between mb-5">
+              <div class="flex align-items-center">
+                  <p-checkbox id="sold" [binary]="true" styleClass="mr-2"></p-checkbox>
+                  <label for="sold">Sold</label>
+              </div>
+              <a class="font-medium no-underline ml-2  cursor-pointer" style="color: var(--primary-color)" (click)="getVehicle(vehicle.id)">Edit</a>
+            </div>
           <p-divider></p-divider>
         </div>
-      </div>
+      <!-- </div> -->
+        </ng-template>
+      </p-dataView>
     </p-panel>
   </div>
   <div class="col-10 md:col-10 lg:col-5">
     <p-panel header="Your sold vehicles" [toggleable]="true"></p-panel>
   </div>
 </div>
-<app-footer></app-footer>

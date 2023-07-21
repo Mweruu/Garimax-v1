@@ -4,6 +4,7 @@ import { DataStorageService } from 'src/app/datastorage.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AIRCONDITIONING_SYSTEM, ELECTRICALS, ENGINE, EXTERIOR, INTERIOR, SUSPENSION_STEERING, TESTDRIVE, TRANSMISSION_AND_CLUTCH } from '../../const-data/constants';
 import { AuthService } from 'src/app/auth.service';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-view',
@@ -39,6 +40,12 @@ export class ViewComponent implements OnInit {
   phoneNumber:any;
   rating:any;
   value: number = 4;
+  assessments:any;
+  selectedOptions: {select:boolean, name: string,}[] = [];
+
+  viewForm = new FormGroup({
+    assessment:new FormControl(),
+  })
 
   responsiveOptions: any[] = [
     {
@@ -76,11 +83,23 @@ export class ViewComponent implements OnInit {
         this.ds.getVehicle(this.currentVehicleId).subscribe(vehicle => {
           this.vehicle = vehicle;
           console.log("DATA", vehicle)
-          console.log(vehicle.userId)
-
+          console.log("assessment",vehicle.assessment)
+          // this.assessments = vehicle.assessment.map((assessment: any) => {
+          //   return { value: assessment, checked: true };
+          // });
+          // this.viewForm.patchValue(vehicle?.assessment)
+          const selectedAccessories = vehicle.assessment[0].map((accessory: any, index: number) => {
+            if (index === 0) {
+              return null; // Skip the empty string at the beginning of the array
+            }
+            return { select: true, name: accessory };
+          }).filter((accessory: null) => accessory !== null);
+          this.selectedOptions =selectedAccessories
+          console.log("selectedoptions",this.selectedOptions)
           this.images = vehicle.images
         });
       }
+      // this.carDetails['assessment'].setValue(vehicle.assessment)
     });
      this.items = [
             { label: 'Inspection Cert', icon: 'pi pi-fw pi-check-circle', command: () => this.selectTab('Inspection Cert')},
@@ -98,17 +117,7 @@ export class ViewComponent implements OnInit {
       this.selectTab('Engine')
   }
 
-  // async getSingleVehicle(vehicleId: string) {
-  //   try {
-  //     const vehicle = await this.ds.getVehicle(vehicleId).toPromise();
-  //     this.vehicle = vehicle;
-  //     this.fetched = true;
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }
-
-   selectTab(tab: string) {
+  selectTab(tab: string) {
     this.selectedTab = tab;
   }
 
@@ -116,15 +125,17 @@ export class ViewComponent implements OnInit {
     this.selectedTab = event.index;
   }
 
-
   showDialog() {
-      this.visible = true;
+    console.log(this.assessments)
+    this.visible = true;
   }
+
   showDialogs() {
     this.contactVisible = true;
   }
+
   showChatDialog() {
     this.chatVisible = true;
-}
+  }
 
 }

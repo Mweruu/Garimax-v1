@@ -5,6 +5,7 @@
     left: 0;
     top: 0;
     width: 100%;
+    // margin: auto;
     padding: 0px 141px 0px 140px;
     background-color: var(--primary-color);
     transition: left $transitionDuration;
@@ -38,7 +39,7 @@
         position: relative;
         color: var(--gray-900);
         border-radius: 50%;
-        width: 3rem;
+        // width: 3rem;
         height: 3rem;
         cursor: pointer;
         transition: background-color $transitionDuration;
@@ -99,6 +100,7 @@
 @media (max-width: 991px) {
     .layout-topbar {
         justify-content: space-between;
+        padding: 0px;
 
         .layout-topbar-logo {
             width: auto;
@@ -126,7 +128,7 @@
             padding: 1rem;
             right: 2rem;
             top: 5rem;
-            min-width: 15rem;
+            max-width: 12rem;
             display: none;
             -webkit-animation: scalein 0.15s linear;
             animation: scalein 0.15s linear;

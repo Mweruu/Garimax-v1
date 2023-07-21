@@ -19,8 +19,6 @@ export class UploadcarComponent implements OnInit {
 
   constructor(public messageService: MessageService,
               private fb: FormBuilder,
-              private ds: DataStorageService,
-              private router:Router,
               ) {}
 
   ngOnInit() {
@@ -61,7 +59,7 @@ export class UploadcarComponent implements OnInit {
   //         detail:'Please wait for our team to verify your vehicle'
   //       })
   //       timer(2500).toPromise().then(()=>{
-  //         this.router.navigate(['/'])
+  //         this.router.navigate(['/vehicles'])
   //       })
   //     },
   //     error => {

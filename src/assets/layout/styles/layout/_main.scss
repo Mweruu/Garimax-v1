@@ -11,8 +11,8 @@ body {
     font-family: var(--font-family);
     color: var(--text-color);
     background-color: var(--surface-ground);
-    margin: 0;
-    padding: 0px 0px 0px 100px;
+    margin: auto;
+    // padding: 0px 0px 0px 100px;
     min-height: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -57,3 +57,7 @@ fieldset {
   align-items: center;
   text-align: center;
 }
+
+// p-dialog{
+//   opacity: 0.9;
+// }

@@ -3,6 +3,7 @@ import { DataStorageService } from '../../datastorage.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RangePipe } from 'src/app/range.pipe';
 import { PRICE } from '../const-data/constants';
+import { FormGroup, FormControl } from '@angular/forms';
 
 interface PageEvent {
   first: number;
@@ -37,31 +38,30 @@ export class VehiclesComponent implements OnInit {
   userId :any;
   currentUserId!:string;
   user:any;
+  layout: string = 'list';
+  isChecked = true;
+
+  viewForm = new FormGroup({
+    assessment:new FormControl(),
+  })
 
   options = [
     { label: 5, value: 5 },
     { label: 10, value: 10 },
     { label: 20, value: 20 },
     { label: 120, value: 120 }
-];
-  // @Output()
-  // searchTextChanged:EventEmitter<string>=new EventEmitter<string>();
-
-  // @Output()
-  // searchFilterChanged:EventEmitter<string>=new EventEmitter<string>();
+  ];
 
   constructor(
     private ds:DataStorageService,
     public router: Router,
     public activatedRoute:ActivatedRoute,
-    private rangePipe: RangePipe
   ) { }
 
   ngOnInit() {
     this.value = 4;
     this._setValues();
     this.getAllVehicles();
-    this.getUserId();
 
   }
 
@@ -73,20 +73,32 @@ export class VehiclesComponent implements OnInit {
     this.ds.getVehicles().subscribe(
       (vehicles) => {
         console.log(vehicles.vehicles);
+
         this.vehicles = vehicles.vehicles;
-        this.totalRecords = this.vehicles.length;
-        // for (const vehicle of this.vehicles) {
-        //   this.dates=vehicle.updatedAt
+        // this.totalRecords = this.vehicles.length;
         this.vehicles.sort((a: { updatedAt: string | number | Date; }, b: { updatedAt: string | number | Date; }) => {
           const dateA = new Date(a.updatedAt);
           const dateB = new Date(b.updatedAt);
           return dateB.getTime() - dateA.getTime();
         });
 
-        console.log(this.vehicles);
-         for (const vehicle of this.vehicles) {
-          this.userId = vehicle.user.id
-          console.log(this.userId, vehicle.price, vehicle.mileage, vehicle.yearOfManufacture);
+        for (const vehicle of this.vehicles) {
+          this.vehicle = vehicle;
+          this.userId = vehicle.user.id;
+          // console.log(vehicle.assessment);
+          // console.log(this.vehicle.id,this.vehicle.accessories)
+          // console.log("assessment",this.vehicle.assessment)
+          const selectedAccessories = vehicle.accessories.map((accessory: any, index: number) => {
+            if (index === 0) {
+              return null; // Skip the empty string at the beginning of the array
+            }
+            return { select: true, name: accessory };
+          }).filter((accessory: null) => accessory !== null);
+
+          // console.log("accessory",selectedAccessories,);
+
+          let assessment = this.vehicle.assessment
+          this.viewForm.patchValue(assessment)
         }
       },
       (error) => {
@@ -98,41 +110,14 @@ export class VehiclesComponent implements OnInit {
 
   getVehicle(vehicleId: string){
     this.router.navigateByUrl(`view/${vehicleId}`);
-  }
 
-  getUserId(){
-    this.activatedRoute.params.subscribe(params => {
-      if(params['vehicleId']){
-        this.currentVehicleId = params['vehicleId'];
-        console.log("ID:",this.currentVehicleId)
-        this.ds.getVehicle(this.currentVehicleId).subscribe(vehicle => {
-          this.vehicle = vehicle;
-          console.log("DATA", vehicle.images)
-          console.log(vehicle.userId)
-          this.userId = vehicle.userId
-        });
-      }
-    });
   }
 
   getUser(userId: string){
-    this.activatedRoute.params.subscribe(params => {
-      if(params['vehicleId']){
-        this.currentVehicleId = params['vehicleId'];
-        console.log("ID:",this.currentVehicleId)
-        this.ds.getVehicle(this.currentVehicleId).subscribe(vehicle => {
-          this.vehicle = vehicle;
-          console.log("DATA", vehicle.images)
-          console.log(vehicle.userId)
-          this.userId = vehicle.userId
-        });
-      }
-    });
-    console.log('gothere',this.userId)
     this.router.navigateByUrl(`vendorprofile/${userId}`);
   }
 
-  getVehicles(userId: any){
+  getUserVehicles(userId: any){
     this.router.navigateByUrl(`vehicles/${userId}`);
     console.log('gothere')
   }
@@ -145,7 +130,6 @@ export class VehiclesComponent implements OnInit {
   onSearchFilterEntered(filterValue:string){
       this.searchFilter = filterValue.toLowerCase();
       console.log("sf",this.searchFilter)
-
   }
 
   isMatched(vehicle: any) {

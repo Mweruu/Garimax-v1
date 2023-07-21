@@ -13,7 +13,8 @@ import { MessageService } from 'primeng/api';
   styleUrls: ['./cardetails.component.scss']
 })
 export class CardetailsComponent implements OnInit {
-    selectedOptions: { name: string, key: string }[] = [];;
+    selectedOptions: {select:boolean, name: string,}[] = [];
+    // selectedOptions: { name: string, key: string }[] = [];
     options = CAR_OPTIONS;
     color: any = COLOR;
     fuelType:any = FUEL_TYPE;
@@ -36,7 +37,14 @@ export class CardetailsComponent implements OnInit {
     currentVehicleId!:string;
     id:any;
     updateMode = false;
-
+    accessories3 =[ {select:false, name:'Box Truck'},
+                    {select:true, name:'Bench Seat'},
+                    {select:false, name: 'Back Tire'},
+                    {select:true, name:'Back Camera'},
+                    {select:false, name: 'Around View Camera'},
+                    {select:false, name:'Alloy Wheels'},
+                    {select:true, name:'AM/FM'}
+                  ]
 
     constructor( private ds:DataStorageService,
                 private fb:FormBuilder,
@@ -48,6 +56,7 @@ export class CardetailsComponent implements OnInit {
 
   ngOnInit(){
     this._checkUpdateMode()
+    // this.onCheckboxChange()
 
     this.carDetsForm = this.fb.group({
       fuelType:['', Validators.required],
@@ -109,24 +118,19 @@ export class CardetailsComponent implements OnInit {
     private _updateInfo(id: string,details:any){
       this.dataService.setcardetailsData(details)
       console.log('Details Data updated' ,details);
-      this.router.navigate([`/preview/${id}`])
+      this.router.navigate([`/uploadcar/preview/${id}`])
 
     }
 
     private _createInfo(details:any){
       this.dataService.setcardetailsData(details)
       console.log('Details Data!',details)
-      this.router.navigate([`/preview`])
+      this.router.navigate([`/uploadcar/preview`])
 
     }
 
     showDialog() {
         this.visible = true;
-    }
-
-    onCheckboxChange() {
-      const names = this.selectedOptions.map(option => option.name);
-      console.log("names",names);
     }
 
     private _checkUpdateMode(){
@@ -139,6 +143,16 @@ export class CardetailsComponent implements OnInit {
             this.vehicle = vehicle;
             // console.log("DATA", vehicle.images)
             console.log(vehicle.id, vehicle)
+            // this.selectedOptions = vehicle.accessories[0]
+            // console.log(this.selectedOptions)
+            const selectedAccessories = vehicle.accessories[0].map((accessory: any, index: number) => {
+              if (index === 0) {
+                return null; // Skip the empty string at the beginning of the array
+              }
+              return { select: true, name: accessory };
+            }).filter((accessory: null) => accessory !== null);
+            this.selectedOptions =selectedAccessories
+            console.log("options",this.selectedOptions)
             this.id = vehicle.id
 
             this.carDetails['fuelType'].setValue(vehicle.fuelType)
@@ -157,6 +171,22 @@ export class CardetailsComponent implements OnInit {
           });
         }
       });
+    }
+
+    isSelected(option: any): boolean {
+      return this.selectedOptions.some((selectedOption) => selectedOption.name === option.name);
+    }
+
+    onCheckboxChange(event: any, option: any): void {
+      if (event) {
+        // If the checkbox is checked, add the option to selectedOptions.
+        console.log(this.selectedOptions)
+        const names = this.selectedOptions.map(option => option.name);
+        console.log("names",names);
+      } else {
+        // If the checkbox is unchecked, remove the option from selectedOptions.
+        this.selectedOptions = this.selectedOptions.filter((selectedOption) => selectedOption.name !== option.name);
+      }
     }
 
     get carDetails(){

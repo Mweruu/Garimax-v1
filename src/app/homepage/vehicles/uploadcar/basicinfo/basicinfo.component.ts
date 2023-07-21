@@ -86,14 +86,14 @@ export class BasicinfoComponent implements OnInit {
   private _updateInfo(id: string,basicInformation:any){
     this.dataServive.setbasicInfoData(basicInformation);
     console.log('Basic data updated' ,basicInformation);
-    this.router.navigate([`/uploadpicture/${id}`])
+    this.router.navigate([`/uploadcar/uploadpicture/${id}`])
 
   }
 
   private _createInfo(basicInformation:any){
     this.dataServive.setbasicInfoData(basicInformation);
     console.log('Basic data' ,basicInformation);
-    this.router.navigate([`/uploadpicture`])
+    this.router.navigate([`/uploadcar/uploadpicture`])
 
   }
 

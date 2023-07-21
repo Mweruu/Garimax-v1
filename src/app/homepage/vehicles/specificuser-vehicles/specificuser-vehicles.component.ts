@@ -19,6 +19,7 @@ export class SpecificuserVehiclesComponent implements OnInit {
   rows: number = 3;
   p: Number = 1;
   vehicle:any;
+  totalRecords:number = 0;
 
   constructor( private ds:DataStorageService,
     private activatedRoute: ActivatedRoute,
@@ -39,7 +40,10 @@ export class SpecificuserVehiclesComponent implements OnInit {
           });
           this.ds.getUserVehicle(this.currentUserId).subscribe(vehicles =>{
             this.vehicles = vehicles;
-            console.log(2323556,vehicles)
+            const verifiedObjects = this.vehicles.filter((obj: { isVerified: any; }) => obj.isVerified);
+            this.totalRecords = verifiedObjects.length;
+            // this.totalRecords = this.vehicles.length;
+            console.log(2323556,this.totalRecords)
           });
 
         }

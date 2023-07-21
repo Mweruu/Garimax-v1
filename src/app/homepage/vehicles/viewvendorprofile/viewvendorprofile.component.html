@@ -1,127 +1,126 @@
-<p>viewvendorprofile works!</p>
-<app-topbar></app-topbar>
-<div class="profile-display"></div>
-  <div class="card"></div>
-<div class="formgroup-inline">
-  <div class="col-10 md:col-10 lg:col-10">
-    <p-panel header="{{user?.firstName}} account" [toggleable]="true">
-      <div class="col-12 pb-3 pt-3" >
-        <div class="formgroup-inline mb-5" >
-          <div class="col-12 md:col-12 lg:col-7">
-            <div class="card flex align-items-center justify-content-center">
-              <p-image src="{{user?.profileImage}}" alt="Image" width="100%" [preview]="true"></p-image>
-            </div>
-          </div>
-          <div class="card col-12 md:col-12 lg:col-5 ">
-            <div class=" justify-content-center align-items-center">
-              <div class="mb-0 field col">
-                <h5><strong>{{user?.firstName}}</strong></h5>
+<div class="mb-5">
+  <div class="formgroup-inline">
+    <div class="col-10 md:col-10 lg:col-10">
+      <p-panel header="{{user?.firstName}} account" [toggleable]="true">
+        <div class="col-12 pb-3 pt-3" >
+          <div class="formgroup-inline mb-5" >
+            <div class="col-12 md:col-12 lg:col-7">
+              <div class="card flex align-items-center justify-content-center">
+                <p-image src="{{user?.profileImage}}" alt="Image" width="100%" [preview]="true"></p-image>
               </div>
             </div>
-            <p-divider></p-divider>
-            <!-- <p class="ml-2">Leave a rating</p> -->
-            <p-rating></p-rating>
-            <a>View reviews</a>
-            <p-divider></p-divider>
-            <p-button routerLink="/vehicles" styleClass="p-button-info" styleClass="w-full" (click)="getVehicles(userId)">View {{vehicles?.length}} cars</p-button>
-              <div class="col-12 md:col-12 lg:col-12 ">
-                <p-button (click)="showDialogs()"  icon="pi pi-fw pi-phone" label="Contact Seller" styleClass="p-button-outlined p-button-info w-full"></p-button>
-                <p-dialog header="Seller details" [(visible)]="contactVisible" [modal]="true" [draggable]="false" [resizable]="false">
-                  <div class="p-fluid">
-                    <div class="field">
-                      <label>Seller name</label>
-                      <span class="p-input-icon-left">
-                        <i class="pi pi-user"></i>
-                        <input type="text" pInputText value="{{user?.firstName}}"/>
-                      </span>
-                    </div>
-                    <div class="field">
-                      <label>Email</label>
-                      <span class="p-input-icon-left">
-                        <i class="pi pi-envelope"></i>
-                        <input type="email" pInputText value="{{user?.email}}"/>
-                      </span>
-                    </div>
-                    <div class="field">
-                      <label>Mobile number</label>
-                      <span class="p-input-icon-left">
-                        <i class="pi pi-phone"></i>
-                        <input type="number" pInputText value="{{user?.phoneNumber}}"/>
-                      </span>
-                    </div>
-                    <div class="field">
-                      <label>Address</label>
-                      <span class="p-input-icon-left">
-                        <i class="pi pi-location"></i>
-                        <input type="text" pInputText value="{{user?.firstName}}"/>
-                      </span>
-                    </div>
-                    <p-button icon="pi pi-fw pi-phone" label="Call Seller Now" styleClass="p-button-warning w-21rem"></p-button>
-                  </div>
-                </p-dialog>
+            <div class="card col-12 md:col-12 lg:col-5 ">
+              <div class=" justify-content-center align-items-center">
+                <div class="mb-0 field col">
+                  <h5><strong>{{user?.firstName}}</strong></h5>
+                </div>
               </div>
-              <div class="col-12 md:col-12 lg:col-12 ">
-                <p-button (click)="showChatDialog()" icon="pi pi-fw pi-envelope" label="Start Chat" styleClass="p-button-outlined p-button-info w-full"></p-button>
-                <p-dialog header="Chat" [(visible)]="chatVisible" [modal]="true" [draggable]="false" [resizable]="false">
-                  <h5>SEND INQUIRY FOR THIS CAR</h5>
-                  <p-divider></p-divider>
-                  <div class="p-fluid">
-                    <div class="field">
-                      <label>Your name</label>
-                      <span class="p-input-icon-left">
-                        <i class="pi pi-user"></i>
-                        <input type="text" pInputText value="{{firstName}}" />
-                      </span>
+              <p-divider></p-divider>
+              <!-- <p class="ml-2">Leave a rating</p> -->
+              <p-rating></p-rating>
+              <a>View reviews</a>
+              <p-divider></p-divider>
+              <p-button routerLink="/vehicles" styleClass="p-button-info" styleClass="w-full" (click)="getVehicles(userId)">View {{totalRecords}} cars</p-button>
+                <div class="col-12 md:col-12 lg:col-12 ">
+                  <p-button (click)="showDialogs()"  icon="pi pi-fw pi-phone" label="Contact Seller" styleClass="p-button-outlined p-button-info w-full"></p-button>
+                  <p-dialog header="Seller details" [(visible)]="contactVisible" [modal]="true" [draggable]="false" [resizable]="false">
+                    <div class="p-fluid">
+                      <div class="field">
+                        <label>Seller name</label>
+                        <span class="p-input-icon-left">
+                          <i class="pi pi-user"></i>
+                          <input type="text" pInputText value="{{user?.firstName}}"/>
+                        </span>
+                      </div>
+                      <div class="field">
+                        <label>Email</label>
+                        <span class="p-input-icon-left">
+                          <i class="pi pi-envelope"></i>
+                          <input type="email" pInputText value="{{user?.email}}"/>
+                        </span>
+                      </div>
+                      <div class="field">
+                        <label>Mobile number</label>
+                        <span class="p-input-icon-left">
+                          <i class="pi pi-phone"></i>
+                          <input type="number" pInputText value="{{user?.phoneNumber}}"/>
+                        </span>
+                      </div>
+                      <div class="field">
+                        <label>Address</label>
+                        <span class="p-input-icon-left">
+                          <i class="pi pi-location"></i>
+                          <input type="text" pInputText value="{{user?.firstName}}"/>
+                        </span>
+                      </div>
+                      <p-button icon="pi pi-fw pi-phone" label="Call Seller Now" styleClass="p-button-warning w-21rem"></p-button>
                     </div>
-                    <div class="field">
-                      <label>Email</label>
-                      <span class="p-input-icon-left">
-                        <i class="pi pi-envelope"></i>
-                        <input type="email" pInputText value="{{email}}" />
-                      </span>
-                    </div>
-                    <div class="field">
-                      <label>Mobile number</label>
-                      <span class="p-input-icon-left">
-                        <i class="pi pi-phone"></i>
-                        <input type="number" pInputText value="{{phoneNumber}}" />
-                      </span>
-                    </div>
-                    <div class="field">
-                      <label>Address</label>
-                      <span class="p-input-icon-left">
-                        <i class="pi pi-location"></i>
-                        <input type="text" pInputText value="{{firstName}}" />
-                      </span>
-                    </div>
-                    <div class="field">
-                      <label>Your message (optional)</label>
-                      <span class="p-input-icon-left">
-                        <textarea rows="5" cols="30" pInputTextarea  class="w-full"></textarea>
-                      </span>
-                    </div>
-                    <p-button icon="pi pi-fw pi-envelope" label="Inquire Now" styleClass="p-button-warning w-21rem"></p-button>
+                  </p-dialog>
+                </div>
+                <div class="col-12 md:col-12 lg:col-12 ">
+                  <p-button (click)="showChatDialog()" icon="pi pi-fw pi-envelope" label="Start Chat" styleClass="p-button-outlined p-button-info w-full"></p-button>
+                  <p-dialog header="Chat" [(visible)]="chatVisible" [modal]="true" [draggable]="false" [resizable]="false">
+                    <h5>SEND INQUIRY FOR THIS CAR</h5>
+                    <p-divider></p-divider>
+                    <div class="p-fluid">
+                      <div class="field">
+                        <label>Your name</label>
+                        <span class="p-input-icon-left">
+                          <i class="pi pi-user"></i>
+                          <input type="text" pInputText value="{{firstName}}" />
+                        </span>
+                      </div>
+                      <div class="field">
+                        <label>Email</label>
+                        <span class="p-input-icon-left">
+                          <i class="pi pi-envelope"></i>
+                          <input type="email" pInputText value="{{email}}" />
+                        </span>
+                      </div>
+                      <div class="field">
+                        <label>Mobile number</label>
+                        <span class="p-input-icon-left">
+                          <i class="pi pi-phone"></i>
+                          <input type="number" pInputText value="{{phoneNumber}}" />
+                        </span>
+                      </div>
+                      <div class="field">
+                        <label>Address</label>
+                        <span class="p-input-icon-left">
+                          <i class="pi pi-location"></i>
+                          <input type="text" pInputText value="{{firstName}}" />
+                        </span>
+                      </div>
+                      <div class="field">
+                        <label>Your message (optional)</label>
+                        <span class="p-input-icon-left">
+                          <textarea rows="5" cols="30" pInputTextarea  class="w-full"></textarea>
+                        </span>
+                      </div>
+                      <p-button icon="pi pi-fw pi-envelope" label="Inquire Now" styleClass="p-button-warning w-21rem"></p-button>
 
-                  </div>
-                </p-dialog>
-              </div>
+                    </div>
+                  </p-dialog>
+                </div>
+            </div>
           </div>
         </div>
-      </div>
-    </p-panel>
+      </p-panel>
+    </div>
   </div>
-</div>
-<div class="formgroup-inline mb-5">
+<!-- <div class="formgroup-inline mb-5">
   <div class="col-10 md:col-10 lg:col-5 justify-content-center align-items-center">
     <p-panel header="{{user?.firstName}} vehicles" [toggleable]="true">
       <div  class="col-12 formgroup-inline" *ngFor="let vehicle of vehicles">
-        <div class="col-5">
-          <p-image src="{{vehicle.image}}" alt="Image" width="100%" [preview]="true"></p-image>
-        </div>
-        <div class="col-7">
-          <h6>{{vehicle.make}} {{vehicle.model}} {{vehicle.yearOfManufacture.split('-')[0]}}</h6>
-          <div class="m-2 text-red-500 font-bold ">{{vehicle.price | currency:'Ksh. ':'symbol':'1.0-0'}}</div>
-          <p-divider></p-divider>
+        <div *ngIf="vehicle.isVerified">
+          <div class="col-5">
+            <p-image src="{{vehicle.image}}" alt="Image" width="100%" [preview]="true"></p-image>
+          </div>
+          <div class="col-6">
+            <h6>{{vehicle.make}} {{vehicle.model}} {{vehicle.yearOfManufacture.split('-')[0]}}</h6>
+            <div class="m-2 text-red-500 font-bold ">{{vehicle.price | currency:'Ksh. ':'symbol':'1.0-0'}}</div>
+            <p-divider></p-divider>
+          </div>
         </div>
       </div>
     </p-panel>
@@ -129,7 +128,7 @@
   <div class="col-10 md:col-10 lg:col-5">
     <p-panel header="{{user?.firstName}} sold vehicles" [toggleable]="true"></p-panel>
   </div>
-</div>
+</div> -->
 <div class="card formgroup-inline col-10 md:col-10 lg:col-10">
   <div class="col-12 md:col-12 lg:col-5 p-fluid">
     <div class="field">
@@ -155,4 +154,4 @@
     </div>
   </div>
 </div>
-<app-footer></app-footer>
+</div>

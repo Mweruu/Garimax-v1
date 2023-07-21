@@ -2,10 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MessageService } from 'primeng/api';
-import { timer } from 'rxjs';
 import { AuthService } from 'src/app/auth.service';
 import { DataStorageService } from 'src/app/datastorage.service';
-import { DataService } from 'src/app/layout/data.service';
 
 @Component({
   selector: 'app-viewvendorprofile',
@@ -36,10 +34,10 @@ export class ViewvendorprofileComponent implements OnInit {
   email:any;
   firstName:any;
   phoneNumber:any;
+  totalRecords:number = 0;
 
 
-  constructor(private messageService:MessageService,
-              private ds:DataStorageService,
+  constructor(private ds:DataStorageService,
               private fb: FormBuilder,
               private router: Router,
               private activatedRoute: ActivatedRoute,
@@ -69,7 +67,10 @@ export class ViewvendorprofileComponent implements OnInit {
 
         this.ds.getUserVehicle(this.currentUserId).subscribe(vehicles =>{
           this.vehicles = vehicles;
-          console.log(2323,vehicles.length,vehicles)
+          const verifiedObjects = this.vehicles.filter((obj: { isVerified: any; }) => obj.isVerified);
+            this.totalRecords = verifiedObjects.length;
+            // this.totalRecords = this.vehicles.length;
+            console.log(2323556,this.totalRecords)
 
         })
       }

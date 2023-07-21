@@ -115,18 +115,36 @@
         Car Options and Accessories
       </h4>
       <div class="col-12 md:col-12 lg:col-12">
-        <div class="formgroup-inline">
-          <div *ngFor="let option of options" class="field-checkbox col-5 md:col-5 lg:col-5">
-            <p-checkbox [value]="option" [(ngModel)]="selectedOptions" (onChange)="onCheckboxChange()"></p-checkbox>
-            <label>{{ option.name }}</label>
+        
+          <!-- <div *ngIf="!updateMode"> -->
+            <div class="formgroup-inline">
+              <div *ngFor="let option of options" class="field-checkbox col-5 md:col-5 lg:col-5">
+                  <p-checkbox [value]="option" [(ngModel)]="selectedOptions" (onChange)="onCheckboxChange($event,option)"></p-checkbox>
+              <label>{{ option.name }}</label>
+              </div>
+            <!-- </div> -->
           </div>
-        </div>
+          <div *ngIf="updateMode">
+            <div class="formgroup-inline">
+              <div *ngFor="let option of selectedOptions" class="field-checkbox col-5 md:col-5 lg:col-5">
+                <p-checkbox [binary]="true" [(ngModel)]="option.select"></p-checkbox>
+                <label>{{ option.name }}</label>
+              </div>
+            </div>
+
+            <!-- <div class="formgroup-inline">
+              <div *ngFor="let option of selectedOptions" class="field-checkbox col-5 md:col-5 lg:col-5">
+              <input type="checkbox" [checked]="option.select" class="form-check-input">
+              <label>{{ option.name }}</label>
+              </div>
+            </div> -->
+          </div>
       </div>
   </div>
 </div>
 <form [formGroup]="carDetsForm" (ngSubmit)="onSubmit()">
 <div class="field grid col-12 md:col-12 lg:col-12 ml-4 justify-content-center gap-3">
-  <button pButton pRipple label="Back" routerLink="/uploadpicture"  class="col-5 md:col-5 lg:col-5 p-3 text-xl" type="button"></button>
+  <button pButton pRipple label="Back" routerLink="/uploadcar/uploadpicture"  class="col-5 md:col-5 lg:col-5 p-3 text-xl" type="button"></button>
   <button pButton pRipple label="Finish" class="col-5 md:col-5 lg:col-5 p-3 text-xl"  type="submit" ></button>
 </div>
 </form>

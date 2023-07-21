@@ -22,7 +22,6 @@ import { VehiclesComponent } from './homepage/vehicles/vehicles.component';
 import { ViewComponent } from './homepage/vehicles/view/view.component';
 import { AppFooterComponent } from './layout/app.footer.component';
 import { AppLayoutComponent } from './layout/app.layout.component';
-import { AppSidebarComponent } from './layout/app.sidebar.component';
 import { AppTopBarComponent } from './layout/app.topbar.component';
 import { SpecificuserVehiclesComponent } from './homepage/vehicles/specificuser-vehicles/specificuser-vehicles.component';
 import { ViewvendorprofileComponent } from './homepage/vehicles/viewvendorprofile/viewvendorprofile.component';
@@ -77,6 +76,8 @@ import { PanelModule } from 'primeng/panel';
 import { ThumbnailsDirective } from './thumbnails.directive';
 import { CarouselModule } from 'primeng/carousel';
 import { AutoCompleteModule } from 'primeng/autocomplete';
+import { TableModule } from 'primeng/table';
+import { WordlimitPipe } from './wordlimit.pipe';
 
 @NgModule({
   declarations: [
@@ -90,7 +91,6 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
     UserProfileComponent,
     AppTopBarComponent,
     AppFooterComponent,
-    AppSidebarComponent,
     AppLayoutComponent,
     FiltersComponent,
     VehiclesComponent,
@@ -106,13 +106,13 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
     ViewuservehiclesComponent,
     ThumbnailsDirective,
     RangePipe,
+    WordlimitPipe,
 
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    // AppLayoutModule,
     NgxPaginationModule,
     CardModule,
     DropdownModule,
@@ -154,7 +154,8 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
     CalendarModule,
     PanelModule,
     CarouselModule,
-    AutoCompleteModule
+    AutoCompleteModule,
+    TableModule
   ],
   providers: [MessageService, AuthService,DataService, ViewComponent,RangePipe],
   bootstrap: [AppComponent]
