@@ -5,23 +5,28 @@
       <p>{{totalRecords}} Cars found</p>
       <app-filters (searchFilterChanged)="onSearchFilterEntered($event)"></app-filters>
     </div>
-    <div class="card-w-title col-12 md:col-6 lg:col-6">
+    <div class="card-w-title col-12 md:col-7 lg:col-6">
       <p-dataView #dv [value]="vehicles" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[5,10,20]" [totalRecords]="totalRecords">
         <ng-template let-vehicle pTemplate="listItem">
           <div *ngIf="vehicle.isVerified">
             <!-- <div class="vehicles-card flex mb-3 mt-3" *ngIf="isMatched(vehicle)"> -->
               <div class="vehicles-card flex mb-3 mt-3" *ngIf="isMatched(vehicle)">
               <div class="col-4">
-                <p-image src="{{vehicle.image}}" alt="Image" width="100%" [preview]="true"></p-image>
+                <p-image src="{{vehicle.image}}" alt="Image" width="175px" height="120px" [preview]="true"></p-image>
               </div>
               <div class="col-8" routerLink="/view" (click)="getVehicle(vehicle.id)">
-                <h6>{{vehicle.make}} {{vehicle.model}} {{vehicle.yearOfManufacture.split('-')[0]}}</h6>
+                <h6>
+                    {{vehicle.make}} {{vehicle.model}} {{vehicle.yearOfManufacture.split('-')[0]}}
+                </h6>
                 <div class="text-red-500 font-bold ">{{vehicle.price | currency:'Ksh. ':'symbol':'1.0-0'}}</div>
-                <p>{{vehicle.bodyType}} | {{vehicle.mileage| number: '1.0-0'}}KM | {{vehicle.engineSize| number: '1.0-0'}} CC | {{vehicle.enginePower}} |
-                  {{vehicle.transmission}} | {{vehicle.fuelType}}
+                <p>
+                  <strong>
+                    {{vehicle.bodyType}} | {{vehicle.mileage| number: '1.0-0'}}KM | {{vehicle.engineSize| number: '1.0-0'}} CC | {{vehicle.enginePower}} |
+                    {{vehicle.transmission}} | {{vehicle.fuelType}}
                   <!-- | {{vehicle.doors}} | {{vehicle.seats}} -->
+                  </strong>
                 </p>
-                <div>{{vehicle.description}}</div>
+                <div>{{vehicle.description | wordlimit:10}}</div>
               </div>
             </div>
           </div>

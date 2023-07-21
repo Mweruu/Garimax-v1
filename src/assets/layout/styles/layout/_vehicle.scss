@@ -79,20 +79,13 @@
 dl {
   border: 1px solid #bdc8ca;
   white-space: normal;
-
-  // display: grid;
-  // grid-gap: 0px;
-  // grid-template-columns:auto;
-  /* background-color: #f7fafa; */
 }
 dt, dd {
   box-sizing: border-box;
   padding: 10px;
   font-size: 16px;
   white-space: normal;
-  // display: grid;
-  // grid-gap: 0px;
-  // grid-template-columns:auto;
+
 }
 dd ~ dt,
 dd ~ dd {
@@ -112,12 +105,11 @@ dd:after {
   clear: both;
 }
 
-
 .vehicles-card{
-  border: 1px solid #e4e2e2;
-  // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  // border: 1px solid #e4e2e2;
+  box-shadow: 0 4px 8px 0 rgba(153, 153, 153, 0.2), 0 6px 8px 0 rgba(168, 168, 168, 0.2);
   border-radius: 5px;
-  background-color: #f6fbff;
+  // background-color: #f6fbff;
 }
 
 .p-dataview.p-dataview-list .p-dataview-content > .p-grid > div {
@@ -150,4 +142,8 @@ dd:after {
   // border: 2px solid #929191;
   opacity: 1;
 }
+
+// .grid{
+//   display: contents !important;
+// }
 

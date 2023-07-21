@@ -16,72 +16,64 @@
       </div>
     </div>
 
-    <p-dataView #dv [value]="vehicles" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[5,10,20]" [totalRecords]="totalRecords">
-    <ng-template let-vehicle pTemplate="listItem">
-    <!-- <div *ngFor="let vehicle of vehicles| paginate:{itemsPerPage:rows, currentPage: vehicle} " > -->
-      <div *ngIf="vehicle.isVerified">
-        <div class="vehicles-card flex mb-3 mt-3" *ngIf="isMatched(vehicle)">
-        <!-- <div class="card flex mb-3 mt-3" *ngIf="searchText === '' || vehicle.make.toLowerCase().includes(searchText) || vehicle.model.toLowerCase().includes(searchText) || vehicle.price.toLowerCase().includes(searchText) || vehicle.yearOfManufacture.toLowerCase().includes(searchText)">
-        <div class="flex mb-3 mt-3" *ngIf="searchFilter === '' || vehicle.location.toLowerCase().includes(searchFilter)"> -->
-          <div class="grid" style="cursor: pointer;">
-            <div class="col-12 md:col-12 lg:col-5 ml-5 flex align-items-center">
-                <div class="p-fluid">
-                  <p-image src="{{vehicle.image}}"  class="img-fluid" alt="Image" width="275px" height="150px" [preview]="true"></p-image>
-                </div>
-            </div>
-            <div class="col-12 md:col-12 lg:col-6 justify-content-center ">
-              <div class="col-12 md:col-12 lg:col-12 ">
-                <div routerLink="/view" (click)="getVehicle(vehicle.id)">
-                  <div class="flex align-items-center justify-content-between gap-5">
-                    <div class="flex align-items-center">
-                      <div class="mt-1">
-                        <p-tag [severity]="vehicle.condition === 'Used' ? 'info':'danger'" value={{vehicle.condition}} class="m-2"></p-tag>
-                        <p-tag [severity]="vehicle.usage === 'Foreign Used' ? 'info':'danger'" value= {{vehicle.usage}} class="ml-1"></p-tag>
-                        <!-- <p-tag [severity]="vehicle.usage === 'Foreign Used' ? 'info':'danger'" value= "Foreign Used" [icon]="vehicle.usage === 'Foreign Used' ? 'pi pi-check': 'pi pi-times'"  class="ml-1"></p-tag> -->
-                        <!-- <p-tag [severity]="vehicle.usage === 'Locally Used' ? 'info':'danger'" value= "Locally Used" [icon]="vehicle.usage === 'Locally Used' ? 'pi pi-check': 'pi pi-times'" class="ml-2"></p-tag> -->
+    <p-dataView [value]="vehicles" [paginator]="true" [rowsPerPageOptions]="[5,10,20]" [rows]="5">
+      <ng-template let-vehicle pTemplate="listItem">
+        <div class="col-12" *ngIf="vehicle.isVerified">
+          <div class="vehicles-card mt-5" *ngIf="isMatched(vehicle)">
+            <div class="grid" style="cursor: pointer;">
+              <div class="col-12 md:col-12 lg:col-5 ml-2 align-items-center">
+                  <div class="p-fluid">
+                    <p-image src="{{vehicle.image}}"  class="img-fluid" alt="Image" width="275px" height="150px" [preview]="true"></p-image>
+                  </div>
+              </div>
+              <div class="col-12 md:col-12 lg:col-6 justify-content-center ">
+                <div class="col-12 md:col-12 lg:col-12 ">
+                  <div routerLink="/view" (click)="getVehicle(vehicle.id)">
+                    <div class="flex align-items-center justify-content-between gap-5">
+                      <div class="flex align-items-center">
+                          <p-tag [severity]="vehicle.condition === 'Used' ? 'info':'danger'" value={{vehicle.condition}} class="m-2"></p-tag>
+                          <p-tag [severity]="vehicle.usage === 'Foreign Used' ? 'info':'danger'" value= {{vehicle.usage}} class="ml-1"></p-tag>
+                      </div>
+                      <div *ngIf="vehicle.isVerified">
+                        <p-tag severity="success" icon="pi pi-check"></p-tag>
                       </div>
                     </div>
-                    <div *ngIf="vehicle.isVerified">
-                      <!-- <p-button icon="pi pi-check" styleClass="p-button-rounded p-button-success p-button-text" label="Verified"></p-button> -->
-                      <p-tag severity="success" icon="pi pi-check"></p-tag>
-                    </div>
+                <div class="m-2 text-red-500 hover:text-red-700  font-bold ">{{vehicle.price | currency:'Ksh. ':'symbol':'1.0-0' }}</div>
+                  <h6 class="m-2">
+                    {{vehicle.yearOfManufacture.split('-')[0]}} {{vehicle.make}} {{vehicle.model}}
+                  </h6>
+                  <p class="m-2">
+                    <strong>
+                      {{vehicle.fuelType}} | {{vehicle.transmission}} | {{vehicle.engineSize| number: '1.0-0' }} CC | {{vehicle.mileage| number: '1.0-0' }} KM | {{vehicle.color}} | {{vehicle.bodyType}}
+                    </strong>
+                  </p>
+                  <p class="m-2">{{vehicle.description | wordlimit:10}}</p>
+                  <p-divider></p-divider>
                   </div>
-              <div class="m-2 text-red-500 hover:text-red-700  font-bold ">{{vehicle.price | currency:'Ksh. ':'symbol':'1.0-0' }}</div>
-                <h6 class="m-2">
-                  {{vehicle.yearOfManufacture.split('-')[0]}} {{vehicle.make}} {{vehicle.model}}
-                </h6>
-                <p class="m-2">
-                  <strong>
-                    {{vehicle.fuelType}} | {{vehicle.transmission}} | {{vehicle.engineSize| number: '1.0-0' }} CC | {{vehicle.mileage| number: '1.0-0' }} KM | {{vehicle.color}} | {{vehicle.bodyType}}
-                  </strong>
-                </p>
-                <p class="m-2">{{vehicle.description}}...</p>
-                <p-divider></p-divider>
-                </div>
-                  <div class="flex align-items-center justify-content-between gap-5">
-                    <div class="flex align-items-center">
-                      <h5 class="m-0" routerLink="/vendorprofile" (click)="getUser(vehicle.user.id)" >
-                        {{vehicle.user.firstName}}
-                      </h5>
+                    <div class="flex align-items-center justify-content-between gap-5">
+                      <div class="flex align-items-center">
+                        <h5 class="m-0" routerLink="/vendorprofile" (click)="getUser(vehicle.user.id)" >
+                          {{vehicle.user.firstName}}
+                        </h5>
+                      </div>
+                      <a class="font-medium no-underline ml-2 text-right cursor-pointer" style="color: var(--primary-color)"
+                      routerLink="/vehicles"  (click)="getUserVehicles(vehicle.user.id)">See all cars</a>
                     </div>
-                    <a class="font-medium no-underline ml-2 text-right cursor-pointer" style="color: var(--primary-color)"
-                    routerLink="/vehicles"  (click)="getUserVehicles(vehicle.user.id)">See all cars</a>
-                  </div>
 
-                  <div class="flex align-items-center justify-content-between gap-5">
-                    <div class="flex align-items-center">
-                      <p-rating [(ngModel)]="value" [readonly]="true" [cancel]="false"></p-rating>
+                    <div class="flex align-items-center justify-content-between gap-5">
+                      <div class="flex align-items-center">
+                        <p-rating [(ngModel)]="value" [readonly]="true" [cancel]="false"></p-rating>
+                      </div>
+                      <span class="text-2xl font-semibold text-right">
+                        <img src={{vehicle.image}} alt="logo" height="30" class="mb-3">
+                        </span>
                     </div>
-                    <span class="text-2xl font-semibold text-right">
-                      <img src={{vehicle.image}} alt="logo" height="30" class="mb-3">
-                      </span>
-                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-  </ng-template>
+      </ng-template>
     </p-dataView>
   </div>
 </div>

@@ -1,5 +1,5 @@
-<div class="view mb-5">
-  <div class="card grid p-fluid" >
+<div class="mb-5">
+  <div class="grid p-fluid" >
     <div class="col-12 md:col-12 lg:col-4">
       <div class="card">
         <section class="gallery">
@@ -93,8 +93,6 @@
                 <dd><strong>{{vehicle.engineSize}} CC</strong></dd>
                 <dt>VIN number</dt>
                 <dd><strong>{{vehicle.vinNumber}}</strong> </dd>
-                <!-- <dt>Verified</dt>
-                <dd><strong>{{vehicle.isVerified}}</strong> </dd> -->
               </dl>
             </div>
           </div>
@@ -103,7 +101,7 @@
       <div class="col-12 formgroup-inline gap-5 align-items-center justify-content-center">
         <div class="flex justify-content-center">
           <p-button (click)="showDialog()"  icon="pi pi-fw pi-phone" label="Contact Seller" styleClass="p-button-success w-full text-xl"></p-button>
-          <p-dialog header="Safety Tips" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw'}" [draggable]="false" [resizable]="false">
+          <p-dialog header="Safety Tips" [(visible)]="visible" [modal]="true" [draggable]="false" [resizable]="false">
               <ul class="m-0 mb-5 text-xl">
                 <li>Remember, don't send any pre-payments</li>
                 <li>Meet the seller at a safe public place</li>
@@ -111,7 +109,7 @@
                 <li>Check all documentation and only pay if you're satisfied</li>
               </ul>
               <p-button  (click)="showDialogs()" class="align-items-center justify-content-center" label="Continue" styleClass="p-button-info w-full  text-xl"></p-button>
-              <p-dialog header="Seller details" [(visible)]="contactVisible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+              <p-dialog header="Seller details" [(visible)]="contactVisible" [modal]="true" [draggable]="false" [resizable]="false">
                 <div class="formgrid">
                   <div class="field">
                     <label>Seller name</label>
@@ -148,7 +146,7 @@
         </div>
 
           <p-button (click)="showChatDialog()" icon="pi pi-fw pi-envelope" label="Start Chat" styleClass="p-button-success  w-full text-xl"></p-button>
-          <p-dialog header="Chat" [(visible)]="chatVisible" [modal]="true" [style]="{ width: '50vw'}" [draggable]="false" [resizable]="false">
+          <p-dialog header="Chat" [(visible)]="chatVisible" [modal]="true" [draggable]="false" [resizable]="false">
             <h5>SEND INQUIRY FOR THIS CAR</h5>
             <p-divider></p-divider>
             <div class="formgrid">
@@ -200,13 +198,14 @@
       </div>
     </div>
 
-  <div class="col-12 md:col-12 lg:col-12 mt-2" style="text-align: center;">
-    <u class="font-bold"><h5>Conditional Assessment</h5></u>
-  </div>
-  <div class="card col-12 md:col-12 lg:col-12">
-    <p-tabMenu [scrollable]="true" [model]="items"  [activeItem]="activeItem"  (onTabChange)="onTabChange($event)"></p-tabMenu>
-  </div>
+    <div class="col-12 md:col-12 lg:col-12 mt-2" style="text-align: center;">
+      <u class="font-bold"><h5>Conditional Assessment</h5></u>
+    </div>
+    <div class="card col-12 md:col-12 lg:col-12">
+      <p-tabMenu [scrollable]="true" [model]="items"  [activeItem]="activeItem"  (onTabChange)="onTabChange($event)"></p-tabMenu>
+    </div>
   <!-- <div *ngFor="let assessment of selectedOptions"> -->
+    <div class="card">
       <div class=" col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Inspection Cert'"></div>
       <div class=" col-12 md:col-12 lg:col-12" *ngIf="selectedTab === 'Engine'">
         <div class="formgroup-inline">
@@ -279,6 +278,6 @@
           </div>
         <!-- </div> -->
       </div>
-  <!-- </div> -->
+  </div>
   </div>
 </div>

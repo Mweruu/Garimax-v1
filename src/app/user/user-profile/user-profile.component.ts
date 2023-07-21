@@ -31,6 +31,7 @@ export class UserProfileComponent implements OnInit {
   file: any
   userData:any;
   profileImage:any;
+  totalRecords:number = 0;
 
 
   constructor(private messageService:MessageService,
@@ -59,11 +60,9 @@ export class UserProfileComponent implements OnInit {
           this.userUpdateForm['phoneNumber'].setValue(user.phoneNumber)
           this.userUpdateForm['email'].setValue(user.email)
           this.userUpdateForm['companyUrl'].setValue(user.companyUrl)
-          this.userUpdateForm['profileImage'].setValue(user.profileImage)
+          // this.userUpdateForm['profileImage'].setValue(user.profileImage)
           // this.userUpdateForm['password'].setValue(user.password)
-
         });
-
 
         this.ds.getUserVehicle(this.currentUserId).subscribe(vehicles =>{
           this.vehicles = vehicles;
@@ -71,8 +70,6 @@ export class UserProfileComponent implements OnInit {
 
       }
       });
-
-
 
       this.updateForm = this.fb.group({
         firstName:['', Validators.required],
@@ -156,7 +153,6 @@ export class UserProfileComponent implements OnInit {
   onSubmit(userId: string){
     const image = this.dataService.getuploadPictureData();
     console.log("got here", image)
-
     this.isSubmitted = true;
     if(this.updateForm.invalid){
       return;
@@ -164,8 +160,6 @@ export class UserProfileComponent implements OnInit {
     console.log(4554444,this.uploadedFile)
     const formData = new FormData();
     formData.append('profileImage',image[0]);
-    // const cc = formData.append('profileImage',this.uploadedFile)
-
 
     const user={
         // this.imageSelected
@@ -206,6 +200,9 @@ export class UserProfileComponent implements OnInit {
         })
       }
     );
+  }
+  getUser(userId: string){
+    this.router.navigateByUrl(`sign/${userId}`);
   }
 
   getVehicle(id: string){

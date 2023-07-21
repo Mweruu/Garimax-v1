@@ -76,17 +76,9 @@
     </div>
   </div>
 </fieldset>
+<div class="p-formgrid grid mt-0">
 
-<div class="formgroup-inline col-12 md:col-12 lg:col-12 m-0">
-  <div class="col-6">
-    <a (click)="toggleShowMore()" *ngIf="!showMore" class="ml-2" style="cursor: pointer;">Show More</a>
-  </div>
-  <div class="col-6">
-    <a (click)="clear()" *ngIf="!showMore" class="ml-2" style="cursor: pointer;">Clear Filters</a>
-  </div>
-</div>
-<div *ngIf="showMore" class="p-formgrid grid">
-    <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
+    <div  class="p-inputgroup mt-3" style="border: 1px solid rgb(192, 190, 190);">
       <p-button  class="flex col-4 md:col-6 mt-0"  label="Body Type" styleClass="p-button-info p-button-text w-11rem"></p-button>
       <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="bodyType"  optionValue="bodyType" optionLabel="bodyType"
       placeholder="Select" [(ngModel)]="bodyTypeFilter" (onChange)="onSearchFilterChanged($event.value)"></p-dropdown>
@@ -132,7 +124,7 @@
         </div>
       </fieldset>
 
-      <fieldset  class="mb-3 fieldset">
+      <fieldset  class="mb-2 fieldset">
         <legend class="ml-2">Engine Power</legend>
         <div class="formgroup-inline col-12 md:col-12 lg:col-12 m-0">
           <div class="field col-5 md:col-12 lg:col-5 mb-0 p-0">
@@ -151,6 +143,16 @@
       </fieldset>
     </div>
 
+  </div>
+    <div class="formgroup-inline col-12 md:col-12 lg:col-12 m-0">
+      <div class="col-6">
+        <a (click)="toggleShowMore()" *ngIf="!showMore" class="ml-2" style="cursor: pointer;">Show More</a>
+      </div>
+      <div class="col-6">
+        <a (click)="clear()" *ngIf="!showMore" class="ml-2" style="cursor: pointer;">Clear Filters</a>
+      </div>
+    </div>
+    <div *ngIf="showMore" class="p-formgrid grid">
     <div  class="p-inputgroup" style="border: 1px solid rgb(192, 190, 190);">
       <p-button  class="flex col-4 md:col-6 mt-0"  label="Acceleration" styleClass="p-button-info p-button-text w-11rem"></p-button>
       <p-dropdown class="flex col-8 md:col-6 mb-0" inputId="dropdown" [options]="acceleration"  optionValue="acceleration" optionLabel="acceleration" [(ngModel)]="accelerationFilter" (onChange)="onAccelerationFilterChanged($event.value)"></p-dropdown>

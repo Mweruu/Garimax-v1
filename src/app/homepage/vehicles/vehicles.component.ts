@@ -50,18 +50,12 @@ export class VehiclesComponent implements OnInit {
     { label: 10, value: 10 },
     { label: 20, value: 20 },
     { label: 120, value: 120 }
-];
-  // @Output()
-  // searchTextChanged:EventEmitter<string>=new EventEmitter<string>();
-
-  // @Output()
-  // searchFilterChanged:EventEmitter<string>=new EventEmitter<string>();
+  ];
 
   constructor(
     private ds:DataStorageService,
     public router: Router,
     public activatedRoute:ActivatedRoute,
-    private rangePipe: RangePipe
   ) { }
 
   ngOnInit() {
@@ -81,7 +75,7 @@ export class VehiclesComponent implements OnInit {
         console.log(vehicles.vehicles);
 
         this.vehicles = vehicles.vehicles;
-        this.totalRecords = this.vehicles.length;
+        // this.totalRecords = this.vehicles.length;
         this.vehicles.sort((a: { updatedAt: string | number | Date; }, b: { updatedAt: string | number | Date; }) => {
           const dateA = new Date(a.updatedAt);
           const dateB = new Date(b.updatedAt);
