@@ -18,12 +18,12 @@
 
     <p-dataView [value]="vehicles" [paginator]="true" [rowsPerPageOptions]="[5,10,20]" [rows]="5">
       <ng-template let-vehicle pTemplate="listItem">
-        <div class="col-12" *ngIf="vehicle.isVerified">
+        <!-- <div class="col-12" *ngIf="vehicle.isVerified"> -->
           <div class="vehicles-card mt-5" *ngIf="isMatched(vehicle)">
             <div class="grid" style="cursor: pointer;">
               <div class="col-12 md:col-12 lg:col-5 ml-2 align-items-center">
                   <div class="p-fluid">
-                    <p-image src="{{vehicle.image}}"  class="img-fluid" alt="Image" width="275px" height="150px" [preview]="true"></p-image>
+                    <p-image src="{{vehicle.image}}"  class="image" alt="Image" width="95%" [preview]="true"></p-image>
                   </div>
               </div>
               <div class="col-12 md:col-12 lg:col-6 justify-content-center ">
@@ -72,7 +72,7 @@
               </div>
             </div>
           </div>
-        </div>
+        <!-- </div> -->
       </ng-template>
     </p-dataView>
   </div>
