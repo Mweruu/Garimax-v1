@@ -18,7 +18,7 @@
 
     <p-dataView [value]="vehicles" [paginator]="true" [rowsPerPageOptions]="[5,10,20]" [rows]="5">
       <ng-template let-vehicle pTemplate="listItem">
-        <!-- <div class="col-12" *ngIf="vehicle.isVerified"> -->
+        <div class="col-12" *ngIf="vehicle.isVerified">
           <div class="vehicles-card mt-5" *ngIf="isMatched(vehicle)">
             <div class="grid" style="cursor: pointer;">
               <div class="col-12 md:col-12 lg:col-5 ml-2 align-items-center">
@@ -65,14 +65,14 @@
                         <p-rating [(ngModel)]="value" [readonly]="true" [cancel]="false"></p-rating>
                       </div>
                       <span class="text-2xl font-semibold text-right">
-                        <img src={{vehicle.image}} alt="logo" height="30" class="mb-3">
+                        <img src={{vehicle.user.profileImage}} alt="logo" height="30" class="mb-3">
                         </span>
                     </div>
                 </div>
               </div>
             </div>
           </div>
-        <!-- </div> -->
+        </div>
       </ng-template>
     </p-dataView>
   </div>

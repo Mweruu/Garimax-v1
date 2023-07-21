@@ -12,7 +12,7 @@
                   <div class="card-body">
                      <div class="flex align-items-center justify-content-center">
                       <div *ngIf="user?.profileImage">
-                        <p-image *ngIf="!imageSelected" src="{{user?.profileImage}}" alt="Image" width="100%"></p-image>
+                        <p-image *ngIf="!imageSelected" src="{{user?.profileImage}}" alt="profile-picture" width="100%"></p-image>
                       </div>
                       <div *ngIf="!user?.profileImage">
                         <i *ngIf="!imageSelected" class="pi pi-user field " style="font-size: 12.5rem"></i>
@@ -82,7 +82,7 @@
         <ng-template let-vehicle pTemplate="listItem">
       <!-- <div  class="col-12 formgroup-inline" *ngFor="let vehicle of vehicles"> -->
           <div class="col-4">
-            <p-image src="{{vehicle.image}}" alt="Image" width="135px" height="105px" [preview]="true"></p-image>
+            <p-image src="{{vehicle.image}}" alt="Image" width="70%" [preview]="true"></p-image>
           </div>
           <div class="col-8">
             <h6>{{vehicle.make}} {{vehicle.model}} {{vehicle.yearOfManufacture.split('-')[0]}}</h6>
