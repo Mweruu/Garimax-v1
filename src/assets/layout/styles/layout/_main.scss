@@ -18,6 +18,18 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+@media (max-width: 991px){
+  body {
+  font-family: var(--font-family);
+  color: var(--text-color);
+  background-color: var(--surface-ground);
+  margin: 0px;
+  padding: 0px 0px 0px 0px;
+  min-height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}}
+
 a {
     text-decoration: none;
     color: var(--primary-color);
@@ -28,6 +40,19 @@ a {
 }
 .mid-display {
   padding-right: 100px !important;
+}
+
+@media (max-width: 991px){
+  .mid-display {
+    padding-right: 0px !important;
+  }
+
+  .p-tabview .p-tabview-panels {
+    width: 400px;
+    padding-left: 120px;
+    padding-right: 0px;
+}
+
 }
 .profile-display{
   padding: 0px 200px 0px 200px;

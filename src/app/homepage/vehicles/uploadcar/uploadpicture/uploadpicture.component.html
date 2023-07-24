@@ -1,7 +1,7 @@
 <p-toast></p-toast>
 <form [formGroup]="imageForm" (ngSubmit)="onSubmit()">
   <div class="formgroup-inline justify-content-center">
-    <div class="card grid p-fluid mt-0 p-5 col-4 md:col-4 lg:col-4">
+    <div class="card grid p-fluid mt-0 p-5 col-12 md:col-4 lg:col-4">
       <div class="flex mt-2 mb-3 justify-content-center col-12 md:col-12 lg:col-12">
           <p-toast></p-toast>
           <p-fileUpload name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" [maxFileSize]="5000000"  (onUpload)="onUpload($event)" [multiple]="true" accept="image/*">
@@ -14,7 +14,7 @@
       </div><br />
       <small *ngIf="!imageUploaded && isSubmitted" class="ml-8 p-error">Select Image and Click upload to submit selected images</small>
     </div>
-    <div class="card grid p-fluid mt-0 m-5 col-5 md:col-5 lg:col-5">
+    <div class="card grid p-fluid mt-0 m-5 col-12 md:col-5 lg:col-5">
       <h5 class="m-5">
         How to upload car images to sell faster
       </h5>

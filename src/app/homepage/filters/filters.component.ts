@@ -165,16 +165,16 @@ export class FiltersComponent implements OnInit {
   }
 
   onMileageFilterChanged(selectedFilter:string){
-    if(this.mileageFilter && this.maxmileageFilter){
-      let range = `${this.mileageFilter.replace(/[^0-9]/g, '')}-${this.maxmileageFilter.replace(/[^0-9]/g, '')}`;
-      console.log("ef33",range)
-      // range = selectedFilter
-      this.searchFilterChanged.emit(selectedFilter)
-      return range;
+    // if(this.mileageFilter && this.maxmileageFilter){
+    //   let range = `${this.mileageFilter.replace(/[^0-9]/g, '')}-${this.maxmileageFilter.replace(/[^0-9]/g, '')}`;
+    //   console.log("ef33",range)
+    //   this.searchFilterChanged.emit(selectedFilter)
+    //   return range;
 
-    }
-    // this.searchFilterChanged.emit(selectedFilter);
-    return selectedFilter;
+    // }
+    this.searchFilterChanged.emit(selectedFilter);
+    console.log("ef",selectedFilter)
+    // return selectedFilter;
 
   }
 

@@ -1,5 +1,5 @@
 <p-toast></p-toast>
-<div class="formgroup-inline  justify-content-center p-5">
+<div class="formgroup-inline  justify-content-center">
   <div class="card grid p-fluid mt-0 p-5 col-12 md:col-5 lg:col-5 ">
     <form [formGroup]="carDetsForm" (ngSubmit)="onSubmit()">
             <div class="formgroup-inline col-12 md:col-12 lg:col-12 m-0">
@@ -115,7 +115,7 @@
         Car Options and Accessories
       </h4>
       <div class="col-12 md:col-12 lg:col-12">
-        
+
           <!-- <div *ngIf="!updateMode"> -->
             <div class="formgroup-inline">
               <div *ngFor="let option of options" class="field-checkbox col-5 md:col-5 lg:col-5">

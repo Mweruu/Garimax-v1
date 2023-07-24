@@ -5,31 +5,32 @@
       <p>{{totalRecords}} Cars found</p>
       <app-filters (searchFilterChanged)="onSearchFilterEntered($event)"></app-filters>
     </div>
-    <div class="card-w-title col-12 md:col-7 lg:col-6">
-      <p-dataView #dv [value]="vehicles" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[5,10,20]" [totalRecords]="totalRecords">
+    <div class="card-w-title col-12 md:col-7 lg:col-7 p-5">
+      <p-dataView [value]="vehicles" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[5,10,20]" [totalRecords]="totalRecords">
         <ng-template let-vehicle pTemplate="listItem">
-          <div *ngIf="vehicle.isVerified">
-            <!-- <div class="vehicles-card flex mb-3 mt-3" *ngIf="isMatched(vehicle)"> -->
-              <div class="vehicles-card flex mb-3 mt-3" *ngIf="isMatched(vehicle)">
-              <div class="col-4">
-                <p-image src="{{vehicle.image}}" alt="Image" width="175px" height="120px" [preview]="true"></p-image>
-              </div>
-              <div class="col-8" routerLink="/view" (click)="getVehicle(vehicle.id)">
-                <h6>
-                    {{vehicle.make}} {{vehicle.model}} {{vehicle.yearOfManufacture.split('-')[0]}}
-                </h6>
-                <div class="text-red-500 font-bold ">{{vehicle.price | currency:'Ksh. ':'symbol':'1.0-0'}}</div>
-                <p>
-                  <strong>
-                    {{vehicle.bodyType}} | {{vehicle.mileage| number: '1.0-0'}}KM | {{vehicle.engineSize| number: '1.0-0'}} CC | {{vehicle.enginePower}} |
-                    {{vehicle.transmission}} | {{vehicle.fuelType}}
-                  <!-- | {{vehicle.doors}} | {{vehicle.seats}} -->
-                  </strong>
-                </p>
-                <div>{{vehicle.description | wordlimit:10}}</div>
+          <!-- <div  class="col-12" *ngIf="vehicle.isVerified"> -->
+              <div class="vehicles-card mb-3 mt-3" *ngIf="isMatched(vehicle)">
+              <div class="grid" style="cursor: pointer;">
+                <div class="col-12 md:col-12 lg:col-4 ml-2 align-items-center">
+                  <p-image src="{{vehicle.image}}" alt="Image" width="175px" height="120px" [preview]="true"></p-image>
+                </div>
+                <div class="col-12 md:col-12 lg:col-7 ml-2 align-items-center" routerLink="/view" (click)="getVehicle(vehicle.id)">
+                  <h6>
+                      {{vehicle.make}} {{vehicle.model}} {{vehicle.yearOfManufacture.split('-')[0]}}
+                  </h6>
+                  <div class="text-red-500 font-bold ">{{vehicle.price | currency:'Ksh. ':'symbol':'1.0-0'}}</div>
+                  <p>
+                    <strong>
+                      {{vehicle.bodyType}} | {{vehicle.mileage| number: '1.0-0'}}KM | {{vehicle.engineSize| number: '1.0-0'}} CC | {{vehicle.enginePower}} |
+                      {{vehicle.transmission}} | {{vehicle.fuelType}}
+                    <!-- | {{vehicle.doors}} | {{vehicle.seats}} -->
+                    </strong>
+                  </p>
+                  <div>{{vehicle.description | wordlimit:10}}</div>
+                </div>
               </div>
             </div>
-          </div>
+          <!-- </div> -->
         </ng-template>
       </p-dataView>
   </div>

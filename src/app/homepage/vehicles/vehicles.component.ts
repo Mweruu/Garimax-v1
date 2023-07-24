@@ -28,8 +28,8 @@ export class VehiclesComponent implements OnInit {
   first: number = 0;
   rows: number = 5;
   totalRecords:number = 0;
-  minPrice:any;
-  maxPrice:any;
+  min:any;
+  max:any;
   prices:any[] = PRICE
   dates: string[] = [];
   sortedDates!: string[];
@@ -40,22 +40,27 @@ export class VehiclesComponent implements OnInit {
   user:any;
   layout: string = 'list';
   isChecked = true;
+  maxSearchFilter:any;
+  minSearchFilter:any;
+  range :any;
 
-  // viewForm = new FormGroup({
-  //   assessment:new FormControl(),
-  // })
+
+  viewForm = new FormGroup({
+    assessment:new FormControl(),
+  })
 
   options = [
     { label: 5, value: 5 },
     { label: 10, value: 10 },
     { label: 20, value: 20 },
     { label: 120, value: 120 }
-  ];
+    ];
 
   constructor(
     private ds:DataStorageService,
     public router: Router,
     public activatedRoute:ActivatedRoute,
+    private rangePipe: RangePipe
   ) { }
 
   ngOnInit() {
@@ -97,8 +102,8 @@ export class VehiclesComponent implements OnInit {
 
           // console.log("accessory",selectedAccessories,);
 
-          // let assessment = this.vehicle.assessment
-          // this.viewForm.patchValue(assessment)
+          let assessment = this.vehicle.assessment
+          this.viewForm.patchValue(assessment)
         }
       },
       (error) => {
@@ -128,8 +133,14 @@ export class VehiclesComponent implements OnInit {
   }
 
   onSearchFilterEntered(filterValue:string){
-      this.searchFilter = filterValue.toLowerCase();
-      console.log("sf",this.searchFilter)
+
+      if(this.min && this.max){
+        let range = `${this.minSearchFilter.replace(/[^0-9]/g, '')}-${this.maxSearchFilter.replace(/[^0-9]/g, '')}`;
+        this.range = filterValue;
+        console.log("ef33",range)
+    }else{
+      
+    }
   }
 
   isMatched(vehicle: any) {
@@ -140,14 +151,15 @@ export class VehiclesComponent implements OnInit {
       vehicle.model.toLowerCase().includes(this.searchFilter) ||
       vehicle.make.toLowerCase().includes(this.searchFilter)||
       vehicle.location.toLowerCase().includes(this.searchFilter) ||
-      vehicle.mileage.toLowerCase().includes(this.searchFilter) ||
+      // vehicle.mileage.toLowerCase().includes(this.searchFilter) ||
       vehicle.price.toLowerCase().includes(this.searchFilter) ||
       vehicle.bodyType.toLowerCase().includes(this.searchFilter) ||
       vehicle.usage.toLowerCase().includes(this.searchFilter) ||
       vehicle.condition.toLowerCase().includes(this.searchFilter) ||
       vehicle.transmission.toLowerCase().includes(this.searchFilter) ||
       vehicle.color.toLowerCase().includes(this.searchFilter) ||
-      vehicle.fuelType.toLowerCase().includes(this.searchFilter);
+      vehicle.fuelType.toLowerCase().includes(this.searchFilter)||
+      vehicle.mileage.includes(this.range);
       // this.rangePipe.transform(this.prices, this.minPrice, this.maxPrice);
 
     } else {

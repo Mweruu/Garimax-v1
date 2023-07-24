@@ -1,7 +1,6 @@
 <p-toast></p-toast>
-<div class="profile-display"></div>
 <div class="formgroup-inline mb-5">
-  <div class="col-10 md:col-10 lg:col-10">
+  <div class="col-12 md:col-10 lg:col-10">
     <p-panel header="My account" [toggleable]="true">
       <div class="col-12 pb-3 pt-3" >
         <form [formGroup]="updateForm" (ngSubmit)="onSubmit(user.id)">
@@ -12,7 +11,7 @@
                   <div class="card-body">
                      <div class="flex align-items-center justify-content-center">
                       <div *ngIf="user?.profileImage">
-                        <p-image *ngIf="!imageSelected" src="{{user?.profileImage}}" alt="Image" width="100%"></p-image>
+                        <p-image *ngIf="!imageSelected" src="{{user?.profileImage}}" alt="profile-picture" width="100%"></p-image>
                       </div>
                       <div *ngIf="!user?.profileImage">
                         <i *ngIf="!imageSelected" class="pi pi-user field " style="font-size: 12.5rem"></i>
@@ -48,7 +47,6 @@
                 <input id="email" type="email" formControlName="email" pInputText ><br>
               </div>
 
-            <!-- <div class="grid"></div> -->
               <div class="field flex align-items-center justify-content-between ">
                 <i [style]="{'font-size':'12px'}">This email has not been verified  <a class="font-xm no-underline ml-2 text-right cursor-pointer" style="color: var(--primary-color)">Verify now</a></i>
               </div>
@@ -76,13 +74,13 @@
   </div>
 </div>
 <div class="formgroup-inline mb-5" *ngIf="user?.isVendor">
-  <div class="col-10 md:col-10 lg:col-5">
+  <div class="col-12 md:col-10 lg:col-5">
     <p-panel header="Your vehicles for sale" [toggleable]="true">
       <p-dataView [value]="vehicles" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[5,10,20]" [totalRecords]="totalRecords">
         <ng-template let-vehicle pTemplate="listItem">
       <!-- <div  class="col-12 formgroup-inline" *ngFor="let vehicle of vehicles"> -->
           <div class="col-4">
-            <p-image src="{{vehicle.image}}" alt="Image" width="135px" height="105px" [preview]="true"></p-image>
+            <p-image src="{{vehicle.image}}" alt="Image" width="70%" [preview]="true"></p-image>
           </div>
           <div class="col-8">
             <h6>{{vehicle.make}} {{vehicle.model}} {{vehicle.yearOfManufacture.split('-')[0]}}</h6>
@@ -101,7 +99,7 @@
       </p-dataView>
     </p-panel>
   </div>
-  <div class="col-10 md:col-10 lg:col-5">
+  <div class="col-12 md:col-10 lg:col-5">
     <p-panel header="Your sold vehicles" [toggleable]="true"></p-panel>
   </div>
 </div>

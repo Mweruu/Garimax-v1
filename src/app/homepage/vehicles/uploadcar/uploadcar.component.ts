@@ -12,7 +12,6 @@ import { DataStorageService } from 'src/app/datastorage.service';
   styleUrls: ['./uploadcar.component.scss']
 })
 export class UploadcarComponent implements OnInit {
-
   items!: MenuItem[];
   carUploadForm!: FormGroup;
   _activeIndex: number = 1;
@@ -41,6 +40,7 @@ export class UploadcarComponent implements OnInit {
       make:['',Validators.required],
       model:['',Validators.required],
     });
+
   }
 
   onSubmit(){
@@ -73,4 +73,13 @@ export class UploadcarComponent implements OnInit {
   //     }
   //   );
   // }
+
+    activeIndex: number = 0;
+
+    // constructor(public messageService: MessageService) {}
+
+    onActiveIndexChange(event: number) {
+        this.activeIndex = event;
+    }
+
 }

@@ -26,7 +26,7 @@
         <button class="p-link m m-2">
           <span class="span-toolbar" (click)="logOut()">{{ username ? 'Logout': '' }}</span>
         </button>
-        <button class="p-link layout-topbar-button" routerLink="/sociallogin">
+        <button class="p-link layout-topbar-button" routerLink="/sociallogin" *ngIf="!username">
             <i class="pi pi-user"></i>
             <span>Sign In</span>
         </button>
