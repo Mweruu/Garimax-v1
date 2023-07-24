@@ -18,7 +18,7 @@
 
     <p-dataView [value]="vehicles" [paginator]="true" [rowsPerPageOptions]="[5,10,20]" [rows]="5">
       <ng-template let-vehicle pTemplate="listItem">
-        <div class="col-12" *ngIf="vehicle.isVerified">
+        <!-- <div class="col-12" *ngIf="vehicle.isVerified"> -->
           <div class="vehicles-card mt-5" *ngIf="isMatched(vehicle)">
             <div class="grid" style="cursor: pointer;">
               <div class="col-12 md:col-12 lg:col-5 ml-2 align-items-center">
@@ -34,9 +34,9 @@
                           <p-tag [severity]="vehicle.condition === 'Used' ? 'info':'danger'" value={{vehicle.condition}} class="m-2"></p-tag>
                           <p-tag [severity]="vehicle.usage === 'Foreign Used' ? 'info':'danger'" value= {{vehicle.usage}} class="ml-1"></p-tag>
                       </div>
-                      <div *ngIf="vehicle.isVerified">
+                      <!-- <div *ngIf="vehicle.isVerified">
                         <p-tag severity="success" icon="pi pi-check"></p-tag>
-                      </div>
+                      </div> -->
                     </div>
                 <div class="m-2 text-red-500 hover:text-red-700  font-bold ">{{vehicle.price | currency:'Ksh. ':'symbol':'1.0-0' }}</div>
                   <h6 class="m-2">
@@ -72,7 +72,7 @@
               </div>
             </div>
           </div>
-        </div>
+        <!-- </div> -->
       </ng-template>
     </p-dataView>
   </div>

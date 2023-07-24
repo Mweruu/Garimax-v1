@@ -31,9 +31,9 @@
   padding-top: 1rem;
   padding-bottom: 1rem;
   // border-radius: 50% / 100%;
-  // transform: scaleX(1.1);
-  // margin-left: 10px;
-  // transform: translateY(1%);
+  transform: scaleX(1.1);
+  margin-left: 10px;
+  transform: translateY(1%);
   margin-bottom: 2rem;
   width: 400px;
   background: var(--blue-200);
@@ -47,14 +47,24 @@
   );
 }
 
+.basic-info{
+  width: 150px;
+}
+
 @media (max-width: 991px) {
   .p-steps .p-steps-item .p-menuitem-link {
-  --d: 1.5rem;
+  --d: 1.0rem;
   background: transparent;
   transition: box-shadow 0.2s;
-  transform: translateY(1%);
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  // transform: translateY(1%);
+  font-size: 10px;
   margin-bottom: 2rem;
-  width: 330px;
+  margin-left: 0px;
+  width: 100px;
   background: var(--blue-200);
   clip-path: polygon(
     0% 0%,
@@ -65,18 +75,22 @@
     var(--d) 50%
   );
 }
+
+.basic-info{
+  width: 100px;
+}
 }
 
-// .p-steps .p-steps-item:before {
-//   // content: " ";
-//   // border-top: 1px solid #dee2e6;
-//   // width: 100%;
-//   // top: 50%;
-//   left: 0;
-//   display: block;
-//   // position: absolute;
-//   // margin-top: -1rem;
-// }
+.p-steps .p-steps-item:before {
+  // content: " ";
+  // border-top: 1px solid #dee2e6;
+  // width: 100%;
+  // top: 50%;
+  left: 0;
+  display: block;
+  // position: absolute;
+  // margin-top: -1rem;
+}
 
 .p-button {
   color: #ffffff;

@@ -1,7 +1,6 @@
 <p-toast></p-toast>
-<div class="profile-display"></div>
 <div class="formgroup-inline mb-5">
-  <div class="col-10 md:col-10 lg:col-10">
+  <div class="col-12 md:col-10 lg:col-10">
     <p-panel header="My account" [toggleable]="true">
       <div class="col-12 pb-3 pt-3" >
         <form [formGroup]="updateForm" (ngSubmit)="onSubmit(user.id)">
@@ -48,7 +47,6 @@
                 <input id="email" type="email" formControlName="email" pInputText ><br>
               </div>
 
-            <!-- <div class="grid"></div> -->
               <div class="field flex align-items-center justify-content-between ">
                 <i [style]="{'font-size':'12px'}">This email has not been verified  <a class="font-xm no-underline ml-2 text-right cursor-pointer" style="color: var(--primary-color)">Verify now</a></i>
               </div>
@@ -76,7 +74,7 @@
   </div>
 </div>
 <div class="formgroup-inline mb-5" *ngIf="user?.isVendor">
-  <div class="col-10 md:col-10 lg:col-5">
+  <div class="col-12 md:col-10 lg:col-5">
     <p-panel header="Your vehicles for sale" [toggleable]="true">
       <p-dataView [value]="vehicles" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[5,10,20]" [totalRecords]="totalRecords">
         <ng-template let-vehicle pTemplate="listItem">
@@ -101,7 +99,7 @@
       </p-dataView>
     </p-panel>
   </div>
-  <div class="col-10 md:col-10 lg:col-5">
+  <div class="col-12 md:col-10 lg:col-5">
     <p-panel header="Your sold vehicles" [toggleable]="true"></p-panel>
   </div>
 </div>

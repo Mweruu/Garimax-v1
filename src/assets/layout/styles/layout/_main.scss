@@ -41,6 +41,19 @@ a {
 .mid-display {
   padding-right: 100px !important;
 }
+
+@media (max-width: 991px){
+  .mid-display {
+    padding-right: 0px !important;
+  }
+
+  .p-tabview .p-tabview-panels {
+    width: 400px;
+    padding-left: 120px;
+    padding-right: 0px;
+}
+
+}
 .profile-display{
   padding: 0px 200px 0px 200px;
 }
