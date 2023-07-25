@@ -6,5 +6,9 @@ import { LayoutService } from "./service/app.layout.service";
     templateUrl: './app.footer.component.html'
 })
 export class AppFooterComponent {
+    sidebarVisible: boolean = false;
+    aboutusbarVisible:boolean = false;
+
+
     constructor(public layoutService: LayoutService) { }
 }

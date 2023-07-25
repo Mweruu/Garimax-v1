@@ -3,10 +3,16 @@
         <img src="assets/layout/images/garimax-logo2.png" alt="Logo" height="20" class="mr-2"/>
         <span class="font-medium ml-2">GariMax</span>
         <div class="col-12 md:col-12 lg:col-12 ml-5">
-            <a class="font-medium ml-2">Contact us</a>
+            <p-sidebar [(visible)]="sidebarVisible" [fullScreen]="true">
+              <h3>contact us</h3>
+            </p-sidebar>
+            <a class="font-medium ml-2" (click)="sidebarVisible = true">Contact us</a>
         </div>
         <div class="col-12 md:col-12 lg:col-12 ml-5">
-            <a class="font-medium ml-2">About us</a>
+          <p-sidebar [(visible)]="aboutusbarVisible" [fullScreen]="true">
+            <h3>about us</h3>
+          </p-sidebar>
+            <a class="font-medium ml-2" (click)="aboutusbarVisible = true">About us</a>
         </div>
     </div>
     <div class="grid p-fluid ml-5 mt-0 col-12 md:col-6 lg:col-3 ">
@@ -25,8 +31,5 @@
           <i class="pi pi-whatsapp ml-2" style="color: rgb(16, 190, 10); font-size: 2.0rem"></i>
           <i class="pi pi-youtube ml-2" style="color: rgb(240, 13, 13); font-size: 2.0rem"></i>
       </div>
-        <!-- <div class="field grid">
-         <button>Send Feedback</button>
-         </div> -->
     </div>
 </div>

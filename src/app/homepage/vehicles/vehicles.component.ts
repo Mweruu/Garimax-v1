@@ -1,9 +1,10 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { DataStorageService } from '../../datastorage.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RangePipe } from 'src/app/range.pipe';
 import { PRICE } from '../const-data/constants';
 import { FormGroup, FormControl } from '@angular/forms';
+import { LayoutService } from 'src/app/layout/service/app.layout.service';
 
 interface PageEvent {
   first: number;
@@ -56,12 +57,17 @@ export class VehiclesComponent implements OnInit {
     { label: 120, value: 120 }
     ];
 
+
+  @ViewChild('topbarmenubutton') topbarMenuButton!: ElementRef;
+
+  @ViewChild('topbarmenu') menu!: ElementRef;
+
   constructor(
     private ds:DataStorageService,
     public router: Router,
     public activatedRoute:ActivatedRoute,
-    private rangePipe: RangePipe
-  ) { }
+    public layoutService: LayoutService,
+      ) { }
 
   ngOnInit() {
     this.value = 4;
@@ -139,7 +145,7 @@ export class VehiclesComponent implements OnInit {
         this.range = filterValue;
         console.log("ef33",range)
     }else{
-      
+
     }
   }
 

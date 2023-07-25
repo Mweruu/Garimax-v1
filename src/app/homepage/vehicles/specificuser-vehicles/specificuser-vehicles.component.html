@@ -8,7 +8,7 @@
     <div class="card-w-title col-12 md:col-7 lg:col-7 p-5">
       <p-dataView [value]="vehicles" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[5,10,20]" [totalRecords]="totalRecords">
         <ng-template let-vehicle pTemplate="listItem">
-          <!-- <div  class="col-12" *ngIf="vehicle.isVerified"> -->
+          <div  class="col-12" *ngIf="vehicle.isVerified">
               <div class="vehicles-card mb-3 mt-3" *ngIf="isMatched(vehicle)">
               <div class="grid" style="cursor: pointer;">
                 <div class="col-12 md:col-12 lg:col-4 ml-2 align-items-center">
@@ -30,7 +30,7 @@
                 </div>
               </div>
             </div>
-          <!-- </div> -->
+          </div>
         </ng-template>
       </p-dataView>
   </div>

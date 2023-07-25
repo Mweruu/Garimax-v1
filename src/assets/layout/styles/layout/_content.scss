@@ -47,6 +47,8 @@ legend:hover{
   color: #d10202;
 }
 
-// .try{
-//   display: none;
-// }
+@media (max-width:991px){
+.mobile{
+  display: none;
+}
+}
