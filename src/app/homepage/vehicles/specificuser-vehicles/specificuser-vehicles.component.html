@@ -1,11 +1,11 @@
   <a routerLink="/vendorprofile" (click)="getUser(user.id)">Back to retailer</a>
   <h4>All cars from {{user?.firstName}}</h4>
   <div class="formgroup-inline mb-5 mt-10 gap-5">
-    <div class="col-12 md:col-4 lg:col-4">
+    <div class="col-12 md:col-3 lg:col-3">
       <p>{{totalRecords}} Cars found</p>
       <app-filters (searchFilterChanged)="onSearchFilterEntered($event)"></app-filters>
     </div>
-    <div class="card-w-title col-12 md:col-7 lg:col-7 p-5">
+    <div class="card-w-title col-12 md:col-8 lg:col-8 p-5">
       <p-dataView [value]="vehicles" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[5,10,20]" [totalRecords]="totalRecords">
         <ng-template let-vehicle pTemplate="listItem">
           <div  class="col-12" *ngIf="vehicle.isVerified">

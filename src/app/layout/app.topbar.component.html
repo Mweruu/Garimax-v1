@@ -18,12 +18,10 @@
         <button class="p-link mr-7">
             <span class="span-toolbar" [routerLink]="isVendor? '/uploadcar/basicinfo' : '/vendorsignup'">Sell car</span>
         </button>
-      <!-- </div>
-      <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}"> -->
-        <button class="p-link ml-7">
+        <button class="p-link">
           <span class="span-toolbar" routerLink="/profile" (click)="getUser(userId)">{{ username ? username: '' }}</span>
         </button>
-        <button class="p-link m m-2">
+        <button class="p-link">
           <span class="span-toolbar" (click)="logOut()">{{ username ? 'Logout': '' }}</span>
         </button>
         <button class="p-link layout-topbar-button" routerLink="/sociallogin" *ngIf="!username">

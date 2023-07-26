@@ -136,7 +136,8 @@
           animation: scalein 0.15s linear;
 
           &.layout-topbar-menu-mobile-active {
-              display: block
+              display: block;
+              width:155px;
           }
 
           .layout-topbar-button {

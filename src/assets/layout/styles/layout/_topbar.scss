@@ -19,6 +19,7 @@
         color: var(--surface-900);
         font-size: 1.5rem;
         font-weight: 500;
+        padding-left: 250px;
         width: 300px;
         border-radius: 12px;
 
@@ -87,7 +88,7 @@
 
     .layout-topbar-menu {
         margin: 0 0 0 auto;
-        padding-right: 100;
+        padding-right: 350px;
         list-style: none;
         display: flex;
 
@@ -97,5 +98,12 @@
     }
 }
 
+@media(max-width:1800px){
+    .layout-topbar-menu {
+      padding-right: 0px !important;
+    }
+    .layout-topbar-logo {
+      padding-left: 0px !important;
+    }
 
-
+}
