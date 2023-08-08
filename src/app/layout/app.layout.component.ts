@@ -12,7 +12,6 @@ export class AppLayoutComponent implements OnInit{
   ) { }
 
   ngOnInit() {
-   this.router.navigate(['/vehicles'])
   }
 
 }
