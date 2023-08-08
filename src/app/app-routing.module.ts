@@ -23,7 +23,7 @@ const routes: Routes = [
   {
     path: '', component:AppLayoutComponent,
     children :[
-      {path: 'vehicles', component:VehiclesComponent},
+      {path: '', component:VehiclesComponent},
       {path: 'vendorprofile/:userId', component:ViewvendorprofileComponent,},
       {path: 'profile/:userId', component:UserProfileComponent,},
       {path: 'vehicles/:userId', component:SpecificuserVehiclesComponent},
