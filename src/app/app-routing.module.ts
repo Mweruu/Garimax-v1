@@ -43,19 +43,6 @@ const routes: Routes = [
       },
     ]
   },
-  // {
-  //   path: '', component:UploadcarComponent,
-  //   children :[
-  //     {path: 'basicinfo', component:BasicinfoComponent},
-  //     {path: 'uploadpicture', component:UploadpictureComponent},
-  //     {path: 'cardetails', component:CardetailsComponent},
-  //     {path: 'preview', component:PreviewComponent},
-  //     {path: 'basicinfo/:vehicleId', component:BasicinfoComponent},
-  //     {path: 'uploadpicture/:vehicleId', component:UploadpictureComponent},
-  //     {path: 'cardetails/:vehicleId', component:CardetailsComponent},
-  //     {path: 'preview/:vehicleId', component:PreviewComponent},
-  //   ]
-  // },
   {
     path: 'sociallogin', component:SocialLoginComponent
   },
@@ -73,7 +60,10 @@ const routes: Routes = [
       {path: '', component:IndividualsignupComponent,}
     ]
   },
-
+  {
+    path: '**',
+    redirectTo:''
+  }
 
 ];
 
